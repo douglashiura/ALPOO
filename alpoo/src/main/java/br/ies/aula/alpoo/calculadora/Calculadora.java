@@ -4,7 +4,7 @@ public class Calculadora {
 
 	
 
-	public Integer obterResultado() {
+	public Integer obterResult() {
 		// TODO Auto-generated method stub
 		return 3;
 	}

@@ -10,6 +10,6 @@ public class testeOlá {
 	@Test
 	public void somaComResultado3(){
 		Calculadora calculadora = new Calculadora();
-		assertEquals(3,calculadora.obterResultado());
+		assertEquals(3,calculadora.obterResult());
 	}
 }
