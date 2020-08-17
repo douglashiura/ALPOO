@@ -6,11 +6,10 @@ import org.junit.Test;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
 
-public class TestCalculator {
-	
+public class TestCalculator {	
 	@Test
 	public void hello() {
-		Calculadora calculadora = new Calculadora();		
+		Calculadora calculadora = new Calculadora();	
 		assertEquals(3,calculadora.obterResultado());
 	}
 	
