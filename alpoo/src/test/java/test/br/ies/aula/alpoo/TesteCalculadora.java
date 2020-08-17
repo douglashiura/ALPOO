@@ -15,5 +15,5 @@ public class TesteCalculadora {
 	}
 
 	
-	// Just testing
+	// Just testing2
 }
