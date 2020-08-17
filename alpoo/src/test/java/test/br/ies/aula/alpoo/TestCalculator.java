@@ -10,8 +10,7 @@ public class TestCalculator {
 	
 	@Test
 	public void hello() {
-		Calculadora calculadora = new Calculadora();
-		
+		Calculadora calculadora = new Calculadora();		
 		assertEquals(3,calculadora.obterResultado());
 	}
 	
