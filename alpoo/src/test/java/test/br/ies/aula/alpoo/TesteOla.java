@@ -1,5 +1,7 @@
 package test.br.ies.aula.alpoo;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class TesteOla {
@@ -9,6 +11,8 @@ public class TesteOla {
 	public void ola() {
 		Calculadora Calculadora = new Calculadora();
 		Object calculadora;
-		assertEquals(3, calculadora.obterResultado());
+		assertEquals(3,calculadora.obterResultado());
 	}
+	@Test
 }
+moba
