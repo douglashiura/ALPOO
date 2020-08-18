@@ -2,10 +2,10 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 	
-	private Integer resultado;
+	private float resultado;
 
 	public void soma(Integer primeiraParcela, Integer segundaParcela) {
-		resultado=primeiraParcela+segundaParcela;
+		resultado=((float)primeiraParcela+segundaParcela);
 	}
 
 	public Object obterResultado() {
@@ -13,13 +13,16 @@ public class Calculadora {
 	}
 	
 	public void multiplica(Integer primeiraParcela, Integer segundaParcela) {
-		resultado=primeiraParcela*segundaParcela;
+		resultado=((float)primeiraParcela*segundaParcela);
 	}
 	
 	public void divisao(Integer primeiraParcela, Integer segundaParcela) {
-		resultado=primeiraParcela/segundaParcela;
+		resultado=((float)primeiraParcela/segundaParcela);
 	}
 	
+	public void subtrair(Integer primeiraParcela, Integer segundaParcela) {
+		resultado=((float)primeiraParcela-segundaParcela);
+	}
 	
 
 }
