@@ -2,21 +2,24 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 	
-	private Integer resultado;
+	private Float resultado;
 
-	public Integer obterResultado() {
+	public Float obterResultado() {
 		return resultado;
 	}
 
 	public void soma(Integer parcelaA, Integer parcelaB) {
-		resultado = parcelaA + parcelaB;
+		resultado = ((float)parcelaA + parcelaB);
 	}
 
 	public void multiplica(int parcelaA, int parcelaB) {
-		resultado = parcelaA * parcelaB;
+		resultado = (float) (parcelaA * parcelaB);
 	}
 
-	public void divide(int parcelaA, int parcelaB) {
-		resultado = parcelaA / parcelaB;
+	public void divide(Integer dividendo, Integer divisor) {
+		if(divisor.equals(0)) {
+			throw new ArithmeticException();
+		}
+		resultado = ((float)dividendo / divisor);
 	}
 }
