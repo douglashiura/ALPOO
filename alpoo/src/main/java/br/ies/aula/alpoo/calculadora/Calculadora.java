@@ -2,11 +2,14 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 
-	
+	private int resultado;
 
-	public Integer obterResult() {
-		// TODO Auto-generated method stub
-		return 3;
+	public int obterResultado() {
+		return resultado;
 	}
 
+	public void soma(Integer parcelaA, Integer parcelaB) {
+		resultado=parcelaA+parcelaB;
+		
+	}
 }
