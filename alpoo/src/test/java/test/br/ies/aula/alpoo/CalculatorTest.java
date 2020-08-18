@@ -21,9 +21,22 @@ public class CalculatorTest {
 		calculator.add(2, 1);
 		assertEquals(Integer.valueOf(3), calculator.getResult());
 	}
+	
 	@Test
 	public void addWithResult2() throws Exception {
 		calculator.add(1, 1);
+		assertEquals(Integer.valueOf(2), calculator.getResult());
+	}
+	
+	@Test
+	public void multiplyWithResult6() throws Exception {
+		calculator.multiply(2, 3);
+		assertEquals(Integer.valueOf(6), calculator.getResult());
+	}
+	
+	@Test
+	public void multiplyWithResult2() throws Exception {
+		calculator.multiply(2, 1);
 		assertEquals(Integer.valueOf(2), calculator.getResult());
 	}
 

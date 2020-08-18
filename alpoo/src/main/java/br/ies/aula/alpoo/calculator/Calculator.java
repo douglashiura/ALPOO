@@ -10,7 +10,10 @@ public class Calculator {
 
 	public void add(Integer i, Integer j) {
 		result = i + j;
-		
+	}
+	
+	public void multiply(Integer i, Integer j) {
+		result = i * j;
 	}
 	
 }
