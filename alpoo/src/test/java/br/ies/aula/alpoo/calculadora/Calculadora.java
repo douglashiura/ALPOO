@@ -1,10 +1,17 @@
 package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
+	
+	private Integer resultado;
+
+	public void soma(Integer primeiraParcela, Integer segundaParcela) {
+		resultado=primeiraParcela+segundaParcela;
+	}
 
 	public Object obterResultado() {
-		// TODO Auto-generated method stub
-		return 3;
+		return resultado;
 	}
+	
+	
 
 }
