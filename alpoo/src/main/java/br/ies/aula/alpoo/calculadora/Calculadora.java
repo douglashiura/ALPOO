@@ -8,8 +8,7 @@ public class Calculadora {
 		return resultado;
 	}
 
-	public Integer soma(Integer parcelaA, Integer parcelaB) {
+	public void soma(Integer parcelaA, Integer parcelaB) {
 		resultado = parcelaA+parcelaB;
-		return resultado;
 	}
 }
