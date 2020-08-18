@@ -28,4 +28,10 @@ public class TestCalculator {
 		assertEquals(Integer.valueOf(2),calculadora.obterResultado());
 	}
 	
+	@Test
+	public void multResult10() throws Exception {
+		calculadora.multi(2,5);
+		assertEquals(Integer.valueOf(10),calculadora.obterResultado());
+	}
+	
 }

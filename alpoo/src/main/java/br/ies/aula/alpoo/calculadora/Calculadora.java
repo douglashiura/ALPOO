@@ -11,5 +11,9 @@ public class Calculadora {
 	public void soma(Integer num1, Integer num2) {
 		resultado = num1 + num2;		
 	}
+	
+	public void multi(Integer num1, Integer num2) {
+		resultado = num1 * num2;		
+	}
 
 }
