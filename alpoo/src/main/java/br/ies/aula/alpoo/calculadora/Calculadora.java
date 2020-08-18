@@ -16,5 +16,9 @@ public class Calculadora {
 		resultado = Parcela1 * Parcela2;
 	}
 
+	public void divisao(Integer Parcela1, Integer Parcela2){
+		resultado = Parcela1 / Parcela2;
+	}
+
 	
 }

@@ -34,4 +34,9 @@ public class TesteCalculadora {
 		assertEquals(Integer.valueOf(4),calculadora.obterResultado());
 	}
 	
+	@Test
+	public void divisaoComResultado5() {
+		calculadora.divisao(10, 2);
+		assertEquals(Integer.valueOf(5),calculadora.obterResultado());
+	}
 }
