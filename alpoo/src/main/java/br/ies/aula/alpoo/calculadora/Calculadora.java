@@ -12,6 +12,14 @@ public class Calculadora {
 		resultado = parcelaA + parcelaB;		
 	}
 	
+	public void multiplica(Integer parcelaA, Integer parcelaB) {
+		resultado = parcelaA * parcelaB;
+	}
+	
+	public void divide(Integer parcelaA, Integer parcelaB) {
+		resultado = parcelaA / parcelaB;
+		
+	}
 
 	
 }

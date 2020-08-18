@@ -28,4 +28,17 @@ private Calculadora calculadora;
 		calculadora.soma(1,1);
 		assertEquals(Integer.valueOf(2), calculadora.obterResultado());
 	}
+	
+	@Test
+public void multiplicacaoComResultado() throws Exception {		
+		calculadora.multiplica(5,3);
+		assertEquals(Integer.valueOf(15), calculadora.obterResultado());
+}
+	@Test
+	public void divisaoComResultado() throws Exception {		
+			calculadora.divide(10,2);
+			assertEquals(Integer.valueOf(5), calculadora.obterResultado());
+	}
+
+
 }
