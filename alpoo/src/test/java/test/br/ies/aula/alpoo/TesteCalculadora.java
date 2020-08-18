@@ -18,14 +18,18 @@ public class TesteCalculadora {
 	
 	@Test
 	public void somaComResultado3() {
+		Object esperado = Integer.valueOf(3);
+		
 		calculadora.soma(2, 1);
-		assertEquals(Integer.valueOf(3),calculadora.obterResultado());
+		assertEquals(esperado, calculadora.obterResultado());
 	}
 
 	@Test
 	public void somaComResultado2() {
+		Object esperado = Integer.valueOf(2);
+		
 		calculadora.soma(1,1);
-		assertEquals(Integer.valueOf(2),calculadora.obterResultado());
+		assertEquals(esperado, calculadora.obterResultado());
 	}
 	
 }
