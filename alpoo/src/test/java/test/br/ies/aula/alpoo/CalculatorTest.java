@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
 
-public class TestCalculator {
+public class CalculatorTest {
 
 	private Calculadora calculadora;
 
@@ -32,6 +32,18 @@ public class TestCalculator {
 	public void multResult10() throws Exception {
 		calculadora.multi(2,5);
 		assertEquals(Integer.valueOf(10),calculadora.obterResultado());
+	}
+	
+	@Test
+	public void divResult5() throws Exception {
+		calculadora.div(10,2);
+		assertEquals(Integer.valueOf(5),calculadora.obterResultado());
+	}
+	
+	@Test
+	public void divResult0() throws Exception {
+		calculadora.div(10,0);
+		assertEquals(Integer.valueOf(0),calculadora.obterResultado());
 	}
 	
 }
