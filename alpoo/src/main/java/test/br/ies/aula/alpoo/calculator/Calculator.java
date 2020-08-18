@@ -11,4 +11,7 @@ public class Calculator {
 		result = i + j;
 	}
 
+	public void division(int i, int j) {
+		result = i / j;
+	}
 }
