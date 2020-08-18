@@ -24,4 +24,16 @@ public class TesteCalculadora{
 		calculadora.soma(1,1);
 		assertEquals(Integer.valueOf(2),calculadora.obterResultado());
 	}
+	
+	@Test
+	public void multiplicaComResultado1() {
+		calculadora.multiplica(3,2);
+		assertEquals(Integer.valueOf(6),calculadora.obterResultado());
+	}
+	
+	@Test
+	public void divideComResultado1() {
+		calculadora.divide(10,2);
+		assertEquals(Integer.valueOf(5),calculadora.obterResultado());
+	}
 }
