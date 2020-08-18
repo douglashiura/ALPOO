@@ -2,8 +2,14 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 
-	public Object obterResultado() {
-		return 3;
+	private Object resultado;
+
+	public void soma(Integer parcela1, Integer parcela2) {
+		resultado = parcela1 + parcela2;
 	}
 
+	public Object obterResultado() {
+		return resultado;
+	}
+	
 }
