@@ -4,8 +4,10 @@ public class Calculadora {
 
 	public Object obterResultado() {
 		
-		return 3;
+		return 2;
+		
 	}
+	
 
 	
 }

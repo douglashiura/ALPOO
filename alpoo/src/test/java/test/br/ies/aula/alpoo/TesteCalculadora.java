@@ -11,7 +11,8 @@ public class TesteCalculadora {
 	@Test
 	public void somaComResultado3() {
 		Calculadora calculadora = new Calculadora();
-		assertEquals (3, calculadora.obterResultado());
+		assertEquals (2, calculadora.obterResultado());
+		
 
 	}
 }
