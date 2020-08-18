@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
 
@@ -18,9 +19,9 @@ public class TesteCalculadora {
 
 	@Test
 	public void somaComResultado3() {
-		Object esperado = 3;
+		Object esperado = 3f;
 		
-		calculadora.soma(Integer.valueOf(1), Integer.valueOf(2));
+		calculadora.soma(Float.valueOf(1), Float.valueOf(2));
 
 		assertEquals(esperado, calculadora.obterResultado());
 
@@ -28,9 +29,9 @@ public class TesteCalculadora {
 	
 	@Test
 	public void somaComResultado2() {
-		Object esperado = 2;
+		Object esperado = 2f;
 
-		calculadora.soma(Integer.valueOf(1), Integer.valueOf(1));
+		calculadora.soma(Float.valueOf(1), Float.valueOf(1));
 
 		assertEquals(esperado, calculadora.obterResultado());
 
@@ -38,20 +39,25 @@ public class TesteCalculadora {
 	
 	@Test
 	public void multiResultado() {
-		Object esperado = 4;
+		Object esperado = 4f;
 		
-		calculadora.multi(Integer.valueOf(2), Integer.valueOf(2));
+		calculadora.multi(Float.valueOf(2), Float.valueOf(2));
 		
 		assertEquals(esperado, calculadora.obterResultado());
 	}
 	
 	@Test
 	public void divResultado() {
-		Object esperado = 2;
+		Object esperado = 2f;
 		
-		calculadora.div(Integer.valueOf(4), Integer.valueOf(2));
+		calculadora.div(Float.valueOf(4), Float.valueOf(2));
 		
 		assertEquals(esperado, calculadora.obterResultado());
+	}
+	
+	@Test(expected = ArithmeticException.class)
+	public void dividirPorZero() {
+		calculadora.div(Float.valueOf(10), Float.valueOf(0));
 	}
 
 }
