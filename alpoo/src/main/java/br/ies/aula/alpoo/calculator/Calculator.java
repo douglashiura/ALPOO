@@ -4,7 +4,7 @@ public class Calculator {
 
 	private Integer result;
 	
-	public Object getResult() {
+	public Integer getResult() {
 		return result;
 	}
 
