@@ -19,37 +19,50 @@ public class CalculatorTest {
 	@Test
 	public void addWithResult3() {
 		calculator.add(2, 1);
-		assertEquals(Integer.valueOf(3), calculator.getResult());
+		assertEquals(Float.valueOf(3), calculator.getResult());
 	}
 	
 	@Test
 	public void addWithResult2() throws Exception {
 		calculator.add(1, 1);
-		assertEquals(Integer.valueOf(2), calculator.getResult());
+		assertEquals(Float.valueOf(2), calculator.getResult());
 	}
 	
 	@Test
 	public void multiplyWithResult6() throws Exception {
 		calculator.multiply(2, 3);
-		assertEquals(Integer.valueOf(6), calculator.getResult());
+		assertEquals(Float.valueOf(6), calculator.getResult());
 	}
 	
 	@Test
 	public void multiplyWithResult2() throws Exception {
 		calculator.multiply(2, 1);
-		assertEquals(Integer.valueOf(2), calculator.getResult());
+		assertEquals(Float.valueOf(2), calculator.getResult());
 	}
 	
 	@Test
 	public void divisionWithResult10() throws Exception {
 		calculator.divide(40, 4);
-		assertEquals(Integer.valueOf(10), calculator.getResult());
+		assertEquals(Float.valueOf(10), calculator.getResult());
 	}
 	
 	@Test
 	public void divisionWithResult25() throws Exception {
 		calculator.divide(100, 4);
-		assertEquals(Integer.valueOf(25), calculator.getResult());
+		assertEquals(Float.valueOf(25), calculator.getResult());
+	}
+	
+	@Test(expected = ArithmeticException.class)
+	public void divisionByZero() throws Exception {
+		calculator.divide(Integer.valueOf(1), Integer.valueOf(0));
+
+	}
+	
+	@Test
+	public void division2Point5() throws Exception {
+		calculator.divide(5, 2);
+		assertEquals(Float.valueOf(2.5f), calculator.getResult());
+
 	}
 
 }
