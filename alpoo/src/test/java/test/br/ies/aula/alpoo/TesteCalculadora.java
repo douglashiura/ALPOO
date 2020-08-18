@@ -40,4 +40,15 @@ public class TesteCalculadora {
 		assertEquals(Double.valueOf(2.0), calculadora.getResultado());
 	}
 	
+	@Test(expected = ArithmeticException.class)
+	public void divisaoPorZero() throws Exception {
+		calculadora.dividir(Double.valueOf(10.0), Double.valueOf(0.0));
+	}
+	
+	@Test
+	public void doisPontoCinco() throws Exception {
+		calculadora.dividir(5.0, 2.0);
+		assertEquals(Double.valueOf(2.5), calculadora.getResultado());
+	}
+	
 }
