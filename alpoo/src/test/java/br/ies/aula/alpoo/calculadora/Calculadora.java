@@ -12,6 +12,14 @@ public class Calculadora {
 		return resultado;
 	}
 	
+	public void multiplica(Integer primeiraParcela, Integer segundaParcela) {
+		resultado=primeiraParcela*segundaParcela;
+	}
+	
+	public void divisao(Integer primeiraParcela, Integer segundaParcela) {
+		resultado=primeiraParcela/segundaParcela;
+	}
+	
 	
 
 }
