@@ -11,4 +11,12 @@ public class Calculadora {
 	public void soma(Integer parcelaA, Integer parcelaB) {
 		resultado = parcelaA+parcelaB;
 	}
+
+	public void multi(Integer parcelaA, Integer parcelaB) {
+		resultado = parcelaA*parcelaB;		
+	}
+
+	public void div(Integer parcelaA, Integer parcelaB) {
+		resultado = parcelaA/parcelaB;		
+	}
 }

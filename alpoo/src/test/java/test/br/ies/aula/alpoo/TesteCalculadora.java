@@ -17,7 +17,7 @@ public class TesteCalculadora {
 	}
 	
 	@Test
-	public void somaComResultado3() {
+	public void somaComResultado1() {
 		Object esperado = Integer.valueOf(3);
 		
 		calculadora.soma(2, 1);
@@ -32,4 +32,20 @@ public class TesteCalculadora {
 		assertEquals(esperado, calculadora.obterResultado());
 	}
 	
+	@Test
+	public void multiplicacaoComResultado() {
+		Object esperado = Integer.valueOf(6);
+				
+		calculadora.multi(2,3);
+		assertEquals(esperado, calculadora.obterResultado());
+	}
+	
+	@Test
+	public void divisaoComResultado() {
+		Object esperado = Integer.valueOf(2);
+				
+		calculadora.div(4,2);
+		assertEquals(esperado, calculadora.obterResultado());
+	}
+
 }
