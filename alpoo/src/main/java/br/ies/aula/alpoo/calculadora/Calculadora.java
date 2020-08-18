@@ -16,4 +16,8 @@ public class Calculadora {
 		resultado = x * y;		
 	}
 
+	public void div(Integer x, Integer y) {
+		resultado = x / y;	
+	}
+
 }

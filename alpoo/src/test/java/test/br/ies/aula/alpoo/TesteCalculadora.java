@@ -40,7 +40,16 @@ public class TesteCalculadora {
 	public void multiResultado() {
 		Object esperado = 4;
 		
-		calculadora.multi(2, 2);
+		calculadora.multi(Integer.valueOf(2), Integer.valueOf(2));
+		
+		assertEquals(esperado, calculadora.obterResultado());
+	}
+	
+	@Test
+	public void divResultado() {
+		Object esperado = 2;
+		
+		calculadora.div(Integer.valueOf(4), Integer.valueOf(2));
 		
 		assertEquals(esperado, calculadora.obterResultado());
 	}
