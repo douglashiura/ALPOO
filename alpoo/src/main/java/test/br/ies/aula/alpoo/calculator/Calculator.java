@@ -1,9 +1,14 @@
 package test.br.ies.aula.alpoo.calculator;
 
 public class Calculator {
+	int result;
+	
+	public int getResult() {
+		return result;
+	}
 
-	public Object getResult() {
-		return 3;
+	public void add(int i, int j) {
+		result = i + j;
 	}
 
 }
