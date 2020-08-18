@@ -28,5 +28,10 @@ public class TestOla {
 		assertEquals(Integer.valueOf(2), calculator.getResult());
 	}
 	
+	@Test
+	public void multiResultado4() {
+		calculator.multiplica(2,2);
+		assertEquals(Integer.valueOf(4), calculator.getResult());
+	}
 
 }

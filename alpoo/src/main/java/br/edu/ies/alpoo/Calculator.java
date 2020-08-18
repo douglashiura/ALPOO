@@ -10,4 +10,8 @@ public class Calculator {
 	public void soma(Integer x,Integer y) {
 		this.resultado = x + y; 
 	}
+	
+	public void multiplica(Integer x,Integer y) {
+		this.resultado = x * y; 
+	}
 }
