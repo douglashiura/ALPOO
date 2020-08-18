@@ -39,5 +39,17 @@ public class CalculatorTest {
 		calculator.multiply(2, 1);
 		assertEquals(Integer.valueOf(2), calculator.getResult());
 	}
+	
+	@Test
+	public void divisionWithResult10() throws Exception {
+		calculator.divide(40, 4);
+		assertEquals(Integer.valueOf(10), calculator.getResult());
+	}
+	
+	@Test
+	public void divisionWithResult25() throws Exception {
+		calculator.divide(100, 4);
+		assertEquals(Integer.valueOf(25), calculator.getResult());
+	}
 
 }
