@@ -13,5 +13,4 @@ public class TesteCalculadora {
 		Calculadora calculadora = new Calculadora();
 		assertEquals(3,calculadora.obterResultado());
 	}
-
 }
