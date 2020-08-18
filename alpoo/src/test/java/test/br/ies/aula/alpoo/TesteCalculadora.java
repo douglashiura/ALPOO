@@ -17,21 +17,27 @@ public class TesteCalculadora {
 	}
 	
 	@Test
-	public void somaComResultado3() {
-		calculadora.soma(2, 1);
-		assertEquals(Integer.valueOf(3), calculadora.getResultado());
+	public void somaComResultado3() throws Exception {
+		calculadora.soma(2.0, 1.0);
+		assertEquals(Double.valueOf(3.0), calculadora.getResultado());
 	}
 
 	@Test
 	public void somaComResultado2() throws Exception {
-		calculadora.soma(1,  1);
-		assertEquals(Integer.valueOf(2), calculadora.getResultado());
+		calculadora.soma(1.0,  1.0);
+		assertEquals(Double.valueOf(2.0), calculadora.getResultado());
 	}
 	
 	@Test
 	public void multiplicarComResultado6() throws Exception {
-		calculadora.multiplicar(2, 3);
-		assertEquals(Integer.valueOf(6), calculadora.getResultado());
+		calculadora.multiplicar(2.0, 3.0);
+		assertEquals(Double.valueOf(6.0), calculadora.getResultado());
+	}
+	
+	@Test
+	public void dividirComResultado2() throws Exception {
+		calculadora.dividir(4.0, 2.0);
+		assertEquals(Double.valueOf(2.0), calculadora.getResultado());
 	}
 	
 }

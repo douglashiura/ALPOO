@@ -2,19 +2,28 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 
-	private Integer resultado;
+	private Double resultado;
 	
-	public Integer soma(Integer num1, Integer num2) {
+	public Double soma(Double num1, Double num2) {
 		resultado = num1 + num2;
 		return resultado;
 	}
 	
-	public Integer multiplicar(Integer num1, Integer num2) {
+	public Double multiplicar(Double num1, Double num2) {
 		resultado = num1 * num2;
 		return resultado;
 	}
 	
-	public Integer getResultado() {
+	public Double dividir(Double num1, Double num2) {
+		if (num2 != 0) {
+			resultado = num1 / num2;
+			return resultado;
+		} else {
+			return null;
+		}
+	}
+	
+	public Double getResultado() {
 		return resultado;
 	}
 
