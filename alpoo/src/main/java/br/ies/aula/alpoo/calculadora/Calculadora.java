@@ -11,5 +11,9 @@ public class Calculadora {
 	public Object obterResultado() {
 		return resultado;
 	}
-	
+
+	public void multi(Integer x, Integer y) {
+		resultado = x * y;		
+	}
+
 }

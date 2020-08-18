@@ -35,5 +35,14 @@ public class TesteCalculadora {
 		assertEquals(esperado, calculadora.obterResultado());
 
 	}
+	
+	@Test
+	public void multiResultado() {
+		Object esperado = 4;
+		
+		calculadora.multi(2, 2);
+		
+		assertEquals(esperado, calculadora.obterResultado());
+	}
 
 }
