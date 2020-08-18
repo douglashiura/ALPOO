@@ -20,24 +20,24 @@ private Calculadora calculadora;
 	public void somaComResultado3() {
 		
 		calculadora.soma(2, 1);
-		assertEquals(Integer.valueOf(3), calculadora.obterResultado());
+		assertEquals(Float.valueOf(3), calculadora.obterResultado());
 	}
 	@Test
 	public void somaComResultado2() throws Exception {
 		
 		calculadora.soma(1,1);
-		assertEquals(Integer.valueOf(2), calculadora.obterResultado());
+		assertEquals(Float.valueOf(2), calculadora.obterResultado());
 	}
 	
 	@Test
 public void multiplicacaoComResultado() throws Exception {		
 		calculadora.multiplica(5,3);
-		assertEquals(Integer.valueOf(15), calculadora.obterResultado());
+		assertEquals(Float.valueOf(15), calculadora.obterResultado());
 }
 	@Test
 	public void divisaoComResultado() throws Exception {		
 			calculadora.divide(10,2);
-			assertEquals(Integer.valueOf(5), calculadora.obterResultado());
+			assertEquals(Float.valueOf(5), calculadora.obterResultado());
 	}
 
 
