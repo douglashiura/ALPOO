@@ -19,13 +19,19 @@ public class TesteCalculadora {
 	@Test
 	public void somaComResultado3() {
 		calculadora.soma(2, 1);
-		assertEquals(Integer.valueOf(3), calculadora.obterResultado());
+		assertEquals(Integer.valueOf(3), calculadora.getResultado());
 	}
 
 	@Test
 	public void somaComResultado2() throws Exception {
 		calculadora.soma(1,  1);
-		assertEquals(Integer.valueOf(2), calculadora.obterResultado());
+		assertEquals(Integer.valueOf(2), calculadora.getResultado());
+	}
+	
+	@Test
+	public void multiplicarComResultado6() throws Exception {
+		calculadora.multiplicar(2, 3);
+		assertEquals(Integer.valueOf(6), calculadora.getResultado());
 	}
 	
 }

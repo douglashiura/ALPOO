@@ -4,12 +4,17 @@ public class Calculadora {
 
 	private Integer resultado;
 	
-	public Integer obterResultado() {
+	public Integer soma(Integer num1, Integer num2) {
+		resultado = num1 + num2;
 		return resultado;
 	}
 	
-	public Integer soma(Integer num1, Integer num2) {
-		resultado = num1 + num2;
+	public Integer multiplicar(Integer num1, Integer num2) {
+		resultado = num1 * num2;
+		return resultado;
+	}
+	
+	public Integer getResultado() {
 		return resultado;
 	}
 
