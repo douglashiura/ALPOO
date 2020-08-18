@@ -17,7 +17,7 @@ public class TestOla {
 	}
 	
 	@Test
-	public void addWithResult3() {
+	public void addWithResult3() throws Exception {
 		calculator.soma(1,2);
 		assertEquals(Integer.valueOf(3), calculator.getResult());
 	}
@@ -29,8 +29,14 @@ public class TestOla {
 	}
 	
 	@Test
-	public void multiResultado4() {
+	public void multiResultado4() throws Exception {
 		calculator.multiplica(2,2);
+		assertEquals(Integer.valueOf(4), calculator.getResult());
+	}
+	
+	@Test
+	public void divResultado4() throws Exception {
+		calculator.divide(8,2);
 		assertEquals(Integer.valueOf(4), calculator.getResult());
 	}
 

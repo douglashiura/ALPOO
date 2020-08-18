@@ -14,4 +14,8 @@ public class Calculator {
 	public void multiplica(Integer x,Integer y) {
 		this.resultado = x * y; 
 	}
+	
+	public void divide(Integer x,Integer y) {
+		this.resultado = x / y; 
+	}
 }
