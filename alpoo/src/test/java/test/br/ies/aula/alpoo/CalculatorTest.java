@@ -27,4 +27,11 @@ public class CalculatorTest {
 		
 		assertEquals(2, calculator.getResult());
 	}
+	
+	@Test
+	public void divisionWithResult2() {
+		calculator.division(4, 2);
+		
+		assertEquals(2, calculator.getResult());
+	}
 }
