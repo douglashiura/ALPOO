@@ -12,5 +12,9 @@ public class Calculadora {
 		return resultado;
 	}
 
+	public void multiplicacao(Integer Parcela1, Integer Parcela2) {
+		resultado = Parcela1 * Parcela2;
+	}
+
 	
 }

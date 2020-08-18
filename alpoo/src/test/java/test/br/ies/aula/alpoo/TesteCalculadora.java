@@ -28,4 +28,10 @@ public class TesteCalculadora {
 		assertEquals(Integer.valueOf(2),calculadora.obterResultado());
 	}
 	
+	@Test
+	public void multiplicacaoComResultado4() {
+		calculadora.multiplicacao(2, 2);
+		assertEquals(Integer.valueOf(4),calculadora.obterResultado());
+	}
+	
 }
