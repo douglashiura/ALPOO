@@ -49,5 +49,5 @@ public class TesteCalculadora {
 	public void doisPontoCinco() throws Exception {
 		calculadora.dividir(5, 2);
 		assertEquals(Float.valueOf(2.5f), calculadora.obterResultado());
-	}
+	} 
 }

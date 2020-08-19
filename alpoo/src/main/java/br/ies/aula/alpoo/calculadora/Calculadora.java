@@ -20,7 +20,7 @@ public class Calculadora {
 		if(num2.equals(0)) {
 			throw new ArithmeticException("Zero não é divisivel.");
 		}
-		resultado = ((float)num1/num2);
+		resultado = ((float)num1/num2); 
 	}
 
 }
