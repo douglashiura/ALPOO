@@ -1,21 +1,24 @@
 package br.edu.ies.alpoo;
 
 public class Calculator {
-	Object resultado;
+	Integer resultado;
 	
-	public Object getResult() {
+	public Integer getResult() {
 		return resultado;
 	}
 	
-	public void soma(Integer x,Integer y) {
-		this.resultado = x + y; 
+	public Calculator soma(Integer x,Integer y) {
+		this.resultado = x + y;
+		return this;
 	}
 	
-	public void multiplica(Integer x,Integer y) {
-		this.resultado = x * y; 
+	public Calculator multiplica(Integer x,Integer y) {
+		this.resultado = x * y;
+		return this;
 	}
 	
-	public void divide(Integer x,Integer y) {
+	public Calculator divide(Integer x,Integer y) {
 		this.resultado = x / y; 
+		return this;
 	}
 }
