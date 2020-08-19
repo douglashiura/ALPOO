@@ -9,13 +9,14 @@ public class TestParOuImpar {
 	Scanner s2 = new Scanner(System.in);
 
 	@Test
-	public void run() {
+	public void run() { 
 		try {
 			System.out.println("digite o primeiro numero");
-			int n1 = s1.nextInt();
+			Integer n1 = s1.nextInt();
 
 			System.out.println("digite o segundo numero");
-			int n2 = s2.nextInt();
+			Integer n2 = s2.nextInt();
+			
 			System.out.println(parOuImpar.retornaResultado(n1 , n2));
 
 		}catch (Exception e) {
