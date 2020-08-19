@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.calculadora;
+package br.ies.aula.alpoo.imparpar;
 
 import java.util.Scanner;
 
