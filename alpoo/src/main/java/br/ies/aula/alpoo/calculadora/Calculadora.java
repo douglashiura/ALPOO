@@ -2,7 +2,7 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 
-	private int resultado;
+	private Integer resultado;
 
 	public void soma(Integer Parcela1, Integer Parcela2) {
 		resultado = Parcela1 + Parcela2;
