@@ -1,25 +1,10 @@
 package br.ies.aula.alpoo.oddEven;
 
-import java.util.Scanner;
-
 public class OddEven {
 	private Integer num1;
 	private Integer num2;
-	private Integer result;
-	private Scanner scanner = new Scanner(System.in);
 	
-	public OddEven() {
-		System.out.println("Digite o primeiro número:");
-		setNum1(scanner.nextInt());
-		System.out.println("Digite o segundo número:");
-		setNum2(scanner.nextInt());
-		evaluate();
-		if (getResult() == 0) {
-			System.out.println("O resultado é Par");
-		}else {
-			System.out.println("O resultado é Ímpar");
-		}
-		scanner.close();
+	public OddEven() {	
 	}
 	
 	public Integer getNum1() {
@@ -34,15 +19,12 @@ public class OddEven {
 	public void setNum2(Integer num2) {
 		this.num2 = num2;
 	}
-	public Integer getResult() {
-		return result;
-	}
-	public void setResult(Integer result) {
-		this.result = result;
-	}
-	public Integer evaluate() {
-		setResult((getNum1() + getNum2()) % 2);
-		return getResult();
+	public String evaluate() {
+		if ((getNum1() + getNum2()) % 2 == 0) {
+			return "Par";
+		}else {
+			return "Ímpar";
+		}
 	}
 	
 
