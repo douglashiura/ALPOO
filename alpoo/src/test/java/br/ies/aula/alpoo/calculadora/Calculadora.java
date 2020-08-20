@@ -8,7 +8,7 @@ public class Calculadora {
 		resultado=((float)primeiraParcela+segundaParcela);
 	}
 
-	public Object obterResultado() {
+	public Float obterResultado() {
 		return resultado;
 	}
 	
@@ -24,5 +24,6 @@ public class Calculadora {
 		resultado=((float)primeiraParcela-segundaParcela);
 	}
 	
-
 }
+ 
+
