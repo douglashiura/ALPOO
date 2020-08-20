@@ -19,13 +19,13 @@ public class TesteJogoParImpar {
 	
 	@Test
 	public void par() throws Exception {
-		jogo.Jogar(Double.valueOf(1), Double.valueOf(1));
+		jogo.jogar(Double.valueOf(1), Double.valueOf(1));
 		assertEquals("PAR", jogo.parOuImpar());
 	}
 
 	@Test
 	public void impar() throws Exception {
-		jogo.Jogar(Double.valueOf(1), Double.valueOf(2));
+		jogo.jogar(Double.valueOf(1), Double.valueOf(2));
 		assertEquals("IMPAR", jogo.parOuImpar());
 	}
 	

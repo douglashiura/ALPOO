@@ -12,7 +12,7 @@ public class JogoParImpar {
 		this.calc = calc;
 	}
 	
-	public void Jogar(Double num1, Double num2) {
+	public void jogar(Double num1, Double num2) {
 		this.num1 = num1;
 		this.num2 = num2;
 	}
