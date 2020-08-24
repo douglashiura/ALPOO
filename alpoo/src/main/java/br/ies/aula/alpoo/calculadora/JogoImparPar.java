@@ -1,7 +1,8 @@
 package br.ies.aula.alpoo.calculadora;
 
 public class JogoImparPar {
-	private final Object PAR = "PAR", IMPAR = "IMPAR";
+	private static final Object PAR = "PAR";
+	private static final Object  IMPAR = "IMPAR";
 	
 	public Object calculo(Float x, Float y) {
 		Calculadora calc = new Calculadora();

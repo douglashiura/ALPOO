@@ -17,13 +17,13 @@ public class TesteParImpar {
 	public void resultadoPar() {
 		Float jogador1 = 2f;
 		Float jogador2 = 4f;
-		assertEquals(jogo.calculo(jogador1, jogador2), "PAR");
+		assertEquals("PAR", jogo.calculo(jogador1, jogador2));
 	}
 
 	@Test
 	public void resultadoImpar() {
 		Float jogador1 = 3f;
 		Float jogador2 = 4f;
-		assertEquals(jogo.calculo(jogador1, jogador2), "IMPAR");
+		assertEquals("IMPAR", jogo.calculo(jogador1, jogador2));
 	}
 }
