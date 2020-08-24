@@ -2,10 +2,10 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 
-	private Object resultado;
+	private Float resultado;
 
-	public void soma(Float parcela1, Float parcela2) {
-		resultado = parcela1 + parcela2;
+	public Float soma(Float parcela1, Float parcela2) {
+		return resultado = parcela1 + parcela2;
 	}
 
 	public Object obterResultado() {
