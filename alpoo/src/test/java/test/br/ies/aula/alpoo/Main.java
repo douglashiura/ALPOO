@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.jogo;
+package test.br.ies.aula.alpoo;
 
 import java.util.Scanner;
 
