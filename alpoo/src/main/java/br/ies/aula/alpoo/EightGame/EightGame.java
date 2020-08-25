@@ -3,7 +3,9 @@ package br.ies.aula.alpoo.EightGame;
 import java.util.Random;
 
 public class EightGame {
-	private static int[][] table = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}};
+	private static int[][] table = {{1, 2, 3}, 
+									{7, 4, 6}, 
+									{8, 5, 0}};
 	private static Random random;
 	private int swap;
 	
@@ -30,7 +32,7 @@ public class EightGame {
 		
 		int space = table[axisX][axisY];
 		
-		if(axisY > 0) {
+		if(axisX > 0) {
 			swap = table[axisX - 1][axisY];
 			table[axisX - 1][axisY] = space;
 			table[axisX][axisY] = swap;
@@ -44,7 +46,7 @@ public class EightGame {
 		
 		int space = table[axisX][axisY];
 		
-		if(axisX < 2) {
+		if(axisY < 2) {
 			swap = table[axisX][axisY + 1];
 			table[axisX][axisY + 1] = space;
 			table[axisX][axisY] = swap;
@@ -58,7 +60,7 @@ public class EightGame {
 		
 		int space = table[axisX][axisY];
 		
-		if(axisX > 0) {
+		if(axisY > 0) {
 			swap = table[axisX][axisY - 1];
 			table[axisX][axisY - 1] = space;
 			table[axisX][axisY] = swap;
@@ -72,7 +74,7 @@ public class EightGame {
 		
 		int space = table[axisX][axisY];
 		
-		if(axisY < 2) {
+		if(axisX < 2) {
 			swap = table[axisX + 1][axisY];
 			table[axisX + 1][axisY] = space;
 			table[axisX][axisY] = swap;

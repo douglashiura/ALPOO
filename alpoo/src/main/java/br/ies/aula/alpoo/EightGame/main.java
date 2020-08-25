@@ -7,16 +7,16 @@ public class main {
 	public static void main(String[] args) {
 		EightGame game = new EightGame();
 		game.status();
-		System.out.println("CIMA\n");
+		System.out.println("\nCIMA");
 		game.moveUP();
 		game.status();
-		System.out.println("BAIXO\n");
+		System.out.println("\nBAIXO");
 		game.moveDown();
 		game.status();
-		System.out.println("DIREITA\n");
+		System.out.println("\nDIREITA");
 		game.moveRight();
 		game.status();
-		System.out.println("ESQUERDA\n");
+		System.out.println("\nESQUERDA");
 		game.moveLeft();
 		game.status();
 	}
