@@ -3,7 +3,7 @@ package br.ies.aula.alpoo.EightGame;
 import java.util.Random;
 
 public class EightGame {
-	private static int[][] table = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
+	private static int[][] table = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}};
 	private static Random random;
 	private int swap;
 	
@@ -15,8 +15,6 @@ public class EightGame {
 		for(int line = 0; line < 3; line++) {
 			for(int column = 0; column < 3; column++) {
 				if(array[line][column] == 0) {
-					System.out.println(line);
-					System.out.println(column);
 					int[] coordinates = {line, column};
 					return coordinates;
 				}
@@ -27,24 +25,58 @@ public class EightGame {
 	
 	public void moveUP() {
 		int[] spaceCoordinates = findSpace(table);
-		swap = table[spaceCoordinates[0]][spaceCoordinates[1]];
-		System.out.println(swap);
-		if(spaceCoordinates[1] > 3) {
-			table[spaceCoordinates[0]][spaceCoordinates[1]] = swap;
-			table[spaceCoordinates[0]][spaceCoordinates[1]] -= 3;
+		int axisX = spaceCoordinates[0];
+		int axisY = spaceCoordinates[1];
+		
+		int space = table[axisX][axisY];
+		
+		if(axisY > 0) {
+			swap = table[axisX - 1][axisY];
+			table[axisX - 1][axisY] = space;
+			table[axisX][axisY] = swap;
 		}
 	}
 	
 	public void moveRight() {
+		int[] spaceCoordinates = findSpace(table);
+		int axisX = spaceCoordinates[0];
+		int axisY = spaceCoordinates[1];
 		
+		int space = table[axisX][axisY];
+		
+		if(axisX < 2) {
+			swap = table[axisX][axisY + 1];
+			table[axisX][axisY + 1] = space;
+			table[axisX][axisY] = swap;
+		}
 	}
 	
 	public void moveLeft() {
+		int[] spaceCoordinates = findSpace(table);
+		int axisX = spaceCoordinates[0];
+		int axisY = spaceCoordinates[1];
 		
+		int space = table[axisX][axisY];
+		
+		if(axisX > 0) {
+			swap = table[axisX][axisY - 1];
+			table[axisX][axisY - 1] = space;
+			table[axisX][axisY] = swap;
+		}
 	}
 	
 	public void moveDown() {
+		int[] spaceCoordinates = findSpace(table);
+		int axisX = spaceCoordinates[0];
+		int axisY = spaceCoordinates[1];
 		
+		int space = table[axisX][axisY];
+		
+		if(axisY < 2) {
+			swap = table[axisX + 1][axisY];
+			table[axisX + 1][axisY] = space;
+			table[axisX][axisY] = swap;
+		}
 	}
 	
 	public void status() {
