@@ -32,6 +32,8 @@ public class Jogo {
 			jogo[linha][coluna-1] = 0;
 			jogo[linha][coluna] = troca;
 			coluna = coluna-1;
+		}else {
+			Mensagens.mensagemErroNoMovimento();
 		}
 	}
 	
@@ -41,24 +43,30 @@ public class Jogo {
 			jogo[linha-1][coluna] = 0;
 			jogo[linha][coluna] = troca;
 			linha = linha-1;
+		}else {
+			Mensagens.mensagemErroNoMovimento();
 		}
 	}
 	
 	private void moveParaDireita() {
-		if(coluna > 3) {
+		if(coluna < 2) {
 			int troca = jogo[linha][coluna+1];
 			jogo[linha][coluna+1] = 0;
 			jogo[linha][coluna] = troca;
 			coluna = coluna+1;
+		}else {
+			Mensagens.mensagemErroNoMovimento();
 		}
 	}
 	
 	private void moveParaBaixo() {
-		if(linha < 3) {
+		if(linha < 2) {
 			int troca = jogo[linha+1][coluna];
 			jogo[linha+1][coluna] = 0;
 			jogo[linha][coluna] = troca;
 			linha = linha+1;
+		}else {
+			Mensagens.mensagemErroNoMovimento();
 		}
 	}
 	
@@ -67,14 +75,9 @@ public class Jogo {
 	public int[][] obterNumeros() {
 		return this.jogo;
 	}
+	
 	public void getEstadoAtualJogo() {
-		for(int[] linha: this.obterNumeros()) {
-			for(int coluna : linha) {
-				System.out.printf("%s ",coluna);
-			}
-			System.out.println();
-		}
-		System.out.println("==+==");
+		Mensagens.estadoAtualJogo(this.obterNumeros());
 	}
 	
 	

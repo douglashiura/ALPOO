@@ -7,6 +7,8 @@ public class Main {
 		
 		jogo.movePecaZero("up");
 		jogo.movePecaZero("up");
+		jogo.movePecaZero("rigth");
+		
 
 	}
 

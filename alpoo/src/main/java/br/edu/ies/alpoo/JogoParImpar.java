@@ -19,12 +19,10 @@ public class JogoParImpar {
 		return this;
 	}
 	
-	public String getResultado() {
+	public Resultados getResultado() {
 		Integer result = this.cal.soma(this.primeiro, this.segundo).getResult();
-		if(result % 2 == 0 ) {			
-			return "Par";
-		}
-		return "Impar";
+		return result % 2 == 0 ? Resultados.PAR :Resultados.IMPAR;	
+		
 	}
 
 }

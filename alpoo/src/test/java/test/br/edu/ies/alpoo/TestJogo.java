@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.ies.alpoo.JogoParImpar;
+import br.edu.ies.alpoo.Resultados;
 
 public class TestJogo {
 	private JogoParImpar jogo;
@@ -17,12 +18,12 @@ public class TestJogo {
 	
 	@Test
 	public void testaJogoPar()  throws Exception {
-		String resultado = jogo.setPrimeiroNumero(2).setSegundoNumero(2).getResultado();
-		assertEquals("Par", resultado);
+		Resultados resultado = jogo.setPrimeiroNumero(2).setSegundoNumero(2).getResultado();
+		assertEquals(Resultados.PAR, resultado);
 	}
 	@Test
 	public void testaJogoImpar()  throws Exception {
-		String resultado = jogo.setPrimeiroNumero(2).setSegundoNumero(1).getResultado();
-		assertEquals("Impar", resultado);
+		Resultados resultado = jogo.setPrimeiroNumero(2).setSegundoNumero(1).getResultado();
+		assertEquals(Resultados.IMPAR, resultado);
 	}
 }
