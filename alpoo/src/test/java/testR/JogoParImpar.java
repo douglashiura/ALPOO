@@ -1,8 +1,8 @@
-package test.br.ies.aula.alpoo;
+package testR;
 
 import java.util.Scanner;
 
-public class Main {
+public class JogoParImpar {
 
 	public static void main(String[] args) {
 		
@@ -19,10 +19,8 @@ public class Main {
 	
 		if((player1 + player2) % 2 == 0) {
 			System.out.println("Par ganhou!!");
-			
 		}else {
 			System.out.println("Ímpar ganhou!!");
-			
 		}
 		
 	}
