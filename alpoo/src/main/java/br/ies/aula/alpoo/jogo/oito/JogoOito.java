@@ -1,6 +1,8 @@
 package br.ies.aula.alpoo.jogo.oito;
 
-import java.util.Random;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class JogoOito {
 
@@ -13,30 +15,17 @@ public class JogoOito {
 		gameOver = false;
 		this.newGame();
 	}
-
+	
 	private void newGame() {
-		Integer values = 0;
+		List<Integer> values = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8);
+		Collections.shuffle(values);
+		int index = 0;
 		
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				this.board[i][j] = values;
-				values++;
+				this.board[i][j] = values.get(index);
+				index++;
 			}
-		}
-		
-		this.mixBoard(18);
-	}
-
-	private void mixBoard(Integer times) {
-		for (int i = 0; i < times; i++) {
-			Integer pos1X = new Random().nextInt(3);
-			Integer pos1Y = new Random().nextInt(3);
-			Integer pos2X = new Random().nextInt(3);
-			Integer pos2Y = new Random().nextInt(3);
-			
-			Integer aux = getValueByPostion(pos1X, pos1Y);
-			this.board[pos1X][pos1Y] = getValueByPostion(pos2X, pos2Y);
-			this.board[pos2X][pos2Y] = aux;
 		}
 	}
 	

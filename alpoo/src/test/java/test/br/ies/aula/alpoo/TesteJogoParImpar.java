@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
 import br.ies.aula.alpoo.jogo.JogoParImpar;
+import test.br.ies.aula.alpoo.jogo.enumResultadosParImpar;
 
 public class TesteJogoParImpar {
 	
@@ -20,13 +21,13 @@ public class TesteJogoParImpar {
 	@Test
 	public void par() throws Exception {
 		jogo.jogar(Double.valueOf(1), Double.valueOf(1));
-		assertEquals("PAR", jogo.parOuImpar());
+		assertEquals(enumResultadosParImpar.PAR, jogo.parOuImpar());
 	}
 
 	@Test
 	public void impar() throws Exception {
 		jogo.jogar(Double.valueOf(1), Double.valueOf(2));
-		assertEquals("IMPAR", jogo.parOuImpar());
+		assertEquals(enumResultadosParImpar.IMPAR, jogo.parOuImpar());
 	}
 	
 	

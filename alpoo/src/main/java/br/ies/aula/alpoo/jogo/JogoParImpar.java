@@ -1,6 +1,7 @@
 package br.ies.aula.alpoo.jogo;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
+import static test.br.ies.aula.alpoo.jogo.enumResultadosParImpar.*;
 
 public class JogoParImpar {
 
@@ -17,10 +18,10 @@ public class JogoParImpar {
 		this.num2 = num2;
 	}
 	
-	public String parOuImpar() {
+	public Object parOuImpar() {
 		calc.soma(num1, num2);
 		Double result = calc.getResultado();
-		return result % 2 == 0 ? "PAR" : "IMPAR";
+		return result % 2 == 0 ? PAR : IMPAR;
 	}
 
 }
