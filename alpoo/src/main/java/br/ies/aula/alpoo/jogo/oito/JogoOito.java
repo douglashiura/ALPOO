@@ -58,17 +58,3 @@ public class JogoOito {
 		System.out.println(tabuleiro[6] + "" + tabuleiro[7] + "" + tabuleiro[8]);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
