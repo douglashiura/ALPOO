@@ -1,11 +1,11 @@
 package test.br.ies.aula.alpoo.jogo.oito;
 
-import br.ies.aula.alpoo.jogo.oito.Jogo;
+import br.ies.aula.alpoo.jogo.oito.JogoDoOitoProcedural;
 
 public class TesteOJogoDoOito {
 
 	public static void main(String[] args) throws InterruptedException {
-		Jogo jogo = new Jogo();
+		JogoDoOitoProcedural jogo = new JogoDoOitoProcedural();
 		jogo.moverAPecaBranca("CIMA");
 		jogo.moverAPecaBranca("DIREITA");
 		jogo.moverAPecaBranca("BAIXO");

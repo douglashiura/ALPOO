@@ -1,11 +1,10 @@
 package br.ies.aula.alpoo.jogo;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
+import static br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar.*;
 
 public class JogoParImpar {
 
-	private static final String PAR = "PAR";
-	private static final String IMPAR = "IMPAR";
 	private Integer primeiro;
 	private Integer segundo;
 
@@ -15,7 +14,6 @@ public class JogoParImpar {
 		Float resultado = calculadora.obterResultado();
 		return ehImpar(resultado) ? IMPAR : PAR;
 	}
-
 	private Boolean ehImpar(Float resultado) {
 		return resultado % 2 != 0;
 	}

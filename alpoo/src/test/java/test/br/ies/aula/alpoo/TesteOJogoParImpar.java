@@ -2,26 +2,32 @@ package test.br.ies.aula.alpoo;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.ies.aula.alpoo.jogo.JogoParImpar;
+import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
 
 public class TesteOJogoParImpar {
+	private JogoParImpar parImpar;
+
+	@Before
+	public void configuracao() {
+		parImpar = new JogoParImpar();
+	}
 
 	@Test
 	public void par() throws Exception {
-		JogoParImpar parImpar = new JogoParImpar();
 		parImpar.fixaJogadas(Integer.valueOf(1), Integer.valueOf(1));
-		assertEquals("PAR", parImpar.parOuImpar());
+		assertEquals(ResultadosDoJogoParImpar.PAR, parImpar.parOuImpar());
 	}
 
 	@Test
 	public void impar() throws Exception {
-		JogoParImpar parImpar = new JogoParImpar();
 		Integer segundo = Integer.valueOf(1);
 		Integer primeiro = Integer.valueOf(2);
 		parImpar.fixaJogadas(primeiro, segundo);
-		assertEquals("IMPAR", parImpar.parOuImpar());
+		assertEquals(ResultadosDoJogoParImpar.IMPAR, parImpar.parOuImpar());
 	}
 
 }

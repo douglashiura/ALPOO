@@ -1,11 +1,11 @@
 package br.ies.aula.alpoo.jogo.oito;
 
-public class Jogo {
+public class JogoDoOitoProcedural {
 	private int[][] tabuleiro;
 	private int coluna;
 	private int linha;
 
-	public Jogo() {
+	public JogoDoOitoProcedural() {
 		tabuleiro = new int[][] { { 3, 1, 2 }, { 0, 4, 5 }, { 6, 7, 8 } };
 		coluna = 0;
 		linha = 1;
