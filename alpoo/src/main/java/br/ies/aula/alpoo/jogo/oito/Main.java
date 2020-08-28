@@ -6,11 +6,10 @@ public class Main {
 
 		JogoDoOito jogo = new JogoDoOito();
 		jogo.imprimeMatriz();
-		jogo.moverCima();
-		jogo.moverBaixo();
-		jogo.moverEsquerda();
-		jogo.moverDireita();
-
+		jogo.moverZero(Direcao.CIMA);
+		jogo.moverZero(Direcao.BAIXO);
+		jogo.moverZero(Direcao.ESQUERDA);
+		jogo.moverZero(Direcao.DIREITA);
 	}
 
 }

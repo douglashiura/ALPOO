@@ -7,7 +7,7 @@ import java.util.List;
 public class JogoDoOito {
 	// [0] = linha [1] = coluna.
 	Coordenadas posicaoAtualZero;
-	int[][] matriz = new int[3][3];
+	int[][] matriz = new int[3][3];	
 
 	public JogoDoOito() {
 		// aleatoriedade dos numeros
@@ -21,7 +21,7 @@ public class JogoDoOito {
 
 		int i = 0;
 
-		// preenchimento da matriz	
+		// preenchimento da matriz
 		for (int k = 0; k < 3; k++) {
 			for (int j = 0; j < 3; j++) {
 				matriz[k][j] = numerosJogo[i];
@@ -42,8 +42,26 @@ public class JogoDoOito {
 		}
 		System.out.println("\n");
 	}
+	
+	public void moverZero(Direcao movimento) {
+		switch(movimento) {
+			case CIMA:
+				this.moverCima();
+				break;
+			case BAIXO:
+				this.moverBaixo();
+				break;
+			case ESQUERDA:
+				this.moverEsquerda();
+				break;
+			case DIREITA:
+				this.moverDireita();
+				break;
+		}
+		
+	}
 
-	public void moverCima() {
+	private void moverCima() {
 		if (posicaoAtualZero.getLinha() > 0) {
 			matriz[posicaoAtualZero.getLinha()][posicaoAtualZero
 					.getColuna()] = matriz[posicaoAtualZero.getLinha() - 1][posicaoAtualZero.getColuna()];
@@ -53,7 +71,7 @@ public class JogoDoOito {
 		this.imprimeMatriz();
 	}
 
-	public void moverBaixo() {
+	private void moverBaixo() {
 		if (posicaoAtualZero.getLinha() < 2) {
 			matriz[posicaoAtualZero.getLinha()][posicaoAtualZero
 					.getColuna()] = matriz[posicaoAtualZero.getLinha() + 1][posicaoAtualZero.getColuna()];
@@ -63,7 +81,7 @@ public class JogoDoOito {
 		this.imprimeMatriz();
 	}
 
-	public void moverEsquerda() {
+	private void moverEsquerda() {
 		if (posicaoAtualZero.getColuna() > 0) {
 			matriz[posicaoAtualZero.getLinha()][posicaoAtualZero
 					.getColuna()] = matriz[posicaoAtualZero.getLinha()][posicaoAtualZero.getColuna() - 1];
@@ -73,7 +91,7 @@ public class JogoDoOito {
 		this.imprimeMatriz();
 	}
 
-	public void moverDireita() {
+	private void moverDireita() {
 		if (posicaoAtualZero.getColuna() < 2) {
 			matriz[posicaoAtualZero.getLinha()][posicaoAtualZero
 					.getColuna()] = matriz[posicaoAtualZero.getLinha()][posicaoAtualZero.getColuna() + 1];
