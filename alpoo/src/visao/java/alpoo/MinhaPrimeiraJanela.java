@@ -10,14 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import parOuImpar.JogoParOuImpar;
+import par.impar.JogoParImpar;
 
 @SuppressWarnings("unused")
 public class MinhaPrimeiraJanela {
 
 	public static void main(String[] args) {
 		
-		JogoParOuImpar jogo = new JogoParOuImpar();
+		JogoParImpar jogo = new JogoParImpar();
 		
 		/*Bloco de setup da Tela*/
 		
@@ -57,18 +57,7 @@ public class MinhaPrimeiraJanela {
 		tela.setVisible(true);
 		
 		//Pop up do botão de envio
-				botao.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Boolean resultado = jogo.resultado(Integer.parseInt(entrada1.getText()), Integer.parseInt(entrada2.getText()));
-						if(resultado) {
-							JOptionPane.showMessageDialog(null, "Par Ganhou!");
-						}else {
-							JOptionPane.showMessageDialog(null, "Ímpar Ganhou!");
-						}
-					}
-							
-				});
+		botao.addActionListener(new ControleDoJogoParImpar(entrada1,entrada2));
 		
 	}
 	

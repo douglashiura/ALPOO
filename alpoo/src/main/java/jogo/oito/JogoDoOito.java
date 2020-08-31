@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.jogo.oito;
+package jogo.oito;
 
 public class JogoDoOito {
 

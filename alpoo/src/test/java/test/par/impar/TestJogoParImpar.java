@@ -1,4 +1,4 @@
-package testR;
+package test.par.impar;
 
 import java.util.Scanner;
 

@@ -1,10 +1,10 @@
-package br.ies.aula.alpoo.calculadora;
+package aula.alpoo.calculadora;
 
 public class Calculadora {
 
 	private Float resultado;
 
-	public Object obterResultado() {
+	public Float obterResultado() {
 		return resultado;
 	}
 

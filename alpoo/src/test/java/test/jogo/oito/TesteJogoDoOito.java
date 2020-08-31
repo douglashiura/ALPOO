@@ -1,11 +1,11 @@
-package test.br.ies.aula.alpoo.jogo.oito;
+package test.jogo.oito;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ies.aula.alpoo.jogo.oito.JogoDoOito;
+import jogo.oito.JogoDoOito;
 
 @SuppressWarnings("unused")
 public class TesteJogoDoOito {
