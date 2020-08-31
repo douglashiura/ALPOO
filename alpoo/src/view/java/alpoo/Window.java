@@ -1,13 +1,20 @@
 package alpoo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import br.ies.aula.alpoo.parouimpar.JogoParImpar;
 
 public class Window {
 
 	public static void main(String[] args) {
+		
 		JFrame frame = new JFrame();
 		frame.setSize(500, 250);
 		frame.setLayout(null);
@@ -32,6 +39,26 @@ public class Window {
 		JButton button = new JButton("Jogar");
 		button.setLocation(100, 100);
 		button.setSize(80, 25);
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JogoParImpar jogo = new JogoParImpar();
+				
+				if(imputPlayer1.getText().trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campo vazio! adiciona um valor");
+				} else {
+					
+					int num1 = Integer.valueOf(imputPlayer1.getText());
+					int num2 = Integer.valueOf(imputPlayer2.getText());
+					
+					jogo.fixaJogadas(num1, num2);	
+					String resultado = jogo.parOuImpar().toString();
+					JOptionPane.showMessageDialog(null, resultado);
+				}
+				
+			}
+		});
 		
 		frame.add(player1Label);
 		frame.add(player2Label);
