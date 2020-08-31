@@ -16,7 +16,8 @@ public class testeJogoParImpar {
 		jogoParImpar  jogo =  new jogoParImpar();
 		int n1 = 2;
 		int n2 = 3;
-		jogo.jogarSemScan(n1, n2);
+		jogo.jogar(n1, n2);
+		
 }
 	
 	

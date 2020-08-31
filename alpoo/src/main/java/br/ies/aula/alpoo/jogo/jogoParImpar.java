@@ -30,17 +30,11 @@ public class jogoParImpar {
 		else {System.out.println("O numero "+n2+" é ímpar.");}		
 	}
 
-	public static void jogarSemScan(int n1, int n2) {	
-		if (n1 % 2 == 0) {
-			System.out.println("O numero "+n1+" é par.");
+	public static String jogar(int n1, int n2) {	
+		if ((n1+n2) % 2 == 0) {
+			return "PAR!";
 			}
-		else {System.out.println("O numero "+n1+" é ímpar.");}
-		
-		if (n2 % 2 == 0) {
-			System.out.println("O numero "+n2+" é par.");
-			}
-		else {System.out.println("O numero "+n2+" é ímpar.");}		
-	}
+		else { return "IMPAR!"; }
 	
 	
-}
+}}

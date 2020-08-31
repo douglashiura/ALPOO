@@ -36,9 +36,12 @@ public void multiplicacaoComResultado() throws Exception {
 }
 	@Test
 	public void divisaoComResultado() throws Exception {		
-			calculadora.divide(10,2);
+			calculadora.divide(Float.valueOf(10),Float.valueOf(2));
 			assertEquals(Float.valueOf(5), calculadora.obterResultado());
 	}
+	
+	
+
 
 
 }
