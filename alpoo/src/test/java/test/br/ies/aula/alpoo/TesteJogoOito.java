@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo.JogoOito;
+package test.br.ies.aula.alpoo;
 
 import br.ies.aula.alpoo.jogooito.JogoOito;
 
