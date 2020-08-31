@@ -2,7 +2,7 @@ package testR;
 
 import java.util.Scanner;
 
-public class JogoParImpar {
+public class TestJogoParImpar {
 
 	public static void main(String[] args) {
 		
