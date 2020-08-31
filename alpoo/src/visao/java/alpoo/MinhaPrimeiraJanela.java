@@ -16,26 +16,27 @@ public class MinhaPrimeiraJanela {
 		tela.setSize(300, 250);
 		tela.setLayout(null);
 		tela.setTitle("Tela do jogo de Par e Impar - 100% IES");
-		JLabel campoDoPrimeiroJogado = new JLabel("Jogada do primeiro jogador");
-		campoDoPrimeiroJogado.setLocation(3, 3);
-		campoDoPrimeiroJogado.setSize(200, 20);
+		JLabel campoDoPrimeiroJogador = new JLabel("Jogada do primeiro jogador");
+		campoDoPrimeiroJogador.setLocation(3, 3);
+		campoDoPrimeiroJogador.setSize(200, 20);
 		JTextField entradaDoPrimeiroJogador = new JTextField(4);
 		entradaDoPrimeiroJogador.setSize(200, 20);
 		entradaDoPrimeiroJogador.setLocation(210, 3);
-		tela.add(campoDoPrimeiroJogado);
+		tela.add(campoDoPrimeiroJogador);
 		tela.add(entradaDoPrimeiroJogador);
-		JLabel campoDoPrimeiroJogado2 = new JLabel("Jogada do segundo jogador");
-		campoDoPrimeiroJogado2.setLocation(3, 30);
-		campoDoPrimeiroJogado2.setSize(200, 20);
-		JTextField entradaDoPrimeiroJogador2 = new JTextField(4);
-		entradaDoPrimeiroJogador2.setSize(200, 20);
-		entradaDoPrimeiroJogador2.setLocation(210, 30);
-		tela.add(campoDoPrimeiroJogado2);
-		tela.add(entradaDoPrimeiroJogador2);
+		JLabel campoDoSegundoJogador = new JLabel("Jogada do segundo jogador");
+		campoDoSegundoJogador.setLocation(3, 30);
+		campoDoSegundoJogador.setSize(200, 20);
+		JTextField entradaDoSegundoJogador = new JTextField(4);
+		entradaDoSegundoJogador.setSize(200, 20);
+		entradaDoSegundoJogador.setLocation(210, 30);
+		tela.add(campoDoSegundoJogador);
+		tela.add(entradaDoSegundoJogador);
 		JButton botaoJogar = new JButton("Jogar");
 		botaoJogar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				JOptionPane.showMessageDialog(null, "O botão foi clicado!");
 			}
 		});
