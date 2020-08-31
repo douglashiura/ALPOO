@@ -33,7 +33,7 @@ public class MinhaPrimeiraJanela {
 		
 		jogarBotao.setSize(80, 40);
 		jogarBotao.setLocation(150, 83);
-		JTextField entradaPrimeiro = new JTextField("1");
+		JTextField entradaPrimeiro = new JTextField("2");
 		entradaPrimeiro.setSize(200, 20);
 		entradaPrimeiro.setLocation(210, 3);
 		JTextField entradaSegundo = new JTextField("2");
@@ -41,15 +41,15 @@ public class MinhaPrimeiraJanela {
 		entradaSegundo.setLocation(210, 43);
 		Float jogadorUm = Float.parseFloat(entradaPrimeiro.getText());
 		Float jogadorDois = Float.parseFloat(entradaSegundo.getText());
+		JLabel resultado = new JLabel();
 		
-		JLabel resultado = new JLabel(jogo.calculo(jogadorUm, jogadorDois).toString());
 		resultado.setSize(200, 20);
 		resultado.setLocation(200, 300);
 
 		jogarBotao.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "O botão foi clicado");
+			public void actionPerformed(ActionEvent e) {				
+				resultado.setText(jogo.calculo(jogadorUm, jogadorDois).toString());
 			}
 		});
 		tela.add(resultado);
