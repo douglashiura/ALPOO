@@ -1,11 +1,12 @@
 package alpoo;
 
-
-import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class MinhaPrimeiraJanela {
@@ -20,7 +21,7 @@ public class MinhaPrimeiraJanela {
 		campoDoPrimeiroJogado.setSize(200, 20);
 		JTextField entradaDoPrimeiroJogador = new JTextField(4);
 		entradaDoPrimeiroJogador.setSize(200, 20);
-		entradaDoPrimeiroJogador.setLocation(210,3);
+		entradaDoPrimeiroJogador.setLocation(210, 3);
 		tela.add(campoDoPrimeiroJogado);
 		tela.add(entradaDoPrimeiroJogador);
 		JLabel campoDoPrimeiroJogado2 = new JLabel("Jogada do segundo jogador");
@@ -28,10 +29,16 @@ public class MinhaPrimeiraJanela {
 		campoDoPrimeiroJogado2.setSize(200, 20);
 		JTextField entradaDoPrimeiroJogador2 = new JTextField(4);
 		entradaDoPrimeiroJogador2.setSize(200, 20);
-		entradaDoPrimeiroJogador2.setLocation(210,30);
+		entradaDoPrimeiroJogador2.setLocation(210, 30);
 		tela.add(campoDoPrimeiroJogado2);
 		tela.add(entradaDoPrimeiroJogador2);
-		Component botaoJogar= new JButton("Jogar");
+		JButton botaoJogar = new JButton("Jogar");
+		botaoJogar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "O botão foi clicado!");
+			}
+		});
 		botaoJogar.setLocation(100, 100);
 		botaoJogar.setSize(80, 25);
 		tela.add(botaoJogar);
