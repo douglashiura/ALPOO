@@ -39,8 +39,7 @@ public class MinhaPrimeiraJanela {
 		JTextField entradaSegundo = new JTextField("2");
 		entradaSegundo.setSize(200, 20);
 		entradaSegundo.setLocation(210, 43);
-		Float jogadorUm = Float.parseFloat(entradaPrimeiro.getText());
-		Float jogadorDois = Float.parseFloat(entradaSegundo.getText());
+		
 		JLabel resultado = new JLabel();
 		
 		resultado.setSize(200, 20);
@@ -48,7 +47,9 @@ public class MinhaPrimeiraJanela {
 
 		jogarBotao.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {	
+				Float jogadorUm = Float.parseFloat(entradaPrimeiro.getText());
+				Float jogadorDois = Float.parseFloat(entradaSegundo.getText());
 				resultado.setText(jogo.calculo(jogadorUm, jogadorDois).toString());
 			}
 		});
