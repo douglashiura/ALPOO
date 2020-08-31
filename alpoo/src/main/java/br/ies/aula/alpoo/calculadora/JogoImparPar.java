@@ -8,6 +8,7 @@ public class JogoImparPar {
 	
 	public Object calculo(Float x, Float y) {
 		Calculadora calc = new Calculadora();
+		this.definirNumeros(x, y);
 		Float resultado = calc.soma(primeiro, segundo);
 		if(ePar(resultado)) {
 			return PAR;
