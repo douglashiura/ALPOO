@@ -1,64 +1,90 @@
 package alpoo;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import par.impar.JogoParImpar;
+public class MinhaPrimeiraJanela extends JFrame{
 
-@SuppressWarnings("unused")
-public class MinhaPrimeiraJanela {
+	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) {
+	String[] comboBoxStrings = {"PAR", "IMPAR"};
+	
+	JTextField entrada1 = new JTextField(4);
+	JTextField entrada2 = new JTextField(4);
+	
+	JComboBox<?> comboBox1 = new JComboBox<Object>(comboBoxStrings);
+	JComboBox<?> comboBox2 = new JComboBox<Object>(comboBoxStrings);
+	
+	MinhaPrimeiraJanela(){
+		/* Screen Bounds*/
+		setSize(350, 400);
+		setLayout(null);
+		setTitle("Jogo do Par Ou Ímpar");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		this.createJogador1Panel();
+		this.createJogador2Panel();
+		this.setupBotao();
 		
-		JogoParImpar jogo = new JogoParImpar();
-		
-		/*Bloco de setup da Tela*/
-		
-		JFrame tela = new JFrame();
-		tela.setSize(300, 245);
-		tela.setLayout(null);
-		tela.setTitle("Jogo Par Ou Ímpar");
-		
-		JLabel campo1 = new JLabel("Jogada do Primeiro Jogador:");
-		campo1.setSize(200,20);
-		campo1.setLocation(45,10);
-		
-		JTextField entrada1 = new JTextField(4);
+		setVisible(true);
+	}
+
+	public void setupJogador1() {
 		entrada1.setSize(200,20);
 		entrada1.setLocation(45,40);
 		
+		comboBox1.setSize(200,20);
+		comboBox1.setLocation(45,70);
+	}
+	
+	private void createJogador1Panel() {
+		JLabel campo1 = new JLabel("Jogada do Primeiro Jogador:");
+		this.setupJogador1();
+		
+		add(campo1);
+		campo1.setSize(200,20);
+		campo1.setLocation(45,10);
+		
+		add(entrada1);
+		add(comboBox1);
+	}
+	
+	public void setupJogador2() {
+		entrada2.setSize(200,20);
+		entrada2.setLocation(45,130);
+		
+		comboBox2.setSize(200,20);
+		comboBox2.setLocation(45,160);
+		comboBox2.setSelectedIndex(0);
+	}
+	
+	private void createJogador2Panel() {
 		JLabel campo2 = new JLabel("Jogada do Segundo Jogador:");
+		this.setupJogador2();
+		
+		add(campo2);
 		campo2.setSize(200,20);
 		campo2.setLocation(45,70);
 		
-		JTextField entrada2 = new JTextField(4);
-		entrada2.setSize(200,20);
-		entrada2.setLocation(45,100);
-		
+		add(entrada2);
+		add(comboBox2);
+	}
+	
+	public void setupBotao() {
 		JButton botao = new JButton("Enviar Resposta");
+		
+		add(botao);
 		botao.setSize(200,40);
-		botao.setLocation(45,140);
+		botao.setLocation(45,200);
 		
-		/* -END- Bloco de setup da Tela*/
-		
-		tela.add(campo1);
-		tela.add(entrada1);
-		tela.add(campo2);
-		tela.add(entrada2);
-		tela.add(botao);
-		
-		tela.setVisible(true);
-		
-		//Pop up do botão de envio
-		botao.addActionListener(new ControleDoJogoParImpar(entrada1,entrada2));
-		
+		botao.addActionListener(new ControleDoJogoParImpar(entrada1, entrada2, comboBox1, comboBox2));
+	}
+
+	public static void main(String[] args) {
+		new MinhaPrimeiraJanela();
 	}
 	
 }
