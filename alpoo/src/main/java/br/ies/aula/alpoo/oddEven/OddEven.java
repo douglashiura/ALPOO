@@ -1,29 +1,29 @@
 package br.ies.aula.alpoo.oddEven;
 
 public class OddEven {
-	private Integer num1;
-	private Integer num2;
+	private Integer firstNum;
+	private Integer secondNum;
 	
 	public OddEven() {	
 	}
 	
-	public Integer getNum1() {
-		return num1;
+	public Integer getFirstNum() {
+		return firstNum;
 	}
-	public void setNum1(Integer num1) {
-		this.num1 = num1;
+	public void setFirstNum(Integer num) {
+		this.firstNum = num;
 	}
-	public Integer getNum2() {
-		return num2;
+	public Integer getSecondNum() {
+		return secondNum;
 	}
-	public void setNum2(Integer num2) {
-		this.num2 = num2;
+	public void setSecondNum(Integer num) {
+		this.secondNum = num;
 	}
 	public String evaluate() {
-		if ((getNum1() + getNum2()) % 2 == 0) {
-			return "Par";
+		if ((getFirstNum() + getSecondNum()) % 2 == 0) {
+			return "Even";
 		}else {
-			return "Ímpar";
+			return "Odd";
 		}
 	}
 	
