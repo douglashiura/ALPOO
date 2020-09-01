@@ -1,11 +1,16 @@
 package alpoo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.ies.aula.alpoo.EightGame.*;
+import br.ies.aula.alpoo.EvenOrODD.EvenOrODD;
 
 public class MyFirstView {
 
@@ -15,7 +20,7 @@ public class MyFirstView {
 		
 		screen.setSize(400, 300);
 		screen.setLayout(null);
-		screen.setTitle("Eight Game");
+		screen.setTitle("Even Or ODD");
 		JLabel labelInput1 = new JLabel("Digite a primeira Jogada");
 		labelInput1.setSize(200, 15);
 		labelInput1.setLocation(0, 20);
@@ -30,10 +35,11 @@ public class MyFirstView {
 		JTextField input2 = new JTextField();
 		input2.setSize(100,20);
 		input2.setLocation(200, 45);
-		JButton botao = new JButton("Jogar");
-		botao.setLocation(50, 80);
-		botao.setSize(80,25);
-		screen.add(botao);
+		JButton playButton = new JButton("Jogar");
+		playButton.setLocation(50, 80);
+		playButton.setSize(80,25);
+		playButton.addActionListener(new ControlGameEvenOrODD(input1, input2));
+		screen.add(playButton);
 		screen.add(labelInput2);
 		screen.add(input2);
 		screen.setVisible(true);
