@@ -1,7 +1,9 @@
 package br.ies.aula.alpoo.jogo;
 
+import static br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar.IMPAR;
+import static br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar.PAR;
+
 import br.ies.aula.alpoo.calculadora.Calculadora;
-import static br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar.*;
 
 public class JogoParImpar {
 
@@ -14,6 +16,7 @@ public class JogoParImpar {
 		Float resultado = calculadora.obterResultado();
 		return ehImpar(resultado) ? IMPAR : PAR;
 	}
+
 	private Boolean ehImpar(Float resultado) {
 		return resultado % 2 != 0;
 	}
