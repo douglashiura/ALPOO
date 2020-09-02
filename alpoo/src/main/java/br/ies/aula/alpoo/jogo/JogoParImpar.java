@@ -7,6 +7,7 @@ import br.ies.aula.alpoo.calculadora.Calculadora;
 
 public class JogoParImpar {
 
+	private static JogoParImpar instancia;
 	private Integer primeiro;
 	private Integer segundo;
 
@@ -25,5 +26,18 @@ public class JogoParImpar {
 		this.primeiro = primeiro;
 		this.segundo = segundo;
 	}
+
+	public static JogoParImpar obterInstancia() {
+		if(instancia==null) {
+			instancia=new JogoParImpar();
+		}
+		return instancia;
+	}
+
+	public void fixaJogada(String nome, ResultadosDoJogoParImpar aposta, Integer valor) {
+		
+	}
+
+	
 
 }
