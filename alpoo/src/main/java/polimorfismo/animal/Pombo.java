@@ -4,7 +4,7 @@ public class Pombo implements Animal {
 
 	@Override
 	public void mostreHabilidade() {
-		System.out.println("Voa");		
+		System.out.println("Voa");
 	}
 
 }

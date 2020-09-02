@@ -13,12 +13,13 @@ public class Calculadora {
 	}
 
 	public void multi(Float x, Float y) {
-		resultado = x * y;		
+		resultado = x * y;
 	}
 
 	public void div(Float x, Float y) {
-		if(y.equals(0f)) throw new ArithmeticException();
-		resultado = x / y;	
+		if (y.equals(0f))
+			throw new ArithmeticException();
+		resultado = x / y;
 	}
 
 }

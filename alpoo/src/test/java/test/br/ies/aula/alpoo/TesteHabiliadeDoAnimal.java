@@ -16,15 +16,14 @@ public class TesteHabiliadeDoAnimal {
 
 	}
 
-
 	@Test
-	public void oPomboVoa() throws Exception{
+	public void oPomboVoa() throws Exception {
 		animal = new Pombo();
 		animal.mostreHabilidade();
 	}
 
 	@Test
-	public void oPeixeNada() throws Exception{
+	public void oPeixeNada() throws Exception {
 		animal = new Peixe();
 		animal.mostreHabilidade();
 	}
