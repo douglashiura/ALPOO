@@ -4,6 +4,8 @@ import br.ies.aula.alpoo.calculadora.Calculadora;
 import static br.ies.aula.alpoo.parouimpar.Results.*;
 
 public class JogoParImpar {
+	
+	private static JogoParImpar instancia;
 	private Integer primeiro;
 	private Integer segundo;	
 	
@@ -21,5 +23,16 @@ public class JogoParImpar {
 	public void fixaJogadas(Integer primeiro, Integer segundo) {
 		this.primeiro = primeiro;
 		this.segundo = segundo;
-	}	
+	}
+	
+	public static JogoParImpar obterInstancia() {
+		if(instancia==null) {
+			instancia=new JogoParImpar();
+		}
+		return instancia;
+	}
+	
+	public void fixaJogada(String nome, Results aposta, Integer valor) {
+		
+	}
 }
