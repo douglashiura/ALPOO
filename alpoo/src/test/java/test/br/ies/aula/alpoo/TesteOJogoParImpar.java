@@ -29,7 +29,7 @@ public class TesteOJogoParImpar {
 		ResultadosDoJogoParImpar aposta = ResultadosDoJogoParImpar.IMPAR;
 		Integer valor = Integer.valueOf(2);
 		
-		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);// janela a que chamou
+		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);
 		
 		JogoParImpar.obterInstancia().fixaJogada("Maria", ResultadosDoJogoParImpar.PAR, Integer.valueOf(1));
 		assertEquals(ResultadosDoJogoParImpar.IMPAR, JogoParImpar.obterInstancia().parOuImpar());
@@ -42,7 +42,7 @@ public class TesteOJogoParImpar {
 		String nome = "Paulo";
 		ResultadosDoJogoParImpar aposta = ResultadosDoJogoParImpar.IMPAR;
 		Integer valor = Integer.valueOf(2);
-		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);// janela a que chamou		
+		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);	
 		assertNull(JogoParImpar.obterInstancia().parOuImpar());
 	}
 	

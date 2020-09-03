@@ -19,6 +19,7 @@ public class JanelaDoJogoParImpar extends JFrame {
 	private JTextField entradaDoJogador;
 	private JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoJogador;
 	private JTextField entradaDoNomeDoJogador;
+	private JLabel resultado;
 
 	public JanelaDoJogoParImpar(JogoParImpar jogo) {
 		setSize(800, 400);
@@ -26,14 +27,35 @@ public class JanelaDoJogoParImpar extends JFrame {
 		setTitle("Tela do jogo de Par e Impar - 100% IES");
 		add(criarPainelPanelDoPrimeiroJogador());
 		adicionaBotaoJogar();
+		adicionaResultado();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		new Thread() {
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					resultado.setText(String.format("Ganha %s", JogoParImpar.obterInstancia().parOuImpar()));
+				}
+			}
+		}.start();
+
+	}
+
+	private void adicionaResultado() {
+		resultado = new JLabel("Aguarde");
+		resultado.setLocation(230, 100);
+		resultado.setSize(80, 25);
+		add(resultado);
 	}
 
 	private void adicionaBotaoJogar() {
 		JButton botaoJogar = new JButton("Jogar");
-		botaoJogar.addActionListener(new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, entradaDoNomeDoJogador));
+		botaoJogar.addActionListener(
+				new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, entradaDoNomeDoJogador));
 		botaoJogar.setLocation(100, 100);
 		botaoJogar.setSize(80, 25);
 		add(botaoJogar);
