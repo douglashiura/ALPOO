@@ -1,6 +1,7 @@
 package test.br.ies.aula.alpoo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Before;
@@ -27,11 +28,25 @@ public class TesteOJogoParImpar {
 		String nome = "Paulo";
 		ResultadosDoJogoParImpar aposta = ResultadosDoJogoParImpar.IMPAR;
 		Integer valor = Integer.valueOf(2);
+		
 		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);// janela a que chamou
+		
 		JogoParImpar.obterInstancia().fixaJogada("Maria", ResultadosDoJogoParImpar.PAR, Integer.valueOf(1));
 		assertEquals(ResultadosDoJogoParImpar.IMPAR, JogoParImpar.obterInstancia().parOuImpar());
 		assertEquals(ResultadosDoJogoParImpar.IMPAR, JogoParImpar.obterInstancia().parOuImpar());
 	}
+	
+	
+	@Test
+	public void cenarioOndeApenasUmJogadorJogou() throws Exception {
+		String nome = "Paulo";
+		ResultadosDoJogoParImpar aposta = ResultadosDoJogoParImpar.IMPAR;
+		Integer valor = Integer.valueOf(2);
+		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);// janela a que chamou		
+		assertNull(JogoParImpar.obterInstancia().parOuImpar());
+	}
+	
+	
 
 	@Test
 	public void par() throws Exception {

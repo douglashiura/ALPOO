@@ -18,7 +18,7 @@ public class JanelaDoJogoParImpar extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JTextField entradaDoJogador;
 	private JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoJogador;
-	private Component entradaDoNomeDoJogador;
+	private JTextField entradaDoNomeDoJogador;
 
 	public JanelaDoJogoParImpar(JogoParImpar jogo) {
 		setSize(800, 400);
@@ -28,11 +28,12 @@ public class JanelaDoJogoParImpar extends JFrame {
 		adicionaBotaoJogar();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 
 	private void adicionaBotaoJogar() {
 		JButton botaoJogar = new JButton("Jogar");
-		botaoJogar.addActionListener(new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador));
+		botaoJogar.addActionListener(new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, entradaDoNomeDoJogador));
 		botaoJogar.setLocation(100, 100);
 		botaoJogar.setSize(80, 25);
 		add(botaoJogar);
