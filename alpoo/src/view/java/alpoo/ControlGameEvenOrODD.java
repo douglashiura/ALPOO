@@ -12,21 +12,36 @@ import br.ies.aula.alpoo.EvenOrODD.GameResults;
 public class ControlGameEvenOrODD implements ActionListener {
 	private JTextField firstInput;
 	private JTextField secondInput;
+	private int instances;
 	private EvenOrODD game;
 
-	public ControlGameEvenOrODD(JTextField firstInput, JTextField secondInput) {
-		this.firstInput = firstInput;
-		this.secondInput = secondInput;
+	public ControlGameEvenOrODD(JTextField input) {
+		this.instances =+ 1;
+		
+		if(this.instances == 1) {
+			this.firstInput = input;
+		} else if(this.instances == 2) {
+			this.secondInput = input;
+		}
+		
 		game = new EvenOrODD();
+	}
+	
+	private boolean betsIsValid() {
+		System.out.println("Primeiro: "+ firstInput.getText() +" Segundo: "+ secondInput.getText());
+		return this.instances == 2? true: false;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		GameResults result = game.playGame(
-				Integer.parseInt(firstInput.getText()), 
-				Integer.parseInt(secondInput.getText()));
-		
-		JOptionPane.showMessageDialog(null, "O resultado é: "+ result);
+		if(betsIsValid()) {
+			GameResults result = game.playGame(
+					Integer.parseInt(firstInput.getText()), 
+					Integer.parseInt(secondInput.getText()));
+			
+			JOptionPane.showMessageDialog(null, "O resultado é: "+ result);
+		} else {
+			JOptionPane.showMessageDialog(null, "Por favor, aguarde a aposta do outro jogador!");
+		}
 	}
-
 }
