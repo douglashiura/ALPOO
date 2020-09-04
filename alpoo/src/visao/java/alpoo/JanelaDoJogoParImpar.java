@@ -10,10 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.jogo.JogoParImpar;
+import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
 import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
 
-public class JanelaDoJogoParImpar extends JFrame {
+public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField entradaDoJogador;
@@ -21,7 +22,7 @@ public class JanelaDoJogoParImpar extends JFrame {
 	private JTextField entradaDoNomeDoJogador;
 	private JLabel resultado;
 
-	public JanelaDoJogoParImpar(JogoParImpar jogo) {
+	public JanelaDoJogoParImpar() {
 		setSize(800, 400);
 		setLayout(null);
 		setTitle("Tela do jogo de Par e Impar - 100% IES");
@@ -30,19 +31,7 @@ public class JanelaDoJogoParImpar extends JFrame {
 		adicionaResultado();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		new Thread() {
-			public void run() {
-				while (true) {
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					resultado.setText(String.format("Ganha %s", JogoParImpar.obterInstancia().parOuImpar()));
-				}
-			}
-		}.start();
-
+		LojaDoJogoParImpar.obterInstancia().adicionarUmOuvinteDeResultado(this);
 	}
 
 	private void adicionaResultado() {
@@ -84,9 +73,15 @@ public class JanelaDoJogoParImpar extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		JogoParImpar jogo = new JogoParImpar();
-		new JanelaDoJogoParImpar(jogo);
-		new JanelaDoJogoParImpar(jogo);
+		new JanelaDoJogoParImpar();
+		new JanelaDoJogoParImpar();
+		LojaDoJogoParImpar.obterInstancia().adicionarUmOuvinteDeResultado(new ConsoleOuvinteDeJogoParImpar());
+
+	}
+
+	@Override
+	public void avisa(ResultadosDoJogoParImpar parOuImpar) {
+		resultado.setText(String.format("Ganha %s", parOuImpar));
 	}
 
 }

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.jogo.JogoParImpar;
+import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
 import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
 
 public class ControleDoJogoParImpar implements ActionListener {
@@ -26,6 +26,6 @@ public class ControleDoJogoParImpar implements ActionListener {
 		Integer valor = Integer.valueOf(entradaDoPrimeiroJogador.getText());
 		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaApostaDoPrimeiroJogador.getSelectedItem();
 		String nome = entradaDoNomeDoJogador.getText();
-		JogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);
+		LojaDoJogoParImpar.obterInstancia().fixaJogada(nome, aposta, valor);
 	}
 }
