@@ -6,14 +6,18 @@ import static br.ies.aula.alpoo.parouimpar.Results.*;
 public class JogoParImpar {
 	
 	private static JogoParImpar instancia;
-	private Integer primeiro;
-	private Integer segundo;	
+	private Aposta primeiraAposta;
+	private Aposta segundaAposta;	
 	
 	public Object parOuImpar() {
-		Calculadora calculadora = new Calculadora();
-		calculadora.soma(primeiro, segundo);
-		Float resultado = calculadora.obterResultado();
-		return ehImpar(resultado) ? IMPAR : PAR;
+		if(primeiraAposta!=null) {
+			Calculadora calculadora = new Calculadora();
+			calculadora.soma(primeiraAposta.getValor(), segundaAposta.getValor());
+			Float resultado = calculadora.obterResultado();
+			return ehImpar(resultado) ? IMPAR : PAR;			
+		} else {
+			return null;
+		}
 	}
 
 	private Boolean ehImpar(Float resultado) {
@@ -21,8 +25,8 @@ public class JogoParImpar {
 	}
 
 	public void fixaJogadas(Integer primeiro, Integer segundo) {
-		this.primeiro = primeiro;
-		this.segundo = segundo;
+		this.primeiraAposta = new Aposta(primeiro);
+		this.segundaAposta = new Aposta(segundo);
 	}
 	
 	public static JogoParImpar obterInstancia() {

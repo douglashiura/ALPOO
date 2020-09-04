@@ -12,40 +12,52 @@ public class WindowPlayer extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField imputPlayer;
-	private JLabel player1Label;
-	private JLabel player1LabelAposta;
+	private JTextField imputPlayerName;
+	private JLabel playerLabel;
+	private JLabel playerLabelName;
+	private JLabel playerLabelAposta;
 	private JComboBox<Results> apostaPlayer;
 	private JButton button;
 	
 	public WindowPlayer() {
-		setSize(430, 200);
+		setSize(300, 300);
 		setLayout(null);
 		setTitle("Jogo Par Impar");
 		
-		player1Label = new JLabel("Digite número:");
-		player1Label.setSize(200,20);
-		player1Label.setLocation(10, 10);
+		playerLabelName = new JLabel("Digite nome:");
+		playerLabelName.setSize(200,20);
+		playerLabelName.setLocation(10, 10);
+		
+		imputPlayerName = new JTextField(4);		
+		imputPlayerName.setSize(200, 20);
+		imputPlayerName.setLocation(10, 40);
+		
+		playerLabel = new JLabel("Digite número:");
+		playerLabel.setSize(200,20);
+		playerLabel.setLocation(10, 70);
 		
 		imputPlayer = new JTextField(4);		
 		imputPlayer.setSize(200, 20);
-		imputPlayer.setLocation(10, 40);
+		imputPlayer.setLocation(10, 100);
 		
-		player1LabelAposta = new JLabel("Escolha aposta:");
-		player1LabelAposta.setSize(200,20);
-		player1LabelAposta.setLocation(10, 70);
+		playerLabelAposta = new JLabel("Escolha aposta:");
+		playerLabelAposta.setSize(200,20);
+		playerLabelAposta.setLocation(10, 130);
 
 		apostaPlayer = new JComboBox<Results>();
 		apostaPlayer.addItem(Results.IMPAR);
 		apostaPlayer.addItem(Results.PAR);
 		
-		apostaPlayer.setLocation(10, 100);
+		apostaPlayer.setLocation(10, 160);
 		apostaPlayer.setSize(200, 20);
 		apostaPlayer.setSelectedIndex(0);
 		
-		add(player1Label);
+		add(playerLabel);
 		add(imputPlayer);
 		add(apostaPlayer);
-		add(player1LabelAposta);
+		add(playerLabelAposta);
+		add(playerLabelName);
+		add(imputPlayerName);
 		
 		createButton();
 		setVisible(true);
@@ -54,8 +66,8 @@ public class WindowPlayer extends JFrame {
 	
 	public void createButton() {
 		button = new JButton("Jogar");		
-		button.addActionListener(new ControlParImpar(imputPlayer, apostaPlayer));
-		button.setLocation(110, 140);
+		button.addActionListener(new ControlParImpar(imputPlayer, apostaPlayer, imputPlayerName));
+		button.setLocation(10, 200);
 		button.setSize(200, 25);
 		add(button);		
 	}
