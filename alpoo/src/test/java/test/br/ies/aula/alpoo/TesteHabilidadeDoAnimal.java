@@ -3,9 +3,9 @@ package test.br.ies.aula.alpoo;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ies.aula.alpoo.Pombo;
 import br.ies.aula.alpoo.polimorfismo.animal.Animal;
 import br.ies.aula.alpoo.polimorfismo.animal.Peixe;
+import br.ies.aula.alpoo.polimorfismo.animal.Pombo;
 
 public class TesteHabilidadeDoAnimal {
 	private Animal animal;

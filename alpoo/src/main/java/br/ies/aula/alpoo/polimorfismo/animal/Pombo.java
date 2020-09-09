@@ -1,6 +1,4 @@
-package br.ies.aula.alpoo;
-
-import br.ies.aula.alpoo.polimorfismo.animal.Animal;
+package br.ies.aula.alpoo.polimorfismo.animal;
 
 public class Pombo extends Animal {
 
