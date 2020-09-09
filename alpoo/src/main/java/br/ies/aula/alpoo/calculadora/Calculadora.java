@@ -5,8 +5,8 @@ public class Calculadora {
 	private Float resultado;
 
 
-	public void soma(Float soma1, Float soma2) {
-		this.resultado = soma1+soma2;
+	public void soma(Integer soma1, Integer soma2) {
+		this.resultado = (float) (soma1+soma2);
 	}
 
 	public void dividir(Float d1, Float d2) {
