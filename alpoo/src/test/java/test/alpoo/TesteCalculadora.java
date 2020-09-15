@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import aula.alpoo.calculadora.Calculadora;
+import aula.calculadora.Calculadora;
 
 public class TesteCalculadora {
 

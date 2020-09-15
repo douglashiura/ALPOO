@@ -4,43 +4,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import par.impar.JogoParImpar;
+import aula.par.impar.LojaDoJogoParImpar;
+import aula.par.impar.ResultadosDoJogoParImpar;
 
 public class ControleDoJogoParImpar implements ActionListener {
+	private JTextField jogada;
+	private JComboBox<ResultadosDoJogoParImpar> entradaDaAposta;
+	private JTextField entradaDoNome;
 
-	JogoParImpar jogo = new JogoParImpar();
+	private LojaDoJogoParImpar jogo;
 	
-	JTextField entrada1TextField;
-	JTextField entrada2TextField;
-	
-	JComboBox<?> player1Selecao;
-	JComboBox<?> player2Selecao;
-	
-	public ControleDoJogoParImpar(JTextField entrada1, JTextField entrada2, JComboBox<?> comboBox1, JComboBox<?> comboBox2) {
-		this.entrada1TextField = entrada1;
-		this.entrada2TextField = entrada2;
-		this.player1Selecao = comboBox1;
-		this.player2Selecao = comboBox2;
+	public ControleDoJogoParImpar(JTextField jogada,
+			JComboBox<ResultadosDoJogoParImpar> entradaDaAposta, JTextField entradaDoNome, LojaDoJogoParImpar jogo) {
+		this.jogada = jogada;
+		this.entradaDaAposta = entradaDaAposta;
+		this.entradaDoNome = entradaDoNome;
+		this.jogo = jogo;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Integer entradaP1 = Integer.parseInt(entrada1TextField.getText());
-		Integer entradaP2 = Integer.parseInt(entrada2TextField.getText());
-		
-		String comboBoxP1 = String.valueOf(player1Selecao.getSelectedItem());
-		String comboBoxP2 = String.valueOf(player2Selecao.getSelectedItem());
-		
-		jogo.updateApostas(comboBoxP1, comboBoxP2);
-		jogo.updateAtributes(entradaP1, entradaP2);
-		
-		JOptionPane.showMessageDialog(null, String.format(
-				  "Jogador 1 jogou " + comboBoxP1
-				+ "\nJogador 2 jogou " + comboBoxP2 
-				+ "\n\nO resultado é: " + jogo.parOuImpar() ));
+		Integer valor = Integer.valueOf(jogada.getText());
+		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaAposta.getSelectedItem();
+		String nome = entradaDoNome.getText();
+
+		jogo.fixaJogada(nome, aposta, valor);
 	}
 	
 }

@@ -1,28 +1,33 @@
 package test.par.impar;
 
-import java.util.Scanner;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
+import aula.par.impar.JogoParImpar;
+import aula.par.impar.ResultadosDoJogoParImpar;
+
+@SuppressWarnings("unused")
 public class TestJogoParImpar {
 
-	public static void main(String[] args) {
-		
-		@SuppressWarnings("all")
-		Scanner leitor = new Scanner(System.in);
-		Integer player1, player2;
-
-		System.out.println("==<>==Jogo Par ou Ímpar!==<>==\n==============================\n");
-		System.out.println("Primeiro jogador, digite um número.");
-		player1 = Integer.valueOf(leitor.nextInt());
-		
-		System.out.println("Segundo jogador, digite um número.");
-		player2 = Integer.valueOf(leitor.nextInt());
-	
-		if((player1 + player2) % 2 == 0) {
-			System.out.println("Par ganhou!!");
-		}else {
-			System.out.println("Ímpar ganhou!!");
-		}
-		
-	}
+//	@Test
+//	public void cenarioOndeAPrimeiraTelaJogaAntes() throws Exception {
+//		//Jogador 1
+//		String nome = "Paulo";
+//		ResultadosDoJogoParImpar aposta = ResultadosDoJogoParImpar.IMPAR;
+//		Integer jogada = Integer.valueOf(2);
+//		//Atualiza Jogada e Aposta do Jogador 1
+//		JogoParImpar.obterInstancia().fixaJogadaAposta(nome, aposta, jogada);
+//		
+//		//Jogador 2
+//		String nome2 = "Maria";
+//		ResultadosDoJogoParImpar aposta2 = ResultadosDoJogoParImpar.PAR;
+//		Integer jogada2 = Integer.valueOf(1);
+//		//Atualiza Jogada e Aposta do Jogador 2
+//		JogoParImpar.obterInstancia().fixaJogadaAposta(nome2, aposta2, jogada2);
+//		
+//		assertEquals(ResultadosDoJogoParImpar.IMPAR, JogoParImpar.obterInstancia().parOuImpar());
+//		assertEquals(ResultadosDoJogoParImpar.IMPAR, JogoParImpar.obterInstancia().parOuImpar());
+//
+//	}
 	
 }

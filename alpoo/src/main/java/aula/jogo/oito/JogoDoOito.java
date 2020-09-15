@@ -1,4 +1,4 @@
-package jogo.oito;
+package aula.jogo.oito;
 
 public class JogoDoOito {
 

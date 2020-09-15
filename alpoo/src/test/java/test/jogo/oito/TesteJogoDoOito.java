@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import jogo.oito.JogoDoOito;
+import aula.jogo.oito.JogoDoOito;
 
 @SuppressWarnings("unused")
 public class TesteJogoDoOito {
