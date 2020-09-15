@@ -6,6 +6,7 @@ import static br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar.PAR;
 import br.ies.aula.alpoo.calculadora.Calculadora;
 
 public class JogoParImpar {
+	
 	public ResultadosDoJogoParImpar parOuImpar(Aposta primeirAposta, Aposta segundaAposta) {
 		Calculadora calculadora = new Calculadora();
 		calculadora.soma(primeirAposta.getValor(), segundaAposta.getValor());
@@ -16,7 +17,4 @@ public class JogoParImpar {
 	private Boolean ehImpar(Float resultado) {
 		return resultado % 2 != 0;
 	}
-
-	
-
 }

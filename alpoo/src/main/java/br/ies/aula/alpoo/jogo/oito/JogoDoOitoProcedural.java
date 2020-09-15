@@ -38,10 +38,10 @@ public class JogoDoOitoProcedural {
 			}
 		} else if ("ESQUERDA".equals(direcao)) {
 			if (coluna > 0) {
-				int troca = tabuleiro[linha ][coluna-1];
-				tabuleiro[linha ][coluna-1] = 0;
+				int troca = tabuleiro[linha][coluna - 1];
+				tabuleiro[linha][coluna - 1] = 0;
 				tabuleiro[linha][coluna] = troca;
-				coluna = coluna -1;
+				coluna = coluna - 1;
 			}
 		}
 

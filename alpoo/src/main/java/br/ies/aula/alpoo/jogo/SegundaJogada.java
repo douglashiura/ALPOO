@@ -11,16 +11,9 @@ public class SegundaJogada implements EstadoDeJogada {
 
 	@Override
 	public void jogar(Aposta segundaAposta) {
-		ResultadosDoJogoParImpar parImpar = new JogoParImpar()
-				.parOuImpar(primeiraAposta, segundaAposta);
-		avisaOuvintes(parImpar);
+		ResultadosDoJogoParImpar parImpar = new JogoParImpar().parOuImpar(primeiraAposta, segundaAposta);
+		jogo.avisaOuvintes(parImpar);
 		jogo.iniciarPartida();
-	}
-
-	private void avisaOuvintes(ResultadosDoJogoParImpar parImpar) {
-		jogo.obterOuvintes().forEach(ouvinte -> {
-			ouvinte.avisa(parImpar);
-		});
 	}
 
 }

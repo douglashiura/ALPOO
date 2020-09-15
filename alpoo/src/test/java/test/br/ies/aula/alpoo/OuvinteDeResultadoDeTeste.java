@@ -1,12 +1,15 @@
 package test.br.ies.aula.alpoo;
 
+import java.util.List;
+
+import br.ies.aula.alpoo.jogo.Aposta;
 import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
 import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
 
 public class OuvinteDeResultadoDeTeste implements OuvinteDeResultado {
 
 	private Boolean avisado;
-	private ResultadosDoJogoParImpar parOuImpar;
+	private List<Aposta> parOuImpar;
 
 	public OuvinteDeResultadoDeTeste() {
 		avisado = Boolean.FALSE;
@@ -17,13 +20,12 @@ public class OuvinteDeResultadoDeTeste implements OuvinteDeResultado {
 	}
 
 	@Override
-	public void avisa(ResultadosDoJogoParImpar parOuImpar) {
+	public void avisa(ResultadosDoJogoParImpar resultado, List<Aposta> parOuImpar) {
 		this.parOuImpar = parOuImpar;
 		avisado = Boolean.TRUE;
-		
 	}
 
-	public ResultadosDoJogoParImpar parOuImpar() {
+	public List<Aposta> parOuImpar() {
 		return parOuImpar;
 	}
 

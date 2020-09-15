@@ -1,29 +1,23 @@
 package br.ies.aula.alpoo.jogo;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 public class LojaDoJogoParImpar {
 
-	private static LojaDoJogoParImpar instancia;
-
 	private List<OuvinteDeResultado> ouvintes;
 	private EstadoDeJogada estadoDoJogo;
+	private LinkedList<Aposta> apostas;
 
 	public LojaDoJogoParImpar() {
 		ouvintes = new LinkedList<OuvinteDeResultado>();
 		iniciarPartida();
 	}
 
-	public static LojaDoJogoParImpar obterInstancia() {
-		if (instancia == null) {
-			instancia = new LojaDoJogoParImpar();
-		}
-		return instancia;
-	}
-
-	public void fixaJogada(String nome, ResultadosDoJogoParImpar aposta, Integer valor) {
-		estadoDoJogo.jogar(new Aposta(nome, aposta, valor));
+	public void fixaJogada(Aposta aposta) {
+		apostas.add(aposta);
+		estadoDoJogo.jogar(aposta);
 	}
 
 	public void adicionarUmOuvinteDeResultado(OuvinteDeResultado ouvinteDeTeste) {
@@ -32,14 +26,27 @@ public class LojaDoJogoParImpar {
 
 	public void iniciarPartida() {
 		estadoDoJogo = new PrimeiraJogada(this);
-
+		apostas = new LinkedList<Aposta>();
 	}
 
 	public void fixarMaquinaDeEstadoDasJogadas(EstadoDeJogada estado) {
 		estadoDoJogo = estado;
 	}
 
-	public List<OuvinteDeResultado> obterOuvintes() {
-		return ouvintes;
+	public void avisaOuvintes(ResultadosDoJogoParImpar vencedor) {
+		List<Aposta> vencedores = obterApostas(vencedor);
+		ouvintes.forEach(ouvinte -> {
+			ouvinte.avisa(vencedor,vencedores);
+		});
+	}
+
+	private List<Aposta> obterApostas(ResultadosDoJogoParImpar vencedor) {
+		HashMap<ResultadosDoJogoParImpar, List<Aposta>> apostasIndexadas = new HashMap<ResultadosDoJogoParImpar, List<Aposta>>();
+		apostasIndexadas.put(ResultadosDoJogoParImpar.IMPAR, new LinkedList<Aposta>());
+		apostasIndexadas.put(ResultadosDoJogoParImpar.PAR, new LinkedList<Aposta>());
+		for (Aposta aposta : apostas) {
+			apostasIndexadas.get(aposta.getAposta()).add(aposta);
+		}
+		return apostasIndexadas.get(vencedor);
 	}
 }
