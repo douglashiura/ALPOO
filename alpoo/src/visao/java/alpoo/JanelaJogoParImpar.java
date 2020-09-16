@@ -23,6 +23,7 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado{
 	
 	JanelaJogoParImpar(Integer x, Integer y, LojaDoJogoParImpar jogo) {
 		this.jogo = jogo;
+		jogo.adicionarUmOuvinteDeResultado(this);
 		//Tela
 		setSize(350, 400);
 		setLocation(x, y);
@@ -30,7 +31,6 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado{
 		setTitle("Jogo Par Ou Ímpar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Conteúdo
-		jogo.adicionarUmOuvinteDeResultado(this);
 		createPlayerView();
 		//Habilitar o conteúdo visível
 		setVisible(true);
@@ -39,25 +39,25 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado{
 	private void createPlayerView() {
 		JLabel nomeLabel = new JLabel("Seu Nome:");
 		JLabel jogadaLabel = new JLabel("Sua Jogada:");
-		JButton botao = new JButton("Jogar");
-		botao.addActionListener(new ControleDoJogoParImpar(jogadaTextField, apostaTextField, nomeTextField, jogo));
+		JButton botaoJogar = new JButton("Jogar");
+		botaoJogar.addActionListener(new ControleDoJogoParImpar(jogadaTextField, apostaTextField, nomeTextField, jogo));
 		ganhadorLabel = new JLabel("O vencedor é: ...");
 		
 		apostaTextField.addItem(ResultadosDoJogoParImpar.IMPAR);
 		apostaTextField.addItem(ResultadosDoJogoParImpar.PAR);
 		
-		setupJogador(nomeLabel, jogadaLabel, botao, ganhadorLabel);
+		setupJogador(nomeLabel, jogadaLabel, botaoJogar, ganhadorLabel);
 		
 		getContentPane().add(nomeLabel);
 		getContentPane().add(nomeTextField);
 		getContentPane().add(jogadaLabel);
 		getContentPane().add(jogadaTextField);
 		getContentPane().add(apostaTextField);
-		getContentPane().add(botao);
+		getContentPane().add(botaoJogar);
 		getContentPane().add(ganhadorLabel);
 	}
 	
-	public void setupJogador(JLabel nomeLabel, JLabel jogadaLabel, JButton botao, JLabel ganhadorLabel) {
+	public void setupJogador(JLabel nomeLabel, JLabel jogadaLabel, JButton botaoJogar, JLabel ganhadorLabel) {
 		//Nome
 		nomeLabel.setSize(200,20);
 		nomeLabel.setLocation(45,10);
@@ -72,8 +72,8 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado{
 		apostaTextField.setSize(200,20);
 		apostaTextField.setLocation(45,135);
 		//Botão
-		botao.setSize(200,40);
-		botao.setLocation(45,180);
+		botaoJogar.setSize(200,40);
+		botaoJogar.setLocation(45,180);
 		//Ganhador
 		ganhadorLabel.setSize(200, 57);
 		ganhadorLabel.setLocation(45,230);
@@ -90,7 +90,6 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado{
 		
 		new JanelaJogoParImpar(xP1, yP1, jogo);
 		new JanelaJogoParImpar(xP2, yP2, jogo);
-
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package aula.par.impar;
 
 public class Aposta {
-
 	private Integer valor;
 	private String nome;
 	private ResultadosDoJogoParImpar aposta;
@@ -16,6 +15,7 @@ public class Aposta {
 		this.valor = valor;
 	}
 
+	//Getters
 	public Integer getValor() {
 		return valor;
 	}
