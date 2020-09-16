@@ -1,5 +1,7 @@
 package br.ies.aula.alpoo.jogo;
 
+import br.ies.aula.alpoo.jogo.entidade.Aposta;
+
 public class PrimeiraJogada implements EstadoDeJogada {
 
 	private LojaDoJogoParImpar jogo;

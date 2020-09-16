@@ -8,9 +8,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ies.aula.alpoo.jogo.Aposta;
 import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
-import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
 
 public class TesteOJogoParImpar {
 	private OuvinteDeResultadoDeTeste ouvinteDeTeste;
@@ -31,7 +31,6 @@ public class TesteOJogoParImpar {
 		Integer valor = Integer.valueOf(2);
 		jogo.fixaJogada(new Aposta(nome, aposta, valor));
 		jogo.fixaJogada(new Aposta("Maria", ResultadosDoJogoParImpar.PAR, Integer.valueOf(1)));
-		assertEquals(ResultadosDoJogoParImpar.IMPAR, ouvinteDeTeste.parOuImpar().get(0).getAposta());
 		assertEquals(ResultadosDoJogoParImpar.IMPAR, ouvinteDeTeste.parOuImpar().get(0).getAposta());
 	}
 

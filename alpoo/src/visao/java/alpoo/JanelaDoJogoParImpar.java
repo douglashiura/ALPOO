@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import br.ies.aula.alpoo.jogo.Aposta;
 import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
 import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
-import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
 
 public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 

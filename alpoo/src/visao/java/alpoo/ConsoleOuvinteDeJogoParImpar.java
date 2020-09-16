@@ -2,9 +2,9 @@ package alpoo;
 
 import java.util.List;
 
-import br.ies.aula.alpoo.jogo.Aposta;
 import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
-import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
 
 public class ConsoleOuvinteDeJogoParImpar implements OuvinteDeResultado {
 

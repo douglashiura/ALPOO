@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.ies.aula.alpoo.jogo.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+
 public class LojaDoJogoParImpar {
 
 	private List<OuvinteDeResultado> ouvintes;

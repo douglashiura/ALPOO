@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.jogo.Aposta;
 import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
-import br.ies.aula.alpoo.jogo.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
 
 public class ControleDoJogoParImpar implements ActionListener {
 	private JTextField entradaDoPrimeiroJogador;
