@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.parouimpar;
+package br.ies.aula.alpoo.parimpar;
 
 public enum Results {
 	PAR, IMPAR;

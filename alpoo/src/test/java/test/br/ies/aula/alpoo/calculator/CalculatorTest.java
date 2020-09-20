@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo;
+package test.br.ies.aula.alpoo.calculator;
 
 import static org.junit.Assert.assertEquals;
 

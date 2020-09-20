@@ -1,4 +1,4 @@
-package alpoo;
+package br.ies.aula.alpoo.parimpar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.parouimpar.Results;
+import br.ies.aula.alpoo.parimpar.Results;
 
 public class WindowPlayer extends JFrame {
 

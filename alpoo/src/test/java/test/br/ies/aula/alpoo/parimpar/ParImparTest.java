@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo;
+package test.br.ies.aula.alpoo.parimpar;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -7,8 +7,8 @@ import static org.junit.Assert.assertSame;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ies.aula.alpoo.parouimpar.JogoParImpar;
-import br.ies.aula.alpoo.parouimpar.Results;
+import br.ies.aula.alpoo.parimpar.JogoParImpar;
+import br.ies.aula.alpoo.parimpar.Results;
 
 public class ParImparTest {
 	private JogoParImpar parImpar;

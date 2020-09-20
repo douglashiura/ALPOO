@@ -1,7 +1,8 @@
-package br.ies.aula.alpoo.parouimpar;
+package br.ies.aula.alpoo.parimpar;
+
+import static br.ies.aula.alpoo.parimpar.Results.*;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
-import static br.ies.aula.alpoo.parouimpar.Results.*;
 
 public class JogoParImpar {
 	

@@ -1,4 +1,4 @@
-package alpoo;
+package br.ies.aula.alpoo.parimpar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.parouimpar.JogoParImpar;
-import br.ies.aula.alpoo.parouimpar.Results;
+import br.ies.aula.alpoo.parimpar.JogoParImpar;
+import br.ies.aula.alpoo.parimpar.Results;
 
 public class ControlParImpar implements ActionListener {
 	private JTextField imputPlayer;
