@@ -1,7 +1,7 @@
-package br.ies.aula.alpoo.jogo;
+package br.ies.aula.alpoo.jogo.parimpar;
 
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class SegundaJogada implements EstadoDeJogada {
 	private Aposta primeiraAposta;

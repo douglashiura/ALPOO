@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo;
+package test.br.ies.aula.alpoo.parimpar;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -8,9 +8,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.LojaDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class TesteOJogoParImpar {
 	private OuvinteDeResultadoDeTeste ouvinteDeTeste;

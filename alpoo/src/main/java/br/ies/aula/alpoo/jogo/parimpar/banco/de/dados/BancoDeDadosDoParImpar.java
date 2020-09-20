@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.jogo.banco.de.dados;
+package br.ies.aula.alpoo.jogo.parimpar.banco.de.dados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class BancoDeDadosDoParImpar {
 

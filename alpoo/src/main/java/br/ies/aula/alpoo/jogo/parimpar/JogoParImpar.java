@@ -1,11 +1,11 @@
-package br.ies.aula.alpoo.jogo;
+package br.ies.aula.alpoo.jogo.parimpar;
 
-import static br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar.IMPAR;
-import static br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar.PAR;
+import static br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar.IMPAR;
+import static br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar.PAR;
 
 import br.ies.aula.alpoo.calculadora.Calculadora;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class JogoParImpar {
 	

@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo;
+package test.br.ies.aula.alpoo.parimpar;
 
 import org.junit.Before;
 import org.junit.Test;

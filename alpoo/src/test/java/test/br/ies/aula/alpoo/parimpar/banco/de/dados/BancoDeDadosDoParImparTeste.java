@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo.banco.de.dados;
+package test.br.ies.aula.alpoo.parimpar.banco.de.dados;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.ies.aula.alpoo.jogo.banco.de.dados.BancoDeDadosDoParImpar;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.banco.de.dados.BancoDeDadosDoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class BancoDeDadosDoParImparTeste {
 

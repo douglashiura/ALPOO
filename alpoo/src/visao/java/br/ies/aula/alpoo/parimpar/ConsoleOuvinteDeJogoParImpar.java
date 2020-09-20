@@ -1,10 +1,10 @@
-package alpoo;
+package br.ies.aula.alpoo.parimpar;
 
 import java.util.List;
 
-import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.OuvinteDeResultado;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class ConsoleOuvinteDeJogoParImpar implements OuvinteDeResultado {
 

@@ -1,4 +1,4 @@
-package test.br.ies.aula.alpoo.banco.de.dados;
+package test.br.ies.aula.alpoo.parimpar.banco.de.dados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

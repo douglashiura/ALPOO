@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.jogo.entidade;
+package br.ies.aula.alpoo.jogo.parimpar.entidade;
 
 public class Aposta {
 

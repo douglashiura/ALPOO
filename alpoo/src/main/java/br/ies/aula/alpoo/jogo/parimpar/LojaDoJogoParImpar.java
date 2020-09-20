@@ -1,11 +1,11 @@
-package br.ies.aula.alpoo.jogo;
+package br.ies.aula.alpoo.jogo.parimpar;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class LojaDoJogoParImpar {
 

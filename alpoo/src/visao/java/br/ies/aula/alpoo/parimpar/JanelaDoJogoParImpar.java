@@ -1,4 +1,4 @@
-package alpoo;
+package br.ies.aula.alpoo.parimpar;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
-import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.LojaDoJogoParImpar;
+import br.ies.aula.alpoo.jogo.parimpar.OuvinteDeResultado;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 
