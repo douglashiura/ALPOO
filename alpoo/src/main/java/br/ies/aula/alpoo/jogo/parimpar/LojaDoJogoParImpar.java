@@ -1,9 +1,11 @@
 package br.ies.aula.alpoo.jogo.parimpar;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.ies.aula.alpoo.jogo.parimpar.banco.de.dados.BancoDeDadosDoParImparAposta;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
@@ -12,13 +14,16 @@ public class LojaDoJogoParImpar {
 	private List<OuvinteDeResultado> ouvintes;
 	private EstadoDeJogada estadoDoJogo;
 	private LinkedList<Aposta> apostas;
+	private BancoDeDadosDoParImparAposta banco;
 
 	public LojaDoJogoParImpar() {
+		this.banco = new BancoDeDadosDoParImparAposta();
 		ouvintes = new LinkedList<OuvinteDeResultado>();
 		iniciarPartida();
 	}
 
-	public void fixaJogada(Aposta aposta) {
+	public void fixaJogada(Aposta aposta) throws SQLException {
+		banco.inserir(aposta);
 		apostas.add(aposta);
 		estadoDoJogo.jogar(aposta);
 	}

@@ -5,3 +5,11 @@ CREATE TABLE Aposta (
 	valor INTEGER NOT NULL
 );
 
+CREATE TABLE Ganhador (
+	id SERIAL NOT NULL PRIMARY KEY,
+	horario TIMESTAMP NOT NULL,
+	aposta_id INTEGER NOT NULL,
+	CONSTRAINT vencedor_aposta_FK
+		FOREIGN KEY(aposta_id)
+			REFERENCES aposta(id)
+);

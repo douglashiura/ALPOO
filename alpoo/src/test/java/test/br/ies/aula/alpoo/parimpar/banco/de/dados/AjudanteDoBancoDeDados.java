@@ -7,13 +7,13 @@ import java.sql.Statement;
 
 public class AjudanteDoBancoDeDados {
 
-	private static final String APAGAR_DADOS = "DELETE FROM Aposta;";
+	private static final String APAGAR_DADOS = "DELETE FROM ganhador; DELETE FROM aposta;";
 	
 
 	public static void limparTudo() throws SQLException {
 		String url = "jdbc:postgresql://localhost:5432/app";
-		String user = "comexchain";
-		String password = "comexchain";
+		String user = "postgres";
+		String password = "guidev87";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		Statement statement = connection.createStatement();
 		statement.execute(APAGAR_DADOS);

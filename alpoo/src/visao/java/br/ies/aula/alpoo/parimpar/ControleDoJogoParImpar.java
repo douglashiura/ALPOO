@@ -2,6 +2,7 @@ package br.ies.aula.alpoo.parimpar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -30,6 +31,10 @@ public class ControleDoJogoParImpar implements ActionListener {
 		Integer valor = Integer.valueOf(entradaDoPrimeiroJogador.getText());
 		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaApostaDoPrimeiroJogador.getSelectedItem();
 		String nome = entradaDoNomeDoJogador.getText();
-		jogo.fixaJogada(new Aposta(nome, aposta, valor));
+		try {
+			jogo.fixaJogada(new Aposta(nome, aposta, valor));
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 }
