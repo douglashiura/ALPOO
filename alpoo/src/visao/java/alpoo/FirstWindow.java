@@ -46,6 +46,11 @@ public class FirstWindow {
 		
 		entradaPrimeiroJogador.setText("0");
 		
+		JCheckBox jogou1 = new JCheckBox("Pronto");
+		jogou1.setSize(70,20);
+		jogou1.setLocation(300, 3);
+		frame.getContentPane().add(jogou1);
+
 		//Segunda Tela
 		
 		JFrame frame2 = new JFrame();
@@ -78,6 +83,11 @@ public class FirstWindow {
 		
 		entradaSegundoJogador.setText("0");
 		
+		JCheckBox jogou2 = new JCheckBox("Pronto");
+		jogou2.setSize(70,20);
+		jogou2.setLocation(300, 3);
+		frame2.getContentPane().add(jogou2);
+		
 		parBox2.addActionListener(new ActionListener() {
 			
 			@Override
@@ -104,100 +114,106 @@ public class FirstWindow {
 		
 		//Primeiro Botão
 		
-		JButton btJogar = new JButton("Jogar");
+		JButton btJogar = new JButton("Salvar e Jogar");
 		
 		btJogar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(parBox1.isSelected() || parBox2.isSelected()) {
 					String jogador1 = entradaPrimeiroJogador.getText();
-					String jogador2 = entradaSegundoJogador.getText();
-					
 					String nomePrimeiro = entradaNomePrimeiroJogador.getText();
-					String nomeSegundo = entradaNomeSegundoJogador.getText();
 					
-					parImpar.ParOuImpar(Integer.parseInt(jogador1), Integer.parseInt(jogador2));
-					String resultado = parImpar.getResult();
+					parImpar.SalvarUm(jogador1, nomePrimeiro);
 					
-					String vencedor;
-					int quemEPar = parImpar.CheckPar();
-					switch(quemEPar) {
-					case 1:
-						if(resultado == "Par") {
-							vencedor = nomePrimeiro;
+					jogou1.setSelected(true);
+					if(jogou1.isSelected() == true && jogou2.isSelected() == true) {
+						parImpar.ParOuImparPronto();
+						String resultado = parImpar.getResult();
+						String vencedor;
+						int quemEPar = parImpar.CheckPar();
+						String nome1 = parImpar.ReturnNomeUm();
+						String nome2 = parImpar.ReturnNomeDois();
+						
+						switch(quemEPar) {
+						case 1:
+							if(resultado == "Par") {
+								vencedor = nome1;
+							}
+							else {
+								vencedor = nome2;
+							}
+							break;
+						case 2:
+							if(resultado == "Par") {
+								vencedor = nome2;
+							}
+							else {
+								vencedor = nome1;
+							}
+							break;
+						default:
+							vencedor = "Ninguém";
+							break;
 						}
-						else {
-							vencedor = nomeSegundo;
-						}
-						break;
-					case 2:
-						if(resultado == "Par") {
-							vencedor = nomeSegundo;
-						}
-						else {
-							vencedor = nomePrimeiro;
-						}
-						break;
-					default:
-						vencedor = "Ninguém";
-						break;
+						JOptionPane.showMessageDialog(null, "O vencedor foi " + vencedor + " Já que o resultado foi " + resultado);
 					}
-					
-					JOptionPane.showMessageDialog(null, "O vencedor foi " + vencedor + " Já que o resultado foi " + resultado);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Selecione quem é o par!");
 				}
 			}
 		});
-		btJogar.setLocation(180, 90);
-		btJogar.setSize(100, 25);
+		btJogar.setLocation(170, 90);
+		btJogar.setSize(120, 25);
 		frame.getContentPane().add(btJogar);
 		
 		//Fim Primeiro Botão
 
 		//Começo Segundo Botão
 		
-		JButton btJogar2 = new JButton("Jogar");
+		JButton btJogar2 = new JButton("Salvar e Jogar");
 		
 		btJogar2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(parBox1.isSelected() || parBox2.isSelected()) {
-					String jogador1 = entradaPrimeiroJogador.getText();
 					String jogador2 = entradaSegundoJogador.getText();
-					
-					String nomePrimeiro = entradaNomePrimeiroJogador.getText();
 					String nomeSegundo = entradaNomeSegundoJogador.getText();
 					
-					parImpar.ParOuImpar(Integer.parseInt(jogador1), Integer.parseInt(jogador2));
-					String resultado = parImpar.getResult();
+					parImpar.SalvarDois(jogador2, nomeSegundo);
 					
-					String vencedor;
-					int quemEPar = parImpar.CheckPar();
-					switch(quemEPar) {
-					case 1:
-						if(resultado == "Par") {
-							vencedor = nomePrimeiro;
+					jogou2.setSelected(true);
+					if(jogou1.isSelected() == true && jogou2.isSelected() == true) {
+						parImpar.ParOuImparPronto();
+						String resultado = parImpar.getResult();
+						String vencedor;
+						int quemEPar = parImpar.CheckPar();
+						String nome1 = parImpar.ReturnNomeUm();
+						String nome2 = parImpar.ReturnNomeDois();
+						
+						switch(quemEPar) {
+						case 1:
+							if(resultado == "Par") {
+								vencedor = nome1;
+							}
+							else {
+								vencedor = nome2;
+							}
+							break;
+						case 2:
+							if(resultado == "Par") {
+								vencedor = nome2;
+							}
+							else {
+								vencedor = nome1;
+							}
+							break;
+						default:
+							vencedor = "Ninguém";
+							break;
 						}
-						else {
-							vencedor = nomeSegundo;
-						}
-						break;
-					case 2:
-						if(resultado == "Par") {
-							vencedor = nomeSegundo;
-						}
-						else {
-							vencedor = nomePrimeiro;
-						}
-						break;
-					default:
-						vencedor = "Ninguém";
-						break;
+						JOptionPane.showMessageDialog(null, "O vencedor foi " + vencedor + " Já que o resultado foi " + resultado);
 					}
-					
-					JOptionPane.showMessageDialog(null, "O vencedor foi " + vencedor + " Já que o resultado foi " + resultado);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Selecione quem é o par!");
@@ -205,11 +221,12 @@ public class FirstWindow {
 			}
 		});
 		
-		btJogar2.setLocation(180, 102);
-		btJogar2.setSize(100, 25);
+		btJogar2.setLocation(170, 102);
+		btJogar2.setSize(120, 25);
 		frame2.getContentPane().add(btJogar2);
 		
 		//Fim Segundo Botão
+		
 		frame2.setVisible(true);
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
