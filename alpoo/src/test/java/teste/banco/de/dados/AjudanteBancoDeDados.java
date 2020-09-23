@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class AjudanteBancoDeDados {
 
-	private static final String DELETE_DATA = "DELETE FROM Aposta;";
+	private static final String DELETE_DATA = "DELETE FROM vencedor; DELETE FROM aposta;";
 
 	public static void limparTudo() throws SQLException {
 		String url = "jdbc:postgresql://localhost:5432/app";

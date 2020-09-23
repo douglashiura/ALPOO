@@ -1,9 +1,10 @@
-package aula.par.impar;
+package aula.par.impar.entidade;
 
 public class Aposta {
 	private Integer valor;
 	private String nome;
 	private ResultadosDoJogoParImpar aposta;
+	private Integer id;
 
 	public Aposta(Integer valor) {
 		this.valor = valor;
@@ -26,5 +27,13 @@ public class Aposta {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

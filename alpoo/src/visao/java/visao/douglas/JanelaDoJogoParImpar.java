@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import aula.par.impar.LojaDoJogoParImpar;
 import aula.par.impar.OuvinteDeResultado;
-import aula.par.impar.ResultadosDoJogoParImpar;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 
@@ -82,7 +82,7 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 	}
 
 	@Override
-	public void avisa(ResultadosDoJogoParImpar parOuImpar) {
+	public void avisa(ResultadosDoJogoParImpar parOuImpar, LojaDoJogoParImpar jogo) {
 		resultado.setText(String.format("Ganha %s", parOuImpar));
 	}
 

@@ -1,7 +1,8 @@
 package aula.par.impar;
 
-public class PrimeiraJogada implements EstadoDeJogada {
+import aula.par.impar.entidade.Aposta;
 
+public class PrimeiraJogada implements EstadoDeJogada {
 	private LojaDoJogoParImpar jogo;
 
 	public PrimeiraJogada(LojaDoJogoParImpar jogo) {

@@ -7,7 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import aula.par.impar.LojaDoJogoParImpar;
-import aula.par.impar.ResultadosDoJogoParImpar;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 public class ControleDoJogoParImpar implements ActionListener {
 	private JTextField jogada;
@@ -29,7 +29,6 @@ public class ControleDoJogoParImpar implements ActionListener {
 		Integer valor = Integer.valueOf(jogada.getText());
 		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaAposta.getSelectedItem();
 		String nome = entradaDoNome.getText();
-
 		jogo.fixaJogada(nome, aposta, valor);
 	}
 	

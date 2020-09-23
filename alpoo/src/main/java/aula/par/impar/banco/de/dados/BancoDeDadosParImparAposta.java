@@ -1,7 +1,6 @@
-package aular.par.impar.banco.de.dados;
+package aula.par.impar.banco.de.dados;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,14 +8,13 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import aula.par.impar.Aposta;
-import aula.par.impar.ResultadosDoJogoParImpar;
+import aula.par.impar.entidade.Aposta;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
-public class BancoDeDadosParImpar {
+public class BancoDeDadosParImparAposta extends BancoDeDadosConnection {
 
-	private static final String SQL_INSERT = "INSERT INTO Aposta (nome, aposta, valor) VALUES (?, ?, ?)";
-	private static final String SQL_SELECT = "SELECT nome, aposta, valor FROM Aposta";
-	
+	private static final String SQL_INSERT = "INSERT INTO aposta (nome, aposta, valor) VALUES (?, ?, ?) RETURNING id;";
+	private static final String SQL_SELECT = "SELECT id, nome, aposta, valor FROM Aposta";
 	
 	public void inserir(Aposta aposta) throws SQLException {
 		Connection connection = obterConexao();
@@ -24,8 +22,12 @@ public class BancoDeDadosParImpar {
 		statement.setString(1, aposta.getNome());
 		statement.setString(2, aposta.getAposta().name());
 		statement.setInt(3, aposta.getValor());
-		statement.executeUpdate();
+		statement.execute();
+		ResultSet resultSet = statement.getResultSet();
+		resultSet.next();
+		aposta.setId(resultSet.getInt(1));
 		statement.close();
+		resultSet.close();
 		connection.close();
 	}
 
@@ -35,24 +37,18 @@ public class BancoDeDadosParImpar {
 		ResultSet resultSet = statement.executeQuery(SQL_SELECT);
 		LinkedList<Aposta> apostas = new LinkedList<Aposta>();
 		while(resultSet.next()) {
-			String nome = resultSet.getString(1);
-			ResultadosDoJogoParImpar apostaRealizada = ResultadosDoJogoParImpar.valueOf(resultSet.getString(2));
-			Integer valor = resultSet.getInt(3);
+			Integer id = resultSet.getInt(1);
+			String nome = resultSet.getString(2);
+			ResultadosDoJogoParImpar apostaRealizada = ResultadosDoJogoParImpar.valueOf(resultSet.getString(3));
+			Integer valor = resultSet.getInt(4);
 			Aposta aposta = new Aposta(nome, apostaRealizada, valor);
+			aposta.setId(id);
 			apostas.add(aposta);
 		} 
 		resultSet.close();
 		statement.close();
 		connection.close();
 		return apostas;
-	}
-
-	private Connection obterConexao() throws SQLException {
-		String url = "jdbc:postgresql://localhost:5432/app";
-		String user = "postgres";
-		String password = "9922";
-		Connection connection = DriverManager.getConnection(url, user, password);
-		return connection;
 	}
 	
 }

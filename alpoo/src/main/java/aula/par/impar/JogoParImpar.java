@@ -1,9 +1,11 @@
 package aula.par.impar;
 
-import aula.calculadora.*;
+import static aula.par.impar.entidade.ResultadosDoJogoParImpar.IMPAR;
+import static aula.par.impar.entidade.ResultadosDoJogoParImpar.PAR;
 
-import static aula.par.impar.ResultadosDoJogoParImpar.IMPAR;
-import static aula.par.impar.ResultadosDoJogoParImpar.PAR;
+import aula.calculadora.*;
+import aula.par.impar.entidade.Aposta;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 public class JogoParImpar {
 	public ResultadosDoJogoParImpar parOuImpar(Aposta primeirAposta, Aposta segundaAposta) {

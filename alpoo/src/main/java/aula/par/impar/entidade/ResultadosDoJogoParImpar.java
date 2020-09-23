@@ -1,4 +1,4 @@
-package aula.par.impar;
+package aula.par.impar.entidade;
 
 public enum ResultadosDoJogoParImpar {
 	PAR, IMPAR

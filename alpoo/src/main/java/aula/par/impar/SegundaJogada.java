@@ -1,5 +1,8 @@
 package aula.par.impar;
 
+import aula.par.impar.entidade.Aposta;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
+
 public class SegundaJogada implements EstadoDeJogada {
 	private Aposta primeiraAposta;
 	private LojaDoJogoParImpar jogo;
@@ -11,15 +14,14 @@ public class SegundaJogada implements EstadoDeJogada {
 
 	@Override
 	public void jogar(Aposta segundaAposta) {
-		ResultadosDoJogoParImpar parImpar = new JogoParImpar()
-				.parOuImpar(primeiraAposta, segundaAposta);
+		ResultadosDoJogoParImpar parImpar = new JogoParImpar().parOuImpar(primeiraAposta, segundaAposta);
 		avisaOuvintes(parImpar);
 		jogo.iniciarPartida();
 	}
 
 	private void avisaOuvintes(ResultadosDoJogoParImpar parImpar) {
 		jogo.obterOuvintes().forEach(ouvinte -> {
-			ouvinte.avisa(parImpar);
+			ouvinte.avisa(parImpar, jogo);
 		});
 	}
 

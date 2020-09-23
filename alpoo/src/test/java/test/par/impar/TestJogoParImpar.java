@@ -1,17 +1,27 @@
 package test.par.impar;
 
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import aula.par.impar.JogoParImpar;
 import aula.par.impar.LojaDoJogoParImpar;
-import aula.par.impar.ResultadosDoJogoParImpar;
+import aula.par.impar.OuvinteDeResultado;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 @SuppressWarnings("unused")
 public class TestJogoParImpar {
+	private OuvinteDeResultadoDeTeste ouvinteDeTeste;
+	private LojaDoJogoParImpar jogo;
 
-	private LojaDoJogoParImpar jogo = new LojaDoJogoParImpar();
-	private JogoParImpar verificarParImpar = new JogoParImpar();
+	@Before
+	public void setup() throws Exception {
+		ouvinteDeTeste = new OuvinteDeResultadoDeTeste();
+		jogo = new LojaDoJogoParImpar();
+		jogo.adicionarUmOuvinteDeResultado(ouvinteDeTeste);
+		jogo.iniciarPartida();
+	}
 	
 	@Test
 	public void cenarioOndeAPrimeiraTelaJogaAntes() throws Exception {
@@ -30,7 +40,7 @@ public class TestJogoParImpar {
 		jogo.fixaJogada(nome2, aposta2, jogada2);
 		
 		//pensar em como fazer o teste 
-//		assertEquals(ResultadosDoJogoParImpar.IMPAR, verificarParImpar.parOuImpar(aposta1, aposta2));
+		assertEquals(ResultadosDoJogoParImpar.IMPAR, ouvinteDeTeste.parOuImpar().get(0).getAposta());
 	}
 	
 }

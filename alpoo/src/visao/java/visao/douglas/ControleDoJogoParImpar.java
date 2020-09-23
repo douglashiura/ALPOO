@@ -7,7 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import aula.par.impar.LojaDoJogoParImpar;
-import aula.par.impar.ResultadosDoJogoParImpar;
+import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 
 
