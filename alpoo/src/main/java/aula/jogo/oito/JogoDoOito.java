@@ -6,14 +6,11 @@ public class JogoDoOito {
 	
 	//Criar o Jogo
 	public JogoDoOito(Integer x) {
-		
 		for(Integer i=0; i<=2; i++) {
 			for(Integer j=0; j<=2; j++) {
-				
 				if(i == 2 && j == 2) {
 					x=0;
 				}
-				
 				arrayJogo[i][j] = x;
 				x--;
 			}
@@ -22,9 +19,7 @@ public class JogoDoOito {
 	}
 	
 	public Integer[] getZero() {
-
 		Integer[] result = new Integer[2];
-		
 		for(Integer i=0; i<=2; i++) {
 			for(Integer j=0; j<=2; j++) {
 				if(arrayJogo[i][j] == 0) {

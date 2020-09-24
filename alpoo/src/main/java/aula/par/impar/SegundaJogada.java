@@ -2,6 +2,7 @@ package aula.par.impar;
 
 import aula.par.impar.entidade.Aposta;
 import aula.par.impar.entidade.ResultadosDoJogoParImpar;
+import aula.par.impar.entidade.Vencedor;
 
 public class SegundaJogada implements EstadoDeJogada {
 	private Aposta primeiraAposta;
@@ -15,14 +16,26 @@ public class SegundaJogada implements EstadoDeJogada {
 	@Override
 	public void jogar(Aposta segundaAposta) {
 		ResultadosDoJogoParImpar parImpar = new JogoParImpar().parOuImpar(primeiraAposta, segundaAposta);
-		avisaOuvintes(parImpar);
+		
+		jogo.usarBancoDeAposta(primeiraAposta);
+		jogo.usarBancoDeAposta(segundaAposta);
+		
+		if(parImpar == primeiraAposta.getAposta()) {
+			avisaOuvintes(parImpar, primeiraAposta);
+			jogo.usarBancoDeVencedor(new Vencedor(primeiraAposta));
+		}else {
+			avisaOuvintes(parImpar, segundaAposta);
+			jogo.usarBancoDeVencedor(new Vencedor(segundaAposta));
+		}
+		
 		jogo.iniciarPartida();
 	}
 
-	private void avisaOuvintes(ResultadosDoJogoParImpar parImpar) {
-		jogo.obterOuvintes().forEach(ouvinte -> {
+	private void avisaOuvintes(ResultadosDoJogoParImpar parImpar, Aposta apostaVencedora) {
+		jogo.obterOuvintesDeResultado().forEach(ouvinte -> {
 			ouvinte.avisa(parImpar, jogo);
 		});
+		
 	}
 
 }

@@ -27,3 +27,8 @@ CREATE TABLE vencedor (
     	FOREIGN KEY(aposta_id) 
     		REFERENCES aposta(id)
 );
+-----------------------
+CREATE VIEW vencedores AS
+SELECT aposta.id, aposta.nome, aposta.aposta FROM aposta
+INNER JOIN vencedor ON aposta.id = vencedor.aposta_id
+-----------------------

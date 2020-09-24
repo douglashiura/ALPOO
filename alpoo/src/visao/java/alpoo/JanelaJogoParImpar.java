@@ -10,10 +10,13 @@ import javax.swing.JTextField;
 
 import aula.par.impar.LojaDoJogoParImpar;
 import aula.par.impar.OuvinteDeResultado;
+import aula.par.impar.banco.de.dados.BancoDeDadosParImparVencedor;
 import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 	private static final long serialVersionUID = 1L;
+
+	BancoDeDadosParImparVencedor banco = new BancoDeDadosParImparVencedor();
 
 	private JTextField jogadaTextField = new JTextField(4);
 	private JComboBox<ResultadosDoJogoParImpar> apostaTextField = new JComboBox<ResultadosDoJogoParImpar>();
@@ -104,7 +107,8 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 
 		ganhadorLabel.setText("<html>Ganha: " + parOuImpar + "<br/>O vencedor é:" + lista.get(parOuImpar) + " </html>");
 
-//		ganhadorLabel.setText("<html>Ganha: " + parOuImpar + "<br/>O vencedor é:" + "" + " </html>");
+		// ganhadorLabel.setText("<html>Ganha: " + parOuImpar + "<br/>O vencedor é:" +
+		// "" + " </html>");
 	}
 
 }
