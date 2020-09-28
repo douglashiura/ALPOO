@@ -41,10 +41,10 @@ public class LojaDoJogoParImpar {
 		estadoDoJogo = estado;
 	}
 
-	public void avisaOuvintes(ResultadosDoJogoParImpar vencedor) {
-		List<Aposta> vencedores = obterApostas(vencedor);
+	public void avisaOuvintes(ResultadosDoJogoParImpar resultadoVencedor) {
+		List<Aposta> vencedores = obterApostas(resultadoVencedor);
 		ouvintes.forEach(ouvinte -> {
-			ouvinte.avisa(vencedor,vencedores);
+			ouvinte.avisa(resultadoVencedor,vencedores);
 		});
 	}
 

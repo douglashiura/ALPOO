@@ -1,5 +1,6 @@
 package br.ies.aula.alpoo.jogo.parimpar.banco.de.dados;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import br.ies.aula.alpoo.jogo.parimpar.OuvinteDeResultado;
@@ -14,8 +15,12 @@ public class OuvinteResultadoGanhador implements OuvinteDeResultado {
 		BancoDeDadosDoParImparGanhador bancoDadosParImparGanhador = new BancoDeDadosDoParImparGanhador();
 		
 		for (Aposta vencedora : vencedoras) {
-			Ganhador ganhador = new Ganhador(vencedora.getNome());
-			bancoDadosParImparGanhador.inserir(ganhador);
+			Ganhador ganhador = new Ganhador(vencedora);
+			try {
+				bancoDadosParImparGanhador.inserir(ganhador);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}

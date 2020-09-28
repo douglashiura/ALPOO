@@ -17,6 +17,7 @@ import javax.swing.border.LineBorder;
 
 import br.ies.aula.alpoo.jogo.parimpar.LojaDoJogoParImpar;
 import br.ies.aula.alpoo.jogo.parimpar.OuvinteDeResultado;
+import br.ies.aula.alpoo.jogo.parimpar.banco.de.dados.OuvinteResultadoGanhador;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
@@ -99,6 +100,7 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		new JanelaDoJogoParImpar(jogo);
 		new JanelaDoJogoParImpar(jogo);
 		jogo.adicionarUmOuvinteDeResultado(new ConsoleOuvinteDeJogoParImpar());
+		jogo.adicionarUmOuvinteDeResultado(new OuvinteResultadoGanhador());
 	}
 
 	@Override
