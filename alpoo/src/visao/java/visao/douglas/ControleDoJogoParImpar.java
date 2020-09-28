@@ -9,8 +9,6 @@ import javax.swing.JTextField;
 import aula.par.impar.LojaDoJogoParImpar;
 import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
-
-
 public class ControleDoJogoParImpar implements ActionListener {
 	private JTextField entradaDoPrimeiroJogador;
 	private JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoPrimeiroJogador;

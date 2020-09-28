@@ -1,7 +1,5 @@
 package alpoo;
 
-import java.util.HashMap;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -10,22 +8,25 @@ import javax.swing.JTextField;
 
 import aula.par.impar.LojaDoJogoParImpar;
 import aula.par.impar.OuvinteDeResultado;
-import aula.par.impar.banco.de.dados.BancoDeDadosParImparVencedor;
+import aula.par.impar.banco.de.dados.ArmazenadorDeVitoriasNoBancoDeDados;
+import aula.par.impar.entidade.Aposta;
 import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 
 public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 	private static final long serialVersionUID = 1L;
 
-	BancoDeDadosParImparVencedor banco = new BancoDeDadosParImparVencedor();
-
-	private JTextField jogadaTextField = new JTextField(4);
-	private JComboBox<ResultadosDoJogoParImpar> apostaTextField = new JComboBox<ResultadosDoJogoParImpar>();
-	private JTextField nomeTextField = new JTextField(4);
+	private JTextField jogadaTextField;
+	private JComboBox<ResultadosDoJogoParImpar> apostaTextField;
+	private JTextField nomeTextField;
 	private JLabel ganhadorLabel;
 
 	private LojaDoJogoParImpar jogo;
 
 	JanelaJogoParImpar(Integer x, Integer y, LojaDoJogoParImpar jogo) {
+		jogadaTextField = new JTextField(4);
+		apostaTextField = new JComboBox<ResultadosDoJogoParImpar>();
+		nomeTextField = new JTextField(4);
+
 		this.jogo = jogo;
 		jogo.adicionarUmOuvinteDeResultado(this);
 		// Tela
@@ -85,7 +86,8 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 
 	public static void main(String[] args) {
 		LojaDoJogoParImpar jogo = new LojaDoJogoParImpar();
-
+		jogo.adicionarUmOuvinteDeResultado(new ArmazenadorDeVitoriasNoBancoDeDados());
+		
 		Integer posicaoXJogador1 = Integer.valueOf(600);
 		Integer posicaoYJogador1 = Integer.valueOf(300);
 
@@ -97,18 +99,9 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 	}
 
 	@Override
-	public void avisa(ResultadosDoJogoParImpar parOuImpar, LojaDoJogoParImpar jogo) {
-		// Problema com mostrar empate no jogo
-		// Talvez trocar de HashMap para uma lista e comparar o parOuImpar com o
-		// primeiro elemento
-		// Necessidade de utilizar duas listas?
-		// if terá que ser feito
-		HashMap<ResultadosDoJogoParImpar, String> lista = jogo.obterListaNomesApostas();
+	public void avisa(ResultadosDoJogoParImpar parOuImpar, Aposta apostaVencedora) {
+		ganhadorLabel.setText("<html>Ganha: " + parOuImpar + "<br/>O vencedor é:" + apostaVencedora.getNome() + " </html>");
 
-		ganhadorLabel.setText("<html>Ganha: " + parOuImpar + "<br/>O vencedor é:" + lista.get(parOuImpar) + " </html>");
-
-		// ganhadorLabel.setText("<html>Ganha: " + parOuImpar + "<br/>O vencedor é:" +
-		// "" + " </html>");
 	}
 
 }

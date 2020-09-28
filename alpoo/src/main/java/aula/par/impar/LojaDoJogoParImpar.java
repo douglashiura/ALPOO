@@ -1,7 +1,6 @@
 package aula.par.impar;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,8 +15,6 @@ public class LojaDoJogoParImpar {
 	private EstadoDeJogada estadoDoJogo;
 	private BancoDeDadosParImparAposta bancoDeAposta;
 	private BancoDeDadosParImparVencedor bancoDeVencedor;
-	
-	private static HashMap<ResultadosDoJogoParImpar, String> listaNomesApostas = new HashMap<ResultadosDoJogoParImpar, String>();
 
 	public LojaDoJogoParImpar() {
 		this.bancoDeAposta = new BancoDeDadosParImparAposta();
@@ -27,10 +24,11 @@ public class LojaDoJogoParImpar {
 	}
 
 	public void fixaJogada(String nome, ResultadosDoJogoParImpar aposta, Integer valor) {
-		listaNomesApostas.put(aposta, nome);
-		estadoDoJogo.jogar(new Aposta(nome, aposta, valor));
+		Aposta apostaJogador = new Aposta(nome, aposta, valor);
+		estadoDoJogo.jogar(apostaJogador);
+		usarBancoDeAposta(apostaJogador);
 	}
-
+	
 	public void usarBancoDeAposta(Aposta aposta) {
 		try {
 			bancoDeAposta.inserir(aposta);
@@ -51,10 +49,6 @@ public class LojaDoJogoParImpar {
 		this.ouvintes.add(ouvinteDeTeste);
 	}
 
-//	public void adicionarUmOuvinteDeVencedor(OuvinteDeVencedor ouvinte) {
-//		this.ouvintesDeVencedor.add(ouvinte);
-//	}
-	
 	public void iniciarPartida() {
 		estadoDoJogo = new PrimeiraJogada(this);
 	}
@@ -65,13 +59,5 @@ public class LojaDoJogoParImpar {
 
 	public List<OuvinteDeResultado> obterOuvintesDeResultado() {
 		return ouvintes;
-	}
-
-//	public List<OuvinteDeVencedor> obterOuvintesDeVencedor() {
-//		return ouvintesDeVencedor;
-//	}
-	
-	public HashMap<ResultadosDoJogoParImpar, String> obterListaNomesApostas() {
-		return listaNomesApostas;
 	}
 }

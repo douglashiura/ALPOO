@@ -1,3 +1,13 @@
+DELETE FROM vencedor;
+DELETE FROM aposta;
+
+-- Tabelas
+SELECT * FROM vencedor;
+SELECT * FROM aposta;
+
+-- Views
+SELECT * FROM vencedores;
+----------------------
 CREATE TABLE Aposta (
 	id SERIAL PRIMARY KEY,
 	nome VARCHAR(255) NOT NULL,
@@ -5,7 +15,6 @@ CREATE TABLE Aposta (
 	valor INTEGER NOT NULL
 );
 
-SELECT * FROM APOSTA
 ----------------------
 CREATE TABLE jogos (
 	jogos_id SERIAL NOT NULL,

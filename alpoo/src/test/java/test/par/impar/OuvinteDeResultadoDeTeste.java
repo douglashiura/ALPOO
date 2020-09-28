@@ -2,7 +2,6 @@ package test.par.impar;
 
 import java.util.List;
 
-import aula.par.impar.LojaDoJogoParImpar;
 import aula.par.impar.OuvinteDeResultado;
 import aula.par.impar.entidade.Aposta;
 import aula.par.impar.entidade.ResultadosDoJogoParImpar;
@@ -31,7 +30,7 @@ public class OuvinteDeResultadoDeTeste implements OuvinteDeResultado {
 
 	//Método possivelmente obsoleto da interface OuvinteDeResultado
 	@Override
-	public void avisa(ResultadosDoJogoParImpar parOuImpar, LojaDoJogoParImpar jogo) {
+	public void avisa(ResultadosDoJogoParImpar parOuImpar, Aposta apostaVencedora) {
 		// TODO Auto-generated method stub
 		
 	}

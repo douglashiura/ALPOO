@@ -33,7 +33,7 @@ public class SegundaJogada implements EstadoDeJogada {
 
 	private void avisaOuvintes(ResultadosDoJogoParImpar parImpar, Aposta apostaVencedora) {
 		jogo.obterOuvintesDeResultado().forEach(ouvinte -> {
-			ouvinte.avisa(parImpar, jogo);
+			ouvinte.avisa(parImpar, apostaVencedora);
 		});
 		
 	}
