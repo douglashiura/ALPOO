@@ -3,12 +3,12 @@ package br.ies.aula.alpoo.jogo.parimpar.entidade;
 public class Aposta {
 
 	private Integer valor;
-	private String nome;
 	private ResultadosDoJogoParImpar aposta;
 	private Integer id;
+	private Pessoa pessoa;
 
-	public Aposta(String nome, ResultadosDoJogoParImpar aposta, Integer valor) {
-		this.nome = nome;
+	public Aposta(Pessoa pessoa, ResultadosDoJogoParImpar aposta, Integer valor) {
+		this.pessoa = pessoa;
 		this.aposta = aposta;
 		this.valor = valor;
 	}
@@ -20,14 +20,9 @@ public class Aposta {
 	public ResultadosDoJogoParImpar getAposta() {
 		return aposta;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	@Override
-	public String toString() {
-		return nome;
+	
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
 	public Integer getId() {

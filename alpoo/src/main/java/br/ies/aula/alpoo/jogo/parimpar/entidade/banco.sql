@@ -1,11 +1,25 @@
-CREATE TABLE Aposta (
-	id SERIAL PRIMARY KEY,
-	nome VARCHAR(255) NOT NULL,
-	aposta VARCHAR(32) NOT NULL,
-	valor INTEGER NOT NULL
+DROP TABLE IF EXISTS ganhador;
+DROP TABLE IF EXISTS aposta;
+DROP TABLE IF EXISTS pessoa;
+
+
+CREATE TABLE pessoa (
+	id SERIAL NOT NULL PRIMARY KEY,
+	nome VARCHAR(256) NOT NULL,
+	nascimento TIMESTAMP NOT NULL
 );
 
-CREATE TABLE Ganhador (
+CREATE TABLE aposta (
+	id SERIAL NOT NULL PRIMARY KEY,
+	aposta VARCHAR(32) NOT NULL,
+	valor INTEGER NOT NULL,
+	pessoa_id INTEGER NOT NULL,
+	CONSTRAINT pessoa_aposta_id_FK
+		FOREIGN KEY(pessoa_id)
+			REFERENCES pessoa(id)
+);
+
+CREATE TABLE ganhador (
 	id SERIAL NOT NULL PRIMARY KEY,
 	horario TIMESTAMP NOT NULL,
 	aposta_id INTEGER NOT NULL,
@@ -13,3 +27,4 @@ CREATE TABLE Ganhador (
 		FOREIGN KEY(aposta_id)
 			REFERENCES aposta(id)
 );
+

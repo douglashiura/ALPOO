@@ -6,16 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Pessoa;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosDoJogoParImpar;
 
 public class BancoDeDadosDoParImparAposta {
 
-	private static final String SQL_INSERT = "INSERT INTO Aposta (nome, aposta, valor) VALUES(?, ?, ?) RETURNING id;";
-	private static final String SQL_SELECT = "SELECT id, nome, aposta, valor FROM Aposta;";
+	private static final String SQL_INSERT = "INSERT INTO Aposta (pessoa_id, aposta, valor) VALUES(?, ?, ?) RETURNING id;";
+	private static final String SQL_SELECT = "SELECT id, nome, aposta, valor, nascimento, pessoa_id FROM Aposta JOIN pessoa ON aposta.pessoa_id = pessoa.id;";
 
 	public List<Aposta> obterApostas() throws SQLException {
 		Connection connection = obterConexao();
@@ -27,7 +29,11 @@ public class BancoDeDadosDoParImparAposta {
 			String nome = resultSet.getString(2);
 			ResultadosDoJogoParImpar apostaRealizada = ResultadosDoJogoParImpar.valueOf(resultSet.getString(3));
 			Integer valor = resultSet.getInt(4);
-			Aposta aposta = new Aposta(nome, apostaRealizada, valor);
+			Date nascimento = resultSet.getDate(5);
+			Integer pessoaId = resultSet.getInt(6);
+			Pessoa pessoa = new Pessoa(nome, nascimento);
+			pessoa.setId(pessoaId);
+			Aposta aposta = new Aposta(pessoa, apostaRealizada, valor);
 			aposta.setId(id);
 			apostas.add(aposta);
 		}
@@ -40,7 +46,7 @@ public class BancoDeDadosDoParImparAposta {
 	public void inserir(Aposta aposta) throws SQLException {
 		Connection connection = obterConexao();
 		PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
-		statement.setString(1, aposta.getNome());
+		statement.setInt(1, aposta.getPessoa().getId());
 		statement.setString(2, aposta.getAposta().name());
 		statement.setInt(3, aposta.getValor());
 		statement.execute();
