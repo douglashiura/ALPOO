@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class AjudanteDoBancoDeDados {
 	
-	private static final String DELETE_APOSTA = "DELETE FROM vencedor;DELETE FROM aposta;";
+	private static final String DELETE_APOSTA = "DELETE FROM vencedor;DELETE FROM aposta;DELETE FROM pessoa";
 	
 	public static void limparTudo() throws SQLException {
 		String url = "jdbc:postgresql://localhost:5432/JogoImparPar";

@@ -1,3 +1,13 @@
+CREATE TABLE pessoa(
+	pessoa_id SERIAL NOT NULL,
+	nome VARCHAR(256),
+	dt_nasc DATE
+);
+
+ALTER TABLE pessoa ADD PRIMARY KEY(pessoa_id);
+
+select * from pessoa;
+
 CREATE TABLE aposta(
 	aposta_id SERIAL NOT NULL,
 	nome VARCHAR(255),
