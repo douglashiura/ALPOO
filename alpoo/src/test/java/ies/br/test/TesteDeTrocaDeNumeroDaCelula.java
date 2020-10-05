@@ -17,7 +17,7 @@ public class TesteDeTrocaDeNumeroDaCelula {
 		celula2 = new Celula(Integer.valueOf(9), Integer.valueOf(2));
 		Celula.trocarNumero(celula1, celula2);
 
-		assertEquals(9, celula1.getNumero());
+		assertEquals(Integer.valueOf(9), celula1.getNumero());
 	}
 
 	@Test
@@ -26,6 +26,6 @@ public class TesteDeTrocaDeNumeroDaCelula {
 		celula2 = new Celula(Integer.valueOf(9), Integer.valueOf(2));
 		Celula.trocarNumero(celula1, celula2);
 
-		assertEquals(5, celula2.getNumero());
+		assertEquals(Integer.valueOf(5), celula2.getNumero());
 	}
 }
