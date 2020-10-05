@@ -22,7 +22,8 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 
 	private LojaDoJogoParImpar jogo;
 
-	JanelaJogoParImpar(Integer x, Integer y, LojaDoJogoParImpar jogo) {
+	JanelaJogoParImpar(Integer posicaoX, Integer posicaoY, LojaDoJogoParImpar jogo) {
+		//Instanciações
 		jogadaTextField = new JTextField(4);
 		apostaTextField = new JComboBox<ResultadosDoJogoParImpar>();
 		nomeTextField = new JTextField(4);
@@ -31,7 +32,7 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado {
 		jogo.adicionarUmOuvinteDeResultado(this);
 		// Tela
 		setSize(350, 400);
-		setLocation(x, y);
+		setLocation(posicaoX, posicaoY);
 		getContentPane().setLayout(null);
 		setTitle("Jogo Par Ou Ímpar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

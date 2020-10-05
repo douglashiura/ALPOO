@@ -17,9 +17,6 @@ public class SegundaJogada implements EstadoDeJogada {
 	public void jogar(Aposta segundaAposta) {
 		ResultadosDoJogoParImpar parImpar = new JogoParImpar().parOuImpar(primeiraAposta, segundaAposta);
 		
-		jogo.usarBancoDeAposta(primeiraAposta);
-		jogo.usarBancoDeAposta(segundaAposta);
-		
 		if(parImpar == primeiraAposta.getAposta()) {
 			avisaOuvintes(parImpar, primeiraAposta);
 			jogo.usarBancoDeVencedor(new Vencedor(primeiraAposta));

@@ -1,0 +1,17 @@
+====<28-09-2020>====
+
+->Fazer Classe Pessoa.
+->Reorganizar Aposta de acordo com a nova implementação de Pessoa
+	Arrumar o banco de dados para ter a pessoa como uma nova tabela;
+	
+	[x]
+	->Arrumar os inserts dos bancos de dados.
+	->Arrumar todos os outros problemas ocasionados pela alteração e implementação da nova pessoa.
+	
+--------------------
+Ideia extra:
+->Tela de Login
+	Com autenticação usando o nome e a data de nascimento.
+
+====================
+====<??-??-2020>====
