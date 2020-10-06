@@ -37,7 +37,6 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		setSize(683, 312);
 		setTitle("Tela do jogo de Par e Impar - 100% IES");
 		getContentPane().add(criarPainelPanelDoPrimeiroJogador(), BorderLayout.NORTH);
-		adicionaBotaoJogar();
 		adicionaResultado();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,13 +47,8 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
-		JButton botaoJogar = new JButton("Jogar");
-		panel.add(botaoJogar);
-		botaoJogar.addActionListener(
-				new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, entradaDoNomeDoJogador, jogo));
-		botaoJogar.setLocation(100, 100);
-		botaoJogar.setSize(80, 25);
-
+		
+		this.adicionaBotaoJogar(panel);
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.add(panel_1);
@@ -70,7 +64,13 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		panel.add(resuldadoDoJogo);
 	}
 
-	private void adicionaBotaoJogar() {
+	private void adicionaBotaoJogar( JPanel panel) {
+		JButton botaoJogar = new JButton("Jogar");
+		panel.add(botaoJogar);
+		botaoJogar.addActionListener(
+				new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, entradaDoNomeDoJogador, jogo));
+		botaoJogar.setLocation(100, 100);
+		botaoJogar.setSize(80, 25);
 	}
 
 	private JPanel criarPainelPanelDoPrimeiroJogador() {

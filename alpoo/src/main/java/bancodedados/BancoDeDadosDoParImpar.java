@@ -14,7 +14,7 @@ import entidade.ResultadoDoJogoParImpar;
 
 public class BancoDeDadosDoParImpar {
 	private static final String SQL_INSERT_VENCEDOR = "INSERT INTO vencedor (data, id_aposta) VALUES(?, ?);";
-	private static final String SQL_INSERT = "INSERT INTO Aposta (nome, aposta, valor) VALUES(?, ?, ?);";
+	private static final String SQL_INSERT = "INSERT INTO Aposta (nome, aposta, valor) VALUES(?, ?, ?) RETURNING id;";
 	private static final String SQL_SELECT = "SELECT nome, aposta, valor FROM Aposta;";
 	private static final String SQL_DELETE_ALL = "DELETE  FROM aposta";
 
@@ -42,7 +42,7 @@ public class BancoDeDadosDoParImpar {
 		statement.setString(1, aposta.getNome());
 		statement.setString(2, aposta.getAposta().name());
 		statement.setInt(3, aposta.getValor());
-		statement.executeUpdate();
+		int resultId =  statement.executeUpdate();
 		statement.close();
 		connection.close();
 	}
