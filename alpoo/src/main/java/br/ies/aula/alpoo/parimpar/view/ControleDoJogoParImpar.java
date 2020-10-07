@@ -1,4 +1,4 @@
-package alpoo;
+package br.ies.aula.alpoo.parimpar.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,32 +7,32 @@ import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
+import br.ies.aula.alpoo.parimpar.controller.LojaDoJogoParImpar;
+import br.ies.aula.alpoo.parimpar.model.Aposta;
+import br.ies.aula.alpoo.parimpar.model.Pessoa;
+import br.ies.aula.alpoo.parimpar.model.ResultadosDoJogoParImpar;
 
 public class ControleDoJogoParImpar implements ActionListener {
 	private JTextField entradaDoPrimeiroJogador;
 	private JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoPrimeiroJogador;
-	private JTextField entradaDoNomeDoJogador;
 	private LojaDoJogoParImpar jogo;
+	private Pessoa pessoa;
+		
 
 	public ControleDoJogoParImpar(JTextField entradaDoPrimeiroJogador,
-			JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoPrimeiroJogador, JTextField entradaDoNomeDoJogador,
-			LojaDoJogoParImpar jogo) {
+			JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoPrimeiroJogador,LojaDoJogoParImpar jogo, Pessoa pessoa) {
 		this.entradaDoPrimeiroJogador = entradaDoPrimeiroJogador;
 		this.entradaDaApostaDoPrimeiroJogador = entradaDaApostaDoPrimeiroJogador;
-		this.entradaDoNomeDoJogador = entradaDoNomeDoJogador;
 		this.jogo = jogo;
+		this.pessoa = pessoa;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Integer valor = Integer.valueOf(entradaDoPrimeiroJogador.getText());
 		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaApostaDoPrimeiroJogador.getSelectedItem();
-		String nome = entradaDoNomeDoJogador.getText();
 		try {
-			jogo.fixaJogada(new Aposta(nome, aposta, valor));
+			jogo.fixaJogada(new Aposta(pessoa, aposta, valor));
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

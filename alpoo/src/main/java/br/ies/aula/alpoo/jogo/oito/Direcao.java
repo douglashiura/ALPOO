@@ -4,5 +4,5 @@ public enum Direcao {
 	CIMA,
 	BAIXO,
 	DIREITA,
-	ESQUERDA,	
+	ESQUERDA,
 }

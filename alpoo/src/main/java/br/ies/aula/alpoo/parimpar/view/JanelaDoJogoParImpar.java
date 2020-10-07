@@ -1,4 +1,4 @@
-package alpoo;
+package br.ies.aula.alpoo.parimpar.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,26 +14,27 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import br.ies.aula.alpoo.parimpar.controller.LojaDoJogoParImpar;
+import br.ies.aula.alpoo.parimpar.controller.ouvinte.Ouvinte;
+import br.ies.aula.alpoo.parimpar.model.Aposta;
+import br.ies.aula.alpoo.parimpar.model.Pessoa;
+import br.ies.aula.alpoo.parimpar.model.ResultadosDoJogoParImpar;
 
-import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
-import br.ies.aula.alpoo.jogo.OuvinteDeResultado;
-import br.ies.aula.alpoo.jogo.OuvinteQueInsereOVencedorNoBanco;
-import br.ies.aula.alpoo.jogo.entidade.Aposta;
-import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
 	
-public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
+public class JanelaDoJogoParImpar extends JFrame implements Ouvinte {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField entradaDoJogador;
 	private JComboBox<ResultadosDoJogoParImpar> entradaDaApostaDoJogador;
-	private JTextField entradaDoNomeDoJogador;
 	private JLabel tituloVencedoresResultado;
 	private LojaDoJogoParImpar jogo;
-	private JList<Aposta> listaDeVencedores;
+	private JList<String> listaDeVencedores;
 	private JLabel resuldadoDoJogo;
+	private Pessoa pessoa;
 
-	public JanelaDoJogoParImpar(LojaDoJogoParImpar jogo) {
+	public JanelaDoJogoParImpar(LojaDoJogoParImpar jogo, Pessoa pessoa) {
 		this.jogo = jogo;
+		this.pessoa = pessoa;
 		setSize(683, 312);
 		setTitle("Tela do jogo de Par e Impar - 100% IES");
 		getContentPane().add(criarPainelPanelDoPrimeiroJogador(), BorderLayout.NORTH);
@@ -51,7 +52,7 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		JButton botaoJogar = new JButton("Jogar");
 		panel.add(botaoJogar);
 		botaoJogar.addActionListener(
-				new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, entradaDoNomeDoJogador, jogo));
+				new ControleDoJogoParImpar(entradaDoJogador, entradaDaApostaDoJogador, jogo, pessoa));
 		botaoJogar.setLocation(100, 100);
 		botaoJogar.setSize(80, 25);
 
@@ -63,7 +64,7 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		tituloVencedoresResultado.setLocation(230, 100);
 		tituloVencedoresResultado.setSize(160, 30);
 
-		listaDeVencedores = new JList<Aposta>();
+		listaDeVencedores = new JList<String>();
 		panel_1.add(listaDeVencedores);
 
 		resuldadoDoJogo = new JLabel("Aguarde...");
@@ -81,10 +82,10 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		entradaDaApostaDoJogador = new JComboBox<ResultadosDoJogoParImpar>();
 		entradaDaApostaDoJogador.addItem(ResultadosDoJogoParImpar.IMPAR);
 		entradaDaApostaDoJogador.addItem(ResultadosDoJogoParImpar.PAR);
-		Component nomeDoPrimeiroJogador = new JLabel("Nome do jogador");
-		entradaDoNomeDoJogador = new JTextField(8);
-		painel.add(nomeDoPrimeiroJogador);
-		painel.add(entradaDoNomeDoJogador);
+		Component labelNomeJogador = new JLabel("Nome do jogador");
+		Component nomeJogador = new JLabel(pessoa.getNome());
+		painel.add(labelNomeJogador);
+		painel.add(nomeJogador);
 		painel.add(campoDoPrimeiroJogador);
 		painel.add(entradaDoJogador);
 		painel.add(apostaDoPrimeiroJogador);
@@ -94,20 +95,12 @@ public class JanelaDoJogoParImpar extends JFrame implements OuvinteDeResultado {
 		painel.setBackground(Color.LIGHT_GRAY);
 		return painel;
 	}
-
-	public static void main(String[] args) {
-		LojaDoJogoParImpar jogo = new LojaDoJogoParImpar();
-		new JanelaDoJogoParImpar(jogo);
-		new JanelaDoJogoParImpar(jogo);
-		jogo.adicionarUmOuvinteDeResultado(new ConsoleOuvinteDeJogoParImpar());
-		jogo.adicionarUmOuvinteDeResultado(new OuvinteQueInsereOVencedorNoBanco());
-	}
-
+	
 	@Override
 	public void avisa(ResultadosDoJogoParImpar resultado, List<Aposta> apostas) {
-		DefaultListModel<Aposta> vencedores = new DefaultListModel<Aposta>();
+		DefaultListModel<String> vencedores = new DefaultListModel<String>();
 		for (Aposta aposta : apostas) {
-			vencedores.addElement(aposta);
+			vencedores.addElement(aposta.getPessoa().getNome());
 		}
 		listaDeVencedores.setModel(vencedores);
 		resuldadoDoJogo.setText(resultado.name());

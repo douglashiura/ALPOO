@@ -58,7 +58,6 @@ public class JogoDoOito {
 				this.moverDireita();
 				break;
 		}
-		
 	}
 
 	private void moverCima() {
