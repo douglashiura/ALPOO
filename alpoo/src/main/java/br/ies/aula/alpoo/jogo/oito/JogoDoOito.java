@@ -43,6 +43,7 @@ public class JogoDoOito {
 		System.out.println("\n");
 	}
 	
+	//remover o switch
 	public void moverZero(Direcao movimento) {
 		switch(movimento) {
 			case CIMA:
@@ -60,6 +61,7 @@ public class JogoDoOito {
 		}
 	}
 
+	//melhorar a orientacao
 	private void moverCima() {
 		if (posicaoAtualZero.getLinha() > 0) {
 			matriz[posicaoAtualZero.getLinha()][posicaoAtualZero

@@ -1,6 +1,7 @@
 package br.ies.aula.alpoo.jogo.oito;
 
 public class Coordenadas {
+	//melhorar a orientacao
 	private int linha;
 	private int coluna;
 
