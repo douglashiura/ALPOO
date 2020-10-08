@@ -2,11 +2,10 @@ package main.br.ies;
 
 public class Celula {
 	private Integer numero;
-	private Integer posicao;
+	private Celula direita;
 
-	public Celula(Integer numero, Integer posicao) {
+	public Celula(Integer numero) {
 		this.setNumero(numero);
-		this.setPosicao(posicao);
 	}
 
 	public Integer getNumero() {
@@ -17,17 +16,17 @@ public class Celula {
 		this.numero = numero;
 	}
 
-	public Integer getPosicao() {
-		return posicao;
+	public void trocarNumero(Celula origem, Celula destino) {
+		Integer swap = origem.getNumero();
+		origem.setNumero(destino.getNumero());
+		destino.setNumero(swap);
 	}
 
-	public void setPosicao(Integer posicao) {
-		this.posicao = posicao;
+	public void fixaDireita(Celula direita) {
+		this.direita = direita;
 	}
 
-	public static void trocarNumero(Celula x, Celula y) {
-		Integer swap = x.getNumero();
-		x.setNumero(y.getNumero());
-		y.setNumero(swap);
+	public void moverParaDireita() {
+		trocarNumero(this, direita);
 	}
 }
