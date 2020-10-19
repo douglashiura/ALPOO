@@ -212,14 +212,13 @@ public class TelaSwingJogoDoOito {
 		inferiorEsquerdo.setText(controle.getTabuleiro().getInferiorEsquerda().toString());
 		inferiorDireita.setText(controle.getTabuleiro().getInferiorDireita().toString());
 
-		pintarDeBranco(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral, centroDireita,
-				inferiorCentral, inferiorEsquerdo, inferiorDireita);
+		pintarDeCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
+				centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 	}
 
-	private void pintarDeBranco(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
+	private void pintarDeCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
 			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorCentral,
 			JLabel inferiorEsquerdo, JLabel inferiorDireita) {
-
 		List<JLabel> listaDeTextos = new ArrayList<JLabel>();
 
 		listaDeTextos.add(superiorEsquerdo);
@@ -232,13 +231,49 @@ public class TelaSwingJogoDoOito {
 		listaDeTextos.add(inferiorEsquerdo);
 		listaDeTextos.add(inferiorDireita);
 
-		for (JLabel x : listaDeTextos) {
+		for (JLabel camposDeTexto : listaDeTextos) {
 			try {
 				Map<String, Runnable> mapa = new HashMap<String, Runnable>();
-				mapa.put("0", () -> x.setText(""));
-				mapa.get(x.getText()).run();
+				mapa.put("0", () -> camposDeTexto.setText(""));
+				mapa.get(camposDeTexto.getText()).run();
 			} catch (NullPointerException e) {
 
+			}
+
+			Map<String, Runnable> mapaVizinhosColoridos = new HashMap<String, Runnable>();
+			Map<String, Runnable> mapaVizinhosBrancos = new HashMap<String, Runnable>();
+			for (JLabel vizinhosColoridos : listaDeTextos) {
+
+				mapaVizinhosColoridos.put(vizinhosColoridos.getText(),
+						() -> vizinhosColoridos.setForeground(Color.RED));
+
+				mapaVizinhosBrancos.put(vizinhosColoridos.getText(),
+						() -> vizinhosColoridos.setForeground(Color.black));
+				mapaVizinhosBrancos.get(vizinhosColoridos.getText()).run();
+
+			}
+
+			try {
+				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getCima().getNumero().toString()).run();
+			} catch (NullPointerException e) {
+			}
+
+			try {
+				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getBaixo().getNumero().toString())
+						.run();
+			} catch (NullPointerException e) {
+			}
+
+			try {
+				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getEsquerda().getNumero().toString())
+						.run();
+			} catch (NullPointerException e) {
+			}
+
+			try {
+				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getDireita().getNumero().toString())
+						.run();
+			} catch (NullPointerException e) {
 			}
 
 		}
