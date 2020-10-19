@@ -21,7 +21,7 @@ public class Celula implements Movimentos {
 		this.numero = numero;
 	}
 
-	public static void trocarNumero(Celula origem, Celula destino) {
+	public void trocarNumero(Celula origem, Celula destino) {
 		Integer armazenamentoTemporario = origem.getNumero();
 		origem.setNumero(destino.getNumero());
 		destino.setNumero(armazenamentoTemporario);

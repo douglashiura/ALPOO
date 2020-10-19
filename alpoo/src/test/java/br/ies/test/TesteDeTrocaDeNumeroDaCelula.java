@@ -8,24 +8,24 @@ import br.ies.main.celulas.Celula;
 
 public class TesteDeTrocaDeNumeroDaCelula {
 
-	private Celula celula1;
-	private Celula celula2;
+	private Celula celulaUm;
+	private Celula celulaDois;
 
 	@Test
 	public void trocandoValoresDaPrimeiraCelulaComASegunda() {
-		celula1 = new Celula(Integer.valueOf(5));
-		celula2 = new Celula(Integer.valueOf(9));
-		Celula.trocarNumero(celula1, celula2);
+		celulaUm = new Celula(Integer.valueOf(5));
+		celulaDois = new Celula(Integer.valueOf(9));
+		celulaUm.trocarNumero(celulaUm, celulaDois);
 
-		assertEquals(Integer.valueOf(9), celula1.getNumero());
+		assertEquals(Integer.valueOf(9), celulaUm.getNumero());
 	}
 
 	@Test
 	public void trocandoValoresDaSegundaCelulaComAPrimeira() {
-		celula1 = new Celula(Integer.valueOf(5));
-		celula2 = new Celula(Integer.valueOf(9));
-		Celula.trocarNumero(celula1, celula2);
+		celulaUm = new Celula(Integer.valueOf(5));
+		celulaDois = new Celula(Integer.valueOf(9));
+		celulaDois.trocarNumero(celulaUm, celulaDois);
 
-		assertEquals(Integer.valueOf(5), celula2.getNumero());
+		assertEquals(Integer.valueOf(5), celulaDois.getNumero());
 	}
 }

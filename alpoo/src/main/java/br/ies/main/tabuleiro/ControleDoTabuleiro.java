@@ -2,42 +2,37 @@ package br.ies.main.tabuleiro;
 
 public class ControleDoTabuleiro {
 
-	private static OrganizadorDeTabuleiro tabuleiro;
+	private Tabuleiro tabuleiro;
 
-	public ControleDoTabuleiro(OrganizadorDeTabuleiro tabuleiro) {
+	public ControleDoTabuleiro(Tabuleiro tabuleiro) {
 		this.setTabuleiro(tabuleiro);
 	}
 
-	public OrganizadorDeTabuleiro getTabuleiro() {
+	public Tabuleiro getTabuleiro() {
 		return tabuleiro;
 	}
 
-	public void setTabuleiro(OrganizadorDeTabuleiro tabuleiro) {
-		ControleDoTabuleiro.tabuleiro = tabuleiro;
+	public void setTabuleiro(Tabuleiro tabuleiro) {
+		this.tabuleiro = tabuleiro;
 	}
 
 	public void moverPraCima() {
 		tabuleiro.getPonteiro().moverParaCima();
-		tabuleiro.atualizarPonteiro(tabuleiro.getPonteiro().getCima());
-		tabuleiro.mostrarTabuleiro();
-	}
-	
-	public void moverPraBaixo() {
-		tabuleiro.getPonteiro().moverParaBaixo();
-		tabuleiro.atualizarPonteiro(tabuleiro.getPonteiro().getBaixo());
-		tabuleiro.mostrarTabuleiro();
-	}
-	
-	public void moverPraEsquerda() {
-		tabuleiro.getPonteiro().moverParaEsquerda();
-		tabuleiro.atualizarPonteiro(tabuleiro.getPonteiro().getEsquerda());
-		tabuleiro.mostrarTabuleiro();
+		tabuleiro.setPonteiro(tabuleiro.getPonteiro().getCima());
 	}
 
-	
+	public void moverPraBaixo() {
+		tabuleiro.getPonteiro().moverParaBaixo();
+		tabuleiro.setPonteiro(tabuleiro.getPonteiro().getBaixo());
+	}
+
+	public void moverPraEsquerda() {
+		tabuleiro.getPonteiro().moverParaEsquerda();
+		tabuleiro.setPonteiro(tabuleiro.getPonteiro().getEsquerda());
+	}
+
 	public void moverPraDireita() {
 		tabuleiro.getPonteiro().moverParaDireita();
-		tabuleiro.atualizarPonteiro(tabuleiro.getPonteiro().getDireita());
-		tabuleiro.mostrarTabuleiro();
+		tabuleiro.setPonteiro(tabuleiro.getPonteiro().getDireita());
 	}
 }

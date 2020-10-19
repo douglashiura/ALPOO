@@ -6,21 +6,9 @@ public class CelulaCentralEsquerda extends Celula {
 		super(numero);
 	}
 
-	public void fixarBaixo(Celula Baixo) {
-		setBaixo(Baixo);
-	}
-
-	public void fixarCima(Celula cima) {
-		setCima(cima);
-	}
-
-	public void fixarDireita(Celula direita) {
-		setDireita(direita);
-	}
-
 	@Override
 	public void moverParaEsquerda() {
-		System.out.println("Movimento não permitido");
+
 	}
 
 	@Override
