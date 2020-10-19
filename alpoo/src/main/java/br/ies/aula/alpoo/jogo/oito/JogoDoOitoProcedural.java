@@ -12,7 +12,6 @@ public class JogoDoOitoProcedural {
 	}
 
 	public void moverAPecaBranca(String direcao) throws InterruptedException {
-		Thread.sleep(1000);
 		System.out.println();
 		pintarTabuleiro();
 		if ("CIMA".equals(direcao)) {

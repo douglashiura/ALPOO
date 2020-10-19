@@ -2,8 +2,10 @@ package alpoo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.ies.aula.alpoo.jogo.LojaDoJogoParImpar;
@@ -30,6 +32,10 @@ public class ControleDoJogoParImpar implements ActionListener {
 		Integer valor = Integer.valueOf(entradaDoPrimeiroJogador.getText());
 		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaApostaDoPrimeiroJogador.getSelectedItem();
 		String nome = entradaDoNomeDoJogador.getText();
-		jogo.fixaJogada(new Aposta(nome, aposta, valor));
+		try {
+			jogo.fixaJogada(new Aposta(nome, aposta, valor));
+		} catch (SQLException erro) {
+			JOptionPane.showConfirmDialog(null, erro.getMessage());
+		}
 	}
 }

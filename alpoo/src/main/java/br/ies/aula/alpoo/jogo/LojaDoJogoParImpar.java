@@ -1,9 +1,11 @@
 package br.ies.aula.alpoo.jogo;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.ies.aula.alpoo.jogo.banco.de.dados.BancoDeDadosDoParImpar;
 import br.ies.aula.alpoo.jogo.entidade.Aposta;
 import br.ies.aula.alpoo.jogo.entidade.ResultadosDoJogoParImpar;
 
@@ -18,7 +20,8 @@ public class LojaDoJogoParImpar {
 		iniciarPartida();
 	}
 
-	public void fixaJogada(Aposta aposta) {
+	public void fixaJogada(Aposta aposta) throws SQLException {
+		new BancoDeDadosDoParImpar().inserir(aposta);
 		apostas.add(aposta);
 		estadoDoJogo.jogar(aposta);
 	}
