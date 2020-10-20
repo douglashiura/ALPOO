@@ -11,7 +11,7 @@ public class Bean {
 	public Bean() {
 		name = "Teste";
 	}
-	
+
 	public String getName() {
 		return name;
 	}
