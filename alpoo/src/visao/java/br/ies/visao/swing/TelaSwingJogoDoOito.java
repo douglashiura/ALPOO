@@ -1,4 +1,4 @@
-package br.ies.visao;
+package br.ies.visao.swing;
 
 import java.awt.Color;
 import java.awt.EventQueue;

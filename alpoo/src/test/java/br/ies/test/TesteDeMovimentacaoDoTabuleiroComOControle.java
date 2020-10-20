@@ -8,7 +8,7 @@ import org.junit.Test;
 import br.ies.main.tabuleiro.ControleDoTabuleiro;
 import br.ies.main.tabuleiro.Tabuleiro;
 
-public class TesteDeMovimentaçãoDoTabuleiroComOControle {
+public class TesteDeMovimentacaoDoTabuleiroComOControle {
 
 	private ControleDoTabuleiro controle;
 
