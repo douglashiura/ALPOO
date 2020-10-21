@@ -13,12 +13,9 @@
 		<h:outputLabel value="Senha: " />
 		<h:inputText value="#{bean.password}"></h:inputText>
 		<br />
-		<h:commandButton value="Submita" action="#{bean.opaViraApo}"
-			update="opa" />
+		<h:commandButton value="Submit" action="#{bean.autenticar}" />
 		<br />
-		<h:outputText value="#{bean.password}" />
-		<br />
-		<h:outputLabel id="opa" value="#{bean.autenticado}"></h:outputLabel>
+		<h:outputLabel value="#{bean.autenticado}"></h:outputLabel>
 	</h:form>
 </h:body>
 </html>

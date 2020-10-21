@@ -12,7 +12,6 @@ public class Bean {
 
 	public Bean() {
 		// name = "Teste";
-		autenticado = "Opa";
 	}
 
 	public String getName() {
@@ -33,7 +32,6 @@ public class Bean {
 		} else {
 			autenticado = "Tudo errado";
 		}
-
 	}
 
 	public String getAutenticado() {
