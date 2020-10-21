@@ -33,7 +33,11 @@
 					#{bean.getCelulaInferiorDireita()}</div>
 			</div>
 		</div>
-		<h:commandButton value="Cima" action="#{bean.moverPraCima}"></h:commandButton>
+		<f:ajax></f:ajax>
+		<h:commandButton value="Cima" action="#{bean.moverPraCima()}">
+			<f:ajax listener="#{LivroHandler.inserir}" execute="@all"
+				render="@all" event="click" />
+		</h:commandButton>
 		<h:commandButton value="Baixo" action="#{bean.moverPraBaixo}"></h:commandButton>
 		<h:commandButton value="Esquerda" action="#{bean.moverPraEsquerda}"></h:commandButton>
 		<h:commandButton value="Direita" action="#{bean.moverPraDireita}"></h:commandButton>
