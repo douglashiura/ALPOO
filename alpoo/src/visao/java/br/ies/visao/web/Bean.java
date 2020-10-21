@@ -10,55 +10,72 @@ import br.ies.main.tabuleiro.Tabuleiro;
 @ManagedBean()
 public class Bean {
 	private String name;
-	
+
 	private ControleDoTabuleiro controle;
-	
+
 	public Bean() {
 		controle = new ControleDoTabuleiro(new Tabuleiro());
 		name = "TesteNoJogoDoOito";
 	}
-	
-	//Superior
+
+	// Superior
 	public String getCelulaSuperiorEsquerda() {
-		return String.format("%s", controle.getTabuleiro().getSuperiorEsquerda());
+		return controle.getTabuleiro().getSuperiorEsquerda().toString();
 	}
-	
+
 	public String getCelulaSuperiorCentral() {
-		return String.format("%s", controle.getTabuleiro().getSuperiorCentral());
+		return controle.getTabuleiro().getSuperiorCentral().toString();
 	}
-	
+
 	public String getCelulaSuperiorDireita() {
-		return String.format("%s", controle.getTabuleiro().getSuperiorDireita());
+		return controle.getTabuleiro().getSuperiorDireita().toString();
 	}
-	
-	//Centro
+
+	// Centro
 	public String getCelulaCentralEsquerda() {
-		return String.format("%s", controle.getTabuleiro().getCentroEsquerda());
+		return controle.getTabuleiro().getCentroEsquerda().toString();
 	}
-	
+
 	public String getCelulaCentral() {
-		return String.format("%s", controle.getTabuleiro().getCentro());
+		return controle.getTabuleiro().getCentro().toString();
 	}
-	
+
 	public String getCelulaCentralDireita() {
-		return String.format("%s", controle.getTabuleiro().getCentroDireita());
+		return controle.getTabuleiro().getCentroDireita().toString();
 	}
-	
-	//Inferior
+
+	// Inferior
 	public String getCelulaInferiorEsquerda() {
-		return String.format("%s", controle.getTabuleiro().getInferiorEsquerda());
+		return controle.getTabuleiro().getInferiorEsquerda().toString();
 	}
-	
+
 	public String getCelulaInferiorCentral() {
-		return String.format("%s", controle.getTabuleiro().getInferiorCentral());
+		return controle.getTabuleiro().getInferiorCentral().toString();
 	}
-	
+
 	public String getCelulaInferiorDireita() {
-		return String.format("%s", controle.getTabuleiro().getInferiorDireita());
+		return controle.getTabuleiro().getInferiorDireita().toString();
 	}
-	
-	//Getters and Setters
+
+	// Getters and Setters
 	public String getName() {
 		return name;
 	}
+
+	public void moverPraCima() {
+		controle.moverPraCima();
+	}
+
+	public void moverPraBaixo() {
+		controle.moverPraBaixo();
+	}
+
+	public void moverPraEsquerda() {
+		controle.moverPraEsquerda();
+	}
+
+	public void moverPraDireita() {
+		controle.moverPraDireita();
+	}
+
 }

@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" href="style.css"/>
-		<title>Jogo Do Oito</title>
-	</h:head>
-	<h:body>
-		<h:outputLabel value="INDEX do teste do Jogo do Oito" />
-        <br />
-        <h:outputLabel value="#{bean.name}" />
-        <br /><br />esc
-        
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Jogo Do Oito</title>
+</h:head>
+<h:body>
+	<h:outputLabel value="INDEX do teste do Jogo do Oito" />
+	<br />
+	<h:outputLabel value="#{bean.name}" />
+	<br />
+	<br />
+	<h:form>
 		<div id="test">
-	        <div class="container">
+			<div class="container">
+				<div class="containerInside">#{bean.getCelulaSuperiorEsquerda()}
+				</div>
 				<div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaSuperiorEsquerda()}" /></div>
+					#{bean.getCelulaSuperiorCentral()}</div>
 				<div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaSuperiorCentral()}" /></div>
+					#{bean.getCelulaSuperiorDireita()}</div>
 				<div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaSuperiorDireita()}" /></div>
+					#{bean.getCelulaCentralEsquerda()}</div>
+				<div class="containerInside">#{bean.getCelulaCentral()}</div>
+				<div class="containerInside">#{bean.getCelulaCentralDireita()}
+				</div>
 				<div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaCentralEsquerda()}" /></div>
+					#{bean.getCelulaInferiorEsquerda()}</div>
 				<div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaCentral()}" /></div>
+					#{bean.getCelulaInferiorCentral()}</div>
 				<div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaCentralDireita()}" /></div>
-	            <div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaInferiorEsquerda()}" /></div>
-	            <div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaInferiorCentral()}" /></div>
-                <div class="containerInside">
-                    <h:outputLabel value="#{bean.getCelulaInferiorDireita()}" /></div>
-            </div>
-    	</div>
-	</h:body>
+					#{bean.getCelulaInferiorDireita()}</div>
+			</div>
+		</div>
+		<h:commandButton value="Cima" action="#{bean.moverPraCima}"></h:commandButton>
+		<h:commandButton value="Baixo" action="#{bean.moverPraBaixo}"></h:commandButton>
+		<h:commandButton value="Esquerda" action="#{bean.moverPraEsquerda}"></h:commandButton>
+		<h:commandButton value="Direita" action="#{bean.moverPraDireita}"></h:commandButton>
+	</h:form>
+</h:body>
 </html>
