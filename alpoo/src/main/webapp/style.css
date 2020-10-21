@@ -1,5 +1,6 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -20,7 +21,7 @@ a {
     background-color: rgb(35, 84, 158);
     display: grid;
     font-size: 8vw;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: 33.333% 33.333% 33.333%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -36,10 +37,6 @@ a {
         font-size: 15vw;
         grid-template-columns: 33.33% 33.33% 33.33%;
     }
-}
-
-.container div:nth-child(9) {
-    background-color: white;
 }
 
 .containerInside {

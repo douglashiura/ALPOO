@@ -24,6 +24,7 @@ public class TelaSwingJogoDoOito {
 	private JFrame frmJogoDoOito;
 	private ControleDoTabuleiro controle = new ControleDoTabuleiro(new Tabuleiro());
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -219,6 +220,7 @@ public class TelaSwingJogoDoOito {
 	private void pintarDeCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
 			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorCentral,
 			JLabel inferiorEsquerdo, JLabel inferiorDireita) {
+		
 		List<JLabel> listaDeTextos = new ArrayList<JLabel>();
 
 		listaDeTextos.add(superiorEsquerdo);
