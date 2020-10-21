@@ -22,6 +22,7 @@ a {
     display: grid;
     font-size: 8vw;
     grid-template-columns: 33.333% 33.333% 33.333%;
+    grid-auto-columns: max;
 }
 
 @media screen and (max-width: 1000px) {
