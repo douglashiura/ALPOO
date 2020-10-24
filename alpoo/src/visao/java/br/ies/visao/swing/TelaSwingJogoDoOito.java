@@ -4,12 +4,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -117,7 +112,7 @@ public class TelaSwingJogoDoOito {
 		ActionListener cimaPressionado = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controle.moverPraBaixo();
-				atualizeTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
+				atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
 						centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 			}
 		};
@@ -130,7 +125,7 @@ public class TelaSwingJogoDoOito {
 		ActionListener esquerdaPressionado = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controle.moverPraDireita();
-				atualizeTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
+				atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
 						centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 			}
 		};
@@ -146,7 +141,7 @@ public class TelaSwingJogoDoOito {
 		ActionListener direitaPressionado = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controle.moverPraEsquerda();
-				atualizeTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
+				atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
 						centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 			}
 		};
@@ -160,7 +155,7 @@ public class TelaSwingJogoDoOito {
 		ActionListener baixoPressionado = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controle.moverPraCima();
-				atualizeTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
+				atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
 						centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 			}
 		};
@@ -168,38 +163,16 @@ public class TelaSwingJogoDoOito {
 		botaoBaixo.addActionListener(baixoPressionado);
 		frmJogoDoOito.getContentPane().add(botaoBaixo);
 
-		KeyListener teclado = new KeyListener() {
+		KeyListener teclado = new Teclado(controle, superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
+				centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita, this);
 
-			@Override
-			public void keyTyped(KeyEvent e) {
-			}
+		frmJogoDoOito.addKeyListener(teclado);
 
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				Map<Integer, Runnable> mapa = new HashMap<Integer, Runnable>();
-				mapa.put(KeyEvent.VK_W, () -> controle.moverPraBaixo());
-				mapa.put(KeyEvent.VK_S, () -> controle.moverPraCima());
-				mapa.put(KeyEvent.VK_A, () -> controle.moverPraDireita());
-				mapa.put(KeyEvent.VK_D, () -> controle.moverPraEsquerda());
-
-				mapa.get(e.getKeyCode()).run();
-
-				atualizeTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
-						centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
-			}
-		};
-
-		botaoCima.addKeyListener(teclado);
-
-		atualizeTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
+		atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
 				centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 	}
 
-	private void atualizeTodasAsCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
+	public void atualizaTodasAsCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
 			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorCentral,
 			JLabel inferiorEsquerdo, JLabel inferiorDireita) {
 		superiorEsquerdo.setText(controle.getTabuleiro().getSuperiorEsquerda().toString());
@@ -212,72 +185,12 @@ public class TelaSwingJogoDoOito {
 		inferiorEsquerdo.setText(controle.getTabuleiro().getInferiorEsquerda().toString());
 		inferiorDireita.setText(controle.getTabuleiro().getInferiorDireita().toString());
 
-		pintarDeCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
-				centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
-	}
-
-	private void pintarDeCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
-			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorCentral,
-			JLabel inferiorEsquerdo, JLabel inferiorDireita) {
-
-		List<JLabel> listaDeTextos = new ArrayList<JLabel>();
-
-		listaDeTextos.add(superiorEsquerdo);
-		listaDeTextos.add(superiorCentral);
-		listaDeTextos.add(superiorDireita);
-		listaDeTextos.add(centroEsquerda);
-		listaDeTextos.add(centroCentral);
-		listaDeTextos.add(centroDireita);
-		listaDeTextos.add(inferiorCentral);
-		listaDeTextos.add(inferiorEsquerdo);
-		listaDeTextos.add(inferiorDireita);
-
-		for (JLabel camposDeTexto : listaDeTextos) {
-			try {
-				Map<String, Runnable> mapa = new HashMap<String, Runnable>();
-				mapa.put("0", () -> camposDeTexto.setText(""));
-				mapa.get(camposDeTexto.getText()).run();
-			} catch (NullPointerException e) {
-
-			}
-
-			Map<String, Runnable> mapaVizinhosColoridos = new HashMap<String, Runnable>();
-			Map<String, Runnable> mapaVizinhosBrancos = new HashMap<String, Runnable>();
-			for (JLabel vizinhosColoridos : listaDeTextos) {
-
-				mapaVizinhosColoridos.put(vizinhosColoridos.getText(),
-						() -> vizinhosColoridos.setForeground(Color.RED));
-
-				mapaVizinhosBrancos.put(vizinhosColoridos.getText(),
-						() -> vizinhosColoridos.setForeground(Color.black));
-				mapaVizinhosBrancos.get(vizinhosColoridos.getText()).run();
-
-			}
-
-			try {
-				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getCima().getNumero().toString()).run();
-			} catch (NullPointerException e) {
-			}
-
-			try {
-				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getBaixo().getNumero().toString())
-						.run();
-			} catch (NullPointerException e) {
-			}
-
-			try {
-				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getEsquerda().getNumero().toString())
-						.run();
-			} catch (NullPointerException e) {
-			}
-
-			try {
-				mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getDireita().getNumero().toString())
-						.run();
-			} catch (NullPointerException e) {
-			}
-
-		}
+		new PintadorDeCelulasVizinhas().pintarDeCelulas(superiorEsquerdo, superiorCentral, superiorDireita,
+				centroEsquerda, centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita,
+				controle);
+		frmJogoDoOito.setFocusable(true);
+		frmJogoDoOito.setFocusTraversalKeysEnabled(false);
 
 	}
+
 }
