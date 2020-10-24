@@ -49,40 +49,25 @@ public class PintadorDeCelulasVizinhas {
 
 			}
 
-			pintarVizinhosDeCima(controle, mapaVizinhosColoridos);
-			pintarVizinhoDeBaixo(controle, mapaVizinhosColoridos);
-			pintarVizinhoDaEsquerda(controle, mapaVizinhosColoridos);
-			pintarVizinhoDaDireita(controle, mapaVizinhosColoridos);
+			pintarCelulas(
+					mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getCima().getNumero().toString()));
+			pintarCelulas(
+					mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getBaixo().getNumero().toString()));
+			pintarCelulas(mapaVizinhosColoridos
+					.get(controle.getTabuleiro().getPonteiro().getEsquerda().getNumero().toString()));
+			pintarCelulas(mapaVizinhosColoridos
+					.get(controle.getTabuleiro().getPonteiro().getDireita().getNumero().toString()));
+
 		}
 
 	}
 
-	private void pintarVizinhoDaDireita(ControleDoTabuleiro controle, Map<String, Runnable> mapaVizinhosColoridos) {
+	public void pintarCelulas(Runnable r) {
 		try {
-			mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getDireita().getNumero().toString()).run();
+			r.run();
 		} catch (NullPointerException e) {
-		}
-	}
 
-	private void pintarVizinhoDaEsquerda(ControleDoTabuleiro controle, Map<String, Runnable> mapaVizinhosColoridos) {
-		try {
-			mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getEsquerda().getNumero().toString()).run();
-		} catch (NullPointerException e) {
 		}
-	}
 
-	private void pintarVizinhoDeBaixo(ControleDoTabuleiro controle, Map<String, Runnable> mapaVizinhosColoridos) {
-		try {
-			mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getBaixo().getNumero().toString()).run();
-		} catch (NullPointerException e) {
-		}
 	}
-
-	private void pintarVizinhosDeCima(ControleDoTabuleiro controle, Map<String, Runnable> mapaVizinhosColoridos) {
-		try {
-			mapaVizinhosColoridos.get(controle.getTabuleiro().getPonteiro().getCima().getNumero().toString()).run();
-		} catch (NullPointerException e) {
-		}
-	}
-
 }
