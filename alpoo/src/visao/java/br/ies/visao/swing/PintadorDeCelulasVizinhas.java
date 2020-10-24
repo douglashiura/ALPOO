@@ -62,9 +62,9 @@ public class PintadorDeCelulasVizinhas {
 
 	}
 
-	public void pintarCelulas(Runnable r) {
+	public void pintarCelulas(Runnable pincel) {
 		try {
-			r.run();
+			pincel.run();
 		} catch (NullPointerException e) {
 
 		}
