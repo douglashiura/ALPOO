@@ -6,13 +6,33 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 @ManagedBean()
 public class Bean {
-	private String name;
+	String login;
+	String senha;
 	
-	public Bean() {
-		name = "TesteBranchFaculdade";
+	public Bean() {}
+	
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+	
+	public String autenticacao() {
+		if(login.equals(senha)) {
+			return "Bem vindo " + login + ", autenticado com sucesso!";
+		} else {
+			return "Falha na autenticação.";
+		}
+	}
+	
 }
