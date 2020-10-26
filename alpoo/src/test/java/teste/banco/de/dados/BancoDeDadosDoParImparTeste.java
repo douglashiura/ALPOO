@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import aula.par.impar.banco.de.dados.BancoDeDadosParImparAposta;
 import aula.par.impar.banco.de.dados.BancoDeDadosParImparVencedor;
+import aula.par.impar.banco.de.dados.hibernate.GerenciadorDoHibernate;
 import aula.par.impar.entidade.Aposta;
 import aula.par.impar.entidade.ResultadosDoJogoParImpar;
 import aula.par.impar.entidade.Vencedor;
@@ -27,6 +28,19 @@ public class BancoDeDadosDoParImparTeste {
 		BancoDeDadosParImparAposta banco = new BancoDeDadosParImparAposta();
 		banco.inserir(aposta);
 		List<Aposta> apostas = banco.obterApostas();
+		assertEquals(1, apostas.size());
+		assertNotNull(apostas.get(0).getId());
+		
+		//Adicionar os assertEquals restantes
+		//assertEquals()...
+	}
+	
+	@Test
+	public void inserirUmaApostaNoHibernate() throws Exception {
+		Aposta aposta = new Aposta("VictorHibernate", ResultadosDoJogoParImpar.IMPAR, 2);
+		GerenciadorDoHibernate hibernate = new GerenciadorDoHibernate();
+		hibernate.inserir(aposta);
+		List<Aposta> apostas = new BancoDeDadosParImparAposta().obterApostas();
 		assertEquals(1, apostas.size());
 		assertNotNull(apostas.get(0).getId());
 		

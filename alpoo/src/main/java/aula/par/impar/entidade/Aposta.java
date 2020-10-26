@@ -1,11 +1,30 @@
 package aula.par.impar.entidade;
 
-public class Aposta {
-	private Integer valor;
-	private String nome;
-	private ResultadosDoJogoParImpar aposta;
-	private Integer id;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import aula.par.impar.Pessoa;
+
+@Entity
+public class Aposta {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String nome;
+	private Integer valor;
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	private Pessoa pessoa;
+	@Enumerated(EnumType.STRING)
+	private ResultadosDoJogoParImpar aposta;
+
+	Aposta() {}
+	
 	public Aposta(Integer valor) {
 		this.valor = valor;
 	}
@@ -17,20 +36,20 @@ public class Aposta {
 	}
 
 	//Getters
+	public Integer getId() {
+		return id;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
 	public Integer getValor() {
 		return valor;
 	}
 
 	public ResultadosDoJogoParImpar getAposta() {
 		return aposta;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 	
 	public void setId(Integer id) {
