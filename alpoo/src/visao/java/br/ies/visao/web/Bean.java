@@ -9,13 +9,15 @@ import br.ies.main.tabuleiro.Tabuleiro;
 @SessionScoped
 @ManagedBean()
 public class Bean {
-	private String name;
-
+	private static final String colorBlue = "#23549e";
+	private static final String colorWhite = "#072c63";
+	
 	private ControleDoTabuleiro controle;
-
+	private String name;
+	
 	public Bean() {
 		controle = new ControleDoTabuleiro(new Tabuleiro());
-		name = "TesteNoJogoDoOito";
+		name = "Jogo Do Oito";
 	}
 
 	// Superior
@@ -57,6 +59,58 @@ public class Bean {
 		return controle.getTabuleiro().getInferiorDireita().toString();
 	}
 
+	// Checar Cor
+	
+	public String getCorCelula(Integer numero) {
+		if(numero.equals(Integer.valueOf(0))) {
+			return colorWhite;
+		} else {
+			return colorBlue;
+		}
+	}
+	
+	// Superior Cor
+	
+	public String getCorCelulaSuperiorEsquerda() {
+		return getCorCelula(controle.getTabuleiro().getSuperiorEsquerda());
+	}
+	
+	public String getCorCelulaSuperiorCentral() {
+		return getCorCelula(controle.getTabuleiro().getSuperiorCentral());
+	}
+	
+	public String getCorCelulaSuperiorDireita() {
+		return getCorCelula(controle.getTabuleiro().getSuperiorDireita());
+	}
+	
+	// Central Cor
+	
+	public String getCorCelulaCentralEsquerda() {
+		return getCorCelula(controle.getTabuleiro().getCentroEsquerda());
+	}
+	
+	public String getCorCelulaCentral() {
+		return getCorCelula(controle.getTabuleiro().getCentro());
+	}
+	
+	public String getCorCelulaCentralDireita() {
+		return getCorCelula(controle.getTabuleiro().getCentroDireita());
+	}
+	
+	// Inferior Cor
+	
+	public String getCorCelulaInferiorEsquerda() {
+		return getCorCelula(controle.getTabuleiro().getInferiorEsquerda());
+	}
+	
+	public String getCorCelulaInferiorCentral() {
+		return getCorCelula(controle.getTabuleiro().getInferiorCentral());
+	}
+	
+	public String getCorCelulaInferiorDireita() {
+		return getCorCelula(controle.getTabuleiro().getInferiorDireita());
+	}
+	
 	// Getters and Setters
 	public String getName() {
 		return name;

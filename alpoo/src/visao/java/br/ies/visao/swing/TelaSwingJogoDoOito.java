@@ -17,7 +17,7 @@ import br.ies.main.tabuleiro.Tabuleiro;
 public class TelaSwingJogoDoOito {
 
 	private JFrame frmJogoDoOito;
-	private ControleDoTabuleiro controle = new ControleDoTabuleiro(new Tabuleiro());
+	private ControleDoTabuleiro controle;
 
 	/**
 	 * Launch the application.
@@ -39,6 +39,7 @@ public class TelaSwingJogoDoOito {
 	 * Create the application.
 	 */
 	public TelaSwingJogoDoOito() {
+		controle = new ControleDoTabuleiro(new Tabuleiro());
 		initialize();
 	}
 

@@ -2,37 +2,54 @@
     font-family: Arial;
     font-weight: bold;
     text-align: center;
+    background-color: rgb(35, 84, 158);
 }
 
-a {
-    color: white;
-    text-decoration: none;
-    background-color: none;
-}
-
-#test {
+#box {
     width: 40%;
     margin: auto;
-    border: 5px solid rgb(35, 84, 158);
+    border: 5px solid #072c63;
+}
+
+#box2 {
+	font-size: 10px;
+	width: 40%;
+	margin: auto;
+}
+
+.buttons {
+	padding:0.35em 1.2em;
+	border:0.1em solid #FFFFFF;
+	margin:0 01em 0.3em 0;
+	border-radius:0.12em;
+	text-decoration:none;
+	font-weight: 400;
+	color:#FFFFFF;
+	text-align:center;
+	transition: all 0.2s;
+}
+
+.buttons:hover {
+	color:#000000;
+	background-color:#FFFFFF;
 }
 
 .container {
-    color: white;
-    background-color: rgb(35, 84, 158);
+    color: #072c63;
     display: grid;
     font-size: 8vw;
     grid-template-columns: 33.333% 33.333% 33.333%;
 }
 
 @media screen and (max-width: 1000px) {
-    #test {
+    #box {
         width: 60%;
         margin: auto;
-        border: 5px solid rgb(35, 84, 158);
+        border: 5px solid #ff0000;
     }
     
     .container {
-        color: white;
+        color: #072c63;
         display: grid;
         font-size: 15vw;
         grid-template-columns: 33.33% 33.33% 33.33%;
@@ -40,5 +57,5 @@ a {
 }
 
 .containerInside {
-    border: 5px solid white;
+    border: 5px solid #072c63;
 }

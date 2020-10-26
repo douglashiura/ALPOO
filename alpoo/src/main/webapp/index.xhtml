@@ -12,35 +12,38 @@
 	<h:outputLabel value="INDEX do teste do Jogo do Oito" />
 	<br />
 	<h:form>
-		<div id="test">
+		<div id="box">
 			<div class="container">
-				<div class="containerInside">#{bean.getCelulaSuperiorEsquerda()}
-				</div>
-				<div class="containerInside">
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaSuperiorEsquerda()};">
+					#{bean.getCelulaSuperiorEsquerda()}</div>
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaSuperiorCentral()};">
 					#{bean.getCelulaSuperiorCentral()}</div>
-				<div class="containerInside">
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaSuperiorDireita()};">
 					#{bean.getCelulaSuperiorDireita()}</div>
-				<div class="containerInside">
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaCentralEsquerda()};">
 					#{bean.getCelulaCentralEsquerda()}</div>
-				<div class="containerInside">#{bean.getCelulaCentral()}</div>
-				<div class="containerInside">#{bean.getCelulaCentralDireita()}
-				</div>
-				<div class="containerInside">
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaCentral()};">
+					#{bean.getCelulaCentral()}</div>
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaCentralDireita()};">
+					#{bean.getCelulaCentralDireita()}</div>
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaInferiorEsquerda()};">
 					#{bean.getCelulaInferiorEsquerda()}</div>
-				<div class="containerInside">
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaInferiorCentral()};">
 					#{bean.getCelulaInferiorCentral()}</div>
-				<div class="containerInside">
+				<div class="containerInside" style="background-color: #{bean.getCorCelulaInferiorDireita()};">
 					#{bean.getCelulaInferiorDireita()}</div>
 			</div>
 		</div>
-		<f:ajax></f:ajax>
-		<h:commandButton value="Cima" action="#{bean.moverPraCima()}">
-			<f:ajax listener="#{LivroHandler.inserir}" execute="@all"
-				render="@all" event="click" />
-		</h:commandButton>
-		<h:commandButton value="Baixo" action="#{bean.moverPraBaixo}"></h:commandButton>
-		<h:commandButton value="Esquerda" action="#{bean.moverPraEsquerda}"></h:commandButton>
-		<h:commandButton value="Direita" action="#{bean.moverPraDireita}"></h:commandButton>
+		
+		<br /><br />
+		
+		<div id="box2">
+			<h:commandButton class="buttons" value="Cima" action="#{bean.moverPraCima}" /> <br />
+			<h:commandButton class="buttons" value="Esquerda" action="#{bean.moverPraEsquerda}" />
+			<h:commandButton class="buttons" value="Direita" action="#{bean.moverPraDireita}" /><br />
+			<h:commandButton class="buttons" value="Baixo" action="#{bean.moverPraBaixo}" />
+		</div>
+		
 	</h:form>
 </h:body>
 </html>
