@@ -77,6 +77,17 @@ public class JanelaLoguin extends JFrame{
 		botaoLogar.setSize(70, 25);
 		botaoLogar.setLocation(110, 120);
 		botaoLogar.addActionListener(new ControleJanelaLoguin(textFieldLoguin, textFieldSenha, jogo, new PessoaDaoJdbc()));
+				
+//				new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				new JanelaJogoParImpar(jogo);
+//				new JanelaJogoParImpar(jogo);
+//				jogo.iniciarPartida();
+//				dispose();
+//			}
+//		}
 		
 		botaoSair = new JButton("Sair");
 		botaoSair.setSize(70, 25);
