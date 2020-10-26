@@ -119,13 +119,6 @@ public class JanelaJogoParImpar extends JFrame implements OuvinteDeResultado{
 		listaDeVencedores.setBounds(170, 65, 100, 90);
 		add(listaDeVencedores);
 	}
-	
-//	public static void main(String[] args) {		
-//		LojaJogoParImpar jogo = new LojaJogoParImpar();
-//		new JanelaJogoParImpar(jogo);
-//		new JanelaJogoParImpar(jogo);
-//		jogo.iniciarPartida();
-//	}
 
 	@Override
 	public void avisa(ResultadosParImpar resultado, List<Aposta> apostasVencedoras) {
