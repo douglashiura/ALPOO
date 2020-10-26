@@ -1,11 +1,23 @@
 package br.ies.aula.alpoo.jogo.parimpar.entidade;
 
-public class Aposta {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private Integer valor;
-	private ResultadosDoJogoParImpar aposta;
+@Entity
+public class Aposta {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Pessoa pessoa;
+	private Integer valor;
+	@Enumerated(EnumType.STRING)
+	private ResultadosDoJogoParImpar aposta;
+	
+	public Aposta() {};
 
 	public Aposta(Pessoa pessoa, ResultadosDoJogoParImpar aposta, Integer valor) {
 		this.pessoa = pessoa;
