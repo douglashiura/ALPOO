@@ -7,20 +7,20 @@ public class JogoOitoMain {
 		JogoOito jogoOito = new JogoOito();
 		
 		jogoOito.printTabuleiro();
-		jogoOito.moveZero("UP");
-		jogoOito.moveZero("LEFT");
-		jogoOito.moveZero("DOWN");
-		jogoOito.moveZero("RIGHT");
-		jogoOito.moveZero("DOWN");
-		jogoOito.moveZero("LEFT");
-		jogoOito.moveZero("UP");
-		jogoOito.moveZero("RIGHT");
-		jogoOito.moveZero("UP");
-		jogoOito.moveZero("RIGHT");
-		jogoOito.moveZero("DOWN");
-		jogoOito.moveZero("DOWN");
+		jogoOito.mover("UP");
+		jogoOito.mover("LEFT");
+		jogoOito.mover("DOWN");
+		jogoOito.mover("RIGHT");
+		jogoOito.mover("DOWN");
+		jogoOito.mover("LEFT");
+		jogoOito.mover("UP");
+		jogoOito.mover("RIGHT");
+		jogoOito.mover("UP");
+		jogoOito.mover("RIGHT");
+		jogoOito.mover("DOWN");
+		jogoOito.mover("DOWN");
 		
-		System.out.println("Finalizado.");
+		System.out.println("\nFinalizado.");
 	}
 	
 }

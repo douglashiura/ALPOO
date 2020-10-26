@@ -10,7 +10,7 @@ public class JogoOito {
 		linha = 1;
 	}
 
-	public void moveZero(String direcao) throws InterruptedException {
+	public void mover(String direcao) throws InterruptedException {
 		Thread.sleep(1500);
 		
 		switch(direcao) {
