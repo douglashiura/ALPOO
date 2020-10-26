@@ -2,24 +2,24 @@ package br.ies.aula.alpoo.calculadora;
 
 public class Calculadora {
 
-	private Integer resultado;
+	private Double resultado;
 	
-	public void somar(Integer num1, Integer num2) {
+	public void soma(Double num1, Double num2) {
 		resultado = num1 + num2;
 	}
 	
-	public void multiplicar(Integer num1, Integer num2) {
+	public void multiplicar(Double num1, Double num2) {
 		resultado = num1 * num2;
 	}
 	
-	public void dividir(Integer num1, Integer num2) {
-		if (num2.equals(0)) {
+	public void dividir(Double num1, Double num2) {
+		if (num2.equals(0.0)) {
 			throw new ArithmeticException();
 		}		
 		resultado = num1 / num2;
 	}
 	
-	public Integer obterResultado() {
+	public Double getResultado() {
 		return resultado;
 	}
 
