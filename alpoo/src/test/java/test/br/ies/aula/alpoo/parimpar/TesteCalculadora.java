@@ -1,6 +1,6 @@
-package test.br.ies.aula.alpoo;
+package test.br.ies.aula.alpoo.parimpar;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,37 +18,37 @@ public class TesteCalculadora {
 	
 	@Test
 	public void somaComResultado3() throws Exception {
-		calculadora.soma(2.0, 1.0);
-		assertEquals(Double.valueOf(3.0), calculadora.getResultado());
+		calculadora.somar(2, 1);
+		assertEquals(Integer.valueOf(3), calculadora.obterResultado());
 	}
 
 	@Test
 	public void somaComResultado2() throws Exception {
-		calculadora.soma(1.0,  1.0);
-		assertEquals(Double.valueOf(2.0), calculadora.getResultado());
+		calculadora.somar(1,  1);
+		assertEquals(Integer.valueOf(2), calculadora.obterResultado());
 	}
 	
 	@Test
 	public void multiplicarComResultado6() throws Exception {
-		calculadora.multiplicar(2.0, 3.0);
-		assertEquals(Double.valueOf(6.0), calculadora.getResultado());
+		calculadora.multiplicar(2, 3);
+		assertEquals(Integer.valueOf(6), calculadora.obterResultado());
 	}
 	
 	@Test
 	public void dividirComResultado2() throws Exception {
-		calculadora.dividir(4.0, 2.0);
-		assertEquals(Double.valueOf(2.0), calculadora.getResultado());
+		calculadora.dividir(4, 2);
+		assertEquals(Integer.valueOf(2), calculadora.obterResultado());
 	}
 	
 	@Test(expected = ArithmeticException.class)
 	public void divisaoPorZero() throws Exception {
-		calculadora.dividir(Double.valueOf(10.0), Double.valueOf(0.0));
+		calculadora.dividir(Integer.valueOf(10), Integer.valueOf(0));
 	}
 	
 	@Test
 	public void doisPontoCinco() throws Exception {
-		calculadora.dividir(5.0, 2.0);
-		assertEquals(Double.valueOf(2.5), calculadora.getResultado());
+		calculadora.dividir(5, 2);
+		assertEquals(Integer.valueOf(2), calculadora.obterResultado());
 	}
 	
 }
