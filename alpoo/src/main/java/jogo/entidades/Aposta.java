@@ -2,15 +2,37 @@ package jogo.entidades;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import jogo.ResultadosDoJogoImparPar;
 
+@Entity
+@Table
 public class Aposta {
-
+	@Id
+	@Column(name = "aposta_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private Integer valor;
 	private String nome;
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	private Pessoa pessoa;
+	@Enumerated(EnumType.STRING)
 	private ResultadosDoJogoImparPar aposta;
-	private Integer id;
+
 	private static List<Aposta> listaDeVencedores;
+
+	Aposta() {
+	}
 
 	public Aposta(Integer valor) {
 		this.setValor(valor);
@@ -21,12 +43,12 @@ public class Aposta {
 		this.setNome(nome);
 		this.setAposta(aposta);
 	}
-	
+
 	public void setVencedor(List<Aposta> vencedor) {
 		listaDeVencedores = vencedor;
 	}
-	
-	public List<Aposta> getVencedor(){
+
+	public List<Aposta> getVencedor() {
 		return listaDeVencedores;
 	}
 
@@ -62,5 +84,4 @@ public class Aposta {
 		return id;
 	}
 
-	
 }
