@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import br.ies.main.tabuleiro.Tabuleiro;
 
 public class GerenciadorDoHibernate {
-	protected SessionFactory session;
+	protected SessionFactory sessionFactory;
 	private static GerenciadorDoHibernate instancia = new GerenciadorDoHibernate();
 
 	public GerenciadorDoHibernate() {
@@ -26,18 +26,10 @@ public class GerenciadorDoHibernate {
 		configuration.addAnnotatedClass(Tabuleiro.class);
 		StandardServiceRegistryBuilder serviceRegistry = new StandardServiceRegistryBuilder();
 		StandardServiceRegistry abc = serviceRegistry.applySettings(properties).build();
-		setSession(configuration.buildSessionFactory(abc));
+		sessionFactory = configuration.buildSessionFactory(abc);
 	}
 
 	public static GerenciadorDoHibernate getInstancia() {
 		return instancia;
-	}
-
-	public SessionFactory getSession() {
-		return session;
-	}
-
-	public void setSession(SessionFactory session) {
-		this.session = session;
 	}
 }
