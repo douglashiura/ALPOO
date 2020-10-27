@@ -16,10 +16,13 @@ public class Bean {
 
 	private ControleDoTabuleiro controle;
 	private String name;
+	private HashMap<Integer, String> mapaDeCores;
 
 	public Bean() {
 		controle = new ControleDoTabuleiro(new Tabuleiro());
 		name = "Jogo Do Oito";
+		mapaDeCores = new HashMap<Integer, String>();
+		mapaDeCores.put(0, colorWhite);
 	}
 
 	// Superior
@@ -64,12 +67,8 @@ public class Bean {
 	// Checar Cor
 
 	public String getCorCelula(Integer numero) {
-		HashMap<Integer, String> mapaDeBrancos = new HashMap<Integer, String>();
-		mapaDeBrancos.put(0, colorWhite);
-
 		try {
-
-			return mapaDeBrancos.get(numero);
+			return mapaDeCores.get(numero);
 		} catch (NullPointerException e) {
 			return colorBlue;
 		}
