@@ -1,5 +1,7 @@
 package tabuleiro;
 
+import javax.persistence.Entity;
+
 import casa.Casa;
 import casa.CasaCimaDireita;
 import casa.CasaCimaEsquerda;
@@ -11,6 +13,7 @@ import casa.CasaMeio;
 import casa.CasaMeioDireita;
 import casa.CasaMeioEsquerda;
 
+@Entity
 public class Tabuleiro {
 	
 	private Casa ponteiro;
@@ -100,5 +103,13 @@ public class Tabuleiro {
 	public Casa getCimaDireita() { return cimaDireita; }
 
 	public Casa getCimaEsquerda() { return cimaEsquerda; }
+	
+	@Override
+	public String toString() {
+		return "Tabuleiro [ponteiro=" + ponteiro.verEstadoDoNumero() + ", meio=" + meio.verEstadoDoNumero() + ", meioDireita=" + meioDireita.verEstadoDoNumero() + ", meioEsquerda="
+				+ meioEsquerda.verEstadoDoNumero() + ", inferiorMeio=" + inferiorMeio.verEstadoDoNumero() + ", inferiorDireita=" + inferiorDireita.verEstadoDoNumero()
+				+ ", inferiorEsquerda=" + inferiorEsquerda.verEstadoDoNumero() + ", cimaMeio=" + cimaMeio.verEstadoDoNumero() + ", cimaDireita=" + cimaDireita.verEstadoDoNumero()
+				+ ", cimaEsquerda=" + cimaEsquerda.verEstadoDoNumero() + "]";
+	}
 
 }
