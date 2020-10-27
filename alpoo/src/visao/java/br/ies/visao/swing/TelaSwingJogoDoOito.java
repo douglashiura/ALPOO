@@ -134,7 +134,6 @@ public class TelaSwingJogoDoOito {
 				controle);
 		frmJogoDoOito.setFocusable(true);
 		frmJogoDoOito.setFocusTraversalKeysEnabled(false);
-
 	}
 
 }
