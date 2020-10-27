@@ -122,19 +122,19 @@ public class Bean {
 	}
 
 	public void moverPraCima() {
-		controle.moverPraCima();
-	}
-
-	public void moverPraBaixo() {
 		controle.moverPraBaixo();
 	}
 
+	public void moverPraBaixo() {
+		controle.moverPraCima();
+	}
+
 	public void moverPraEsquerda() {
-		controle.moverPraEsquerda();
+		controle.moverPraDireita();
 	}
 
 	public void moverPraDireita() {
-		controle.moverPraDireita();
+		controle.moverPraEsquerda();
 	}
 
 }

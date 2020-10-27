@@ -48,7 +48,7 @@ public class TelaSwingJogoDoOito {
 	private void initialize() {
 		frmJogoDoOito = new JFrame();
 		frmJogoDoOito.getContentPane().setBackground(Color.WHITE);
-		frmJogoDoOito.setTitle("Jogo Do Oito");
+		frmJogoDoOito.setTitle("APS - Jogo Do Oito");
 		frmJogoDoOito.setBounds(100, 100, 450, 300);
 		frmJogoDoOito.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJogoDoOito.getContentPane().setLayout(new GridLayout(0, 3, 0, 0));
