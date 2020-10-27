@@ -2,6 +2,7 @@ package br.ies.main.banco.de.dados;
 
 import org.hibernate.Session;
 
+import br.ies.main.entidades.Pessoa;
 import br.ies.main.tabuleiro.Tabuleiro;
 
 public class HibernateDoTabuleiro extends GerenciadorDoHibernate {
@@ -20,5 +21,9 @@ public class HibernateDoTabuleiro extends GerenciadorDoHibernate {
 		} finally {
 			session.close();
 		}
+	}
+	
+	public Tabuleiro acharTabuleiro(Pessoa pessoa) {
+		return new Tabuleiro();
 	}
 }

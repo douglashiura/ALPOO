@@ -8,6 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 
+import br.ies.main.entidades.Pessoa;
 import br.ies.main.tabuleiro.Tabuleiro;
 
 public class GerenciadorDoHibernate {
@@ -24,9 +25,10 @@ public class GerenciadorDoHibernate {
 		properties.put(AvailableSettings.HBM2DDL_AUTO, "validate");
 		configuration.setProperties(properties);
 		configuration.addAnnotatedClass(Tabuleiro.class);
+		configuration.addAnnotatedClass(Pessoa.class);
 		StandardServiceRegistryBuilder serviceRegistry = new StandardServiceRegistryBuilder();
-		StandardServiceRegistry abc = serviceRegistry.applySettings(properties).build();
-		sessionFactory = configuration.buildSessionFactory(abc);
+		StandardServiceRegistry standardService = serviceRegistry.applySettings(properties).build();
+		sessionFactory = configuration.buildSessionFactory(standardService);
 	}
 
 	public static GerenciadorDoHibernate getInstancia() {
