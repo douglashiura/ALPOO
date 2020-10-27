@@ -15,7 +15,8 @@ import jogo.banco.de.dados.AjudanteDoBancoDeDados;
 import jogo.banco.de.dados.BancoDeDadosParImpar;
 import jogo.banco.de.dados.BancoDeDadosParImparPessoa;
 import jogo.banco.de.dados.BancoDeDadosParImparVencedor;
-import jogo.banco.de.dados.hibernate.GerenciadorDeHibernate;
+import jogo.banco.de.dados.hibernate.HibernateAposta;
+import jogo.banco.de.dados.hibernate.HibernateVencedor;
 import jogo.entidades.Aposta;
 import jogo.entidades.Pessoa;
 import jogo.entidades.Vencedor;
@@ -40,9 +41,18 @@ public class BancoDeDadosDoParImparTeste {
 	}
 	
 	@Test
+	public void inserirUmVencedorHibernate() throws Exception {
+		Aposta aposta = new Aposta("Vincius", ResultadosDoJogoImparPar.IMPAR, 2);
+		HibernateVencedor venc = new HibernateVencedor();
+		Vencedor vencedor = new Vencedor(aposta);
+		venc.inserir(vencedor);
+	}
+	
+
+	@Test
 	public void inserirViaHibernate() throws Exception {
 		Aposta aposta = new Aposta("Vinicius", ResultadosDoJogoImparPar.IMPAR, 2);
-		GerenciadorDeHibernate hibernate = new GerenciadorDeHibernate();
+		HibernateAposta hibernate = new HibernateAposta();
 		hibernate.inserir(aposta);
 		List<Aposta> apostas = new BancoDeDadosParImpar().obterApostas();
 		assertEquals(1, apostas.size());

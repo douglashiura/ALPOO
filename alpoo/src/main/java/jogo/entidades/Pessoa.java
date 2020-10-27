@@ -9,7 +9,7 @@ public class Pessoa {
 
 	public Pessoa(String nome, Date dataDeNascimento) {
 		this.setNome(nome);
-		this.setDataDeNascimento(dataDeNascimento) ;
+		this.setDataDeNascimento(dataDeNascimento);
 	}
 
 	public String getNome() {
