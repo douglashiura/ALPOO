@@ -1,27 +1,18 @@
 package br.ies.aula.alpoo.calculadora;
 
+import java.util.HashMap;
+
 public class Calculadora {
-
-	public Float soma(Float parcela1, Float parcela2) {
-		return parcela1 + parcela2;
-	}
 	
-	public Integer soma(Integer parcela1, Integer parcela2) {
-		return parcela1 + parcela2;
+	HashMap<String, Operação> operacoes;
+
+	public Calculadora() {
+		operacoes = new HashMap<String, Operação>();
+		operacoes.put("/", new Divisao());
+		operacoes.put("*", new Multiplicacao());
 	}
 
-//	public Object obterResultado() {
-//		return resultado;
-//	}
-
-//	public void multi(Float x, Float y) {
-//		resultado = x * y;
-//	}
-
-//	public void div(Float x, Float y) {
-//		if (y.equals(0f))
-//			throw new ArithmeticException();
-//		resultado = x / y;
-//	}
-
+	long calcular(String operacao, long x, long y) {
+		return operacoes.get(operacao).calcular(x, y);
+	}
 }
