@@ -1,20 +1,13 @@
 package br.ies.main.entidades;
 
-import br.ies.main.tabuleiro.Tabuleiro;
-
 public class Pessoa {
+	private Integer id;
 	private String nome;
 	private String senha;
-	private Tabuleiro tabuleiro;
 
-	public Pessoa() {
-
-	}
-
-	public Pessoa(String nome, String senha, Tabuleiro tabuleiro) {
+	public Pessoa(String nome, String senha) {
 		this.setNome(nome);
 		this.setSenha(senha);
-		this.setTabuleiro(tabuleiro);
 	}
 
 	public String getNome() {
@@ -33,11 +26,11 @@ public class Pessoa {
 		this.senha = senha;
 	}
 
-	public Tabuleiro getTabuleiro() {
-		return tabuleiro;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setTabuleiro(Tabuleiro tabuleiro) {
-		this.tabuleiro = tabuleiro;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
