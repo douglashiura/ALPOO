@@ -12,7 +12,7 @@ public class Calculadora {
 		operacoes.put("*", new Multiplicacao());
 	}
 
-	long calcular(String operacao, long x, long y) {
+	int calcular(String operacao, int x, int y) throws OutOfInteger {
 		return operacoes.get(operacao).calcular(x, y);
 	}
 }
