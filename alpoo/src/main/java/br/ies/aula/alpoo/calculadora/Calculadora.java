@@ -9,12 +9,11 @@ public class Calculadora {
 	}
 	
 	public void multiplicar(Integer num1, Integer num2) throws MaxIntegerException {
-		resultado = num1 * num2;
-		
-		if (resultado > Integer.MAX_VALUE) {
+		if (num1 * num2 > Integer.MAX_VALUE) {
 			throw new MaxIntegerException("O numero é maior que o limite aceito para um inteiro.");
 		}
 		
+		resultado = num1 * num2;
 	}
 	
 	public void dividir(Integer num1, Integer num2) {
