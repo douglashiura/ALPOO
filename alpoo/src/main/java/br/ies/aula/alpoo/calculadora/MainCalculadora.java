@@ -16,6 +16,8 @@ public class MainCalculadora {
 		Integer y = scan.nextInt();
 
 		System.out.println(calculadora.calcular(operacao, x, y));
+		
+		scan.close();
 
 	}
 }
