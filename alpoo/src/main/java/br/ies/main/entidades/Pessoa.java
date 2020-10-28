@@ -1,9 +1,13 @@
 package br.ies.main.entidades;
 
+import java.sql.Timestamp;
+
+@SuppressWarnings("unused")
 public class Pessoa {
 	private Integer id;
 	private String nome;
 	private String senha;
+	private Long tempo;
 
 	public Pessoa(String nome, String senha) {
 		this.setNome(nome);
@@ -32,5 +36,13 @@ public class Pessoa {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Long getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(Long tempo) {
+		this.tempo = tempo;
 	}
 }

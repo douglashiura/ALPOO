@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class GerenciadorBancoDeDados {
 
-	private final String apagarBanco = "DELETE FROM tempos; DELETE FROM pessoa";
+	private final String apagarBanco = "DELETE FROM pessoa";
 
 	public Connection obterConexao() throws SQLException {
 		String url = "jdbc:postgresql://localhost:5432/JogoDoOito";

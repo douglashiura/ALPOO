@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,5 +27,17 @@ public class TesteDoBancoDeDadosPessoa {
 		banco.inserirPessoa(pessoa);
 		assertEquals("Vinicius", pessoa.getNome());
 		assertNotNull(pessoa.getId());
+	}
+
+	@Test
+	public void inserindoMelhorTempo() throws SQLException, InterruptedException {
+		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+		Pessoa pessoa = new Pessoa("Vinicius", "123");
+		banco.inserirPessoa(pessoa);
+		Timestamp dataInicial = new Timestamp(System.currentTimeMillis());
+		Thread.sleep(3000);
+		Timestamp dataFinal = new Timestamp(System.currentTimeMillis());
+		pessoa.setTempo((dataFinal.getTime() - dataInicial.getTime()) / 1000);
+		banco.inserirMelhorTempo(pessoa);
 	}
 }
