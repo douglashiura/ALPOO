@@ -32,7 +32,7 @@ public class ControleDoJogoParImpar implements ActionListener {
 		ResultadosDoJogoParImpar aposta = (ResultadosDoJogoParImpar) entradaDaApostaDoPrimeiroJogador.getSelectedItem();
 		String nome = entradaDoNomeDoJogador.getText();
 		try {
-			jogo.fixaJogada(new Aposta(nome, aposta, valor));
+			jogo.fixaJogada(new Aposta());
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

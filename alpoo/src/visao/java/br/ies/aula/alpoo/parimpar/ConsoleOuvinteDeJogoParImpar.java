@@ -11,7 +11,7 @@ public class ConsoleOuvinteDeJogoParImpar implements OuvinteDeResultado {
 	@Override
 	public void avisa(ResultadosDoJogoParImpar resultado, List<Aposta> apostas) {
 		for (Aposta aposta : apostas) {
-			System.out.println(aposta.getNome());
+			System.out.println(aposta);
 		}
 	}
 
