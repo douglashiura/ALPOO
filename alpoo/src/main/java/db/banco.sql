@@ -32,6 +32,11 @@ BEGIN
 			
 			RETURN TRUE;
 	END IF;
+	RETURN FALSE;
 END;
 $$ LANGUAGE plpgsql;
+
+INSERT INTO tabuleiro(casacimaesquerda,casacimameio,casacimadireita,casameioesquerda,casameio,casameiodireita,casainferioresquerda,casainferiormeio,casainferiordireita) VALUES (2,4,6,8,0,1,3,5,7);
+
+select "move_casas"('casameio','casameioesquerda',1);
 
