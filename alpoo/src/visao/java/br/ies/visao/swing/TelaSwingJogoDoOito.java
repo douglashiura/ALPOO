@@ -26,7 +26,7 @@ public class TelaSwingJogoDoOito {
 			public void run() {
 				try {
 					TelaSwingJogoDoOito window = new TelaSwingJogoDoOito();
-					window.frmJogoDoOito.setVisible(true);
+					window.getFrmJogoDoOito().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,65 +47,65 @@ public class TelaSwingJogoDoOito {
 	 */
 	private void initialize() {
 		frmJogoDoOito = new JFrame();
-		frmJogoDoOito.getContentPane().setBackground(Color.WHITE);
-		frmJogoDoOito.setTitle("APS - Jogo Do Oito");
-		frmJogoDoOito.setBounds(100, 100, 450, 300);
-		frmJogoDoOito.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmJogoDoOito.getContentPane().setLayout(new GridLayout(0, 3, 0, 0));
+		getFrmJogoDoOito().getContentPane().setBackground(Color.WHITE);
+		getFrmJogoDoOito().setTitle("APS - Jogo Do Oito");
+		getFrmJogoDoOito().setBounds(100, 100, 450, 300);
+		getFrmJogoDoOito().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrmJogoDoOito().getContentPane().setLayout(new GridLayout(0, 3, 0, 0));
 
 		JLabel superiorEsquerdo = new JLabel(controle.getTabuleiro().getSuperiorEsquerda().toString());
 		superiorEsquerdo.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		superiorEsquerdo.setHorizontalAlignment(SwingConstants.CENTER);
 		superiorEsquerdo.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(superiorEsquerdo);
+		getFrmJogoDoOito().getContentPane().add(superiorEsquerdo);
 
 		JLabel superiorCentral = new JLabel(controle.getTabuleiro().getSuperiorCentral().toString());
 		superiorCentral.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		superiorCentral.setHorizontalAlignment(SwingConstants.CENTER);
 		superiorCentral.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(superiorCentral);
+		getFrmJogoDoOito().getContentPane().add(superiorCentral);
 
 		JLabel superiorDireita = new JLabel(controle.getTabuleiro().getSuperiorDireita().toString());
 		superiorDireita.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		superiorDireita.setHorizontalAlignment(SwingConstants.CENTER);
 		superiorDireita.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(superiorDireita);
+		getFrmJogoDoOito().getContentPane().add(superiorDireita);
 
 		JLabel centroEsquerda = new JLabel(controle.getTabuleiro().getCentroEsquerda().toString());
 		centroEsquerda.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		centroEsquerda.setHorizontalAlignment(SwingConstants.CENTER);
 		centroEsquerda.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(centroEsquerda);
+		getFrmJogoDoOito().getContentPane().add(centroEsquerda);
 
 		JLabel centroCentral = new JLabel(controle.getTabuleiro().getCentro().toString());
 		centroCentral.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		centroCentral.setHorizontalAlignment(SwingConstants.CENTER);
 		centroCentral.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(centroCentral);
+		getFrmJogoDoOito().getContentPane().add(centroCentral);
 
 		JLabel centroDireita = new JLabel(controle.getTabuleiro().getCentroDireita().toString());
 		centroDireita.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		centroDireita.setHorizontalAlignment(SwingConstants.CENTER);
 		centroDireita.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(centroDireita);
+		getFrmJogoDoOito().getContentPane().add(centroDireita);
 
 		JLabel inferiorEsquerdo = new JLabel(controle.getTabuleiro().getInferiorEsquerda().toString());
 		inferiorEsquerdo.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		inferiorEsquerdo.setHorizontalAlignment(SwingConstants.CENTER);
 		inferiorEsquerdo.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(inferiorEsquerdo);
+		getFrmJogoDoOito().getContentPane().add(inferiorEsquerdo);
 
 		JLabel inferiorCentral = new JLabel(controle.getTabuleiro().getInferiorCentral().toString());
 		inferiorCentral.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		inferiorCentral.setHorizontalAlignment(SwingConstants.CENTER);
 		inferiorCentral.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(inferiorCentral);
+		getFrmJogoDoOito().getContentPane().add(inferiorCentral);
 
 		JLabel inferiorDireita = new JLabel(controle.getTabuleiro().getInferiorDireita().toString());
 		inferiorDireita.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		inferiorDireita.setHorizontalAlignment(SwingConstants.CENTER);
 		inferiorDireita.setBackground(Color.BLACK);
-		frmJogoDoOito.getContentPane().add(inferiorDireita);
+		getFrmJogoDoOito().getContentPane().add(inferiorDireita);
 
 		KeyListener teclado = new Teclado(controle, superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
 				centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita, this);
@@ -113,7 +113,7 @@ public class TelaSwingJogoDoOito {
 		atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
 				centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
 
-		frmJogoDoOito.addKeyListener(teclado);
+		getFrmJogoDoOito().addKeyListener(teclado);
 	}
 
 	public void atualizaTodasAsCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
@@ -132,8 +132,12 @@ public class TelaSwingJogoDoOito {
 		new PintadorDeCelulasVizinhas().pintarDeCelulas(superiorEsquerdo, superiorCentral, superiorDireita,
 				centroEsquerda, centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita,
 				controle);
-		frmJogoDoOito.setFocusable(true);
-		frmJogoDoOito.setFocusTraversalKeysEnabled(false);
+		getFrmJogoDoOito().setFocusable(true);
+		getFrmJogoDoOito().setFocusTraversalKeysEnabled(false);
+	}
+
+	public JFrame getFrmJogoDoOito() {
+		return frmJogoDoOito;
 	}
 
 }
