@@ -1,11 +1,5 @@
 package br.ies.main.tabuleiro;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import br.ies.main.celulas.Celula;
 import br.ies.main.celulas.CelulaCentral;
 import br.ies.main.celulas.CelulaCentralDireita;
@@ -17,13 +11,8 @@ import br.ies.main.celulas.CelulaSuperiorCentral;
 import br.ies.main.celulas.CelulaSuperiorDireita;
 import br.ies.main.celulas.CelulaSuperiorEsquerda;
 
-@Entity
-@Table
 public class Tabuleiro {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	private Celula ponteiro;
 	private CelulaCentral centro;
 	private CelulaCentralDireita centroDireita;
