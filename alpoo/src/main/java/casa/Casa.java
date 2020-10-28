@@ -32,16 +32,13 @@ public class Casa implements Movimentos {
 	
 	private Integer getNumero() { return this.numero; }
 
-	@Override
+	
 	public void moveCima() { this.trocaNumeros(this, cima); }
-
-	@Override
+	
 	public void moveBaixo() { this.trocaNumeros(this, baixo); }
-
-	@Override
+	
 	public void moveDireita() { this.trocaNumeros(this, direita); }
 
-	@Override
 	public void moveEsquerda() { this.trocaNumeros(this, esquerda); }
 	
 	public void trocaNumeros(Casa origem,Casa destino) {
