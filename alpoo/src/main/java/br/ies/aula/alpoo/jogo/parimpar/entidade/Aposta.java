@@ -1,35 +1,50 @@
 package br.ies.aula.alpoo.jogo.parimpar.entidade;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Aposta {
 	
-	private Long id;
-	private String nome;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private Integer jogada;
+	
+	@Enumerated(EnumType.STRING)
 	private ResultadosParImpar aposta;
+	
+	@ManyToOne
+	private Pessoa pessoa;
 	
 	public Aposta() {
 	}
 	
-	public Aposta(String nome, Integer jogada, ResultadosParImpar aposta) {
-		this.nome = nome;
+	public Aposta(Integer jogada, ResultadosParImpar aposta, Pessoa pessoa) {
 		this.jogada = jogada;
 		this.aposta = aposta;
+		this.pessoa = pessoa;
 	}
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 	public Integer getJogada() {
@@ -50,6 +65,6 @@ public class Aposta {
 	
 	@Override
 	public String toString() {
-		return nome;
+		return pessoa.getNome();
 	}
 }

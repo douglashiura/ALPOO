@@ -8,15 +8,20 @@ public class Calculadora {
 		resultado = num1 + num2;
 	}
 	
-	public void multiplicar(Integer num1, Integer num2) {
+	public void multiplicar(Integer num1, Integer num2) throws MaxIntegerException {
+		if (num2 > Integer.MAX_VALUE) {
+			throw new MaxIntegerException("O numero é maior que o limite aceito para um inteiro.");
+		}
+		
 		resultado = num1 * num2;
 	}
 	
 	public void dividir(Integer num1, Integer num2) {
-		if (num2.equals(0)) {
-			throw new ArithmeticException();
-		}		
-		resultado = num1 / num2;
+		try {
+			resultado = num1 / num2;
+		} catch (ArithmeticException exception) {
+			System.out.println("Não é possivel fazer a divisão por zero.");
+		}
 	}
 	
 	public Integer obterResultado() {

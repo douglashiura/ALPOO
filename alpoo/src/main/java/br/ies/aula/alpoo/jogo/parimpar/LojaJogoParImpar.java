@@ -9,8 +9,8 @@ import java.util.Map;
 
 import br.ies.aula.alpoo.jogo.parimpar.dao.ApostaDao;
 import br.ies.aula.alpoo.jogo.parimpar.dao.VencedorDao;
-import br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.ApostaDaoJdbc;
-import br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.VencedorDaoJdbc;
+import br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.jdbc.ApostaDaoJdbc;
+import br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.jdbc.VencedorDaoJdbc;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosParImpar;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.Vencedor;

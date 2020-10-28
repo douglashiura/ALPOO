@@ -2,7 +2,7 @@ CREATE TABLE aposta (
 	id SERIAL NOT NULL,	
 	jogada INTEGER NOT NULL,
 	aposta VARCHAR(32) NOT NULL,
-	pessoa_id INT NOT NULL
+	pessoa_id LONG NOT NULL
 );
 
 ALTER TABLE aposta ADD PRIMARY KEY (id);

@@ -2,28 +2,29 @@ package br.ies.aula.alpoo.jogo.parimpar.entidade;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Pessoa {
 
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
+	@Column(name = "datanascimento")
 	private LocalDate dataDeNascimento;
 	private String loguin;
 	private String senha;
-	private Aposta aposta;
+	
 
 	public Pessoa() {
 	}
 	
-	public Pessoa(Long id, String nome, LocalDate dataDeNascimento, String loguin, String senha, Aposta aposta) {
-		this.id = id;
-		this.nome = nome;
-		this.dataDeNascimento = dataDeNascimento;
-		this.loguin = loguin;
-		this.senha = senha;
-		this.aposta = aposta;
-	}
-	
-	public Pessoa(Long id, String nome, LocalDate dataDeNascimento, String loguin, String senha) {
+	public Pessoa(Integer id, String nome, LocalDate dataDeNascimento, String loguin, String senha) {
 		this.id = id;
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
@@ -31,11 +32,11 @@ public class Pessoa {
 		this.senha = senha;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -71,11 +72,4 @@ public class Pessoa {
 		this.senha = senha;
 	}
 
-	public Aposta getAposta() {
-		return aposta;
-	}
-
-	public void setAposta(Aposta aposta) {
-		this.aposta = aposta;
-	}
 }

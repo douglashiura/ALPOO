@@ -27,8 +27,8 @@ public class TesteJogoParImpar {
 	
 	@Test
 	public void cenarioOndeAPrimeiraTelaJogaAntes() throws Exception {
-		Aposta apostaUm = new Aposta("Muriel", Integer.valueOf(2), ResultadosParImpar.IMPAR);
-		Aposta apostaDois = new Aposta("Lucas", Integer.valueOf(1), ResultadosParImpar.PAR);
+		Aposta apostaUm = new Aposta(Integer.valueOf(2), ResultadosParImpar.IMPAR, null);
+		Aposta apostaDois = new Aposta(Integer.valueOf(1), ResultadosParImpar.PAR, null);
 		jogo.fixarJogada(apostaUm);
 		jogo.fixarJogada(apostaDois);
 		assertEquals(ResultadosParImpar.IMPAR, ouvinteTeste.obterResultado());
@@ -44,14 +44,14 @@ public class TesteJogoParImpar {
 	@Test
 	public void umOuvinteDeVitoriaDoJogo() throws Exception {
 		jogo.adicionarOuvinte(ouvinteTeste);
-		jogo.fixarJogada(new Aposta("Muriel", Integer.valueOf(2), ResultadosParImpar.IMPAR));
-		jogo.fixarJogada(new Aposta("Contra", Integer.valueOf(2), ResultadosParImpar.IMPAR));
+		jogo.fixarJogada(new Aposta(Integer.valueOf(2), ResultadosParImpar.IMPAR, null));
+		jogo.fixarJogada(new Aposta(Integer.valueOf(2), ResultadosParImpar.IMPAR, null));
 		assertTrue(ouvinteTeste.foiAvisado());
 	}
 
 	@Test
 	public void cenarioOndeApenasUmJogadorJogou() throws Exception {
-		Aposta aposta = new Aposta("Muriel", Integer.valueOf(2), ResultadosParImpar.IMPAR);
+		Aposta aposta = new Aposta(Integer.valueOf(2), ResultadosParImpar.IMPAR, null);
 		jogo.fixarJogada(aposta);
 		assertNull(ouvinteTeste.obterResultado());
 	}

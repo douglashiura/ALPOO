@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import br.ies.aula.alpoo.jogo.parimpar.entidade.Aposta;
+import br.ies.aula.alpoo.jogo.parimpar.entidade.Pessoa;
 import br.ies.aula.alpoo.jogo.parimpar.entidade.ResultadosParImpar;
 
 public class ControleJogoParImpar implements ActionListener{
@@ -27,7 +28,9 @@ public class ControleJogoParImpar implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Aposta aposta = new Aposta(textFieldNomeDoJogador.getText(), Integer.valueOf(textFieldJogadaDoJogador.getText()), (ResultadosParImpar)comboBoxApostaDoJogador.getSelectedItem());
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome(textFieldNomeDoJogador.getText());
+		Aposta aposta = new Aposta(Integer.valueOf(textFieldJogadaDoJogador.getText()), (ResultadosParImpar)comboBoxApostaDoJogador.getSelectedItem(), pessoa);
 		try {
 			jogo.fixarJogada(aposta);
 		} catch (SQLException e1) {

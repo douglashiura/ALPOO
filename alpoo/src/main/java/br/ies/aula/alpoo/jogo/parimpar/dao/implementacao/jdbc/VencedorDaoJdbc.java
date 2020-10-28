@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.jogo.parimpar.dao.implementacao;
+package br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.jdbc;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

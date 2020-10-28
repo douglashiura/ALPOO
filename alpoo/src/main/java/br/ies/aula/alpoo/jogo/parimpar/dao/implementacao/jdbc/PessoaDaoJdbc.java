@@ -1,4 +1,4 @@
-package br.ies.aula.alpoo.jogo.parimpar.dao.implementacao;
+package br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.jdbc;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -30,7 +30,7 @@ public class PessoaDaoJdbc implements PessoaDao {
 			if(linhasAfetadas > 0) {
 				ResultSet resultSet = statement.getGeneratedKeys();				
 				if (resultSet.next()) {
-					Long id = resultSet.getLong(1);
+					Integer id = resultSet.getInt(1);
 					pessoa.setId(id);
 				}
 				resultSet.close();
@@ -68,7 +68,7 @@ public class PessoaDaoJdbc implements PessoaDao {
 	private Pessoa instanciarPessoa(ResultSet resultSet) throws SQLException {
 		Pessoa pessoa = new Pessoa();
 		
-		pessoa.setId(resultSet.getLong("id"));
+		pessoa.setId(resultSet.getInt("id"));
 		pessoa.setNome(resultSet.getString("nome"));
 		pessoa.setDataDeNascimento(resultSet.getDate("dataNascimento").toLocalDate());
 		pessoa.setLoguin(resultSet.getString("loguin"));

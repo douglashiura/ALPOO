@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.PessoaDaoJdbc;
+import br.ies.aula.alpoo.jogo.parimpar.dao.implementacao.jdbc.PessoaDaoJdbc;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.SqlDateModel;
