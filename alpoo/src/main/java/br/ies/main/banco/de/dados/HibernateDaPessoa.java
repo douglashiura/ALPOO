@@ -5,15 +5,15 @@ import org.hibernate.Session;
 import br.ies.main.entidades.Pessoa;
 import br.ies.main.tabuleiro.Tabuleiro;
 
-public class HibernateDoTabuleiro extends GerenciadorDoHibernate {
-	
-	public HibernateDoTabuleiro() {
+public class HibernateDaPessoa extends GerenciadorDoHibernate {
+
+	public HibernateDaPessoa() {
 		super();
 	}
-	
-	public void inserirTabuleiro(Tabuleiro tabuleiro) {
+
+	public void inserirPessoa(Tabuleiro tabuleiro) {
 		Session session = sessionFactory.openSession();
-		
+
 		try {
 			session.beginTransaction();
 			session.persist(tabuleiro);
@@ -22,8 +22,13 @@ public class HibernateDoTabuleiro extends GerenciadorDoHibernate {
 			session.close();
 		}
 	}
-	
-	public Tabuleiro acharTabuleiro(Pessoa pessoa) {
-		return new Tabuleiro();
+
+	public Pessoa acharPessoa(Pessoa pessoa) {
+		try {
+
+		} finally {
+
+		}
+		return new Pessoa();
 	}
 }

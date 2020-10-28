@@ -21,7 +21,7 @@ public class Pessoa {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Tabuleiro tabuleiro;
 
-	Pessoa() {
+	public Pessoa() {
 		
 	}
 
