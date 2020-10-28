@@ -12,7 +12,7 @@ public class Calculadora {
 	
 	public void multiplicar(Integer num1, Integer num2) throws MaxIntegerException {
 		long resultadoLong = (long) num1 * num2;
-		System.out.println(resultadoLong);
+		
 		if (resultadoLong > Integer.MAX_VALUE) {
 			throw new MaxIntegerException("O numero é maior que o limite aceito para um inteiro.");
 		}
