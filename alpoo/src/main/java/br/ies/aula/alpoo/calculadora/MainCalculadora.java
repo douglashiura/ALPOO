@@ -9,11 +9,11 @@ public class MainCalculadora {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Digite o primeiro número: ");
-		int x = scan.nextInt();
+		Integer x = scan.nextInt();
 		System.out.println("Digite a operação a ser feita / ou *: ");
 		String operacao = scan.next();
 		System.out.println("Digite o segundo número: ");
-		int y = scan.nextInt();
+		Integer y = scan.nextInt();
 
 		System.out.println(calculadora.calcular(operacao, x, y));
 

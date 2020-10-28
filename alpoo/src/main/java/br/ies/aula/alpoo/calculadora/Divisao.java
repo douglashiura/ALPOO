@@ -3,7 +3,7 @@ package br.ies.aula.alpoo.calculadora;
 public class Divisao implements Operação {
 
 	@Override
-	public int calcular(int x, int y) {
+	public Integer calcular(Integer x, Integer y) {
 		try {
 			return x / y;
 		} catch (ArithmeticException e) {
