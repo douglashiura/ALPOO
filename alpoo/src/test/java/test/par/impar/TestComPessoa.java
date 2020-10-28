@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import aula.par.impar.LojaDoJogoParImpar;
-import aula.par.impar.Pessoa;
+import aula.par.impar.entidade.Pessoa;
 
 public class TestComPessoa {
 	private OuvinteDeResultadoDeTeste ouvinteDeTeste;

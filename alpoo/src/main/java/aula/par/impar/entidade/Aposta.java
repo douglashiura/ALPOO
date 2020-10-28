@@ -1,15 +1,11 @@
 package aula.par.impar.entidade;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import aula.par.impar.Pessoa;
 
 @Entity
 public class Aposta {
@@ -18,13 +14,15 @@ public class Aposta {
 	private Integer id;
 	private String nome;
 	private Integer valor;
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	private Pessoa pessoa;
+	/*
+	 * @ManyToOne(cascade = {CascadeType.MERGE}) private Pessoa pessoa;
+	 */
 	@Enumerated(EnumType.STRING)
 	private ResultadosDoJogoParImpar aposta;
 
-	Aposta() {}
-	
+	Aposta() {
+	}
+
 	public Aposta(Integer valor) {
 		this.valor = valor;
 	}
@@ -35,15 +33,15 @@ public class Aposta {
 		this.valor = valor;
 	}
 
-	//Getters
+	// Getters
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public Integer getValor() {
 		return valor;
 	}
@@ -51,7 +49,7 @@ public class Aposta {
 	public ResultadosDoJogoParImpar getAposta() {
 		return aposta;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}

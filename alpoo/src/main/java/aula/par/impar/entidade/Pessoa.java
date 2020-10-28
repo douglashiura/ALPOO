@@ -1,4 +1,4 @@
-package aula.par.impar;
+package aula.par.impar.entidade;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
