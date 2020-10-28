@@ -9,7 +9,7 @@ import br.ies.main.entidades.Pessoa;
 
 public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 
-	private final String INSERT = "INSERT INTO pessoa(nome, senha) VALUES(?, ?);";
+	private final String INSERT = "INSERT INTO pessoa(nome, senha) VALUES(?, ?) RETURNING id;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
 		Connection connection = obterConexao();

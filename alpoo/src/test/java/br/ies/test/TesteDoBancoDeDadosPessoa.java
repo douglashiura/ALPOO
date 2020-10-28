@@ -1,5 +1,8 @@
 package br.ies.test;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.sql.SQLException;
 
 import org.junit.Before;
@@ -21,5 +24,7 @@ public class TesteDoBancoDeDadosPessoa {
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		Pessoa pessoa = new Pessoa("Vinicius", "123");
 		banco.inserirPessoa(pessoa);
+		assertEquals("Vinicius", pessoa.getNome());
+		assertNotNull(pessoa.getId());
 	}
 }
