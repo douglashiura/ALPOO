@@ -5,11 +5,15 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import br.ies.main.banco.de.dados.BancoDeDadosPessoa;
+import br.ies.main.entidades.Pessoa;
 import br.ies.main.tabuleiro.ControleDoTabuleiro;
 import br.ies.main.tabuleiro.Tabuleiro;
 
@@ -108,17 +112,19 @@ public class TelaSwingJogoDoOito {
 		getFrmJogoDoOito().getContentPane().add(inferiorDireita);
 
 		KeyListener teclado = new Teclado(controle, superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda,
-				centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita, this);
+				centroCentral, centroDireita, inferiorEsquerdo, inferiorCentral, inferiorDireita, this);
 
 		atualizaTodasAsCelulas(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
-				centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita);
+				centroDireita, inferiorEsquerdo, inferiorCentral, inferiorDireita);
 
 		getFrmJogoDoOito().addKeyListener(teclado);
+
+		Cronometro relogio = new Cronometro();
 	}
 
 	public void atualizaTodasAsCelulas(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
-			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorCentral,
-			JLabel inferiorEsquerdo, JLabel inferiorDireita) {
+			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorEsquerdo,
+			JLabel inferiorCentral, JLabel inferiorDireita) {
 		superiorEsquerdo.setText(controle.getTabuleiro().getSuperiorEsquerda().toString());
 		superiorCentral.setText(controle.getTabuleiro().getSuperiorCentral().toString());
 		superiorDireita.setText(controle.getTabuleiro().getSuperiorDireita().toString());
@@ -132,12 +138,46 @@ public class TelaSwingJogoDoOito {
 		new PintadorDeCelulasVizinhas().pintarDeCelulas(superiorEsquerdo, superiorCentral, superiorDireita,
 				centroEsquerda, centroCentral, centroDireita, inferiorCentral, inferiorEsquerdo, inferiorDireita,
 				controle);
+
 		getFrmJogoDoOito().setFocusable(true);
 		getFrmJogoDoOito().setFocusTraversalKeysEnabled(false);
+
+		verificaVitoria(superiorEsquerdo, superiorCentral, superiorDireita, centroEsquerda, centroCentral,
+				centroDireita, inferiorEsquerdo, inferiorCentral, inferiorDireita);
 	}
 
 	public JFrame getFrmJogoDoOito() {
 		return frmJogoDoOito;
+	}
+
+	public void verificaVitoria(JLabel superiorEsquerdo, JLabel superiorCentral, JLabel superiorDireita,
+			JLabel centroEsquerda, JLabel centroCentral, JLabel centroDireita, JLabel inferiorEsquerdo,
+			JLabel inferiorCentral, JLabel inferiorDireita) {
+
+		boolean ganhou = superiorEsquerdo.getText().equals("1") && superiorCentral.getText().equals("2")
+				&& superiorDireita.getText().equals("3") && centroEsquerda.getText().equals("4")
+				&& centroCentral.getText().equals("5") && centroDireita.getText().equals("6")
+				&& inferiorEsquerdo.getText().equals("7") && inferiorCentral.getText().equals("8");
+
+		System.out.println(ganhou);
+
+		HashMap<Boolean, Runnable> mapa = new HashMap<Boolean, Runnable>();
+		mapa.put(true, () -> {
+			try {
+				Cronometro.getInstancia().parar();
+				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(),
+						Cronometro.getInstancia().getTempo());
+				Cronometro.getInstancia().iniciar();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
+
+		try {
+			mapa.get(ganhou).run();
+		} catch (Exception e2) {
+
+		}
 	}
 
 }

@@ -37,7 +37,6 @@ public class TesteDoBancoDeDadosPessoa {
 		Timestamp dataInicial = new Timestamp(System.currentTimeMillis());
 		Thread.sleep(3000);
 		Timestamp dataFinal = new Timestamp(System.currentTimeMillis());
-		pessoa.setTempo((dataFinal.getTime() - dataInicial.getTime()) / 1000);
-		banco.inserirMelhorTempo(pessoa);
+		banco.inserirMelhorTempo(pessoa, (dataFinal.getTime() - dataInicial.getTime()) / 1000);
 	}
 }

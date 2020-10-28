@@ -26,10 +26,10 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		connection.close();
 	}
 
-	public void inserirMelhorTempo(Pessoa pessoa) throws SQLException {
+	public void inserirMelhorTempo(Pessoa pessoa, long tempo) throws SQLException {
 		Connection connection = obterConexao();
 		PreparedStatement statement = connection.prepareStatement(INSERT_TIME);
-		statement.setLong(1, pessoa.getTempo());
+		statement.setLong(1, tempo);
 		statement.setInt(2, pessoa.getId());
 		statement.execute();
 		statement.close();

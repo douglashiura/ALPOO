@@ -1,17 +1,16 @@
 package br.ies.main.entidades;
 
-import java.sql.Timestamp;
-
-@SuppressWarnings("unused")
 public class Pessoa {
 	private Integer id;
 	private String nome;
 	private String senha;
 	private Long tempo;
+	private static Pessoa instancia;
 
 	public Pessoa(String nome, String senha) {
 		this.setNome(nome);
 		this.setSenha(senha);
+		instancia = this;
 	}
 
 	public String getNome() {
@@ -44,5 +43,9 @@ public class Pessoa {
 
 	public void setTempo(Long tempo) {
 		this.tempo = tempo;
+	}
+
+	public static Pessoa getInstancia() {
+		return instancia;
 	}
 }
