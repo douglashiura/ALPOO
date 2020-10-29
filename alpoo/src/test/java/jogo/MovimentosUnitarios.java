@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import tabuleiro.Tabuleiro;
 import tabuleiro.TabuleiroController;
-import tabuleiro.TabuleiroInterface;
+import view.TabuleiroInterface;
 
 public class MovimentosUnitarios {
 	@Test

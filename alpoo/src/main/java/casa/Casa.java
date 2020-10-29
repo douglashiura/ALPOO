@@ -47,6 +47,11 @@ public class Casa implements Movimentos {
 		destino.setNumero(trocar);
 	}
 	
+	@Override
+	public String toString() {
+		return " " + this.numero + " " ;
+	}
+
 	public Integer verEstadoDoNumero() {
 		return this.getNumero();
 	}
