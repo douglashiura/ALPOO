@@ -14,25 +14,21 @@ CREATE TABLE tabuleiro(
 
 ALTER TABLE tabuleiro ADD PRIMARY KEY (id);
 
-CREATE OR REPLACE FUNCTION public.move_casas(casa_origem VARCHAR, casa_destino VARCHAR,	id_tabuleiro INTEGER)
+CREATE OR REPLACE FUNCTION public.move_casas(_casa_origem text, _casa_destino text, id_tabuleiro INTEGER)
 RETURNS BOOLEAN AS $$
 DECLARE
-	valor_casa_origem INTEGER = (SELECT casa_origem FROM tabuleiro WHERE id = id_tabuleiro);
-	valor_casa_destino INTEGER = (SELECT casa_destino FROM tabuleiro WHERE id = id_tabuleiro);
+	valor_casa_origem INTEGER;
+	valor_casa_destino INTEGER;
 BEGIN
-	IF valor_casa_origem IS NOT NULL AND valor_casa_destino IS NOT NULL
-		THEN
-			UPDATE tabuleiro
-			SET casa_origem = valor_casa_destino
-			WHERE id = id_tabuleiro;
-			
-			UPDATE tabuleiro
-			SET casa_destino = valor_casa_origem
-			WHERE id = id_tabuleiro;
-			
-			RETURN TRUE;
+        IF _casa_origem IS NOT NULL AND _casa_destino IS NOT NULL AND id_tabuleiro IS NOT NULL THEN
+		EXECUTE format('SELECT %s FROM tabuleiro WHERE tabuleiro.id = %s', _casa_origem, id_tabuleiro) INTO valor_casa_origem;
+		EXECUTE format('SELECT %s FROM tabuleiro WHERE tabuleiro.id = %s', _casa_destino, id_tabuleiro) INTO valor_casa_destino;
+
+		EXECUTE format('UPDATE tabuleiro SET %s = %s, %s = %s WHERE tabuleiro.id = %s;', _casa_origem, valor_casa_destino, _casa_destino, valor_casa_origem, id_tabuleiro);
+		RETURN TRUE;
+	ELSE 
+		RETURN FALSE;
 	END IF;
-	RETURN FALSE;
 END;
 $$ LANGUAGE plpgsql;
 
