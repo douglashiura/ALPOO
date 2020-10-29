@@ -1,18 +1,19 @@
 CREATE TABLE tabuleiro(
 	id SERIAL,
-	casacimaesquerda INT NOT NULL,
-	casacimameio INT NOT NULL,
-	casacimadireita INT NOT NULL,
-	casameioesquerda INT NOT NULL,
-	casameio INT NOT NULL,
-	casameiodireita INT NOT NULL,
-	casainferioresquerda INT NOT NULL,
-	casainferiormeio INT NOT NULL,
-	casainferiordireita INT NOT NULL
-	
+	casa_cima_esquerda INT NOT NULL,
+	casa_cima_meio INT NOT NULL,
+	casa_cima_direita INT NOT NULL,
+	casa_meio_esquerda INT NOT NULL,
+	casa_meio INT NOT NULL,
+	casa_meio_direita INT NOT NULL,
+	casa_inferior_esquerda INT NOT NULL,
+	casa_inferior_meio INT NOT NULL,
+	casa_inferior_direita INT NOT NULL
 );
 
 ALTER TABLE tabuleiro ADD PRIMARY KEY (id);
+
+INSERT INTO tabuleiro(casa_cima_esquerda,casa_cima_meio,casa_cima_direita,casa_meio_esquerda,casa_meio,casa_meio_direita,casa_inferior_esquerda,casa_inferior_meio,casa_inferior_direita) VALUES (2,4,6,8,0,1,3,5,7);
 
 CREATE OR REPLACE FUNCTION public.move_casas(_casa_origem text, _casa_destino text,	id_tabuleiro INTEGER)
 RETURNS BOOLEAN AS $$
@@ -51,5 +52,3 @@ END;
 $$ LANGUAGE plpgsql;
 
 select "move_casas"('casameioesquerda','casacimameio',1);
-
-INSERT INTO tabuleiro(casacimaesquerda,casacimameio,casacimadireita,casameioesquerda,casameio,casameiodireita,casainferioresquerda,casainferiormeio,casainferiordireita) VALUES (2,4,6,8,0,1,3,5,7);
