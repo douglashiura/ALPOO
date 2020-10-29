@@ -9,41 +9,64 @@
 	<title>Jogo Do Oito</title>
 </h:head>
 <h:body>
-	<h:outputLabel value="INDEX do teste do Jogo do Oito" />
+	<h1>INDEX do teste do Jogo do Oito</h1>
 	<br />
-	<h:form>
+
+	<h:panelGroup id="jogo">
 		<div id="box">
 			<div class="container">
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaSuperiorEsquerda()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaSuperiorEsquerda()};">
 					#{bean.getCelulaSuperiorEsquerda()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaSuperiorCentral()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaSuperiorCentral()};">
 					#{bean.getCelulaSuperiorCentral()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaSuperiorDireita()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaSuperiorDireita()};">
 					#{bean.getCelulaSuperiorDireita()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaCentralEsquerda()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaCentralEsquerda()};">
 					#{bean.getCelulaCentralEsquerda()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaCentral()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaCentral()};">
 					#{bean.getCelulaCentral()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaCentralDireita()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaCentralDireita()};">
 					#{bean.getCelulaCentralDireita()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaInferiorEsquerda()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaInferiorEsquerda()};">
 					#{bean.getCelulaInferiorEsquerda()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaInferiorCentral()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaInferiorCentral()};">
 					#{bean.getCelulaInferiorCentral()}</div>
-				<div class="containerInside" style="background-color: #{bean.getCorCelulaInferiorDireita()};">
+				<div class="containerInside"
+					style="background-color: #{bean.getCorCelulaInferiorDireita()};">
 					#{bean.getCelulaInferiorDireita()}</div>
 			</div>
 		</div>
-		
-		<br /><br />
-		
-		<div id="box2">
-			<h:commandButton class="buttons" value="Cima" action="#{bean.moverPraCima}" /> <br />
-			<h:commandButton class="buttons" value="Esquerda" action="#{bean.moverPraEsquerda}" />
-			<h:commandButton class="buttons" value="Direita" action="#{bean.moverPraDireita}" /><br />
-			<h:commandButton class="buttons" value="Baixo" action="#{bean.moverPraBaixo}" />
-		</div>
-		
+	</h:panelGroup>
+	<br/>
+	<br/>
+	<h:form>
+		<h:commandButton class="buttons" value="Cima"
+			action="#{bean.moverPraCima}">
+			<br />
+			<f:ajax render="jogo" />
+		</h:commandButton>
+		<h:commandButton class="buttons" value="Esquerda"
+			action="#{bean.moverPraEsquerda}">
+			<f:ajax render="jogo" />
+		</h:commandButton>
+		<h:commandButton class="buttons" value="Direita"
+			action="#{bean.moverPraDireita}">
+			<br />
+			<f:ajax render="jogo" />
+		</h:commandButton>
+		<h:commandButton class="buttons" value="Baixo"
+			action="#{bean.moverPraBaixo}">
+			<f:ajax render="jogo" />
+		</h:commandButton>
 	</h:form>
+
 </h:body>
 </html>

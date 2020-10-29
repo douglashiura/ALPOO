@@ -11,8 +11,8 @@ import br.ies.main.tabuleiro.Tabuleiro;
 @SessionScoped
 @ManagedBean()
 public class Bean {
-	private static final String colorBlue = "#23549e";
-	private static final String colorWhite = "#072c63";
+	private static final String colorStandard = "#23549e";
+	private static final String colorBackground = "#072c63";
 
 	private ControleDoTabuleiro controle;
 	private String name;
@@ -22,7 +22,7 @@ public class Bean {
 		controle = new ControleDoTabuleiro(new Tabuleiro());
 		name = "Jogo Do Oito";
 		mapaDeCores = new HashMap<Integer, String>();
-		mapaDeCores.put(0, colorWhite);
+		mapaDeCores.put(0, colorBackground);
 	}
 
 	// Superior
@@ -70,7 +70,7 @@ public class Bean {
 		try {
 			return mapaDeCores.get(numero);
 		} catch (NullPointerException e) {
-			return colorBlue;
+			return colorStandard;
 		}
 	}
 
@@ -122,19 +122,19 @@ public class Bean {
 	}
 
 	public void moverPraCima() {
-		controle.moverPraBaixo();
-	}
-
-	public void moverPraBaixo() {
 		controle.moverPraCima();
 	}
 
+	public void moverPraBaixo() {
+		controle.moverPraBaixo();
+	}
+
 	public void moverPraEsquerda() {
-		controle.moverPraDireita();
+		controle.moverPraEsquerda();
 	}
 
 	public void moverPraDireita() {
-		controle.moverPraEsquerda();
+		controle.moverPraDireita();
 	}
 
 }
