@@ -51,4 +51,4 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-select "move_casas"('casameioesquerda','casacimameio',1);
+select "move_casas"('casa_meio_esquerda','casa_cima_meio',1);
