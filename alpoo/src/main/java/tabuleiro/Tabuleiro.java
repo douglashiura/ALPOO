@@ -1,6 +1,5 @@
 package tabuleiro;
 
-import javax.persistence.Entity;
 
 import casa.Casa;
 import casa.CasaCimaDireita;
@@ -13,9 +12,9 @@ import casa.CasaMeio;
 import casa.CasaMeioDireita;
 import casa.CasaMeioEsquerda;
 
-@Entity
+
 public class Tabuleiro {
-	
+	private Integer id;
 	private Casa ponteiro;
 	private CasaMeio meio;
 	private CasaMeioDireita meioDireita;
@@ -43,6 +42,8 @@ public class Tabuleiro {
 		this.inferiorEsquerda = new CasaInferiorEsquerda(Integer.valueOf(2));
 		this.inferiorMeio = new CasaInferiorMeio(Integer.valueOf(6));
 	}
+	
+	public void setId(Integer id) { this.id = id; }
 	
 	private void setVizinhos() {
 		this.setPonteiro(this.meio);
