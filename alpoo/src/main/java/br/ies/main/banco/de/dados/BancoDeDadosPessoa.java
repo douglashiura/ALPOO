@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import br.ies.main.entidades.Pessoa;
@@ -15,6 +16,7 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 	private final String INSERT_TIME = "UPDATE pessoa SET tempo = ? WHERE id = ?";
 	private final String CHECAR = "SELECT id FROM pessoa WHERE nome = ? AND senha = ?;";
 	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa;";
+	private final String PEGAR_TEMPO_DO_BANCO = "SELECT tempo FROM pessoa WHERE id = ?;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
 		Connection connection = obterConexao();
@@ -31,12 +33,37 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 
 	public void inserirMelhorTempo(Pessoa pessoa, long tempo) throws SQLException {
 		Connection connection = obterConexao();
-		PreparedStatement statement = connection.prepareStatement(INSERT_TIME);
-		statement.setLong(1, tempo);
-		statement.setInt(2, pessoa.getId());
+
+		PreparedStatement statement = connection.prepareStatement(PEGAR_TEMPO_DO_BANCO);
+		statement.setInt(1, pessoa.getId());
 		statement.execute();
-		statement.close();
-		connection.close();
+		ResultSet resultSet = statement.getResultSet();
+		resultSet.next();
+		boolean maior = resultSet.getInt(1) == 0;
+		HashMap<Boolean, Runnable> listaDeAcoes = new HashMap<Boolean, Runnable>();
+
+		listaDeAcoes.put(true, () -> {
+			try {
+				PreparedStatement statementInserirTempo = connection.prepareStatement(INSERT_TIME);
+				statementInserirTempo.setLong(1, tempo);
+				statementInserirTempo.setInt(2, pessoa.getId());
+				statementInserirTempo.execute();
+				System.out.println(tempo);
+			} catch (SQLException e) {
+
+			}
+		});
+
+		try {
+			listaDeAcoes.get(maior).run();
+		} catch (Exception e) {
+			maior = tempo < resultSet.getInt(1);
+			listaDeAcoes.get(maior).run();
+		} finally {
+			statement.close();
+			connection.close();
+		}
+
 	}
 
 	public void jaExistente(Pessoa pessoa) throws SQLException {

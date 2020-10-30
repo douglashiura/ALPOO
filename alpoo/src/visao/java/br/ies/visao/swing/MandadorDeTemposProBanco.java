@@ -30,6 +30,7 @@ public class MandadorDeTemposProBanco {
 				Cronometro.getInstancia().parar();
 				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(),
 						Cronometro.getInstancia().getTempo());
+				
 			} catch (SQLException e) {
 
 			}
