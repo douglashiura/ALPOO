@@ -48,7 +48,7 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 				statementInserirTempo.setLong(1, tempo);
 				statementInserirTempo.setInt(2, pessoa.getId());
 				statementInserirTempo.execute();
-				System.out.println(tempo);
+				statementInserirTempo.close();
 			} catch (SQLException e) {
 
 			}
