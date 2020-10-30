@@ -1,15 +1,14 @@
 package main.entity;
 
-public class scoreEntity {
+public class ScoreEntity {
 	private Integer idScore;
 	private Integer valueScore;
 	
-	public scoreEntity() {
+	public ScoreEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public scoreEntity(Integer idScore, Integer valueScore) {
+	public ScoreEntity(Integer idScore, Integer valueScore) {
 		super();
 		this.idScore = idScore;
 		this.valueScore = valueScore;
@@ -17,7 +16,7 @@ public class scoreEntity {
 
 	@Override
 	public String toString() {
-		return "scoreEntity [idScore=" + idScore + ", valueScore=" + valueScore + "]";
+		return "ScoreEntity [idScore=" + idScore + ", valueScore=" + valueScore + "]";
 	}
 	
 }

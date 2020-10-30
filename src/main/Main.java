@@ -1,10 +1,7 @@
 package main;
 
 import main.getconnection.GetConnection;
-import main.interfaceImp.MatrixEightImp;
-import main.interfaceImp.ScoreImp;
-import main.interfaceview.matrixEightInterf;
-import main.interfaceview.scoreInterf;
+import view.PlayInterface;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
@@ -12,12 +9,8 @@ public class Main {
 			GetConnection getconnection = new GetConnection();
 			getconnection.getConnection();
 			
-//			scoreInterf score = new ScoreImp();
-//			System.out.println(score.score());
-			
-			matrixEightInterf matrixEight = new MatrixEightImp();
-			matrixEight.down();
-			
+			PlayInterface play = new PlayInterface();
+			play.open();
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
