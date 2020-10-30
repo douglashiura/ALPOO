@@ -75,8 +75,9 @@ public class TelaDeLogin {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+				Pessoa pessoa = new Pessoa(textField.getText(), textField_1.getText());
 				try {
-					banco.jaExistente(new Pessoa(textField.getText(), textField_1.getText()));
+					banco.jaExistente(pessoa);
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}

@@ -6,11 +6,10 @@ public class Cronometro {
 
 	private Timestamp relogio;
 	private long tempo;
-	private static Cronometro instancia;
+	private static Cronometro instancia = new Cronometro();
 
 	public Cronometro() {
 		relogio = new Timestamp(System.currentTimeMillis());
-		instancia = this;
 	}
 
 	public void parar() {

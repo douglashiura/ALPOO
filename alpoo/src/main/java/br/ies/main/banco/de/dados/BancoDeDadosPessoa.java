@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.ies.main.entidades.Pessoa;
 
@@ -12,6 +14,7 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 	private final String INSERT = "INSERT INTO pessoa(nome, senha) VALUES(?, ?) RETURNING id;";
 	private final String INSERT_TIME = "UPDATE pessoa SET tempo = ? WHERE id = ?";
 	private final String CHECAR = "SELECT id FROM pessoa WHERE nome = ? AND senha = ?;";
+	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
 		Connection connection = obterConexao();
@@ -52,14 +55,16 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		}
 	}
 
-//	public void pegarId(Pessoa pessoa) throws SQLException {
-//		Connection connection = obterConexao();
-//		PreparedStatement statement = connection.prepareStatement(CHECAR);
-//		statement.setString(1, pessoa.getNome());
-//		statement.setString(2, pessoa.getSenha());
-//		statement.execute();
-//		ResultSet resultSet = statement.getResultSet();
-//		resultSet.next();
-//		pessoa.setId(resultSet.getInt(1));
-//	}
+	public List<String> retornarTodosOsNomeDePessoas() throws SQLException {
+		Connection connection = obterConexao();
+		PreparedStatement statement = connection.prepareStatement(RETORNAR_NOMES);
+		statement.execute();
+		ResultSet resultSet = statement.getResultSet();
+		List<String> listaDeNomesDePessoas = new ArrayList<String>();
+		while (resultSet.next()) {
+			listaDeNomesDePessoas.add(resultSet.getString(1));
+		}
+		return listaDeNomesDePessoas;
+	}
+
 }

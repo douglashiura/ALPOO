@@ -69,7 +69,7 @@ public class Tabuleiro {
 		inferiorDireita.setCima(centroDireita);
 		inferiorDireita.setEsquerda(inferiorCentral);
 
-		new AleatorizadorDeTabuleiro(this);
+//		new AleatorizadorDeTabuleiro(this);
 	}
 
 	public Celula getPonteiro() {
