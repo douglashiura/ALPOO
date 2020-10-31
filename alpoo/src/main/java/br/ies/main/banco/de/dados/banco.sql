@@ -1,0 +1,6 @@
+CREATE TABLE pessoa(
+    id SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(256) NOT NULL,
+    senha VARCHAR(256) NOT NULL,
+    tempo INTEGER
+);

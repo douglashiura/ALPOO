@@ -11,8 +11,8 @@ public class GerenciadorBancoDeDados {
 
 	public Connection obterConexao() throws SQLException {
 		String url = "jdbc:postgresql://localhost:5432/JogoDoOito";
-		String user = "postgres";
-		String password = "Aloka@01";
+		String user = "UserJogoDoOito";
+		String password = "114L";
 		return DriverManager.getConnection(url, user, password);
 	}
 

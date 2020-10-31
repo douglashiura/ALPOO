@@ -45,35 +45,27 @@
 						#{bean.getCelulaInferiorDireita()}</div>
 				</div>
 			</div>
-
 		</h:panelGroup>
 		<br />
 		<br />
 
 		<p:hotkey bind="w" actionListener="#{bean.moverPraCima}" update="jogo" />
-		<p:hotkey bind="s" actionListener="#{bean.moverPraBaixo}"
-			update="jogo" />
-		<p:hotkey bind="a" actionListener="#{bean.moverPraEsquerda}"
-			update="jogo" />
-		<p:hotkey bind="d" actionListener="#{bean.moverPraDireita}"
-			update="jogo" />
+		<p:hotkey bind="s" actionListener="#{bean.moverPraBaixo}" update="jogo" />
+		<p:hotkey bind="a" actionListener="#{bean.moverPraEsquerda}" update="jogo" />
+		<p:hotkey bind="d" actionListener="#{bean.moverPraDireita}" update="jogo" />
 
-		<h:commandButton class="buttons" value="Cima"
-			action="#{bean.moverPraCima}">
+		<h:commandButton class="buttons" value="Cima" action="#{bean.moverPraCima}">
 			<br />
 			<f:ajax render="jogo" />
 		</h:commandButton>
-		<h:commandButton class="buttons" value="Esquerda"
-			action="#{bean.moverPraEsquerda}">
+		<h:commandButton class="buttons" value="Esquerda" action="#{bean.moverPraEsquerda}">
 			<f:ajax render="jogo" />
 		</h:commandButton>
-		<h:commandButton class="buttons" value="Direita"
-			action="#{bean.moverPraDireita}">
+		<h:commandButton class="buttons" value="Direita" action="#{bean.moverPraDireita}">
 			<br />
 			<f:ajax render="jogo" />
 		</h:commandButton>
-		<h:commandButton class="buttons" value="Baixo"
-			action="#{bean.moverPraBaixo}">
+		<h:commandButton class="buttons" value="Baixo" action="#{bean.moverPraBaixo}">
 			<f:ajax render="jogo" />
 		</h:commandButton>
 	</h:form>
