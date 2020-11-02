@@ -21,10 +21,10 @@ public class ChecadorDeCadastros {
 		HashMap<Boolean, Runnable> campoPreenchido = new HashMap<Boolean, Runnable>();
 
 		try {
-			List<String> nomesJáExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
+			List<String> nomesJaExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
 			HashMap<Boolean, Runnable> nomeJaCadastrado = new HashMap<Boolean, Runnable>();
 
-			for (int i = 0; i < nomesJáExistentes.size(); i++) {
+			for (int i = 0; i < nomesJaExistentes.size(); i++) {
 				nomeJaCadastrado.put(true, () -> {
 					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 					Pessoa pessoa = new Pessoa(tela.getTextField().getText(), tela.getTextField_1().getText());
@@ -36,28 +36,42 @@ public class ChecadorDeCadastros {
 					frame.dispose();
 				});
 
-				nomeJaCadastrado.put(false, () -> nomesJáExistentes.get(0));
+				nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
 
-				Boolean x = nomesJáExistentes.get(i).equals(tela.getTextField().getText()) && new BancoDeDadosPessoa()
-						.retornarSenha(nomesJáExistentes.get(i)).equals(tela.getTextField_1().getText());
+				Boolean x = nomesJaExistentes.get(i).equals(tela.getTextField().getText()) && new BancoDeDadosPessoa()
+						.retornarSenha(nomesJaExistentes.get(i)).equals(tela.getTextField_1().getText());
 
 				nomeJaCadastrado.get(x).run();
 			}
-			System.out.println("Cadastrado com sucesso!");
-			campoPreenchido.put(false, () -> {
-				BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
-				Pessoa pessoa = new Pessoa(tela.getTextField().getText(), tela.getTextField_1().getText());
-				try {
-					banco.jaExistente(pessoa);
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-				new TelaSwingJogoDoOito().getFrmJogoDoOito().setVisible(true);
-				frame.dispose();
-			});
-			campoPreenchido.put(true, () -> JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos!"));
 
-			campoPreenchido.get(preenchido).run();
+			try {
+				for (int i = 0; i < nomesJaExistentes.size(); i++) {
+					Boolean x = nomesJaExistentes.get(i).equals(tela.getTextField().getText());
+					nomeJaCadastrado.put(true, () -> nomesJaExistentes.get(-1));
+					nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
+					nomeJaCadastrado.get(x).run();
+				}
+
+				System.out.println("Cadastrado com sucesso!");
+				campoPreenchido.put(false, () -> {
+					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+					Pessoa pessoa = new Pessoa(tela.getTextField().getText(), tela.getTextField_1().getText());
+					try {
+						banco.jaExistente(pessoa);
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+					new TelaSwingJogoDoOito().getFrmJogoDoOito().setVisible(true);
+					frame.dispose();
+				});
+				campoPreenchido.put(true,
+						() -> JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos!"));
+
+				campoPreenchido.get(preenchido).run();
+			} catch (Exception e) {
+				System.out.println("Nome já existente!2");
+			}
+
 		} catch (Exception e3) {
 			System.out.println("Nome já existente!");
 		}

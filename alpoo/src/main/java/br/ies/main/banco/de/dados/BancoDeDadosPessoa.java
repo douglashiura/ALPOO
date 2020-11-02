@@ -118,9 +118,5 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		resultSet.next();
 		return resultSet.getString(1);
 	}
-	
-	public void logar() throws SQLException {
-		Connection connection = obterConexao();
-		PreparedStatement statement = connection.prepareStatement(LOGAR);
-	}
+
 }
