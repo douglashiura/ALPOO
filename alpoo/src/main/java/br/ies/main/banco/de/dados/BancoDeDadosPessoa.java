@@ -17,6 +17,9 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 	private final String CHECAR = "SELECT id FROM pessoa WHERE nome = ? AND senha = ?;";
 	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa;";
 	private final String PEGAR_TEMPO_DO_BANCO = "SELECT tempo FROM pessoa WHERE id = ?;";
+	private final String RETORNAR_TEMPOS = "SELECT tempo FROM pessoa;";
+	private final String RETORNAR_SENHA = "SELECT senha FROM pessoa WHERE nome = ?;";
+	private final String LOGAR = "SELECT nome, senha FROM pessoa WHERE nome = ?;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
 		Connection connection = obterConexao();
@@ -94,4 +97,30 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		return listaDeNomesDePessoas;
 	}
 
+	public List<Integer> retornarTodosOsTemposDePessoas() throws SQLException {
+		Connection connection = obterConexao();
+		PreparedStatement statement = connection.prepareStatement(RETORNAR_TEMPOS);
+		statement.execute();
+		ResultSet resultSet = statement.getResultSet();
+		List<Integer> listaDeTemposDePessoas = new ArrayList<Integer>();
+		while (resultSet.next()) {
+			listaDeTemposDePessoas.add(resultSet.getInt(1));
+		}
+		return listaDeTemposDePessoas;
+	}
+
+	public String retornarSenha(String nome) throws SQLException {
+		Connection connection = obterConexao();
+		PreparedStatement statement = connection.prepareStatement(RETORNAR_SENHA);
+		statement.setString(1, nome);
+		statement.execute();
+		ResultSet resultSet = statement.getResultSet();
+		resultSet.next();
+		return resultSet.getString(1);
+	}
+	
+	public void logar() throws SQLException {
+		Connection connection = obterConexao();
+		PreparedStatement statement = connection.prepareStatement(LOGAR);
+	}
 }

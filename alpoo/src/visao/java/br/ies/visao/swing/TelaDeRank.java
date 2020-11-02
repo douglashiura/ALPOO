@@ -1,7 +1,7 @@
 package br.ies.visao.swing;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -14,6 +14,7 @@ public class TelaDeRank {
 
 	private JFrame frame;
 	List<String> listaDeNomesDoRank;
+	List<Integer> listaDeTemposnoRank;
 
 	/**
 	 * Launch the application.
@@ -47,9 +48,19 @@ public class TelaDeRank {
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		DefaultListModel<String> listaDeVencedores = new DefaultListModel<String>();
+		frame.getContentPane().setLayout(null);
 		JList<String> list = new JList<String>(retornaListaDeNomes(listaDeVencedores));
+		list.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		list.setBounds(0, 0, 216, 261);
 
-		getFrame().getContentPane().add(list, BorderLayout.NORTH);
+		getFrame().getContentPane().add(list);
+		
+		DefaultListModel<Integer> listaDeMelhoresTempos = new DefaultListModel<Integer>();
+
+		JList<Integer> list_1 = new JList<Integer>(retornaListaDeTempos(listaDeMelhoresTempos));
+		list_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		list_1.setBounds(226, 0, 208, 261);
+		frame.getContentPane().add(list_1);
 	}
 
 	public JFrame getFrame() {
@@ -68,5 +79,16 @@ public class TelaDeRank {
 			return listaDeVencedores;
 		}
 	}
-
+	
+	public DefaultListModel<Integer> retornaListaDeTempos(DefaultListModel<Integer> listaDeVencedores) {
+		try {
+			listaDeTemposnoRank = new BancoDeDadosPessoa().retornarTodosOsTemposDePessoas();
+			for (int i = 0; i < listaDeTemposnoRank.size(); i++) {
+				listaDeVencedores.add(i, listaDeTemposnoRank.get(i));
+			}
+			return listaDeVencedores;
+		} catch (Exception e) {
+			return listaDeVencedores;
+		}
+	}
 }
