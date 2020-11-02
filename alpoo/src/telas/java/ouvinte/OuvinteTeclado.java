@@ -45,10 +45,12 @@ public class OuvinteTeclado implements KeyListener{
 	}
 	
 	public void keyPressed(KeyEvent key) {
-		this.teclas.put(KeyEvent.VK_W, () -> controller.moveCima());
-		this.teclas.put(KeyEvent.VK_S, () -> controller.moveBaixo());
-		this.teclas.put(KeyEvent.VK_A, () -> controller.moveEsquerda());
-		this.teclas.put(KeyEvent.VK_D, () -> controller.moveDireita());
+		this.teclas.put(KeyEvent.VK_W, () -> controller.moveBaixo());
+		this.teclas.put(KeyEvent.VK_S, () -> controller.moveCima());
+		this.teclas.put(KeyEvent.VK_A, () -> controller.moveDireita());
+		this.teclas.put(KeyEvent.VK_D, () -> controller.moveEsquerda());
+		this.teclas.put(KeyEvent.VK_R, () -> controller.resetGame());
+		this.teclas.put(KeyEvent.VK_SPACE, () -> controller.resetGame());
 		
 		this.teclas.get(key.getKeyCode()).run();
 		

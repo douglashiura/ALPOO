@@ -7,6 +7,7 @@ import tabuleiro.Tabuleiro;
 import tabuleiro.TabuleiroController;
 
 import java.awt.event.*;
+import java.beans.PropertyChangeListener;
 
 public class TabuleiroInterface extends JFrame{
 	private JFrame frameJogo;
@@ -46,10 +47,13 @@ public class TabuleiroInterface extends JFrame{
 			this.criaCima();
 			this.criaMeio();
 			this.criaInferior();
+
 			
 			this.ouvinte = new OuvinteTeclado(controller, cimaEsquerda, cimaMeio, cimaDireita, meioEsquerda, meio, meioDireita, inferiorEsquerda, inferiorMeio, inferiorDireita, this);
 			
-			this.atualizaTela(cimaEsquerda, cimaMeio, cimaDireita, meioEsquerda, cimaMeio, meioEsquerda, inferiorEsquerda, inferiorMeio, inferiorDireita);
+			this.atualizaTela(cimaEsquerda, cimaMeio, cimaDireita, meioEsquerda, meio, meioEsquerda, inferiorEsquerda, inferiorMeio, inferiorDireita);
+			
+			this.getFrameJogo().addKeyListener(ouvinte);
 			
 	}
 	
@@ -134,10 +138,10 @@ public class TabuleiroInterface extends JFrame{
 		meioEsquerda.setText(controller.getTabuleiro().getMeioEsquerda().toString());
 		meio.setText(controller.getTabuleiro().getMeio().toString());
 		meioDireita.setText(controller.getTabuleiro().getMeioDireita().toString());
+		inferiorEsquerda.setText(controller.getTabuleiro().getInferiorEsquerda().toString());
+		inferiorMeio.setText(controller.getTabuleiro().getInferiorMeio().toString());
+		inferiorDireita.setText(controller.getTabuleiro().getInferiorDireita().toString());
 		
 	}
-    
-    
-
 }
 

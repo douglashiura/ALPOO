@@ -24,7 +24,6 @@ public class MovimentosUnitarios {
         game.setTitle("THE FIFTEEN PUZZLE");
         game.setVisible(true);
         game.setSize(400,400);
-        game.scramble();
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

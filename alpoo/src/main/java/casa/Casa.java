@@ -49,7 +49,12 @@ public class Casa implements Movimentos {
 	
 	@Override
 	public String toString() {
-		return " " + this.numero + " " ;
+		if(this.numero != 0) {
+			return " " + this.numero + " " ;			
+		}else {
+			return "";
+		}
+		
 	}
 
 	public Integer verEstadoDoNumero() {

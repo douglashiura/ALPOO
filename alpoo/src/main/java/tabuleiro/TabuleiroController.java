@@ -10,6 +10,9 @@ public class TabuleiroController implements Movimentos{
 		this.setTabuleiro(tab);
 	}
 
+	public void  resetGame() {
+		this.setTabuleiro(new Tabuleiro());
+	}
 	private void setTabuleiro(Tabuleiro tab) { this.tabuleiro = tab; }
 	
 	public Tabuleiro getTabuleiro() { return this.tabuleiro; }
