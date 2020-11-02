@@ -1,6 +1,8 @@
 package tabuleiro;
 
 
+import java.util.Random;
+
 import casa.Casa;
 import casa.CasaCimaDireita;
 import casa.CasaCimaEsquerda;
