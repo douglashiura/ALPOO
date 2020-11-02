@@ -59,8 +59,14 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		try {
 			listaDeAcoes.get(maior).run();
 		} catch (Exception e) {
+			
+		}
+		
+		try {
 			maior = tempo < resultSet.getInt(1);
 			listaDeAcoes.get(maior).run();
+		} catch (Exception e) {
+			
 		} finally {
 			statement.close();
 			connection.close();
