@@ -19,7 +19,6 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 	private final String PEGAR_TEMPO_DO_BANCO = "SELECT tempo FROM pessoa WHERE id = ?;";
 	private final String RETORNAR_TEMPOS = "SELECT tempo FROM pessoa;";
 	private final String RETORNAR_SENHA = "SELECT senha FROM pessoa WHERE nome = ?;";
-	private final String LOGAR = "SELECT nome, senha FROM pessoa WHERE nome = ?;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
 		Connection connection = obterConexao();
