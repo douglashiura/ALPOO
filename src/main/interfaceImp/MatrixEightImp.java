@@ -14,7 +14,6 @@ import main.entity.MatrixEightEntity;
 import main.getconnection.GetConnection;
 import main.interfaceview.MatrixEightInterf;
 import main.interfaceview.ScoreInterf;
-import view.GameScreen;
 
 public class MatrixEightImp implements MatrixEightInterf {
 
