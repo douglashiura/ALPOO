@@ -7,68 +7,37 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="style.css" />
-	<title>Jogo Do Oito</title>
+	<link rel="stylesheet" href="login.css" />
+	<title>Login</title>
 </h:head>
-<h:body>
-	<h1>INDEX do teste do Jogo do Oito</h1>
-	<br />
+<h:body id="teste">
+	<h1>Login do Jogo do Oito</h1>
+
 	<h:form>
-		<h:panelGroup id="jogo">
-			<div id="box">
-				<div class="container">
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaSuperiorEsquerda()};">
-						#{bean.getCelulaSuperiorEsquerda()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaSuperiorCentral()};">
-						#{bean.getCelulaSuperiorCentral()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaSuperiorDireita()};">
-						#{bean.getCelulaSuperiorDireita()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaCentralEsquerda()};">
-						#{bean.getCelulaCentralEsquerda()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaCentral()};">
-						#{bean.getCelulaCentral()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaCentralDireita()};">
-						#{bean.getCelulaCentralDireita()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaInferiorEsquerda()};">
-						#{bean.getCelulaInferiorEsquerda()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaInferiorCentral()};">
-						#{bean.getCelulaInferiorCentral()}</div>
-					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaInferiorDireita()};">
-						#{bean.getCelulaInferiorDireita()}</div>
-				</div>
-			</div>
-		</h:panelGroup>
-		<br />
-		<br />
-
-		<p:hotkey bind="w" actionListener="#{bean.moverPraCima}" update="jogo" />
-		<p:hotkey bind="s" actionListener="#{bean.moverPraBaixo}" update="jogo" />
-		<p:hotkey bind="a" actionListener="#{bean.moverPraEsquerda}" update="jogo" />
-		<p:hotkey bind="d" actionListener="#{bean.moverPraDireita}" update="jogo" />
-
-		<h:commandButton class="buttons" value="Cima" action="#{bean.moverPraCima}">
-			<br />
-			<f:ajax render="jogo" />
-		</h:commandButton>
-		<h:commandButton class="buttons" value="Esquerda" action="#{bean.moverPraEsquerda}">
-			<f:ajax render="jogo" />
-		</h:commandButton>
-		<h:commandButton class="buttons" value="Direita" action="#{bean.moverPraDireita}">
-			<br />
-			<f:ajax render="jogo" />
-		</h:commandButton>
-		<h:commandButton class="buttons" value="Baixo" action="#{bean.moverPraBaixo}">
-			<f:ajax render="jogo" />
-		</h:commandButton>
+		<h3>JSF Login Logout</h3>
+		<h:outputText value="Username" /><br/>
+		<h:inputText id="username" value="#{bean.usuario}"></h:inputText>
+		<h:message for="username"></h:message>
+		<br></br><br></br>
+		
+		<h:outputText value="Password" /><br/>
+		<h:inputSecret id="password" value="#{bean.senha}"></h:inputSecret>
+		<h:message for="password"></h:message>
+		<br></br><br></br>
+		
+		<h:commandButton action="#{bean.autenticar()}"
+			value="Login"></h:commandButton>
 	</h:form>
+
+		
+	<!--  
+	<h:outputText value="#{bean.usuario}" /><br/>
+	<h:outputText value="#{bean.senha}" />
+	-->
+
+	<!--  
+	<a href="jogo.xhtml" style="font-size: 90px">JOGO</a>
+	-->
 
 </h:body>
 </html>

@@ -1,126 +1,60 @@
 package br.ies.visao.web;
 
-import java.util.HashMap;
+import java.io.Serializable;
+import java.net.http.HttpRequest;
+import java.sql.SQLException;
+import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
-import br.ies.main.tabuleiro.ControleDoTabuleiro;
-import br.ies.main.tabuleiro.Tabuleiro;
+import br.ies.main.banco.de.dados.BancoDeDadosPessoa;
 
 @SessionScoped
-@ManagedBean()
-public class Bean {
-	private static final String colorStandard = "#23549e";
-	private static final String colorBackground = "#072c63";
+@ManagedBean(name = "bean")
+public class Bean extends GerenciamentoDasCelulas implements Serializable {
 
-	private ControleDoTabuleiro controle;
-	private String name;
-	private HashMap<Integer, String> mapaDeCores;
+	private static final long serialVersionUID = 1L;
+	
+	private String usuario;
+	private String senha;
 
 	public Bean() {
-		controle = new ControleDoTabuleiro(new Tabuleiro());
-		name = "Jogo Do Oito";
-		mapaDeCores = new HashMap<Integer, String>();
-		mapaDeCores.put(0, colorBackground);
+
 	}
 
-	// Superior
-	public String getCelulaSuperiorEsquerda() {
-		return controle.getTabuleiro().getSuperiorEsquerda().toString();
-	}
+	public String autenticar() throws SQLException {
+		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
+		Boolean estaLogado = null;
+		for (Integer iterator = 0; iterator < nomesJaExistentes.size(); iterator++) {
+			if (usuario.equals(nomesJaExistentes.get(iterator))) {
+				if (banco.retornarSenha(usuario).equals(senha)) {
+					estaLogado = true;
+				} else {
+					estaLogado = false;
+				}
+			} else {
+				estaLogado = false;
+			}
+		}
 
-	public String getCelulaSuperiorCentral() {
-		return controle.getTabuleiro().getSuperiorCentral().toString();
-	}
-
-	public String getCelulaSuperiorDireita() {
-		return controle.getTabuleiro().getSuperiorDireita().toString();
-	}
-
-	// Centro
-	public String getCelulaCentralEsquerda() {
-		return controle.getTabuleiro().getCentroEsquerda().toString();
-	}
-
-	public String getCelulaCentral() {
-		return controle.getTabuleiro().getCentro().toString();
-	}
-
-	public String getCelulaCentralDireita() {
-		return controle.getTabuleiro().getCentroDireita().toString();
-	}
-
-	// Inferior
-	public String getCelulaInferiorEsquerda() {
-		return controle.getTabuleiro().getInferiorEsquerda().toString();
-	}
-
-	public String getCelulaInferiorCentral() {
-		return controle.getTabuleiro().getInferiorCentral().toString();
-	}
-
-	public String getCelulaInferiorDireita() {
-		return controle.getTabuleiro().getInferiorDireita().toString();
-	}
-
-	// Checar Cor
-
-	public String getCorCelula(Integer numero) {
-		try {
-			return mapaDeCores.get(numero);
-		} catch (NullPointerException e) {
-			return colorStandard;
+		if (estaLogado) {
+			/*
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("username", usuario);
+			*/
+			return "jogo";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+					"Incorrect Username and Passowrd", "Please enter correct username and Password"));
+			return "index";
 		}
 	}
 
-	// Superior Cor
-
-	public String getCorCelulaSuperiorEsquerda() {
-		return getCorCelula(controle.getTabuleiro().getSuperiorEsquerda());
-	}
-
-	public String getCorCelulaSuperiorCentral() {
-		return getCorCelula(controle.getTabuleiro().getSuperiorCentral());
-	}
-
-	public String getCorCelulaSuperiorDireita() {
-		return getCorCelula(controle.getTabuleiro().getSuperiorDireita());
-	}
-
-	// Central Cor
-
-	public String getCorCelulaCentralEsquerda() {
-		return getCorCelula(controle.getTabuleiro().getCentroEsquerda());
-	}
-
-	public String getCorCelulaCentral() {
-		return getCorCelula(controle.getTabuleiro().getCentro());
-	}
-
-	public String getCorCelulaCentralDireita() {
-		return getCorCelula(controle.getTabuleiro().getCentroDireita());
-	}
-
-	// Inferior Cor
-
-	public String getCorCelulaInferiorEsquerda() {
-		return getCorCelula(controle.getTabuleiro().getInferiorEsquerda());
-	}
-
-	public String getCorCelulaInferiorCentral() {
-		return getCorCelula(controle.getTabuleiro().getInferiorCentral());
-	}
-
-	public String getCorCelulaInferiorDireita() {
-		return getCorCelula(controle.getTabuleiro().getInferiorDireita());
-	}
-
-	// Getters and Setters
-	public String getName() {
-		return name;
-	}
-
+	// Movimentos
 	public void moverPraCima() {
 		controle.moverPraCima();
 	}
@@ -135,6 +69,23 @@ public class Bean {
 
 	public void moverPraDireita() {
 		controle.moverPraDireita();
+	}
+
+	// Getters e Setters
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

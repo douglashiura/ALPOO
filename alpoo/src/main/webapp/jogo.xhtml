@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Jogo Do Oito</title>
+</h:head>
+<h:body>
+	<h1>Jogo do Oito</h1>
+	
+	<br />
+	<h:form>
+		<h:panelGroup id="jogo">
+			<div id="box">
+				<div class="container">
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaSuperiorEsquerda()};">
+						#{bean.getCelulaSuperiorEsquerda()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaSuperiorCentral()};">
+						#{bean.getCelulaSuperiorCentral()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaSuperiorDireita()};">
+						#{bean.getCelulaSuperiorDireita()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaCentralEsquerda()};">
+						#{bean.getCelulaCentralEsquerda()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaCentral()};">
+						#{bean.getCelulaCentral()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaCentralDireita()};">
+						#{bean.getCelulaCentralDireita()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaInferiorEsquerda()};">
+						#{bean.getCelulaInferiorEsquerda()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaInferiorCentral()};">
+						#{bean.getCelulaInferiorCentral()}</div>
+					<div class="containerInside"
+						style="background-color: #{bean.getCorCelulaInferiorDireita()};">
+						#{bean.getCelulaInferiorDireita()}</div>
+				</div>
+			</div>
+		</h:panelGroup>
+		<br /><br />
+
+		<p:hotkey bind="w" actionListener="#{bean.moverPraCima()}"
+			update="jogo" />
+		<p:hotkey bind="s" actionListener="#{bean.moverPraBaixo()}"
+			update="jogo" />
+		<p:hotkey bind="a" actionListener="#{bean.moverPraEsquerda()}"
+			update="jogo" />
+		<p:hotkey bind="d" actionListener="#{bean.moverPraDireita()}"
+			update="jogo" />
+			
+		<h:commandLink class="buttons" value="Cima"
+			action="#{bean.moverPraCima()}">
+			<f:ajax render="jogo" />
+		</h:commandLink>
+		<h:commandLink class="buttons" value="Esquerda"
+			action="#{bean.moverPraEsquerda()}">
+			<f:ajax render="jogo" />
+		</h:commandLink>
+		<h:commandLink class="buttons" value="Direita"
+			action="#{bean.moverPraDireita()}">
+			<f:ajax render="jogo" />
+		</h:commandLink>
+		<h:commandLink class="buttons" value="Baixo"
+			action="#{bean.moverPraBaixo()}">
+			<f:ajax render="jogo" />
+		</h:commandLink>
+	</h:form>
+
+</h:body>
+</html>

@@ -3,12 +3,14 @@
     font-weight: bold;
     text-align: center;
     background-color: rgb(35, 84, 158);
+	user-select: none; /* Standard */
 }
 
 #box {
     width: 40%;
     margin: auto;
     border: 5px solid #072c63;
+    
 }
 
 .buttons {
@@ -18,6 +20,7 @@
 	border-radius:0.12em;
 	text-decoration:none;
 	font-weight: 400;
+	font-size: 90px;
 	color:#FFFFFF;
 	text-align:center;
 	transition: all 0.2s;
@@ -39,7 +42,7 @@
     #box {
         width: 60%;
         margin: auto;
-        border: 5px solid #ff0000;
+        border: 5px solid #072c63;
     }
     
     .container {
