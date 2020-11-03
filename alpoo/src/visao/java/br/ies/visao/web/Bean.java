@@ -73,8 +73,6 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 
 		try {
 			mapaDeDecisoes.get(ganhou).run();
-//			new TelaDeVitoria().getFrame().setVisible(true);
-//			tela.dispose();
 		} catch (Exception e) {
 
 		}
