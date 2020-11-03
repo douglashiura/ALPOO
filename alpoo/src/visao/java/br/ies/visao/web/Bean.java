@@ -3,6 +3,7 @@ package br.ies.visao.web;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,7 +17,16 @@ import br.ies.visao.swing.Cronometro;
 public class Bean extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	private List<String> listaDeNomes;
+	
 	public Bean() {
+		try {
+			listaDeNomes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
+			System.out.println(listaDeNomes);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 	// Movimentos
@@ -67,6 +77,14 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 
 		}
 		System.out.println(ganhou);
+	}
+
+	public List<String> getListaDeNomes() {
+		return listaDeNomes;
+	}
+
+	public void setListaDeNomes(List<String> listaDeNomes) {
+		this.listaDeNomes = listaDeNomes;
 	}
 
 }
