@@ -14,15 +14,15 @@ import br.ies.main.entidades.Pessoa;
 @ManagedBean(name = "bean")
 public class Bean extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Boolean estaLogado;
 	private String nome;
 	private String senha;
-	
+
 	private Pessoa usuario;
-	
+
 	public Bean() {
-		usuario = new Pessoa("","");
+		usuario = new Pessoa("", "");
 		estaLogado = false;
 	}
 
@@ -31,7 +31,7 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 		usuario.setSenha(senha);
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
-		
+
 		for (Integer iterator = 0; iterator < nomesJaExistentes.size(); iterator++) {
 			if (usuario.getNome().equals(nomesJaExistentes.get(iterator))) {
 				if (banco.retornarSenha(usuario.getNome()).equals(usuario.getSenha())) {
@@ -78,7 +78,7 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 		controle.moverPraDireita();
 	}
 
-	//Getters e Setters
+	// Getters e Setters
 	public String getNome() {
 		return nome;
 	}
@@ -94,6 +94,5 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 
 }
