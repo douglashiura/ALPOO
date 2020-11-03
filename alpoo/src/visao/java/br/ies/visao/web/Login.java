@@ -1,7 +1,6 @@
 package br.ies.visao.web;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,70 +15,114 @@ import br.ies.main.entidades.Pessoa;
 public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Boolean primeiraInteracao;
+	private Boolean primeiraInteracaoDoUsuario;
 	private Boolean estaLogado;
-	private Boolean senhaErrada;
-	
+	private Boolean permissaoConcedida;
+	private String retornoDoStatusDoLogin;
+
 	private String nome;
 	private String senha;
-	private Boolean permitido;
-
-	private Pessoa usuario;
+	private Pessoa jogador;
 
 	public Login() {
-		usuario = new Pessoa("", "");
-		estaLogado = false;
-		senhaErrada = false;
-		primeiraInteracao = true;
-		permitido = false;
 		nome = "";
 		senha = "";
-	}
-
-	public String autenticar() throws SQLException {
-		usuario.setNome(nome);
-		usuario.setSenha(senha);
-		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
-		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
-		primeiraInteracao = false;
-
-		for (String iterator : nomesJaExistentes) {
-			if (nome.equals(iterator)) {
-				if (banco.retornarSenha(nome).equals(senha)) {
-					estaLogado = true;
-					senhaErrada = false;
-
-					return "jogo.xhtml";
-				} else {
-					estaLogado = false;
-					senhaErrada = true;
-					return "index.xhtml";
-				}
-			} else {
-				estaLogado = false;
-				senhaErrada = false;
-				return "index.xhtml";
-			}
-		}
-		return "index.xhtml";
+		jogador = new Pessoa(nome, senha);
+		estaLogado = false;
+		retornoDoStatusDoLogin = "";
+		primeiraInteracaoDoUsuario = true;
+		permissaoConcedida = false;
 
 	}
 
-	public String loginStatus() {
-		if (!primeiraInteracao) {
-			if (estaLogado) {
-				return "Sucesso!";
-			} else {
-				if (senhaErrada) {
-					;
-					return "Senha Incorreta.";
-				} else {
-					return "Usuario não existe.";
-				}
-			}
-		} else {
+	public String statusDoLogin() {
+		try {
+			HashMap<Boolean, String> hashmap = new HashMap<Boolean, String>();
+			hashmap.put(true, "Sucesso!");
+			hashmap.put(false, "Senha Incorreta.");
+
+			HashMap<Boolean, Runnable> mapPrimeiraInteracao = new HashMap<Boolean, Runnable>();
+			mapPrimeiraInteracao.put(false, () -> {
+				retornoDoStatusDoLogin = hashmap.get(estaLogado);
+			});
+
+			mapPrimeiraInteracao.get(primeiraInteracaoDoUsuario).run();
+			return retornoDoStatusDoLogin;
+		} catch (Exception e) {
 			return "";
 		}
+	}
+
+	public void autenticar() {
+		Boolean preenchido = nome.equals("") || senha.equals("");
+
+		HashMap<Boolean, Runnable> nomeJaCadastrado = new HashMap<Boolean, Runnable>();
+		HashMap<Boolean, Runnable> campoPreenchido = new HashMap<Boolean, Runnable>();
+		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+
+		primeiraInteracaoDoUsuario = false;
+		try {
+			List<String> nomesJaExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
+
+			for (Integer i = 0; i < nomesJaExistentes.size(); i++) {
+				nomeJaCadastrado.put(true, () -> {
+					jogador.setNome(nome);
+					jogador.setSenha(senha);
+					try {
+						banco.jaExistente(jogador);
+					} catch (Exception e2) {
+
+					}
+					permissaoConcedida = true;
+					nomesJaExistentes.get(-1);
+				});
+
+				nomeJaCadastrado.put(false, () -> permissaoConcedida = false);
+				Boolean x = nomesJaExistentes.get(i).equals(nome)
+						&& new BancoDeDadosPessoa().retornarSenha(nomesJaExistentes.get(i)).equals(senha);
+
+				nomeJaCadastrado.get(x).run();
+			}
+
+			try {
+				for (Integer i = 0; i < nomesJaExistentes.size(); i++) {
+					Boolean x = nomesJaExistentes.get(i).equals(nome);
+					nomeJaCadastrado.put(true, () -> {
+						permissaoConcedida = false;
+						nomesJaExistentes.get(-1);
+					});
+					nomeJaCadastrado.put(false, () -> permissaoConcedida = true);
+					nomeJaCadastrado.get(x).run();
+				}
+
+				campoPreenchido.put(false, () -> {
+					jogador.setNome(nome);
+					jogador.setSenha(senha);
+					try {
+						banco.jaExistente(jogador);
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+					permissaoConcedida = true;
+				});
+				campoPreenchido.put(true, () -> permissaoConcedida = false);
+
+				campoPreenchido.get(preenchido).run();
+			} catch (Exception e) {
+
+			}
+
+		} catch (Exception e3) {
+
+		}
+	}
+
+	public String irParaOJogo() {
+		autenticar();
+		HashMap<Boolean, String> mapa = new HashMap<Boolean, String>();
+		mapa.put(true, "jogo");
+		mapa.put(false, "");
+		return mapa.get(getPermissaoConcedida());
 	}
 
 	// Getters e Setters
@@ -99,82 +142,12 @@ public class Login implements Serializable {
 		this.senha = senha;
 	}
 
-	public void checa() {
-		Boolean preenchido = nome.equals("") || senha.equals("");
-
-		HashMap<Boolean, Runnable> campoPreenchido = new HashMap<Boolean, Runnable>();
-
-		try {
-			List<String> nomesJaExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
-			HashMap<Boolean, Runnable> nomeJaCadastrado = new HashMap<Boolean, Runnable>();
-
-			for (int i = 0; i < nomesJaExistentes.size(); i++) {
-				nomeJaCadastrado.put(true, () -> {
-					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
-					Pessoa pessoa = new Pessoa(nome, senha);
-					try {
-						banco.jaExistente(pessoa);
-					} catch (Exception e2) {
-					}
-					permitido = true;
-					nomesJaExistentes.get(-1);
-				});
-
-				nomeJaCadastrado.put(false, () -> permitido = false);
-				Boolean x = nomesJaExistentes.get(i).equals(nome)
-						&& new BancoDeDadosPessoa().retornarSenha(nomesJaExistentes.get(i)).equals(senha);
-
-				nomeJaCadastrado.get(x).run();
-			}
-
-			try {
-				for (int i = 0; i < nomesJaExistentes.size(); i++) {
-					Boolean x = nomesJaExistentes.get(i).equals(nome);
-					nomeJaCadastrado.put(true, () -> {
-						 permitido = false;
-						 nomesJaExistentes.get(-1);
-					});
-					nomeJaCadastrado.put(false, () -> permitido = true);
-					nomeJaCadastrado.get(x).run();
-				}
-
-				System.out.println("Cadastrado com sucesso!");
-				campoPreenchido.put(false, () -> {
-					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
-					Pessoa pessoa = new Pessoa(nome, senha);
-					try {
-						banco.jaExistente(pessoa);
-					} catch (Exception e2) {
-						e2.printStackTrace();
-					}
-					permitido = true;
-				});
-				campoPreenchido.put(true, () -> permitido = false);
-
-				campoPreenchido.get(preenchido).run();
-			} catch (Exception e) {
-				System.out.println("Nome já existente!2");
-			}
-
-		} catch (Exception e3) {
-			System.out.println("Nome já existente!");
-		}
+	public Boolean getPermissaoConcedida() {
+		return permissaoConcedida;
 	}
 
-	public String irParaOJogo() {
-		checa();
-		HashMap<Boolean, String> mapa = new HashMap<Boolean, String>();
-		mapa.put(true, "jogo");
-		mapa.put(false, "");
-		return mapa.get(getPermitido());
-	}
-
-	public Boolean getPermitido() {
-		return permitido;
-	}
-
-	public void setPermitido(Boolean permitido) {
-		this.permitido = permitido;
+	public void setPermissaoConcedida(Boolean permitido) {
+		this.permissaoConcedida = permitido;
 	}
 
 }

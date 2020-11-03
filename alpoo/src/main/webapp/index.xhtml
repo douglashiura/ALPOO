@@ -12,28 +12,31 @@
 <h:body>
 	<h1>Login do Jogo do Oito</h1>
 
+	<h3 style="color: white;">Digite seu usuário e senha.</h3>
+
 	<h:form class="buttons">
 		<div>
 			<p>
-				<h:outputText value="Username" />
+				<h:outputText value="Usuário" />
 			</p>
 			<p>
 				<h:inputText id="username" value="#{login.nome}"></h:inputText>
 			</p>
 		</div>
-		<p>
-			<h:outputText value="Password" />
-			<br />
-		</p>
-		<h:inputSecret id="password" value="#{login.senha}"></h:inputSecret>
-		<br />
-		<br />
+		<div>
+			<p>
+				<h:outputText value="Senha" />
+			</p>
+			<p>
+				<h:inputSecret id="password" value="#{login.senha}"></h:inputSecret>
+			</p>
+		</div>
 
 		<h:commandButton action="#{login.irParaOJogo()}" value="Entrar" />
 	</h:form>
 
 	<br />
-	<h:outputLabel value="#{login.irParaOJogo()}"></h:outputLabel>
+	<h:outputLabel value="#{login.statusDoLogin()}"></h:outputLabel>
 
 </h:body>
 </html>

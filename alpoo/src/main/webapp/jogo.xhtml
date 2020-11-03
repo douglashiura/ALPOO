@@ -6,11 +6,13 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="jogo.css" />
 	<title>Jogo Do Oito</title>
 </h:head>
 <h:body>
 	<h1>Jogo do Oito</h1>
+	<a href="rank.xhtml">RANK</a><br/>
+	<a href="index.xhtml">LOGIN</a>
 	
 	<br />
 	<h:form>
@@ -18,60 +20,60 @@
 			<div id="box">
 				<div class="container">
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaSuperiorEsquerda()};">
-						#{bean.getCelulaSuperiorEsquerda()}</div>
+						style="background-color: #{jogo.getCorCelulaSuperiorEsquerda()};">
+						#{jogo.getCelulaSuperiorEsquerda()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaSuperiorCentral()};">
-						#{bean.getCelulaSuperiorCentral()}</div>
+						style="background-color: #{jogo.getCorCelulaSuperiorCentral()};">
+						#{jogo.getCelulaSuperiorCentral()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaSuperiorDireita()};">
-						#{bean.getCelulaSuperiorDireita()}</div>
+						style="background-color: #{jogo.getCorCelulaSuperiorDireita()};">
+						#{jogo.getCelulaSuperiorDireita()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaCentralEsquerda()};">
-						#{bean.getCelulaCentralEsquerda()}</div>
+						style="background-color: #{jogo.getCorCelulaCentralEsquerda()};">
+						#{jogo.getCelulaCentralEsquerda()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaCentral()};">
-						#{bean.getCelulaCentral()}</div>
+						style="background-color: #{jogo.getCorCelulaCentral()};">
+						#{jogo.getCelulaCentral()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaCentralDireita()};">
-						#{bean.getCelulaCentralDireita()}</div>
+						style="background-color: #{jogo.getCorCelulaCentralDireita()};">
+						#{jogo.getCelulaCentralDireita()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaInferiorEsquerda()};">
-						#{bean.getCelulaInferiorEsquerda()}</div>
+						style="background-color: #{jogo.getCorCelulaInferiorEsquerda()};">
+						#{jogo.getCelulaInferiorEsquerda()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaInferiorCentral()};">
-						#{bean.getCelulaInferiorCentral()}</div>
+						style="background-color: #{jogo.getCorCelulaInferiorCentral()};">
+						#{jogo.getCelulaInferiorCentral()}</div>
 					<div class="containerInside"
-						style="background-color: #{bean.getCorCelulaInferiorDireita()};">
-						#{bean.getCelulaInferiorDireita()}</div>
+						style="background-color: #{jogo.getCorCelulaInferiorDireita()};">
+						#{jogo.getCelulaInferiorDireita()}</div>
 				</div>
 			</div>
 		</h:panelGroup>
 		<br /><br />
 
-		<p:hotkey bind="w" actionListener="#{bean.moverPraCima()}"
+		<p:hotkey bind="w" actionListener="#{jogo.moverPraCima()}"
 			update="jogo" />
-		<p:hotkey bind="s" actionListener="#{bean.moverPraBaixo()}"
+		<p:hotkey bind="s" actionListener="#{jogo.moverPraBaixo()}"
 			update="jogo" />
-		<p:hotkey bind="a" actionListener="#{bean.moverPraEsquerda()}"
+		<p:hotkey bind="a" actionListener="#{jogo.moverPraEsquerda()}"
 			update="jogo" />
-		<p:hotkey bind="d" actionListener="#{bean.moverPraDireita()}"
+		<p:hotkey bind="d" actionListener="#{jogo.moverPraDireita()}"
 			update="jogo" />
 			
 		<h:commandLink class="buttons" value="Cima"
-			action="#{bean.moverPraCima()}">
+			action="#{jogo.moverPraCima()}">
 			<f:ajax render="jogo" />
 		</h:commandLink>
 		<h:commandLink class="buttons" value="Esquerda"
-			action="#{bean.moverPraEsquerda()}">
+			action="#{jogo.moverPraEsquerda()}">
 			<f:ajax render="jogo" />
 		</h:commandLink>
 		<h:commandLink class="buttons" value="Direita"
-			action="#{bean.moverPraDireita()}">
+			action="#{jogo.moverPraDireita()}">
 			<f:ajax render="jogo" />
 		</h:commandLink>
 		<h:commandLink class="buttons" value="Baixo"
-			action="#{bean.moverPraBaixo()}">
+			action="#{jogo.moverPraBaixo()}">
 			<f:ajax render="jogo" />
 		</h:commandLink>
 	</h:form>
