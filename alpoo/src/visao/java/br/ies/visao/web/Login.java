@@ -18,6 +18,7 @@ public class Login implements Serializable {
 	private Boolean primeiraInteracao;
 	private Boolean estaLogado;
 	private Boolean senhaErrada;
+	
 	private String nome;
 	private String senha;
 

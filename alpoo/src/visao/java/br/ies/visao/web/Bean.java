@@ -18,10 +18,12 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<String> listaDeNomes;
+	private List<Integer> listaDePontuacoes;
 	
 	public Bean() {
 		try {
-			listaDeNomes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
+			setListaDeNomes(new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas());
+			setListaDePontuacoes(new BancoDeDadosPessoa().retornarTodosOsTemposDePessoas());
 			System.out.println(listaDeNomes);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -79,12 +81,21 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 		System.out.println(ganhou);
 	}
 
+	//Getters e Setters
 	public List<String> getListaDeNomes() {
 		return listaDeNomes;
 	}
 
 	public void setListaDeNomes(List<String> listaDeNomes) {
 		this.listaDeNomes = listaDeNomes;
+	}
+
+	public List<Integer> getListaDePontuacoes() {
+		return listaDePontuacoes;
+	}
+
+	public void setListaDePontuacoes(List<Integer> listaDePontuacoes) {
+		this.listaDePontuacoes = listaDePontuacoes;
 	}
 
 }
