@@ -15,7 +15,9 @@ import br.ies.main.entidades.Pessoa;
 public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Boolean primeiraInteracao;
 	private Boolean estaLogado;
+	private Boolean senhaErrada;
 	private String nome;
 	private String senha;
 
@@ -24,6 +26,8 @@ public class Login implements Serializable {
 	public Login() {
 		usuario = new Pessoa("", "");
 		estaLogado = false;
+		senhaErrada = false;
+		primeiraInteracao = true;
 	}
 
 	public String autenticar() throws SQLException {
@@ -31,19 +35,23 @@ public class Login implements Serializable {
 		usuario.setSenha(senha);
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
-
+		primeiraInteracao = false;
+		
 		for (String iterator : nomesJaExistentes) {
 			if (nome.equals(iterator)) {
-				System.out.println("Passou do primeiro if");
 				if (banco.retornarSenha(nome).equals(senha)) {
 					estaLogado = true;
+					senhaErrada = false;
+					
 					return "jogo.xhtml";
 				} else {
 					estaLogado = false;
+					senhaErrada = true;
 					return "index.xhtml";
 				}
 			} else {
 				estaLogado = false;
+				senhaErrada = false;
 				return "index.xhtml";
 			}
 		}
@@ -51,18 +59,18 @@ public class Login implements Serializable {
 		
 	}
 
-	public String podeLogar() {
-		if (estaLogado) {
-			return "Entrar";
-		} else {
-			return "";
-		}
-	}
-
-	public String autorizado() {
-		if (estaLogado) {
-			return "jogo.xhtml";
-		} else {
+	public String loginStatus() {
+		if(!primeiraInteracao) {
+			if (estaLogado) {
+				return "Sucesso!";
+			} else {
+				if(senhaErrada) {;
+					return "Senha Incorreta.";
+				}else {
+					return "Usuario não existe.";
+				}
+			}
+		}else {
 			return "";
 		}
 	}

@@ -6,25 +6,34 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="login.css" />
 	<title>Login</title>
 </h:head>
-<h:body id="teste">
+<h:body>
 	<h1>Login do Jogo do Oito</h1>
 
-	<h:form>
-		<h3>JSF Login Logout</h3>
-		<h:outputText value="Username" /><br />
-		<h:inputText id="username" value="#{login.nome}"></h:inputText>
-		<br/><br/>
-		
-		<h:outputText value="Password" /><br />
+	<h:form class="buttons">
+		<div>
+			<p>
+				<h:outputText value="Username" />
+			</p>
+			<p>
+				<h:inputText id="username" value="#{login.nome}"></h:inputText>
+			</p>
+		</div>
+		<p>
+			<h:outputText value="Password" />
+			<br />
+		</p>
 		<h:inputSecret id="password" value="#{login.senha}"></h:inputSecret>
-		<br/><br/>
+		<br />
+		<br />
 
-		<h:commandButton action="#{login.autenticar()}" value="Submit" />
+		<h:commandButton action="#{login.autenticar()}" value="Entrar" />
 	</h:form>
-	
+
+	<br />
+	<h:outputLabel value="#{login.loginStatus()}"></h:outputLabel>
+
 </h:body>
 </html>
