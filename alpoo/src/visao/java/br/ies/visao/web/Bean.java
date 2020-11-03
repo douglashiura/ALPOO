@@ -1,37 +1,39 @@
 package br.ies.visao.web;
 
 import java.io.Serializable;
-import java.net.http.HttpRequest;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import br.ies.main.banco.de.dados.BancoDeDadosPessoa;
+import br.ies.main.entidades.Pessoa;
 
 @SessionScoped
 @ManagedBean(name = "bean")
 public class Bean extends GerenciamentoDasCelulas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private String usuario;
+	private Boolean estaLogado;
+	private String nome;
 	private String senha;
-
+	
+	private Pessoa usuario;
+	
 	public Bean() {
-
+		usuario = Pessoa.getInstancia();
 	}
 
-	public String autenticar() throws SQLException {
+	public void autenticar() throws SQLException {
+		usuario.setNome(getNome());
+		usuario.setSenha(getSenha());
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
-		Boolean estaLogado = null;
+		estaLogado = null;
 		for (Integer iterator = 0; iterator < nomesJaExistentes.size(); iterator++) {
-			if (usuario.equals(nomesJaExistentes.get(iterator))) {
-				if (banco.retornarSenha(usuario).equals(senha)) {
+			if (usuario.getNome().equals(nomesJaExistentes.get(iterator))) {
+				if (banco.retornarSenha(usuario.getNome()).equals(usuario.getSenha())) {
 					estaLogado = true;
 				} else {
 					estaLogado = false;
@@ -40,17 +42,21 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 				estaLogado = false;
 			}
 		}
+	}
 
+	public String podeLogar() {
 		if (estaLogado) {
-			/*
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("username", usuario);
-			*/
-			return "jogo";
+			return "Entrar";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Incorrect Username and Passowrd", "Please enter correct username and Password"));
-			return "index";
+			return "";
+		}
+	}
+
+	public String autorizado() {
+		if (estaLogado) {
+			return "jogo.xhtml";
+		} else {
+			return "";
 		}
 	}
 
@@ -71,13 +77,13 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 		controle.moverPraDireita();
 	}
 
-	// Getters e Setters
-	public String getUsuario() {
-		return usuario;
+	//Getters e Setters
+	public String getNome() {
+		return nome;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {
@@ -87,5 +93,6 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 
 }

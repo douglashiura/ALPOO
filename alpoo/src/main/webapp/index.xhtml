@@ -16,7 +16,7 @@
 	<h:form>
 		<h3>JSF Login Logout</h3>
 		<h:outputText value="Username" /><br/>
-		<h:inputText id="username" value="#{bean.usuario}"></h:inputText>
+		<h:inputText id="username" value="#{bean.nome}"></h:inputText>
 		<h:message for="username"></h:message>
 		<br></br><br></br>
 		
@@ -26,9 +26,11 @@
 		<br></br><br></br>
 		
 		<h:commandButton action="#{bean.autenticar()}"
-			value="Login"></h:commandButton>
+			value="Autenticar"></h:commandButton>
 	</h:form>
-
+	<h:form>
+		<h:commandLink action="#{bean.autorizado()}"> #{bean.podeLogar()}</h:commandLink>
+	</h:form>
 		
 	<!--  
 	<h:outputText value="#{bean.usuario}" /><br/>
