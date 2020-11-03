@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/media/d5/HD/Faculdade/4 S/APS/aps/EightGame/.metadata/.plugins/org.eclipse.jdt.core
+3112944026.index
+1175494123.index
+125225263.index
