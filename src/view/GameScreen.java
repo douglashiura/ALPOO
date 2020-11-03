@@ -33,6 +33,8 @@ import javax.swing.UIManager;
 import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GameScreen extends PlayInterface {
 
@@ -71,6 +73,7 @@ public class GameScreen extends PlayInterface {
 		frmAsas2.setContentPane(contentPane);
 		matrixEight = new MatrixEightImp();
 		score = new ScoreImp();
+
 
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -113,6 +116,23 @@ public class GameScreen extends PlayInterface {
 		JTextPane a33 = new JTextPane(stylee());
 		setJTextPane(a33, desktopPane, "a33", 276, 218, 130, 101);
 
+		frmAsas2.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				matrixEight = new MatrixEightImp();
+
+				try {
+					
+					matrixEight.getKeyChar(e.getKeyCode());
+					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+					gameDisplay.setText("Current Score: " + score.currentScore().toString());
+					e.getKeyChar();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -126,6 +146,7 @@ public class GameScreen extends PlayInterface {
 		desktopPane.add(btnReturn);
 
 		JButton btnUp = new JButton("up");
+
 		btnUp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -197,6 +218,7 @@ public class GameScreen extends PlayInterface {
 					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 					gameDisplay.setText("Current Score: " + score.currentScore().toString());
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -217,6 +239,7 @@ public class GameScreen extends PlayInterface {
 		a32.setText(matrixEight.show("a32"));
 		a33.setText(matrixEight.show("a33"));
 	}
+
 	private StyledDocument stylee() {
 		StyleContext context = new StyleContext();
 		StyledDocument document = new DefaultStyledDocument(context);
@@ -224,7 +247,7 @@ public class GameScreen extends PlayInterface {
 		StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);
 		return document;
 	}
-	
+
 	private void setJTextPane(JTextPane aij, JDesktopPane desktopPane, String rowColumn, int x, int y, int width, int height) throws Exception {
 
 		aij.setText(matrixEight.show(rowColumn));

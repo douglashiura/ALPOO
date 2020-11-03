@@ -44,12 +44,12 @@ public class PlayInterface {
 	/**
 	 * Create the application.
 	 */
-	
+
 	public PlayInterface() {
 		initialize();
 	}
 
-//	setVisible
+	//	setVisible
 	public void open() {
 		frmAsas.setVisible(true);
 	}
@@ -65,20 +65,16 @@ public class PlayInterface {
 		frmAsas.setType(Type.UTILITY);
 		frmAsas.setTitle("Game 8 Puzzle");
 		frmAsas.setBounds(200, 200, 369, 247);
-		
-//		desktop
+
+		//		desktop
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
 		});
 		desktopPane.setBackground(Color.BLACK);
 		desktopPane.setFont(new Font("Liberation Sans", Font.BOLD, 14));
 		frmAsas.getContentPane().add(desktopPane, BorderLayout.CENTER);
 
-//		JTextField	
+		//		JTextField	
 		display = new JTextField();
 		display.setText("Welcome!");
 		display.setHorizontalAlignment(SwingConstants.CENTER);
@@ -86,8 +82,8 @@ public class PlayInterface {
 		display.setBounds(27, 12, 300, 47);
 		desktopPane.add(display);
 		display.setColumns(10);
-		
-//		JbuttonPlay
+
+		//		JbuttonPlay
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addMouseListener(new MouseAdapter() {
 			private MatrixEightInterf matrix = new MatrixEightImp();
@@ -104,9 +100,9 @@ public class PlayInterface {
 		});
 		btnPlay.setBounds(27, 103, 300, 25);
 		desktopPane.add(btnPlay);
-		
-		
-//		JbuttonScore
+
+
+		//		JbuttonScore
 		JButton btnScore = new JButton("Score");
 		btnScore.addMouseListener(new MouseAdapter() {
 			private ScoreInterf score = new ScoreImp();
@@ -123,13 +119,20 @@ public class PlayInterface {
 		});
 		btnScore.setBounds(27, 133, 300, 25);
 		desktopPane.add(btnScore);
-		
+
+//		button exit
 		JButton btnExit = new JButton("Exit");
 		btnExit.addMouseListener(new MouseAdapter() {
+			MatrixEightInterf matrixEight = new MatrixEightImp();
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				try {
+					matrixEight.clear();
 					System.exit(0);
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
+			}
 		});
 		btnExit.setBounds(27, 163, 300, 25);
 		desktopPane.add(btnExit);
