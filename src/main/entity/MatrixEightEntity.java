@@ -128,7 +128,6 @@ public class MatrixEightEntity {
 	        }
 	        return newMatrix;
 	    }
-	    
 	    @Override
 	    public String toString() {
 	        return "MatrixEightEntity [idMatrix=" + this.idMatrix + ", a11=" + this.a11 + ", a12=" + this.a12 + ", a13=" + this.a13 + ", a21=" + this.a21 + ", a22=" + this.a22 + ", a23=" + this.a23 + ", a31=" + this.a31 + ", a32=" + this.a32 + ", a33=" + this.a33 + "]";
