@@ -117,10 +117,10 @@ public class Login implements Serializable {
 					} catch (Exception e2) {
 					}
 					permitido = true;
+					nomesJaExistentes.get(-1);
 				});
 
-				nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
-
+				nomeJaCadastrado.put(false, () -> permitido = false);
 				Boolean x = nomesJaExistentes.get(i).equals(nome)
 						&& new BancoDeDadosPessoa().retornarSenha(nomesJaExistentes.get(i)).equals(senha);
 
@@ -130,8 +130,11 @@ public class Login implements Serializable {
 			try {
 				for (int i = 0; i < nomesJaExistentes.size(); i++) {
 					Boolean x = nomesJaExistentes.get(i).equals(nome);
-					nomeJaCadastrado.put(true, () -> nomesJaExistentes.get(-1));
-					nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
+					nomeJaCadastrado.put(true, () -> {
+						 permitido = false;
+						 nomesJaExistentes.get(-1);
+					});
+					nomeJaCadastrado.put(false, () -> permitido = true);
 					nomeJaCadastrado.get(x).run();
 				}
 
