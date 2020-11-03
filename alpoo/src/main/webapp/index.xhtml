@@ -15,23 +15,27 @@
 
 	<h:form>
 		<h3>JSF Login Logout</h3>
-		<h:outputText value="Username" /><br/>
-		<h:inputText id="username" value="#{bean.nome}"></h:inputText>
+		<h:outputText value="Username" />
+		<br />
+		<h:inputText id="username" value="#{login.nome}"></h:inputText>
 		<h:message for="username"></h:message>
-		<br></br><br></br>
-		
-		<h:outputText value="Password" /><br/>
-		<h:inputSecret id="password" value="#{bean.senha}"></h:inputSecret>
+		<br></br>
+		<br></br>
+
+		<h:outputText value="Password" />
+		<br />
+		<h:inputSecret id="password" value="#{login.senha}"></h:inputSecret>
 		<h:message for="password"></h:message>
-		<br></br><br></br>
-		
-		<h:commandButton action="#{bean.autenticar()}"
-			value="Autenticar"></h:commandButton>
+		<br></br>
+		<br></br>
+
+		<h:commandButton action="#{login.autenticar()}" value="Autenticar">
+			<f:ajax render="entrar" />
+		</h:commandButton>
 	</h:form>
 	
 	<h:form>
-		<h:commandLink action="#{bean.autorizado()}" > #{bean.podeLogar()}</h:commandLink>
+		<h:commandLink id="entrar" action="#{login.autorizado()}"> #{login.podeLogar()}</h:commandLink>
 	</h:form>
-
 </h:body>
 </html>
