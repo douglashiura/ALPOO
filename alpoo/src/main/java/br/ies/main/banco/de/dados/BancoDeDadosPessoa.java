@@ -15,9 +15,9 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 	private final String INSERT = "INSERT INTO pessoa(nome, senha) VALUES(?, ?) RETURNING id;";
 	private final String INSERT_TIME = "UPDATE pessoa SET tempo = ? WHERE id = ?";
 	private final String CHECAR = "SELECT id FROM pessoa WHERE nome = ? AND senha = ?;";
-	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa;";
+	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa ORDER BY tempo;";
 	private final String PEGAR_TEMPO_DO_BANCO = "SELECT tempo FROM pessoa WHERE id = ?;";
-	private final String RETORNAR_TEMPOS = "SELECT tempo FROM pessoa;";
+	private final String RETORNAR_TEMPOS = "SELECT tempo FROM pessoa ORDER BY tempo;";
 	private final String RETORNAR_SENHA = "SELECT senha FROM pessoa WHERE nome = ?;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
