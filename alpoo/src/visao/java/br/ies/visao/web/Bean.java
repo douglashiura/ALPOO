@@ -13,8 +13,8 @@ import br.ies.main.entidades.Pessoa;
 @SessionScoped
 @ManagedBean(name = "bean")
 public class Bean extends GerenciamentoDasCelulas implements Serializable {
-
 	private static final long serialVersionUID = 1L;
+	
 	private Boolean estaLogado;
 	private String nome;
 	private String senha;
@@ -22,15 +22,16 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 	private Pessoa usuario;
 	
 	public Bean() {
-		usuario = Pessoa.getInstancia();
+		usuario = new Pessoa("","");
+		estaLogado = false;
 	}
 
 	public void autenticar() throws SQLException {
-		usuario.setNome(getNome());
-		usuario.setSenha(getSenha());
+		usuario.setNome(nome);
+		usuario.setSenha(senha);
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
-		estaLogado = null;
+		
 		for (Integer iterator = 0; iterator < nomesJaExistentes.size(); iterator++) {
 			if (usuario.getNome().equals(nomesJaExistentes.get(iterator))) {
 				if (banco.retornarSenha(usuario.getNome()).equals(usuario.getSenha())) {

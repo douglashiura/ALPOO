@@ -28,18 +28,10 @@
 		<h:commandButton action="#{bean.autenticar()}"
 			value="Autenticar"></h:commandButton>
 	</h:form>
+	
 	<h:form>
-		<h:commandLink action="#{bean.autorizado()}"> #{bean.podeLogar()}</h:commandLink>
+		<h:commandLink action="#{bean.autorizado()}" > #{bean.podeLogar()}</h:commandLink>
 	</h:form>
-		
-	<!--  
-	<h:outputText value="#{bean.usuario}" /><br/>
-	<h:outputText value="#{bean.senha}" />
-	-->
-
-	<!--  
-	<a href="jogo.xhtml" style="font-size: 90px">JOGO</a>
-	-->
 
 </h:body>
 </html>
