@@ -42,7 +42,7 @@ public class Bean extends GerenciamentoDasCelulas implements Serializable {
 
 	public void verificaVitoria() {
 
-		boolean ganhou = getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
+		Boolean ganhou = getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
 				&& getCelulaSuperiorDireita().equals("3") && getCelulaCentralEsquerda().equals("4")
 				&& getCelulaCentral().equals("5") && getCelulaCentralDireita().equals("6")
 				&& getCelulaInferiorEsquerda().equals("7") && getCelulaInferiorCentral().equals("8");
