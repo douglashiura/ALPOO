@@ -26,25 +26,29 @@ public class Login implements Serializable {
 		estaLogado = false;
 	}
 
-	public void autenticar() throws SQLException {
+	public String autenticar() throws SQLException {
 		usuario.setNome(nome);
 		usuario.setSenha(senha);
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
 
-		for (Integer iterator = 0; iterator < nomesJaExistentes.size(); iterator++) {
-			System.out.println("Entrou no for");
-			if (nome.equals("Victor")) {
-				System.out.println("Passou do victor");
+		for (String iterator : nomesJaExistentes) {
+			if (nome.equals(iterator)) {
+				System.out.println("Passou do primeiro if");
 				if (banco.retornarSenha(nome).equals(senha)) {
 					estaLogado = true;
+					return "jogo.xhtml";
 				} else {
 					estaLogado = false;
+					return "index.xhtml";
 				}
 			} else {
 				estaLogado = false;
+				return "index.xhtml";
 			}
 		}
+		return "index.xhtml";
+		
 	}
 
 	public String podeLogar() {
