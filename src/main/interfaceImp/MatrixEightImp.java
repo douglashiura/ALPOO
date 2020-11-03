@@ -1,5 +1,6 @@
 package main.interfaceImp;
 
+import java.awt.event.KeyEvent;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.util.List;
 import main.entity.MatrixEightEntity;
 import main.getconnection.GetConnection;
 import main.interfaceview.MatrixEightInterf;
+import main.interfaceview.ScoreInterf;
+import view.GameScreen;
 
 public class MatrixEightImp implements MatrixEightInterf {
 
@@ -20,6 +23,7 @@ public class MatrixEightImp implements MatrixEightInterf {
 	private GetConnection connection;
 	private Connection conn;
 	private Boolean isWin = false;
+	private MatrixEightEntity matrixEight;
 
 	@Override
 	public void play() throws Exception {
@@ -85,13 +89,13 @@ public class MatrixEightImp implements MatrixEightInterf {
 	public void up() throws Exception {
 		connection = new GetConnection ();
 		conn = connection.getConnection();
-		
-		MatrixEightEntity matrixE = new MatrixEightEntity();
+
+		matrixEight = new MatrixEightEntity();
 
 		Integer newMatrix[] = new Integer[9]; 
 
 		newMatrix = returnMatrix(stm, rs);
-		newMatrix = matrixE.definition(newMatrix, 8);
+		newMatrix = matrixEight.definition(newMatrix, 8);
 		matrixDataBase(newMatrix, stm, conn);;
 
 		conn.close();
@@ -102,11 +106,11 @@ public class MatrixEightImp implements MatrixEightInterf {
 	public void down() throws Exception {
 		connection = new GetConnection ();
 		conn = connection.getConnection();
-		MatrixEightEntity matrixE = new MatrixEightEntity();
+		matrixEight = new MatrixEightEntity();
 		Integer newMatrix[] = new Integer[9];
 
 		newMatrix = returnMatrix(stm, rs);
-		newMatrix = matrixE.definition(newMatrix, 2);
+		newMatrix = matrixEight.definition(newMatrix, 2);
 		matrixDataBase(newMatrix, stm, conn);;;
 
 		conn.close();
@@ -117,11 +121,11 @@ public class MatrixEightImp implements MatrixEightInterf {
 	public void left() throws Exception {
 		connection = new GetConnection ();
 		conn = connection.getConnection();
-		MatrixEightEntity matrixE = new MatrixEightEntity();
+		matrixEight = new MatrixEightEntity();
 		Integer newMatrix[] = new Integer[9]; 
 
 		newMatrix = returnMatrix(stm, rs);
-		newMatrix = matrixE.definition(newMatrix, 4);
+		newMatrix = matrixEight.definition(newMatrix, 4);
 		matrixDataBase(newMatrix, stm, conn);;;
 
 		conn.close();
@@ -132,11 +136,11 @@ public class MatrixEightImp implements MatrixEightInterf {
 	public void right() throws Exception {
 		connection = new GetConnection ();
 		conn = connection.getConnection();
-		MatrixEightEntity matrixE = new MatrixEightEntity();
+		matrixEight = new MatrixEightEntity();
 		Integer newMatrix[] = new Integer[9];
 
 		newMatrix = returnMatrix(stm, rs);
-		newMatrix = matrixE.definition(newMatrix, 6);
+		newMatrix = matrixEight.definition(newMatrix, 6);
 		matrixDataBase(newMatrix, stm, conn);
 
 		conn.close();
@@ -156,13 +160,41 @@ public class MatrixEightImp implements MatrixEightInterf {
 	public Boolean returnWin() {
 		return this.isWin;
 	}
+	@Override
+	public void getKeyChar(Integer code) throws Exception {
+		MatrixEightImp matrixEight = new MatrixEightImp();
+		ScoreInterf score = new ScoreImp();
+		
+		switch (code) {
+		case KeyEvent.VK_UP:
+			matrixEight.up();
+			score.score().toString();
+			
+			break;
+		case KeyEvent.VK_DOWN:
+			matrixEight.down();
+			score.score().toString();
+			
+			break;
+			
+		case KeyEvent.VK_LEFT:
+			matrixEight.left();
+			score.score().toString();
+			break;
+			
+		case KeyEvent.VK_RIGHT:
+			matrixEight.right();
+			score.score().toString();
+			break;
+		}
+	}
 	public void setWin() {
 		this.isWin = true;
 	}
 	private Integer[] returnMatrix(PreparedStatement stm, ResultSet rs) throws SQLException {
 		stm = conn.prepareStatement("SELECT * FROM matrixEight ORDER BY idmatrix DESC LIMIT 1");
 		rs = stm.executeQuery();
-		
+
 		//copy matrix database
 		final Integer newMatrix[] = new Integer[9]; 
 
@@ -187,4 +219,5 @@ public class MatrixEightImp implements MatrixEightInterf {
 		stm.setArray(1, arrayNewMatrix);
 		stm.executeQuery();
 	}
+
 }
