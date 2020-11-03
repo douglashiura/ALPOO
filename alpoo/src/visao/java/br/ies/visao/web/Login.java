@@ -33,8 +33,8 @@ public class Login implements Serializable {
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
 
 		for (Integer iterator = 0; iterator < nomesJaExistentes.size(); iterator++) {
-			if (usuario.getNome().equals(nomesJaExistentes.get(iterator))) {
-				if (banco.retornarSenha(usuario.getNome()).equals(usuario.getSenha())) {
+			if (nome.equals(nomesJaExistentes.get(iterator))) {
+				if (banco.retornarSenha(nome).equals(senha)) {
 					estaLogado = true;
 				} else {
 					estaLogado = false;
