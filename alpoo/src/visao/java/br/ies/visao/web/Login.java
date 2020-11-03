@@ -2,6 +2,7 @@ package br.ies.visao.web;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,7 @@ public class Login implements Serializable {
 	
 	private String nome;
 	private String senha;
+	private Boolean permitido;
 
 	private Pessoa usuario;
 
@@ -29,6 +31,9 @@ public class Login implements Serializable {
 		estaLogado = false;
 		senhaErrada = false;
 		primeiraInteracao = true;
+		permitido = false;
+		nome = "";
+		senha = "";
 	}
 
 	public String autenticar() throws SQLException {
@@ -37,13 +42,13 @@ public class Login implements Serializable {
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 		List<String> nomesJaExistentes = banco.retornarTodosOsNomeDePessoas();
 		primeiraInteracao = false;
-		
+
 		for (String iterator : nomesJaExistentes) {
 			if (nome.equals(iterator)) {
 				if (banco.retornarSenha(nome).equals(senha)) {
 					estaLogado = true;
 					senhaErrada = false;
-					
+
 					return "jogo.xhtml";
 				} else {
 					estaLogado = false;
@@ -57,21 +62,22 @@ public class Login implements Serializable {
 			}
 		}
 		return "index.xhtml";
-		
+
 	}
 
 	public String loginStatus() {
-		if(!primeiraInteracao) {
+		if (!primeiraInteracao) {
 			if (estaLogado) {
 				return "Sucesso!";
 			} else {
-				if(senhaErrada) {;
+				if (senhaErrada) {
+					;
 					return "Senha Incorreta.";
-				}else {
+				} else {
 					return "Usuario não existe.";
 				}
 			}
-		}else {
+		} else {
 			return "";
 		}
 	}
@@ -91,6 +97,81 @@ public class Login implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public void checa() {
+		Boolean preenchido = nome.equals("") || senha.equals("");
+
+		HashMap<Boolean, Runnable> campoPreenchido = new HashMap<Boolean, Runnable>();
+
+		try {
+			List<String> nomesJaExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
+			HashMap<Boolean, Runnable> nomeJaCadastrado = new HashMap<Boolean, Runnable>();
+
+			for (int i = 0; i < nomesJaExistentes.size(); i++) {
+				nomeJaCadastrado.put(true, () -> {
+					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+					Pessoa pessoa = new Pessoa(nome, senha);
+					try {
+						banco.jaExistente(pessoa);
+					} catch (Exception e2) {
+					}
+					permitido = true;
+				});
+
+				nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
+
+				Boolean x = nomesJaExistentes.get(i).equals(nome)
+						&& new BancoDeDadosPessoa().retornarSenha(nomesJaExistentes.get(i)).equals(senha);
+
+				nomeJaCadastrado.get(x).run();
+			}
+
+			try {
+				for (int i = 0; i < nomesJaExistentes.size(); i++) {
+					Boolean x = nomesJaExistentes.get(i).equals(nome);
+					nomeJaCadastrado.put(true, () -> nomesJaExistentes.get(-1));
+					nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
+					nomeJaCadastrado.get(x).run();
+				}
+
+				System.out.println("Cadastrado com sucesso!");
+				campoPreenchido.put(false, () -> {
+					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
+					Pessoa pessoa = new Pessoa(nome, senha);
+					try {
+						banco.jaExistente(pessoa);
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+					permitido = true;
+				});
+				campoPreenchido.put(true, () -> permitido = false);
+
+				campoPreenchido.get(preenchido).run();
+			} catch (Exception e) {
+				System.out.println("Nome já existente!2");
+			}
+
+		} catch (Exception e3) {
+			System.out.println("Nome já existente!");
+		}
+	}
+
+	public String irParaOJogo() {
+		checa();
+		HashMap<Boolean, String> mapa = new HashMap<Boolean, String>();
+		mapa.put(true, "jogo");
+		mapa.put(false, "");
+		return mapa.get(getPermitido());
+	}
+
+	public Boolean getPermitido() {
+		return permitido;
+	}
+
+	public void setPermitido(Boolean permitido) {
+		this.permitido = permitido;
 	}
 
 }
