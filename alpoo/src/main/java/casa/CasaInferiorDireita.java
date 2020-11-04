@@ -2,7 +2,9 @@ package casa;
 
 public class CasaInferiorDireita extends Casa {
 
-	public CasaInferiorDireita(Integer numero) { super(numero); }
+	public CasaInferiorDireita(Integer numero, String nomePosicao) {
+		super(numero, nomePosicao);
+	}
 	
 	@Override
 	public void moveBaixo() {}

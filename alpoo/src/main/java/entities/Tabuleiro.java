@@ -1,4 +1,4 @@
-package tabuleiro;
+package entities;
 
 
 import java.util.Random;
@@ -34,15 +34,15 @@ public class Tabuleiro {
 	}
 
 	private void setInstancias() {
-		this.cimaDireita = new CasaCimaDireita(Integer.valueOf(8));
-		this.cimaEsquerda = new CasaCimaEsquerda(Integer.valueOf(1));
-		this.cimaMeio = new CasaCimaMeio(Integer.valueOf(5));
-		this.meio = new CasaMeio(Integer.valueOf(0));
-		this.meioDireita = new CasaMeioDireita(Integer.valueOf(4));
-		this.meioEsquerda = new CasaMeioEsquerda(Integer.valueOf(3));
-		this.inferiorDireita = new CasaInferiorDireita(Integer.valueOf(7));
-		this.inferiorEsquerda = new CasaInferiorEsquerda(Integer.valueOf(2));
-		this.inferiorMeio = new CasaInferiorMeio(Integer.valueOf(6));
+		this.cimaDireita = new CasaCimaDireita(Integer.valueOf(8), "casa_cima_direita");
+		this.cimaEsquerda = new CasaCimaEsquerda(Integer.valueOf(1), "casa_cima_esquerda");
+		this.cimaMeio = new CasaCimaMeio(Integer.valueOf(5), "casa_cima_meio");
+		this.meio = new CasaMeio(Integer.valueOf(0), "casa_meio");
+		this.meioDireita = new CasaMeioDireita(Integer.valueOf(4), "casa_meio_direita");
+		this.meioEsquerda = new CasaMeioEsquerda(Integer.valueOf(3), "casa_meio_esquerda");
+		this.inferiorDireita = new CasaInferiorDireita(Integer.valueOf(7), "casa_inferior_direita");
+		this.inferiorEsquerda = new CasaInferiorEsquerda(Integer.valueOf(2), "casa_inferior_esquerda");
+		this.inferiorMeio = new CasaInferiorMeio(Integer.valueOf(6), "casa_inferior_meio");
 	}
 	
 	public void setId(Integer id) { this.id = id; }

@@ -1,7 +1,7 @@
 package db;
 
-import tabuleiro.Tabuleiro;
-import tabuleiro.TabuleiroController;
+import entities.Tabuleiro;
+import controller.TabuleiroController;
 
 public interface BancoDeDados {
 	

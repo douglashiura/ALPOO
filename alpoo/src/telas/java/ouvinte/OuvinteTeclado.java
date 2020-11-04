@@ -7,8 +7,8 @@ import java.util.Map;
 
 import javax.swing.JLabel;
 
-import tabuleiro.TabuleiroController;
-import tabuleiro.Vencedor;
+import controller.TabuleiroController;
+import entities.Vencedor;
 import view.SystemView;
 import view.TabuleiroView;
 import view.TelaVencedorView;

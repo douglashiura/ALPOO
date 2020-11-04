@@ -1,13 +1,13 @@
-package tabuleiro;
+package entities;
 
 import javax.swing.JLabel;
 
 public class Vencedor {
-	
+
 	public Vencedor() {
-		
+
 	}
-	
+
 	static public boolean verificaVencedor(JLabel cimaEsquerda, JLabel cimaMeio, JLabel cimaDireita, JLabel meioEsquerda, JLabel meio,
 			JLabel meioDireita, JLabel inferiorEsquerda, JLabel inferiorMeio, JLabel inferiorDireita) {
 		boolean ganhou = cimaEsquerda.getText().equals("1") && cimaMeio.getText().equals("2") && cimaDireita.getText().equals("3") && meioEsquerda.getText().equals("4") && meio.getText().equals("5")

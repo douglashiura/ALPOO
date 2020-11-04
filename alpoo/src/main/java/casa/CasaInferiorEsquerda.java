@@ -2,22 +2,26 @@ package casa;
 
 public class CasaInferiorEsquerda extends Casa {
 
-	public CasaInferiorEsquerda(Integer numero) {
-		super(numero);
-		// TODO Auto-generated constructor stub
+	public CasaInferiorEsquerda(Integer numero, String nomePosicao) {
+		super(numero, nomePosicao);
 	}
-	
-	@Override
-	public void moveBaixo() {}
 
 	@Override
-	public void moveEsquerda() {}
+	public void moveBaixo() {
+	}
 
 	@Override
-	public Casa getEsquerda() { return this; }
+	public void moveEsquerda() {
+	}
 
 	@Override
-	public Casa getBaixo() { return this; }
+	public Casa getEsquerda() {
+		return this;
+	}
 
+	@Override
+	public Casa getBaixo() {
+		return this;
+	}
 
 }

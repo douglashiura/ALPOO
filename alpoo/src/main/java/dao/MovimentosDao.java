@@ -1,6 +1,6 @@
-package movimento;
+package dao;
 
-public interface Movimentos {
+public interface MovimentosDao {
 	
 	public void moveCima();
 	

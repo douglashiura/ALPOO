@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 
 import org.junit.Test;
 
-import tabuleiro.Tabuleiro;
-import tabuleiro.TabuleiroController;
+import entities.Tabuleiro;
+import controller.TabuleiroController;
 import view.TabuleiroView;
 
 public class MovimentosUnitarios {

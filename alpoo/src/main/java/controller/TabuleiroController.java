@@ -1,8 +1,9 @@
-package tabuleiro;
+package controller;
 
-import movimento.Movimentos;
+import dao.MovimentosDao;
+import entities.Tabuleiro;
 
-public class TabuleiroController implements Movimentos{
+public class TabuleiroController implements MovimentosDao{
 
 	private Tabuleiro tabuleiro;
 	

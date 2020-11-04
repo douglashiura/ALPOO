@@ -3,9 +3,9 @@ import java.awt.*;
 import javax.swing.*;
 
 import ouvinte.OuvinteTeclado;
-import tabuleiro.Tabuleiro;
-import tabuleiro.TabuleiroController;
-import tabuleiro.Vencedor;
+import entities.Tabuleiro;
+import controller.TabuleiroController;
+import entities.Vencedor;
 
 import java.awt.event.*;
 
@@ -134,4 +134,3 @@ public class TabuleiroView extends JPanel implements InterfaceView{
 	}
 	
 }
-
