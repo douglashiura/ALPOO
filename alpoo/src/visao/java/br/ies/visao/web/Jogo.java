@@ -17,7 +17,6 @@ import br.ies.visao.swing.Cronometro;
 public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	private Cronometro cronometro;
 
 	private String retornoDoStatusDoJogo;
@@ -25,7 +24,7 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 	private Boolean primeiraInteracaoDoUsuario;
 
 	public Jogo() {
-		primeiraInteracaoDoUsuario = false;//test
+		primeiraInteracaoDoUsuario = false;// test
 		ganhouOJogo = false;
 	}
 
@@ -33,7 +32,7 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 		cronometro = new Cronometro();
 		cronometro.iniciar();
 	}
-	
+
 	public void verificaVitoria() {
 		ganhouOJogo = getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
 				&& getCelulaSuperiorDireita().equals("3") && getCelulaCentralEsquerda().equals("4")
@@ -81,7 +80,7 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 			return "";
 		}
 	}
-	
+
 	// Movimentos
 	public void moverPraCima() {
 		controle.moverPraCima();

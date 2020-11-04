@@ -69,7 +69,7 @@ public class TelaDeRank {
 
 	public DefaultListModel<String> retornaListaDeNomes(DefaultListModel<String> listaDeVencedores) {
 		try {
-			listaDeNomesDoRank = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
+			listaDeNomesDoRank = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoasQuePossuemTempo();
 			for (int i = 0; i < listaDeNomesDoRank.size(); i++) {
 				listaDeVencedores.add(i, listaDeNomesDoRank.get(i));
 			}

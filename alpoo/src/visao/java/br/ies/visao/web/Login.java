@@ -120,9 +120,7 @@ public class Login implements Serializable {
 		HashMap<Boolean, String> mapa = new HashMap<Boolean, String>();
 		mapa.put(true, "jogo");
 		mapa.put(false, "");
-		boolean a = getPermissaoConcedida();
-		setPermissaoConcedida(false);
-		return mapa.get(a);
+		return mapa.get(getPermissaoConcedida());
 	}
 
 	// Getters e Setters

@@ -19,25 +19,26 @@ public class Rank implements Serializable {
 	private Integer contadorDeLinhas;
 
 	public Rank() {
-		contadorDeLinhas=0;
+		contadorDeLinhas = 0;
 	}
-	
+
 	public void puxarDadosDoBanco() {
 		try {
 			setListaDeNomes(new BancoDeDadosPessoa().retornarTodosOsNomeDePessoasQuePossuemTempo());
 			setListaDePontuacoes(new BancoDeDadosPessoa().retornarTodosOsTemposDePessoas());
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
 	public Integer contarLinhas() {
 		contadorDeLinhas++;
 		return contadorDeLinhas;
 	}
-	
+
 	public void resetarContadorDeLinhas() {
 		contadorDeLinhas = 0;
 	}
-	
+
 	// Getters e Setters
 	public List<String> getListaDeNomes() {
 		return listaDeNomes;
