@@ -8,7 +8,10 @@ import java.util.Map;
 import javax.swing.JLabel;
 
 import tabuleiro.TabuleiroController;
-import view.TabuleiroInterface;
+import tabuleiro.Vencedor;
+import view.SystemView;
+import view.TabuleiroView;
+import view.TelaVencedorView;
 
 public class OuvinteTeclado implements KeyListener{
 	Map<Integer, Runnable> teclas = new HashMap<Integer, Runnable>();
@@ -22,12 +25,12 @@ public class OuvinteTeclado implements KeyListener{
 	private JLabel inferiorEsquerda;
 	private JLabel inferiorMeio;
 	private JLabel inferiorDireita;
-	private TabuleiroInterface tela;
+	private TabuleiroView tela;
 
 	
 	public OuvinteTeclado(TabuleiroController controller, JLabel cimaEsquerda, JLabel cimaMeio,
 			JLabel cimaDireita, JLabel meioEsquerda, JLabel meio, JLabel meioDireita,
-			JLabel inferiorEsquerda, JLabel inferiorMeio, JLabel inferiorDireita, TabuleiroInterface tela) {
+			JLabel inferiorEsquerda, JLabel inferiorMeio, JLabel inferiorDireita, TabuleiroView tela) {
 		
 		this.controller = controller;
 		this.cimaEsquerda = cimaEsquerda;
@@ -54,8 +57,7 @@ public class OuvinteTeclado implements KeyListener{
 		
 		this.teclas.get(key.getKeyCode()).run();
 		
-		tela.atualizaTela(this.cimaEsquerda,this.cimaMeio,this.cimaDireita,this.meioEsquerda,this.meio,this.meioDireita,this.inferiorEsquerda,this.inferiorMeio,this.inferiorDireita);
-		
+		this.tela.atualizaTela(this.cimaEsquerda,this.cimaMeio,this.cimaDireita,this.meioEsquerda,this.meio,this.meioDireita,this.inferiorEsquerda,this.inferiorMeio,this.inferiorDireita);
 	}
 
 	public void keyReleased(KeyEvent arg0) {

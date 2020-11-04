@@ -50,7 +50,7 @@ public class Casa implements Movimentos {
 	@Override
 	public String toString() {
 		if(this.numero != 0) {
-			return " " + this.numero + " " ;			
+			return this.numero.toString();			
 		}else {
 			return "";
 		}

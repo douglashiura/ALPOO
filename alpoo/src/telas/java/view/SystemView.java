@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -20,6 +21,9 @@ public class SystemView extends JFrame implements InterfaceView{
 	
 	private JMenuItem mntmJogador = new JMenuItem("Jogador");
 	private JMenuItem mntmJogar = new JMenuItem("Jogar");
+	
+	private Component cadastroView = new CadastroView();
+	private Component jogoView = new TabuleiroView();
 
 	
 	public SystemView() {
@@ -51,6 +55,7 @@ public class SystemView extends JFrame implements InterfaceView{
 		
 		layeredPane.add(cadastroView, "cadastroView");
 		layeredPane.add(jogoView, "jogoView");
+		
 		
 		
 		

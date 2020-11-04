@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import tabuleiro.Tabuleiro;
 import tabuleiro.TabuleiroController;
-import view.TabuleiroInterface;
+import view.TabuleiroView;
 
 public class MovimentosUnitarios {
 	@Test
@@ -20,7 +20,7 @@ public class MovimentosUnitarios {
 	
 	@Test
 	public void testeInterface() throws Exception {
-    	TabuleiroInterface game = new TabuleiroInterface();
+    	TabuleiroView game = new TabuleiroView();
         game.setTitle("THE FIFTEEN PUZZLE");
         game.setVisible(true);
         game.setSize(400,400);
