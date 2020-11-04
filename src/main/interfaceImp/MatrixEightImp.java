@@ -35,7 +35,7 @@ public class MatrixEightImp implements MatrixEightInterf {
 		numbers = getPlays.getNumbers();
 
 		stm = conn.prepareStatement("INSERT INTO matrixEight VALUES (nextval('idMatrixseq'), ?,?,?,?,?,?,?,?,?)");
-		stm.setInt(1, numbers.get(0));
+		stm.setInt(1, getPlays.getNumbers().get(0));
 		stm.setInt(2, numbers.get(1));
 		stm.setInt(3, numbers.get(2));
 		stm.setInt(4, numbers.get(3));
