@@ -11,9 +11,10 @@
 </h:head>
 <h:body>
 	<h1>Jogo do Oito</h1>
-	<a href="rank.xhtml">RANK</a><br/>
+	<a href="rank.xhtml">RANK</a>
+	<br />
 	<a href="index.xhtml">LOGIN</a>
-	
+
 	<br />
 	<h:form>
 		<h:panelGroup id="jogo">
@@ -49,7 +50,8 @@
 				</div>
 			</div>
 		</h:panelGroup>
-		<br /><br />
+		<br />
+		<br />
 
 		<p:hotkey bind="w" actionListener="#{jogo.moverPraCima()}"
 			update="jogo" />
@@ -59,7 +61,7 @@
 			update="jogo" />
 		<p:hotkey bind="d" actionListener="#{jogo.moverPraDireita()}"
 			update="jogo" />
-			
+
 		<h:commandLink class="buttons" value="Cima"
 			action="#{jogo.moverPraCima()}">
 			<f:ajax render="jogo" />

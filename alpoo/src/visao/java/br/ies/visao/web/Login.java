@@ -19,7 +19,6 @@ public class Login implements Serializable {
 	private Boolean estaLogado;
 	private Boolean permissaoConcedida;
 	private String retornoDoStatusDoLogin;
-
 	private String nome;
 	private String senha;
 	private Pessoa jogador;
@@ -63,7 +62,6 @@ public class Login implements Serializable {
 		primeiraInteracaoDoUsuario = false;
 		try {
 			List<String> nomesJaExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
-
 			for (Integer i = 0; i < nomesJaExistentes.size(); i++) {
 				nomeJaCadastrado.put(true, () -> {
 					jogador.setNome(nome);
@@ -122,7 +120,9 @@ public class Login implements Serializable {
 		HashMap<Boolean, String> mapa = new HashMap<Boolean, String>();
 		mapa.put(true, "jogo");
 		mapa.put(false, "");
-		return mapa.get(getPermissaoConcedida());
+		boolean a = getPermissaoConcedida();
+		setPermissaoConcedida(false);
+		return mapa.get(a);
 	}
 
 	// Getters e Setters

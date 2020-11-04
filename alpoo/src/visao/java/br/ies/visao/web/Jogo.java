@@ -17,7 +17,7 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Jogo() {
-		new Cronometro();
+		new Cronometro().iniciar();
 	}
 
 	// Movimentos

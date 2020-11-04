@@ -21,7 +21,7 @@ public class Rank implements Serializable {
 	public Rank() {
 		contadorDeLinhas=0;
 		try {
-			setListaDeNomes(new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas());
+			setListaDeNomes(new BancoDeDadosPessoa().retornarTodosOsNomeDePessoasQuePossuemTempo());
 			setListaDePontuacoes(new BancoDeDadosPessoa().retornarTodosOsTemposDePessoas());
 		} catch (Exception e) {
 		}

@@ -15,10 +15,11 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 	private final String INSERT = "INSERT INTO pessoa(nome, senha) VALUES(?, ?) RETURNING id;";
 	private final String INSERT_TIME = "UPDATE pessoa SET tempo = ? WHERE id = ?";
 	private final String CHECAR = "SELECT id FROM pessoa WHERE nome = ? AND senha = ?;";
-	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa WHERE tempo IS NOT NULL ORDER BY tempo;";
+	private final String RETORNAR_NOMES = "SELECT nome FROM pessoa ORDER BY tempo;";
 	private final String PEGAR_TEMPO_DO_BANCO = "SELECT tempo FROM pessoa WHERE id = ?;";
 	private final String RETORNAR_TEMPOS = "SELECT tempo FROM pessoa WHERE tempo IS NOT NULL ORDER BY tempo;";
 	private final String RETORNAR_SENHA = "SELECT senha FROM pessoa WHERE nome = ?;";
+	private final String RETORNA_NOMES_QUE_POSSUEM_TEMPO = "SELECT nome FROM pessoa WHERE tempo IS NOT NULL ORDER BY tempo;";
 
 	public void inserirPessoa(Pessoa pessoa) throws SQLException {
 		Connection connection = obterConexao();
@@ -112,6 +113,18 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 			listaDeTemposDePessoas.add(resultSet.getInt(1));
 		}
 		return listaDeTemposDePessoas;
+	}
+	
+	public List<String> retornarTodosOsNomeDePessoasQuePossuemTempo() throws SQLException {
+		Connection connection = obterConexao();
+		PreparedStatement statement = connection.prepareStatement(RETORNA_NOMES_QUE_POSSUEM_TEMPO);
+		statement.execute();
+		ResultSet resultSet = statement.getResultSet();
+		List<String> listaDeNomesDePessoas = new ArrayList<String>();
+		while (resultSet.next()) {
+			listaDeNomesDePessoas.add(resultSet.getString(1));
+		}
+		return listaDeNomesDePessoas;
 	}
 
 	public String retornarSenha(String nome) throws SQLException {
