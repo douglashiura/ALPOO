@@ -10,11 +10,12 @@
 	<link rel="stylesheet" href="navbar.css" />
 	<title>Jogo Do Oito</title>
 	#{jogo.aleatorizar()}
+	#{jogo.iniciarCronometro()}
 </h:head>
 <h:body>
 	<div style="background-color: black; padding: 20px; font-size: 40px; color: white;">Jogo Do Oito</div>
 	<div style="background-color: black; padding: 20px; font-size: 40px; color: white;">
-		<a href="rank.xhtml">RANK</a>||
+		<a href="rank.xhtml">RANK</a>
 		<a href="index.xhtml">LOGIN</a>
 	</div>
 	
@@ -65,7 +66,7 @@
 		<p:hotkey bind="d" actionListener="#{jogo.moverPraDireita()}"
 			update="jogo" />
 
-		<h:outputLabel style="font-size:90px">#{jogo.statusDoJogo()}</h:outputLabel>
+		<h:outputLabel style="font-size:90px">#{jogo.statusDoJogo()}</h:outputLabel><br/>
 
 		<h:commandLink class="buttons" value="Cima"
 			action="#{jogo.moverPraCima()}">

@@ -21,12 +21,11 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 	private Cronometro cronometro;
 
 	private String retornoDoStatusDoJogo;
-	private Boolean estaLogado;
 	private Boolean ganhouOJogo;
 	private Boolean primeiraInteracaoDoUsuario;
 
 	public Jogo() {
-		primeiraInteracaoDoUsuario = true;
+		primeiraInteracaoDoUsuario = false;//test
 		ganhouOJogo = false;
 	}
 
@@ -45,7 +44,7 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 
 		mapaDeDecisoes.put(true, () -> {
 			try {
-				
+				primeiraInteracaoDoUsuario = false;
 				cronometro.parar();
 				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(), cronometro.getTempo());
 
@@ -69,11 +68,11 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 		try {
 			HashMap<Boolean, String> hashmap = new HashMap<Boolean, String>();
 			hashmap.put(true, "Você Venceu!");
-			hashmap.put(false, "Err.");
+			hashmap.put(false, "");
 
 			HashMap<Boolean, Runnable> mapPrimeiraInteracao = new HashMap<Boolean, Runnable>();
 			mapPrimeiraInteracao.put(false, () -> {
-				retornoDoStatusDoJogo = hashmap.get(estaLogado);
+				retornoDoStatusDoJogo = hashmap.get(ganhouOJogo);
 			});
 
 			mapPrimeiraInteracao.get(primeiraInteracaoDoUsuario).run();
@@ -82,6 +81,7 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 			return "";
 		}
 	}
+	
 	// Movimentos
 	public void moverPraCima() {
 		controle.moverPraCima();

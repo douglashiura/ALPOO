@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="rank.css" />
 	<link rel="stylesheet" href="navbar.css" />
 	<title>Rank</title>
+	#{rank.puxarDadosDoBanco()}
 </h:head>
 <h:body id="teste">
 
@@ -19,16 +20,17 @@
 		<a href="index.xhtml">LOGIN</a>
 	</div>
 	
+	<br/><br/>
 
 	<div id="box">
 		<table>
 			<tr>
 				<th
-					style="text-align: center; background-color: black; color: white;">Posição</th>
+					style="text-align: center; background-color: black; color: white;"></th>
 				<th
 					style="text-align: center; background-color: black; color: white;">Nome</th>
 				<th
-					style="text-align: center; background-color: black; color: white;">Pontuação</th>
+					style="text-align: center; background-color: black; color: white;">Tempo</th>
 			</tr>
 
 
@@ -36,7 +38,7 @@
 				<tr>
 					<td style="text-align: center;">#{rank.contarLinhas()}</td>
 					<td>#{rank.listaDeNomes[value.index]}</td>
-					<td>#{rank.listaDePontuacoes[value.index]}</td>
+					<td>#{rank.listaDePontuacoes[value.index]} segs</td>
 				</tr>
 			</ui:repeat>
 			#{rank.resetarContadorDeLinhas()}

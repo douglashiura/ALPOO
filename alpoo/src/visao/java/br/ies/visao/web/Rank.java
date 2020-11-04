@@ -20,12 +20,13 @@ public class Rank implements Serializable {
 
 	public Rank() {
 		contadorDeLinhas=0;
+	}
+	
+	public void puxarDadosDoBanco() {
 		try {
 			setListaDeNomes(new BancoDeDadosPessoa().retornarTodosOsNomeDePessoasQuePossuemTempo());
 			setListaDePontuacoes(new BancoDeDadosPessoa().retornarTodosOsTemposDePessoas());
-		} catch (Exception e) {
-		}
-
+		} catch (Exception e) {}
 	}
 
 	public Integer contarLinhas() {
