@@ -143,5 +143,6 @@ public class TabuleiroInterface extends JFrame{
 		inferiorDireita.setText(controller.getTabuleiro().getInferiorDireita().toString());
 		
 	}
+	
 }
 
