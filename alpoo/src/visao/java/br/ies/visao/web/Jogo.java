@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 
 import br.ies.main.banco.de.dados.BancoDeDadosPessoa;
 import br.ies.main.entidades.Pessoa;
+import br.ies.main.tabuleiro.AleatorizadorDeTabuleiro;
 import br.ies.visao.swing.Cronometro;
 
 @SessionScoped
@@ -65,6 +66,10 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 		} catch (Exception e) {
 
 		}
+	}
+	
+	public void aleatorizar() {
+		new AleatorizadorDeTabuleiro(controle.getTabuleiro());
 	}
 
 }
