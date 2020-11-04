@@ -7,15 +7,17 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="jogo.css" />
+	<link rel="stylesheet" href="navbar.css" />
 	<title>Jogo Do Oito</title>
 	#{jogo.aleatorizar()}
 </h:head>
 <h:body>
-	<h1>Jogo do Oito</h1>
-	<a href="rank.xhtml">RANK</a>
-	<br />
-	<a href="index.xhtml">LOGIN</a>
-
+	<div style="background-color: black; padding: 20px; font-size: 40px; color: white;">Jogo Do Oito</div>
+	<div style="background-color: black; padding: 20px; font-size: 40px; color: white;">
+		<a href="rank.xhtml">RANK</a>||
+		<a href="index.xhtml">LOGIN</a>
+	</div>
+	
 	<br />
 	<h:form>
 		<h:panelGroup id="jogo">
@@ -62,6 +64,8 @@
 			update="jogo" />
 		<p:hotkey bind="d" actionListener="#{jogo.moverPraDireita()}"
 			update="jogo" />
+
+		<h:outputLabel style="font-size:90px">#{jogo.statusDoJogo()}</h:outputLabel>
 
 		<h:commandLink class="buttons" value="Cima"
 			action="#{jogo.moverPraCima()}">

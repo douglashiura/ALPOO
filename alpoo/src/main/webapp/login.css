@@ -2,5 +2,8 @@
 	font-family: Arial;
     font-weight: bold;
     text-align: center;
-    background-color: rgb(35, 84, 158);
+}
+
+body {
+	background-color: rgb(35, 84, 158);
 }

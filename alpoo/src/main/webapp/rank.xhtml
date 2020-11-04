@@ -8,12 +8,17 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="rank.css" />
+	<link rel="stylesheet" href="navbar.css" />
 	<title>Rank</title>
 </h:head>
 <h:body id="teste">
-	<h1>Rank do Jogo do Oito</h1>
-	<a href="jogo.xhtml">JOGO</a><br/>
-	<a href="index.xhtml">LOGIN</a>
+
+	<div style="background-color: black; padding: 20px; font-size: 40px; color: white;">Rank do Jogo do Oito</div>
+	<div style="background-color: black; padding: 20px; font-size: 40px; color: white;">
+		<a href="jogo.xhtml">JOGO</a>
+		<a href="index.xhtml">LOGIN</a>
+	</div>
+	
 
 	<div id="box">
 		<table>
@@ -26,17 +31,16 @@
 					style="text-align: center; background-color: black; color: white;">Pontuação</th>
 			</tr>
 
-			
-				<ui:repeat varStatus="value" value="#{rank.listaDeNomes}">
-					<tr>
-						<td style="text-align: center;">#{rank.contarLinhas()}</td>
-						<td>#{rank.listaDeNomes[value.index]}</td>
-						<td>#{rank.listaDePontuacoes[value.index]}</td>
-					</tr>
-				</ui:repeat>
-				#{rank.resetarContadorDeLinhas()}
-				
-				
+
+			<ui:repeat varStatus="value" value="#{rank.listaDeNomes}">
+				<tr>
+					<td style="text-align: center;">#{rank.contarLinhas()}</td>
+					<td>#{rank.listaDeNomes[value.index]}</td>
+					<td>#{rank.listaDePontuacoes[value.index]}</td>
+				</tr>
+			</ui:repeat>
+			#{rank.resetarContadorDeLinhas()}
+
 		</table>
 	</div>
 

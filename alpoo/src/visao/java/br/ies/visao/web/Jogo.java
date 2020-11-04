@@ -17,10 +17,71 @@ import br.ies.visao.swing.Cronometro;
 public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	
+	private Cronometro cronometro;
+
+	private String retornoDoStatusDoJogo;
+	private Boolean estaLogado;
+	private Boolean ganhouOJogo;
+	private Boolean primeiraInteracaoDoUsuario;
+
 	public Jogo() {
-		new Cronometro().iniciar();
+		primeiraInteracaoDoUsuario = true;
+		ganhouOJogo = false;
 	}
 
+	public void iniciarCronometro() {
+		cronometro = new Cronometro();
+		cronometro.iniciar();
+	}
+	
+	public void verificaVitoria() {
+		ganhouOJogo = getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
+				&& getCelulaSuperiorDireita().equals("3") && getCelulaCentralEsquerda().equals("4")
+				&& getCelulaCentral().equals("5") && getCelulaCentralDireita().equals("6")
+				&& getCelulaInferiorEsquerda().equals("7") && getCelulaInferiorCentral().equals("8");
+
+		HashMap<Boolean, Runnable> mapaDeDecisoes = new HashMap<Boolean, Runnable>();
+
+		mapaDeDecisoes.put(true, () -> {
+			try {
+				
+				cronometro.parar();
+				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(), cronometro.getTempo());
+
+			} catch (SQLException e) {
+
+			}
+		});
+
+		try {
+			mapaDeDecisoes.get(ganhouOJogo).run();
+		} catch (Exception e) {
+
+		}
+	}
+
+	public void aleatorizar() {
+		new AleatorizadorDeTabuleiro(controle.getTabuleiro());
+	}
+
+	public String statusDoJogo() {
+		try {
+			HashMap<Boolean, String> hashmap = new HashMap<Boolean, String>();
+			hashmap.put(true, "Você Venceu!");
+			hashmap.put(false, "Err.");
+
+			HashMap<Boolean, Runnable> mapPrimeiraInteracao = new HashMap<Boolean, Runnable>();
+			mapPrimeiraInteracao.put(false, () -> {
+				retornoDoStatusDoJogo = hashmap.get(estaLogado);
+			});
+
+			mapPrimeiraInteracao.get(primeiraInteracaoDoUsuario).run();
+			return retornoDoStatusDoJogo;
+		} catch (Exception e) {
+			return "";
+		}
+	}
 	// Movimentos
 	public void moverPraCima() {
 		controle.moverPraCima();
@@ -41,35 +102,4 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 		controle.moverPraDireita();
 		verificaVitoria();
 	}
-
-	public void verificaVitoria() {
-		Boolean ganhou = getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
-				&& getCelulaSuperiorDireita().equals("3") && getCelulaCentralEsquerda().equals("4")
-				&& getCelulaCentral().equals("5") && getCelulaCentralDireita().equals("6")
-				&& getCelulaInferiorEsquerda().equals("7") && getCelulaInferiorCentral().equals("8");
-
-		HashMap<Boolean, Runnable> mapaDeDecisoes = new HashMap<Boolean, Runnable>();
-
-		mapaDeDecisoes.put(true, () -> {
-			try {
-				Cronometro.getInstancia().parar();
-				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(),
-						Cronometro.getInstancia().getTempo());
-
-			} catch (SQLException e) {
-
-			}
-		});
-
-		try {
-			mapaDeDecisoes.get(ganhou).run();
-		} catch (Exception e) {
-
-		}
-	}
-	
-	public void aleatorizar() {
-		new AleatorizadorDeTabuleiro(controle.getTabuleiro());
-	}
-
 }

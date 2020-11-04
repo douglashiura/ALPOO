@@ -1,8 +1,12 @@
 * {
 	font-family: Arial;
 	font-weight: bold;
-	background-color: rgb(35, 84, 158);
 	text-align: center;
+	margin: 0;
+}
+
+body {
+	background-color: rgb(35, 84, 158);
 }
 
 #box {
@@ -26,17 +30,12 @@ td, th {
 	padding: 8px;
 }
 
-tr:nth-child(odd) {
-	background-color: #000000;
-}
-
 @media screen and (max-width: 1000px) {
 	* {
 		font-family: Arial;
 		font-weight: bold;
 		background-color: rgb(35, 84, 158);
 		text-align: center;
-		font-size: 6vw;
 	}
 	#box {
 		width: 80%;
