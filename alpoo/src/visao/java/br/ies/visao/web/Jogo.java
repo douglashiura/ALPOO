@@ -10,42 +10,40 @@ import javax.faces.bean.SessionScoped;
 import br.ies.main.banco.de.dados.BancoDeDadosPessoa;
 import br.ies.main.entidades.Pessoa;
 import br.ies.main.tabuleiro.AleatorizadorDeTabuleiro;
-import br.ies.visao.swing.Cronometro;
+import br.ies.main.tabuleiro.Cronometro;
 
 @SessionScoped
 @ManagedBean(name = "jogo")
 public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Cronometro cronometro;
-
 	private String retornoDoStatusDoJogo;
 	private Boolean ganhouOJogo;
 	private Boolean primeiraInteracaoDoUsuario;
 
 	public Jogo() {
-		primeiraInteracaoDoUsuario = false;// test
-		ganhouOJogo = false;
+		new Cronometro();
+		setPrimeiraInteracaoDoUsuario(false);
+		setGanhouOJogo(false);
 	}
 
 	public void iniciarCronometro() {
-		cronometro = new Cronometro();
-		cronometro.iniciar();
+		Cronometro.getInstancia().iniciar();
 	}
 
 	public void verificaVitoria() {
-		ganhouOJogo = getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
+		setGanhouOJogo(getCelulaSuperiorEsquerda().equals("1") && getCelulaSuperiorCentral().equals("2")
 				&& getCelulaSuperiorDireita().equals("3") && getCelulaCentralEsquerda().equals("4")
 				&& getCelulaCentral().equals("5") && getCelulaCentralDireita().equals("6")
-				&& getCelulaInferiorEsquerda().equals("7") && getCelulaInferiorCentral().equals("8");
+				&& getCelulaInferiorEsquerda().equals("7") && getCelulaInferiorCentral().equals("8"));
 
 		HashMap<Boolean, Runnable> mapaDeDecisoes = new HashMap<Boolean, Runnable>();
 
 		mapaDeDecisoes.put(true, () -> {
 			try {
-				primeiraInteracaoDoUsuario = false;
-				cronometro.parar();
-				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(), cronometro.getTempo());
+				setPrimeiraInteracaoDoUsuario(false);
+				Cronometro.getInstancia().parar();
+				new BancoDeDadosPessoa().inserirMelhorTempo(Pessoa.getInstancia(), Cronometro.getInstancia().getTempo());
 
 			} catch (SQLException e) {
 
@@ -53,14 +51,14 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 		});
 
 		try {
-			mapaDeDecisoes.get(ganhouOJogo).run();
+			mapaDeDecisoes.get(getGanhouOJogo()).run();
 		} catch (Exception e) {
 
 		}
 	}
 
 	public void aleatorizar() {
-		new AleatorizadorDeTabuleiro(controle.getTabuleiro());
+		new AleatorizadorDeTabuleiro(getControle().getTabuleiro());
 	}
 
 	public String statusDoJogo() {
@@ -71,10 +69,10 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 
 			HashMap<Boolean, Runnable> mapPrimeiraInteracao = new HashMap<Boolean, Runnable>();
 			mapPrimeiraInteracao.put(false, () -> {
-				retornoDoStatusDoJogo = hashmap.get(ganhouOJogo);
+				retornoDoStatusDoJogo = hashmap.get(getGanhouOJogo());
 			});
 
-			mapPrimeiraInteracao.get(primeiraInteracaoDoUsuario).run();
+			mapPrimeiraInteracao.get(getPrimeiraInteracaoDoUsuario()).run();
 			return retornoDoStatusDoJogo;
 		} catch (Exception e) {
 			return "";
@@ -83,22 +81,42 @@ public class Jogo extends GerenciamentoDasCelulas implements Serializable {
 
 	// Movimentos
 	public void moverPraCima() {
-		controle.moverPraCima();
+		getControle().moverPraCima();
 		verificaVitoria();
 	}
 
 	public void moverPraBaixo() {
-		controle.moverPraBaixo();
+		getControle().moverPraBaixo();
 		verificaVitoria();
 	}
 
 	public void moverPraEsquerda() {
-		controle.moverPraEsquerda();
+		getControle().moverPraEsquerda();
 		verificaVitoria();
 	}
 
 	public void moverPraDireita() {
-		controle.moverPraDireita();
+		getControle().moverPraDireita();
 		verificaVitoria();
+	}
+
+	// Getters e Setters
+	
+	public Boolean getPrimeiraInteracaoDoUsuario() {
+		return primeiraInteracaoDoUsuario;
+	}
+
+	public void setPrimeiraInteracaoDoUsuario(Boolean primeiraInteracaoDoUsuario) {
+		this.primeiraInteracaoDoUsuario = primeiraInteracaoDoUsuario;
+	}
+	
+
+	public Boolean getGanhouOJogo() {
+		return ganhouOJogo;
+	}
+	
+
+	public void setGanhouOJogo(Boolean ganhouOJogo) {
+		this.ganhouOJogo = ganhouOJogo;
 	}
 }

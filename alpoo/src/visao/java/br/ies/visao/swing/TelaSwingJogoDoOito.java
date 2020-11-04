@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import br.ies.main.tabuleiro.ControleDoTabuleiro;
+import br.ies.main.tabuleiro.Cronometro;
 import br.ies.main.tabuleiro.Tabuleiro;
 
 public class TelaSwingJogoDoOito {

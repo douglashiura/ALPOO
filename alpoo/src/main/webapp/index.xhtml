@@ -14,24 +14,18 @@
 		style="background-color: black; padding: 20px; font-size: 40px; color: white;">Login
 		do Jogo Do Oito</div>
 
+	<br/>
 	<h3 style="color: white;">Digite seu usuário e senha.</h3>
+	<br/>
 
 	<h:form class="buttons">
 		<div>
-			<p>
-				<h:outputText value="Usuário" />
-			</p>
-			<p>
-				<h:inputText id="username" value="#{login.nome}"></h:inputText>
-			</p>
+			<p><h:outputText style="font-weight: bold; color: white;" value="Usuário" /></p><br/>
+			<p><h:inputText id="username" value="#{login.nome}"></h:inputText></p><br/>
 		</div>
 		<div>
-			<p>
-				<h:outputText value="Senha" />
-			</p>
-			<p>
-				<h:inputSecret id="password" value="#{login.senha}"></h:inputSecret>
-			</p>
+			<p><h:outputText style="font-weight: bold; color: white;" value="Senha" /></p><br/>
+			<p><h:inputSecret id="password" value="#{login.senha}"></h:inputSecret></p><br/>
 		</div>
 		<h:commandButton action="#{login.irParaOJogo()}" value="Entrar" />
 	</h:form>

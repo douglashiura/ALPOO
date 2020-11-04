@@ -24,16 +24,16 @@ public class Login implements Serializable {
 	private Pessoa jogador;
 
 	public Login() {
-		nome = "";
-		senha = "";
+		setNome("");
+		setSenha("");
 		jogador = new Pessoa(nome, senha);
-		estaLogado = false;
-		retornoDoStatusDoLogin = "";
-		primeiraInteracaoDoUsuario = true;
-		permissaoConcedida = false;
+		setEstaLogado(false);
+		setRetornoDoStatusDoLogin("");
+		setPrimeiraInteracaoDoUsuario(true);
+		setPermissaoConcedida(false);
 
 	}
-
+	
 	public String statusDoLogin() {
 		try {
 			HashMap<Boolean, String> hashmap = new HashMap<Boolean, String>();
@@ -42,11 +42,11 @@ public class Login implements Serializable {
 
 			HashMap<Boolean, Runnable> mapPrimeiraInteracao = new HashMap<Boolean, Runnable>();
 			mapPrimeiraInteracao.put(false, () -> {
-				retornoDoStatusDoLogin = hashmap.get(estaLogado);
+				setRetornoDoStatusDoLogin(hashmap.get(getEstaLogado()));
 			});
 
-			mapPrimeiraInteracao.get(primeiraInteracaoDoUsuario).run();
-			return retornoDoStatusDoLogin;
+			mapPrimeiraInteracao.get(getPrimeiraInteracaoDoUsuario()).run();
+			return getRetornoDoStatusDoLogin();
 		} catch (Exception e) {
 			return "";
 		}
@@ -59,7 +59,7 @@ public class Login implements Serializable {
 		HashMap<Boolean, Runnable> campoPreenchido = new HashMap<Boolean, Runnable>();
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 
-		primeiraInteracaoDoUsuario = false;
+		setPrimeiraInteracaoDoUsuario(false);
 		try {
 			List<String> nomesJaExistentes = new BancoDeDadosPessoa().retornarTodosOsNomeDePessoas();
 			for (Integer i = 0; i < nomesJaExistentes.size(); i++) {
@@ -124,6 +124,7 @@ public class Login implements Serializable {
 	}
 
 	// Getters e Setters
+	
 	public String getNome() {
 		return nome;
 	}
@@ -146,6 +147,34 @@ public class Login implements Serializable {
 
 	public void setPermissaoConcedida(Boolean permitido) {
 		this.permissaoConcedida = permitido;
+	}
+	
+
+	public Boolean getPrimeiraInteracaoDoUsuario() {
+		return primeiraInteracaoDoUsuario;
+	}
+	
+
+	public void setPrimeiraInteracaoDoUsuario(Boolean primeiraInteracaoDoUsuario) {
+		this.primeiraInteracaoDoUsuario = primeiraInteracaoDoUsuario;
+	}
+	
+
+	public Boolean getEstaLogado() {
+		return estaLogado;
+	}
+	
+
+	public void setEstaLogado(Boolean estaLogado) {
+		this.estaLogado = estaLogado;
+	}
+
+	public String getRetornoDoStatusDoLogin() {
+		return retornoDoStatusDoLogin;
+	}
+
+	public void setRetornoDoStatusDoLogin(String retornoDoStatusDoLogin) {
+		this.retornoDoStatusDoLogin = retornoDoStatusDoLogin;
 	}
 
 }

@@ -1,4 +1,4 @@
-package br.ies.visao.swing;
+package br.ies.main.tabuleiro;
 
 import java.sql.Timestamp;
 

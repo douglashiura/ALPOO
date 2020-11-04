@@ -19,7 +19,7 @@ public class Rank implements Serializable {
 	private Integer contadorDeLinhas;
 
 	public Rank() {
-		contadorDeLinhas = 0;
+		setContadorDeLinhas(0);
 	}
 
 	public void puxarDadosDoBanco() {
@@ -31,12 +31,12 @@ public class Rank implements Serializable {
 	}
 
 	public Integer contarLinhas() {
-		contadorDeLinhas++;
-		return contadorDeLinhas;
+		setContadorDeLinhas(getContadorDeLinhas() + 1);
+		return getContadorDeLinhas();
 	}
 
 	public void resetarContadorDeLinhas() {
-		contadorDeLinhas = 0;
+		setContadorDeLinhas(0);
 	}
 
 	// Getters e Setters
@@ -54,5 +54,15 @@ public class Rank implements Serializable {
 
 	public void setListaDePontuacoes(List<Integer> listaDePontuacoes) {
 		this.listaDePontuacoes = listaDePontuacoes;
+	}
+	
+
+	public Integer getContadorDeLinhas() {
+		return contadorDeLinhas;
+	}
+	
+
+	public void setContadorDeLinhas(Integer contadorDeLinhas) {
+		this.contadorDeLinhas = contadorDeLinhas;
 	}
 }

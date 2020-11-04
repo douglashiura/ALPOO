@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 import br.ies.main.banco.de.dados.BancoDeDadosPessoa;
 import br.ies.main.entidades.Pessoa;
+import br.ies.main.tabuleiro.Cronometro;
 
 public class MandadorDeTemposProBanco {
 

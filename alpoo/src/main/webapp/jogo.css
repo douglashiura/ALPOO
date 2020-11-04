@@ -49,12 +49,22 @@ body {
         border: 5px solid #072c63;
     }
     
+    .boxButtons{
+		font-size: 30px;
+	}
+    
     .container {
         color: #072c63;
         display: grid;
         font-size: 15vw;
         grid-template-columns: 33.33% 33.33% 33.33%;
     }
+}
+
+@media screen and (max-width: 425px) {
+	.boxButtons{
+		font-size: 50px;
+	}
 }
 
 .containerInside {

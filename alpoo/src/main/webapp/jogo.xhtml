@@ -59,7 +59,6 @@
 			<br />
 		</h:panelGroup>
 		<br />
-		<br />
 
 		<p:hotkey bind="w" actionListener="#{jogo.moverPraCima()}"
 			update="jogo" />
@@ -70,22 +69,30 @@
 		<p:hotkey bind="d" actionListener="#{jogo.moverPraDireita()}"
 			update="jogo" />
 
-		<h:commandLink class="buttons" value="Cima"
-			action="#{jogo.moverPraCima()}">
-			<f:ajax render="jogo" />
-		</h:commandLink>
-		<h:commandLink class="buttons" value="Esquerda"
-			action="#{jogo.moverPraEsquerda()}">
-			<f:ajax render="jogo" />
-		</h:commandLink>
-		<h:commandLink class="buttons" value="Direita"
-			action="#{jogo.moverPraDireita()}">
-			<f:ajax render="jogo" />
-		</h:commandLink>
-		<h:commandLink class="buttons" value="Baixo"
-			action="#{jogo.moverPraBaixo()}">
-			<f:ajax render="jogo" />
-		</h:commandLink>
+		<div class="boxButtons">
+			<h:commandLink class="buttons" value="Cima"
+				action="#{jogo.moverPraCima()}">
+				<f:ajax render="jogo" />
+			</h:commandLink>
+			<br />
+			<br />
+			<br />
+			<h:commandLink class="buttons" value="Esquerda"
+				action="#{jogo.moverPraEsquerda()}">
+				<f:ajax render="jogo" />
+			</h:commandLink>
+			<h:commandLink class="buttons" value="Direita"
+				action="#{jogo.moverPraDireita()}">
+				<f:ajax render="jogo" />
+			</h:commandLink>
+			<br />
+			<br />
+			<br />
+			<h:commandLink class="buttons" value="Baixo"
+				action="#{jogo.moverPraBaixo()}">
+				<f:ajax render="jogo" />
+			</h:commandLink>
+		</div>
 	</h:form>
 
 </h:body>
