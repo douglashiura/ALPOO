@@ -53,6 +53,7 @@
 						#{jogo.getCelulaInferiorDireita()}</div>
 				</div>
 			</div>
+			<h:outputLabel style="font-size:50px">#{jogo.statusDoJogo()}</h:outputLabel><br/>
 		</h:panelGroup>
 		<br />
 		<br />
@@ -65,8 +66,6 @@
 			update="jogo" />
 		<p:hotkey bind="d" actionListener="#{jogo.moverPraDireita()}"
 			update="jogo" />
-
-		<h:outputLabel style="font-size:90px">#{jogo.statusDoJogo()}</h:outputLabel><br/>
 
 		<h:commandLink class="buttons" value="Cima"
 			action="#{jogo.moverPraCima()}">
