@@ -27,7 +27,7 @@ public class AleatorizadorDeTabuleiro {
 
 		Random random = new Random();
 
-		for (int i = 0; i != 666; i++) {
+		for (Integer i = 0; i != 666; i++) {
 			mapaDeMovimentos.get(random.nextInt(4)).run();
 		}
 	}

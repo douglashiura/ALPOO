@@ -139,7 +139,8 @@ public class TelaSwingJogoDoOito {
 		getFrmJogoDoOito().setFocusTraversalKeysEnabled(false);
 
 		new MandadorDeTemposProBanco().verificaVitoria(superiorEsquerdo, superiorCentral, superiorDireita,
-				centroEsquerda, centroCentral, centroDireita, inferiorEsquerdo, inferiorCentral, inferiorDireita, frmJogoDoOito);
+				centroEsquerda, centroCentral, centroDireita, inferiorEsquerdo, inferiorCentral, inferiorDireita,
+				frmJogoDoOito);
 	}
 
 	public JFrame getFrmJogoDoOito() {

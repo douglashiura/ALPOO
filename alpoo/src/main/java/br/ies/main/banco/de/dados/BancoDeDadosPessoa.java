@@ -60,14 +60,14 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		try {
 			listaDeAcoes.get(maior).run();
 		} catch (Exception e) {
-			
+
 		}
-		
+
 		try {
 			maior = tempo < resultSet.getInt(1);
 			listaDeAcoes.get(maior).run();
 		} catch (Exception e) {
-			
+
 		} finally {
 			statement.close();
 			connection.close();
@@ -114,7 +114,7 @@ public class BancoDeDadosPessoa extends GerenciadorBancoDeDados {
 		}
 		return listaDeTemposDePessoas;
 	}
-	
+
 	public List<String> retornarTodosOsNomeDePessoasQuePossuemTempo() throws SQLException {
 		Connection connection = obterConexao();
 		PreparedStatement statement = connection.prepareStatement(RETORNA_NOMES_QUE_POSSUEM_TEMPO);

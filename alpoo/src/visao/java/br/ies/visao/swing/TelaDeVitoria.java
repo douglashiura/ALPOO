@@ -60,7 +60,7 @@ public class TelaDeVitoria {
 			}
 		});
 
-		btnNewButton.setBounds(182, 130, 73, 23);
+		btnNewButton.setBounds(162, 132, 105, 23);
 		frame.getContentPane().add(btnNewButton);
 	}
 

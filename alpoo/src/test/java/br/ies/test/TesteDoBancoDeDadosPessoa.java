@@ -41,7 +41,7 @@ public class TesteDoBancoDeDadosPessoa {
 		Timestamp dataFinal = new Timestamp(System.currentTimeMillis());
 		banco.inserirMelhorTempo(pessoa, (dataFinal.getTime() - dataInicial.getTime()) / 1000);
 	}
-	
+
 	@Test
 	public void retornandoListaDePessoasDoBanco() throws SQLException, InterruptedException {
 		BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
@@ -56,20 +56,3 @@ public class TesteDoBancoDeDadosPessoa {
 		System.out.println(listaDePessoas);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

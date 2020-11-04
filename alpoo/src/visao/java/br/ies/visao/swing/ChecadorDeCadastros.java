@@ -34,25 +34,26 @@ public class ChecadorDeCadastros {
 					}
 					new TelaSwingJogoDoOito().getFrmJogoDoOito().setVisible(true);
 					frame.dispose();
+					nomesJaExistentes.get(-1);
 				});
 
 				nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
 
-				Boolean x = nomesJaExistentes.get(i).equals(tela.getTextField().getText()) && new BancoDeDadosPessoa()
-						.retornarSenha(nomesJaExistentes.get(i)).equals(tela.getTextField_1().getText());
+				Boolean existe = nomesJaExistentes.get(i).equals(tela.getTextField().getText())
+						&& new BancoDeDadosPessoa().retornarSenha(nomesJaExistentes.get(i))
+								.equals(tela.getTextField_1().getText());
 
-				nomeJaCadastrado.get(x).run();
+				nomeJaCadastrado.get(existe).run();
 			}
 
 			try {
 				for (int i = 0; i < nomesJaExistentes.size(); i++) {
-					Boolean x = nomesJaExistentes.get(i).equals(tela.getTextField().getText());
+					Boolean existe = nomesJaExistentes.get(i).equals(tela.getTextField().getText());
 					nomeJaCadastrado.put(true, () -> nomesJaExistentes.get(-1));
 					nomeJaCadastrado.put(false, () -> nomesJaExistentes.get(0));
-					nomeJaCadastrado.get(x).run();
+					nomeJaCadastrado.get(existe).run();
 				}
 
-				System.out.println("Cadastrado com sucesso!");
 				campoPreenchido.put(false, () -> {
 					BancoDeDadosPessoa banco = new BancoDeDadosPessoa();
 					Pessoa pessoa = new Pessoa(tela.getTextField().getText(), tela.getTextField_1().getText());
@@ -69,11 +70,10 @@ public class ChecadorDeCadastros {
 
 				campoPreenchido.get(preenchido).run();
 			} catch (Exception e) {
-				System.out.println("Nome já existente!2");
+				JOptionPane.showMessageDialog(null, "Nome já existente!");
 			}
 
 		} catch (Exception e3) {
-			System.out.println("Nome já existente!");
 		}
 	}
 }

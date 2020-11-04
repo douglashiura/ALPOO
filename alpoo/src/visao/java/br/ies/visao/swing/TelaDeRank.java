@@ -54,7 +54,7 @@ public class TelaDeRank {
 		list.setBounds(0, 0, 216, 261);
 
 		getFrame().getContentPane().add(list);
-		
+
 		DefaultListModel<Integer> listaDeMelhoresTempos = new DefaultListModel<Integer>();
 
 		JList<Integer> list_1 = new JList<Integer>(retornaListaDeTempos(listaDeMelhoresTempos));
@@ -79,7 +79,7 @@ public class TelaDeRank {
 			return listaDeVencedores;
 		}
 	}
-	
+
 	public DefaultListModel<Integer> retornaListaDeTempos(DefaultListModel<Integer> listaDeVencedores) {
 		try {
 			listaDeTemposnoRank = new BancoDeDadosPessoa().retornarTodosOsTemposDePessoas();
