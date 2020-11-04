@@ -43,6 +43,7 @@ public class GameScreen extends PlayInterface {
 	private JTextField gameDisplay;
 	private MatrixEightInterf matrixEight;
 	private ScoreInterf score;
+	private JTextField displayPosition;
 
 	/**
 	 * Launch the application.
@@ -121,12 +122,13 @@ public class GameScreen extends PlayInterface {
 				matrixEight = new MatrixEightImp();
 
 				try {
-					
-					matrixEight.getKeyChar(e.getKeyCode());
+					String position;
+					position = matrixEight.getKeyChar(e.getKeyCode());
 					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 					gameDisplay.setText("Current Score: " + score.currentScore().toString());
 					e.getKeyChar();
+					displayPosition.setText(position);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -146,7 +148,6 @@ public class GameScreen extends PlayInterface {
 		desktopPane.add(btnReturn);
 
 		JButton btnUp = new JButton("up");
-
 		btnUp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -226,6 +227,18 @@ public class GameScreen extends PlayInterface {
 		});
 		btnDown.setBounds(439, 174, 115, 25);
 		desktopPane.add(btnDown);
+		
+		displayPosition = new JTextField();
+		displayPosition.setBorder(null);
+		displayPosition.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		displayPosition.setForeground(Color.WHITE);
+		displayPosition.setCaretColor(Color.BLACK);
+		displayPosition.setSelectedTextColor(Color.BLACK);
+		displayPosition.setBackground(Color.BLACK);
+		displayPosition.setFont(new Font("Liberation Sans", Font.BOLD, 40));
+		displayPosition.setColumns(10);
+		displayPosition.setBounds(439, 43, 117, 46);
+		desktopPane.add(displayPosition);
 
 	}
 	private void setMatrixDisplay(JTextPane a11, JTextPane a12, JTextPane a13, JTextPane a21, JTextPane a22, JTextPane a23, JTextPane a31, JTextPane a32, JTextPane a33) throws Exception {

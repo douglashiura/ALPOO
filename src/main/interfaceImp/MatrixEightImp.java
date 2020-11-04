@@ -160,32 +160,36 @@ public class MatrixEightImp implements MatrixEightInterf {
 		return this.isWin;
 	}
 	@Override
-	public void getKeyChar(Integer code) throws Exception {
+	public String getKeyChar(Integer code) throws Exception {
 		MatrixEightImp matrixEight = new MatrixEightImp();
 		ScoreInterf score = new ScoreImp();
-		
+		String position = "";
 		switch (code) {
 		case KeyEvent.VK_UP:
 			matrixEight.up();
+			position = "↑";
 			score.score().toString();
 			
 			break;
 		case KeyEvent.VK_DOWN:
 			matrixEight.down();
 			score.score().toString();
-			
+			position = "↓";
 			break;
 			
 		case KeyEvent.VK_LEFT:
 			matrixEight.left();
 			score.score().toString();
+			position = "←";
 			break;
 			
 		case KeyEvent.VK_RIGHT:
 			matrixEight.right();
 			score.score().toString();
+			position = "→";
 			break;
 		}
+		return position;
 	}
 	public void setWin() {
 		this.isWin = true;

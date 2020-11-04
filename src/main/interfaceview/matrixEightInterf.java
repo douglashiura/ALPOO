@@ -11,5 +11,5 @@ public interface MatrixEightInterf {
 	public void right() throws Exception;
 	public void clear()throws Exception;
 	public Boolean returnWin() throws Exception;
-	public void getKeyChar(Integer code)throws Exception;
+	public String getKeyChar(Integer code)throws Exception;
 }
