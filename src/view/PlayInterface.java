@@ -19,7 +19,10 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JDesktopPane;
+import java.awt.Point;
 
 public class PlayInterface {
 	private JFrame frmAsas;
@@ -58,20 +61,24 @@ public class PlayInterface {
 	 */
 	private void initialize() {
 		frmAsas = new JFrame();
-		frmAsas.getContentPane().setBackground(Color.RED);
+		frmAsas.setResizable(false);
+		frmAsas.setLocation(new Point(250, 50));
+		frmAsas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frmAsas.setExtendedState(frmAsas.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		frmAsas.setFont(new Font("Liberation Sans", Font.PLAIN, 20));
 		frmAsas.setForeground(Color.WHITE);
 		frmAsas.setBackground(Color.LIGHT_GRAY);
 		frmAsas.setType(Type.UTILITY);
 		frmAsas.setTitle("Game 8 Puzzle");
-		frmAsas.setBounds(200, 200, 369, 247);
+		frmAsas.setBounds(200, 200, 505, 289);
 
 		//		desktop
 		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.addMouseListener(new MouseAdapter() {
-		});
 		desktopPane.setBackground(Color.BLACK);
+		Dimension desktopSize = desktopPane.getSize();
+		Dimension jFrameSize = frmAsas.getSize();
 		desktopPane.setFont(new Font("Liberation Sans", Font.BOLD, 14));
+		desktopPane.setLocation((desktopSize.width - jFrameSize.width)/2, (desktopSize.height - jFrameSize.height)/2);
 		frmAsas.getContentPane().add(desktopPane, BorderLayout.CENTER);
 
 		//		JTextField	
@@ -79,7 +86,7 @@ public class PlayInterface {
 		display.setText("Welcome!");
 		display.setHorizontalAlignment(SwingConstants.CENTER);
 		display.setFont(new Font("Liberation Sans", Font.PLAIN, 19));
-		display.setBounds(27, 12, 300, 47);
+		display.setBounds(27, 24, 442, 47);
 		desktopPane.add(display);
 		display.setColumns(10);
 
@@ -98,7 +105,7 @@ public class PlayInterface {
 				}
 			}
 		});
-		btnPlay.setBounds(27, 103, 300, 25);
+		btnPlay.setBounds(27, 119, 442, 25);
 		desktopPane.add(btnPlay);
 
 
@@ -117,7 +124,7 @@ public class PlayInterface {
 				}
 			}
 		});
-		btnScore.setBounds(27, 133, 300, 25);
+		btnScore.setBounds(27, 156, 442, 25);
 		desktopPane.add(btnScore);
 
 //		button exit
@@ -134,7 +141,7 @@ public class PlayInterface {
 				}
 			}
 		});
-		btnExit.setBounds(27, 163, 300, 25);
+		btnExit.setBounds(27, 193, 442, 25);
 		desktopPane.add(btnExit);
 	}
 	protected void setDisplay(String string) {

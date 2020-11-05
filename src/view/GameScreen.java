@@ -27,8 +27,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import java.awt.Point;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import java.awt.Dimension;
 import javax.swing.JTextField;
@@ -64,9 +62,11 @@ public class GameScreen extends PlayInterface {
 	public GameScreen() throws Exception {
 		frmAsas2 = new JFrame();
 		frmAsas2.setResizable(false);
+		frmAsas2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//		frmAsas2.setExtendedState(frmAsas2.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		frmAsas2.setFont(new Font("Liberation Sans", Font.BOLD, 14));
 		frmAsas2.setTitle("Game 8 Puzzle");
-		frmAsas2.setBounds(100, 100, 585, 387);
+		frmAsas2.setBounds(100, 100, 590, 392);
 		contentPane = new JPanel();
 		contentPane.setLocation(new Point(500, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -120,21 +120,17 @@ public class GameScreen extends PlayInterface {
 		frmAsas2.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				matrixEight = new MatrixEightImp();
-
 				try {
 					String position;
 					position = matrixEight.getKeyChar(e.getKeyCode());
-					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					gameDisplay.setText("Current Score: " + score.currentScore().toString());
-					e.getKeyChar();
+					attMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 					displayPosition.setText(position);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
-		
+
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -152,11 +148,8 @@ public class GameScreen extends PlayInterface {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					matrixEight.up();
-					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					score = new ScoreImp();
-					gameDisplay.setText("Current Score: " + score.currentScore().toString());
+					matrixEight.up(); 
+					attMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -165,10 +158,6 @@ public class GameScreen extends PlayInterface {
 
 		btnUp.setPreferredSize(new Dimension(50, 25));
 		btnUp.setBorder(UIManager.getBorder("ToggleButton.border"));
-		btnUp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnUp.setBounds(439, 122, 115, 25);
 		desktopPane.add(btnUp);
 
@@ -178,10 +167,11 @@ public class GameScreen extends PlayInterface {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					matrixEight.left();
-					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					score = new ScoreImp();
-					gameDisplay.setText("Current Score: " + score.currentScore().toString());
+					attMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+//					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+//					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+//					score = new ScoreImp();
+//					gameDisplay.setText("Current Score: " + score.currentScore().toString());
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -196,9 +186,7 @@ public class GameScreen extends PlayInterface {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					matrixEight.right();
-					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					gameDisplay.setText("Current Score: " + score.currentScore().toString());
+					attMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -216,10 +204,8 @@ public class GameScreen extends PlayInterface {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					matrixEight.down();
-					setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
-					gameDisplay.setText("Current Score: " + score.currentScore().toString());
-					
+					attMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -227,7 +213,7 @@ public class GameScreen extends PlayInterface {
 		});
 		btnDown.setBounds(439, 174, 115, 25);
 		desktopPane.add(btnDown);
-		
+
 		displayPosition = new JTextField();
 		displayPosition.setBorder(null);
 		displayPosition.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -268,6 +254,14 @@ public class GameScreen extends PlayInterface {
 		aij.setBounds(x, y, width, height);
 		desktopPane.add(aij);
 	}
+
+	private void attMatrix(JTextPane a11, JTextPane a12, JTextPane a13, JTextPane a21, JTextPane a22, JTextPane a23, JTextPane a31, JTextPane a32, JTextPane a33) throws Exception {
+		setMatrixDisplay(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+		setJTextPaneFalse(a11, a12, a13, a21, a22, a23, a31, a32, a33);
+		score = new ScoreImp();
+		gameDisplay.setText("Current Score: " + score.currentScore().toString());
+	}
+
 	private void setJTextPaneFalse(JTextPane a11, JTextPane a12, JTextPane a13, JTextPane a21, JTextPane a22, JTextPane a23, JTextPane a31, JTextPane a32, JTextPane a33) throws Exception {
 		if(matrixEight.returnWin()) {
 
@@ -288,7 +282,7 @@ public class GameScreen extends PlayInterface {
 		JFrame popUp = new JFrame();
 		matrixEight.clear();
 
-		JOptionPane.showInputDialog(popUp, "Your Score: " + score.score(), null);
+		JOptionPane.showInputDialog(popUp, "Your Score: " + score.currentScore(), null);
 
 		contentPane.setVisible(false);
 		frmAsas2.setVisible(false);

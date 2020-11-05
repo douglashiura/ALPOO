@@ -22,7 +22,6 @@ public class ScoreImp implements ScoreInterf {
 		int valueScore = 0;
 		while(rs.next()) {
 			valueScore = rs.getInt("maxscore");
-			System.out.println(valueScore);
 		}
 		conn.close();
 		return valueScore;
