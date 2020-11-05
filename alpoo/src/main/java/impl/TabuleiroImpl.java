@@ -17,7 +17,7 @@ public class TabuleiroImpl implements TabuleiroDao {
 
 		try {
 			PreparedStatement posted = con.prepareStatement(
-					"INSERT INTO tabuleiro(casa_cima_esquerda, casa_cima_meio, casa_cima_direita, casa_meio_esquerda, casa_meio, casa_meio_direita, casa_inferior_esquerda, casa_inferior_meio, casa_inferior_direita) VALUES (2,4,6,8,0,1,3,5,7)");
+					"INSERT INTO tabuleiro(casa_cima_esquerda, casa_cima_meio, casa_cima_direita, casa_meio_esquerda, casa_meio, casa_meio_direita, casa_inferior_esquerda, casa_inferior_meio, casa_inferior_direita) VALUES (1,5,8,3,0,4,2,6,7)");
 			posted.executeUpdate();
 			con.close();
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class TabuleiroImpl implements TabuleiroDao {
 
 		try {
 			Statement stmt = con.createStatement();
-			String sql = "TRUNCATE tabuleiro RESTART IDENTITY";
+			String sql = "TRUNCATE tabuleiro RESTART IDENTITY CASCADE";
 			stmt.executeUpdate(sql);
 			con.close();
 		}

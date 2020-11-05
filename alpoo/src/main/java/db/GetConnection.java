@@ -10,9 +10,9 @@ public class GetConnection {
 
         try {
 
-            String url = "jdbc:postgresql://localhost/aps_database";
+            String url = "jdbc:postgresql://localhost/APS";
             String username ="postgres";
-            String password = "1234";
+            String password = "Bernardo@1";
 
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(url, username, password); 

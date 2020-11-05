@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import entities.Jogador;
+import impl.JogadorImpl;
+
 public class CadastroView extends JPanel implements InterfaceView{
 	
 	private JTextField textName;
@@ -49,6 +52,9 @@ public class CadastroView extends JPanel implements InterfaceView{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					Jogador jogador = new Jogador(1, textName.getText());
+					JogadorImpl jogadorImpl = new JogadorImpl();
+					jogadorImpl.salvaJogador(jogador);
 					JOptionPane.showMessageDialog(null, "Jogador cadastrado com sucesso!");
 					SystemView.switchPanels(new TabuleiroView());
 					

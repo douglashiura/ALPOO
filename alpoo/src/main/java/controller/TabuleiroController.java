@@ -2,6 +2,9 @@ package controller;
 
 import dao.MovimentosDao;
 import entities.Tabuleiro;
+import impl.JogadorImpl;
+import impl.LogImpl;
+import impl.TabuleiroImpl;
 
 public class TabuleiroController implements MovimentosDao{
 
@@ -12,7 +15,19 @@ public class TabuleiroController implements MovimentosDao{
 	}
 
 	public void  resetGame() {
-		this.setTabuleiro(new Tabuleiro());
+		TabuleiroImpl tabuleiroImpl = new TabuleiroImpl();
+		LogImpl logImpl = new LogImpl();
+
+		try {
+			tabuleiroImpl.removeTabuleiro();
+			tabuleiroImpl.criaTabuleiro();
+			
+			logImpl.removeLogs();
+			
+			this.setTabuleiro(new Tabuleiro());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	private void setTabuleiro(Tabuleiro tab) { this.tabuleiro = tab; }
 	

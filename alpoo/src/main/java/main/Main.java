@@ -2,6 +2,8 @@ package main;
 
 import java.awt.EventQueue;
 
+import impl.JogadorImpl;
+import impl.LogImpl;
 import impl.TabuleiroImpl;
 import view.SystemView;
 
@@ -29,6 +31,13 @@ public class Main {
 				TabuleiroImpl tabuleiroImpl = new TabuleiroImpl();
 				tabuleiroImpl.removeTabuleiro();
 				tabuleiroImpl.criaTabuleiro();
+				
+				JogadorImpl jogadorImpl = new JogadorImpl();
+				jogadorImpl.removeJogador();
+				
+				LogImpl logImpl = new LogImpl();
+				logImpl.removeLogs();
+				
 				SystemView frame = new SystemView();
 				frame.setVisible(true);
 			} catch (Exception e) {

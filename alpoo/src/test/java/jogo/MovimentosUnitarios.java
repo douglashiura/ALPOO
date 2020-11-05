@@ -19,11 +19,9 @@ public class MovimentosUnitarios {
 	}
 	
 	@Test
-	public void testeInterface() throws Exception {
-    	TabuleiroView game = new TabuleiroView();
-        game.setTitle("THE FIFTEEN PUZZLE");
-        game.setVisible(true);
-        game.setSize(400,400);
-        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void testaMovimentoCima() throws Exception {
+		
+		
 	}
+	
 }

@@ -1,16 +1,15 @@
 package dao;
 
-import java.util.ArrayList;
-
 import entities.Jogador;
 
 public interface JogadorDao {
 	
-	public void salvaJogador (Jogador tabuleiro);
+	public void salvaJogador (Jogador tabuleiro) throws Exception ;
+		
+	public void removeJogador () throws Exception ;
 	
-	public ArrayList<String> pegaJogador (int id);
-	
-	public void removeJogador (int id);
+	public String pegaNomeJogador () throws Exception ;
+
 	
 }
 

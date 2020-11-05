@@ -55,10 +55,7 @@ public class SystemView extends JFrame implements InterfaceView{
 		
 		layeredPane.add(cadastroView, "cadastroView");
 		layeredPane.add(jogoView, "jogoView");
-		
-		
-		
-		
+
 		getContentPane().add(contentPane);
 		
 	}
@@ -74,4 +71,5 @@ public class SystemView extends JFrame implements InterfaceView{
 		layeredPane.repaint();
 		layeredPane.revalidate();		
 	}		
+
 }
